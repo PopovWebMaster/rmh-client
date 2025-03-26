@@ -1,0 +1,38 @@
+.topMenu{
+    font-size: 1em;
+    height: 2em;
+    background-color: red;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+
+    .TM_left{
+        font-size: 1em;
+        flex-grow: 1;
+        max-width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+    }
+
+    .TM_right{
+        font-size: 1em;
+        flex-grow: 1;
+        height: 100%;
+        max-width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        align-content: center;
+
+    }
+}

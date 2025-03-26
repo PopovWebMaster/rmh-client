@@ -4,7 +4,6 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        
         "build": "webpack --config ./build/webpack.build_dev.conf.js",
         "build-prod": "webpack --config ./build/webpack.build_prod.conf.js",
         "admin": "webpack-dev-server --open --config ./build/webpack.dev.admin.conf.js",
@@ -12,9 +11,6 @@
         "logs": "webpack-dev-server --open --config ./build/webpack.dev.logs.conf.js",
         "applications": "webpack-dev-server --open --config ./build/webpack.dev.applications.conf.js",
         "login": "webpack-dev-server --open --config ./build/webpack.dev.login.conf.js"
-
-
-
     },
     "keywords": [],
     "author": "",
