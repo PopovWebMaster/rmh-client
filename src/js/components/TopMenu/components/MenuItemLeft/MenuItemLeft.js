@@ -2,12 +2,9 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorData as navigationSlice } from './../../../../redux/navigationSlice.js';
+import { selectorData as companySlice } from './../../../../redux/companySlice.js';
 
 import './MenuItemLeft.scss';
-
-// import { ROUTE } from './../../config/routes.js';
-
-
 
 const MenuItemLeftComponent = ( props ) => {
 
@@ -16,7 +13,7 @@ const MenuItemLeftComponent = ( props ) => {
         page,
 
         currentPage,
-        currentCompany,
+        currentCompanyAlias,
 
     } = props;
     
@@ -25,7 +22,7 @@ const MenuItemLeftComponent = ( props ) => {
     return (
         <a 
             className = { `${page === currentPage? 'isActive': ''} menuItemLeft` }
-            href = { `${HOST_TO_API_SERVER}/${currentCompany}/${page}` }
+            href = { `${HOST_TO_API_SERVER}/${currentCompanyAlias}/${page}` }
         >
             <span className = 'TMIL_icon'></span>
             <span className = 'TMIL_title'>{ title }</span>
@@ -37,13 +34,16 @@ const MenuItemLeftComponent = ( props ) => {
 export function MenuItemLeft( props ){
 
     const navigation = useSelector( navigationSlice );
+    const company = useSelector( companySlice );
+
+
     // const dispatch = useDispatch();
 
     return (
         <MenuItemLeftComponent
             { ...props }
             currentPage = { navigation.currentPage }
-            currentCompany = { navigation.currentCompany }
+            currentCompanyAlias = { company.currentCompanyAlias }
 
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 

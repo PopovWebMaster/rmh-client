@@ -1,0 +1,28 @@
+.siteLogo{
+    font-size: 1em;
+
+    height: 100%;
+    padding: 0 0.8em;
+
+    margin: 0 0.3em 0 0;
+    background-color: #53688445;
+    // border-radius: 0.1em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    span{
+        font-size: 0.9em;
+        // font-family:  Pragmatica;
+        // font-family:   Europe_Ext;
+
+        // font-family: "BankGothic RUSS Medium";
+        font-family: "EuropeExt Normal";
+
+
+        color: #beb4b4;
+    }
+
+}

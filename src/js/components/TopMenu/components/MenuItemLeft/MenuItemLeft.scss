@@ -1,20 +1,50 @@
 .menuItemLeft{
-    font-size: 1em;
+    font-size: 0.9em;
 
     text-decoration: none;
-    margin: 0 0.8em;
-    padding: 0.2em 0.9em;
-    background-color: #343434;
+    margin: 0 0.3em;
+    padding: 0.22em 0.6em;
+    // background-color: #343434;
+    background-color: #1a87712b;
+    border-radius: 0.1em;
 
     flex-grow: 0;
+
+    span{
+        font-size: 0.9em;
+        color: #c0c0c0;
+    }
 
 
     .TMIL_icon{
 
     }
     .TMIL_title{
-        font-size: 0.9em;
-        color: #c0c0c0;
+        // font-size: 0.9em;
+        // color: #c0c0c0;
+        // font-family:  Courier;
+        font-family:  Pragmatica;
+
+
+        
 
     }
 }
+
+.menuItemLeft.isActive{
+    // background-color: #1a8772d6;
+    background-color: #18b781d6;
+
+    span{
+        color: #e4e3e3;
+    }
+
+}
+.menuItemLeft:hover{
+    background-color: #1a8772;
+    span{
+        color: #fcfcfc;
+    }
+}
+
+

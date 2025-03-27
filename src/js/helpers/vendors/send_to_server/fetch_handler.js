@@ -4,7 +4,7 @@ export async function fetsh_data_to_server( params ){
     let _token =            params.token;
     let href =              params.href;
     let method =            params.method;
-    let action =            params.action;
+    // let action =            params.action;
     let data =              params.data;
     let successCallback =   params.successCallback;
     let errorCallback =     params.errorCallback;
@@ -17,7 +17,7 @@ export async function fetsh_data_to_server( params ){
             },
             body: JSON.stringify({
                 _token,
-                action,
+                // action,
                 data,
             }) 
         });
@@ -38,7 +38,7 @@ export async function fetsh_data_to_server( params ){
         console.error( `Ошибка: ${error}. При попытке вызвать fetch` );
         console.error({
             _token,
-            action,
+            // action,
             href,
             data,
         });

@@ -15,9 +15,9 @@ module.exports = merge(baseWebpackConfig, {
         logs: `${PATHS.src}/js/pages/logs/logs.js`,
         applications: `${PATHS.src}/js/pages/applications/applications.js`,
         login: `${PATHS.src}/js/pages/login/login.js`, 
-
-
-        
+        mainPage: `${PATHS.src}/js/pages/mainPage/mainPage.js`, 
+        schedulePlan: `${PATHS.src}/js/pages/schedulePlan/schedulePlan.js`, 
+        scheduleFact: `${PATHS.src}/js/pages/scheduleFact/scheduleFact.js`, 
 
 
 

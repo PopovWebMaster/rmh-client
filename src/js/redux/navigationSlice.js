@@ -7,8 +7,6 @@ export const navigationSlice = createSlice({
 
     initialState: {
         currentPage: '',
-        currentCompany: '',
-
 
     },
 
@@ -18,10 +16,7 @@ export const navigationSlice = createSlice({
             state.currentPage =  action.payload;
         },
 
-        setCurrentCompany: ( state, action ) => {
-            state.currentCompany =  action.payload;
-        },
-        
+
         
         
         
@@ -32,7 +27,6 @@ export const navigationSlice = createSlice({
 
 export const {  
     setCurrentPage,
-    setCurrentCompany,
    
 
 } = navigationSlice.actions;
@@ -40,8 +34,6 @@ export const {
 export const selectorData = ( state ) => {
     return {
         currentPage: state.navigation.currentPage,
-        currentCompany: state.navigation.currentCompany,
-
 
         
 

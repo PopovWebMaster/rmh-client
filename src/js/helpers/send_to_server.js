@@ -1,7 +1,7 @@
 
 import { 
     get_href,
-    get_action,
+    // get_action,
     get_data,
     get_successCallback,
     get_errorCallback,
@@ -42,7 +42,7 @@ export const  send_to_server = ( params = undefined ) => {
 
     let href =              get_href( params/*, DEFAULT_HREF_TO_API_SERVER */);
     let token =             get_token();
-    let action =            get_action( params );
+    // let action =            get_action( params );
     let data =              get_data( params );
     let method =            get_method( params, DEFAULT_FETCH_METHOD );
     let successCallback =   get_successCallback( params );
@@ -76,7 +76,7 @@ export const  send_to_server = ( params = undefined ) => {
     fetsh_data_to_server({
         href,
         token,
-        action,
+        // action,
         data,
         method,
         successCallback,

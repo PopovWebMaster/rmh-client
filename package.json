@@ -10,7 +10,14 @@
         "home": "webpack-dev-server --open --config ./build/webpack.dev.home.conf.js",
         "logs": "webpack-dev-server --open --config ./build/webpack.dev.logs.conf.js",
         "applications": "webpack-dev-server --open --config ./build/webpack.dev.applications.conf.js",
-        "login": "webpack-dev-server --open --config ./build/webpack.dev.login.conf.js"
+        "login": "webpack-dev-server --open --config ./build/webpack.dev.login.conf.js",
+        "main": "webpack-dev-server --open --config ./build/webpack.dev.mainPage.conf.js",
+        "schedule-plan": "webpack-dev-server --open --config ./build/webpack.dev.schedulePlan.conf.js",
+        "schedule-fact": "webpack-dev-server --open --config ./build/webpack.dev.scheduleFact.conf.js"
+
+
+
+
     },
     "keywords": [],
     "author": "",

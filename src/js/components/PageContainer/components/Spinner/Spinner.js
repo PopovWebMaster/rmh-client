@@ -1,15 +1,21 @@
 
-import React from "react";
-import { useSelector/*, useDispatch*/ } from 'react-redux';
-import { selectorData as spinnerSlice } from './../../../../redux/spinnerSlice.js';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectorData as spinnerSlice, setSpinnerIsActive } from './../../../../redux/spinnerSlice.js';
 
 import './Spinner.scss';
 
 const SpinnerComponent = ( props ) => {
 
     let {
+        runAtStart = false,
+        setSpinnerIsActive,
         isActive
     } = props;
+
+    useEffect( () => {
+        setSpinnerIsActive( runAtStart );
+    }, [] );
 
     return (
         <>{ isActive? (
@@ -46,13 +52,13 @@ const SpinnerComponent = ( props ) => {
 export function Spinner( props ){
 
     const spinner = useSelector( spinnerSlice );
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     return (
         <SpinnerComponent
             { ...props }
             isActive = { spinner.isActive }
-            // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
+            setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
 
         />
     );

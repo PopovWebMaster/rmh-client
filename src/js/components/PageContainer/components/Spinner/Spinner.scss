@@ -118,7 +118,9 @@
         font-family: 'Quattrocento Sans', Courier, sans-serif;
         // font-family: Courier;
 
-        filter: blur(0px);
+        // filter: blur(0px);
+        filter: blur(3px);
+
         animation-name: blur-text;
         animation-duration: 1.5s;
 
@@ -150,25 +152,40 @@
     }
 }
 
+// @keyframes blur-text {
+// 	0% {
+//         filter: blur(0px);
+//         opacity: 1;
+//     }
+
+//     40% {
+//         filter: blur(0px);
+//         opacity: 1;
+//     }
+
+//     100% {
+//         filter: blur(3px);
+//         opacity: 0.1;
+//     }
+// }
+
 @keyframes blur-text {
 	0% {
+        filter: blur(3px);
+        opacity: 0.1;
+    }
+
+    60% {
         filter: blur(0px);
         opacity: 1;
     }
 
-    40% {
+    100% {
         filter: blur(0px);
         opacity: 1;
     }
-	// 90% {
-    //     filter: blur(3px);
-    //     opacity: 0.1;
-    // }
-    100% {
-        filter: blur(3px);
-        opacity: 0.1;
-    }
 }
+
 
 
 

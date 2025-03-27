@@ -7,9 +7,13 @@ import './PageContainer.scss';
 
 import { SiteBackground } from './components/SiteBackground/SiteBackground.js';
 import { BodyContainer } from './components/BodyContainer/BodyContainer.js';
+import { SetCurrentPage } from './components/SetCurrentPage/SetCurrentPage.js';
+import { SetCurrentCompany } from './components/SetCurrentCompany/SetCurrentCompany.js';
 
 import { Spinner } from './components/Spinner/Spinner.js';
 import { TopMenu } from './../TopMenu/TopMenu.js';
+import { GetStartingDataFromServer } from './../GetStartingDataFromServer/GetStartingDataFromServer.js';
+ 
 
 
 const PageContainerComponent = ( props ) => {
@@ -17,7 +21,7 @@ const PageContainerComponent = ( props ) => {
     let {
         children,
         className = '',
-        pageName,
+        page,
     } = props;
     
 
@@ -27,16 +31,24 @@ const PageContainerComponent = ( props ) => {
             <SiteBackground>
                 <BodyContainer>
 
-                    <Spinner />
+                    <Spinner runAtStart = { true }/>
 
-                    <TopMenu />
+                    <SetCurrentPage >
+                        <SetCurrentCompany>
+                            <GetStartingDataFromServer>
 
-                    <div className = {className}>
-                        { children }
-                    </div>
+                                <TopMenu />
 
+                                <div className = {className}>
+                                    { children }
+                                </div>
+
+                            </GetStartingDataFromServer>
+                        </SetCurrentCompany>
+                    </SetCurrentPage>
                 </BodyContainer>
             </SiteBackground>
+
         </div>
     )
 

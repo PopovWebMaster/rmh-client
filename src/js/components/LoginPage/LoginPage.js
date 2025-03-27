@@ -7,6 +7,8 @@ import './LoginPage.scss';
 
 import { PageContainer } from './../PageContainer/PageContainer.js';
 
+import { ROUTE } from './../../config/routes.js';
+
 const LoginPageComponent = ( props ) => {
 
     let {
@@ -15,9 +17,8 @@ const LoginPageComponent = ( props ) => {
     return (
         <PageContainer
             className = 'loginPage'
+            page =      { ROUTE.PAGE.LOGIN }
         >
-
-            <p>loginPage</p>
 
 
         </PageContainer>
