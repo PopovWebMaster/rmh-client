@@ -9,6 +9,8 @@ export const companySlice = createSlice({
         currentCompanyAlias: '1-resp',
         currentCompanyName: 'Первый республиканский',
 
+        companyList: [],
+
 
     },
 
@@ -21,8 +23,10 @@ export const companySlice = createSlice({
         setCurrentCompanyName: ( state, action ) => {
             state.currentCompanyName =  action.payload;
         },
-        
-        
+
+        setCompanyList: ( state, action ) => {
+            state.companyList =  action.payload;
+        },
         
         
         
@@ -33,6 +37,7 @@ export const companySlice = createSlice({
 export const {  
     setCurrentCompanyAlias,
     setCurrentCompanyName,
+    setCompanyList,
    
 
 } = companySlice.actions;
@@ -41,10 +46,12 @@ export const selectorData = ( state ) => {
     return {
         currentCompanyAlias: state.company.currentCompanyAlias,
         currentCompanyName: state.company.currentCompanyName,
+        companyList: state.company.companyList,
+
 
 
         
-
+        
 
         
 

@@ -37,6 +37,7 @@ const LoginPageComponent = ( props ) => {
         if ( filter.test( val )){
             return true;
         }else{
+            alert( `Логин должен быть действующим е-мейл адресом` );
             return false;
         }
     };
@@ -47,17 +48,25 @@ const LoginPageComponent = ( props ) => {
         if ( val.length < 8 ) {
             errors.push("Ваш пароль должен содержать не менее 8 символов"); 
         };
-        if (val.search(/[a-z]/i) < 0) {
-            errors.push("Ваш пароль должен содержать хотя бы одну букву.");
-        };
-        if (val.search(/[0-9]/) < 0) {
-            errors.push("Ваш пароль должен содержать хотя бы одну цифру."); 
-        };
+        // if (val.search(/[a-z]/i) < 0) {
+        //     errors.push("Ваш пароль должен содержать хотя бы одну букву.");
+        // };
+        // if (val.search(/[0-9]/) < 0) {
+        //     errors.push("Ваш пароль должен содержать хотя бы одну цифру."); 
+        // };
         if (errors.length > 0) {
             alert(errors.join("\n"));
             return false;
         };
-        return true;
+
+        const regex = /^\w+$/;
+        let isValid = regex.test( val );
+        if( isValid === false ){
+            alert( 'Не правильные логин или пароль' );
+        };
+
+
+        return isValid;
     }
 
 
@@ -65,31 +74,40 @@ const LoginPageComponent = ( props ) => {
         let email_trim = email.trim();
         let password_trim = password.trim();
 
-        // if( validateEmail( email_trim ) ){
-        //     if( validatePassword( password_trim ) ){
+        if( validateEmail( email_trim ) ){
+            if( validatePassword( password_trim ) ){
                 console.dir( email_trim );
                 console.dir( password_trim );
 
                 send_request_to_server({
                     route: 'login-by-post',
                     data: {
-                        // email: email_trim,
-                        // password: password_trim,
-                        email: email.trim(),
-                        password: password.trim(),
+                        email: email_trim,
+                        password: password_trim,
+                        // email: email.trim(),
+                        // password: password.trim(),
                     },
-                    callback: ( resp ) => {
-                        console.dir( 'resp' );
-                        console.dir( resp );
+                    callback: ( response ) => {
+
+                        if( response.ok ){
+                            if( response.userData.position === 'admin' ){
+                                window.location.href = HOST_TO_API_SERVER;
+                            }else{
+                                let company = response.userData.company[ 0 ];
+                                window.location.href = `${HOST_TO_API_SERVER}/${company}/${ROUTE.PAGE.MAIN}` ;
+                            };
+                        }else{
+                            alert( response.message );
+                        };
                     },
                 });
 
-        //     }else{
-        //         console.dir( `не валиден ${password_trim}` );
-        //     };
-        // }else{
-        //     console.dir( `не валиден ${email_trim}` );
-        // }
+            }else{
+                // alert( `Не правильные логин или пароль` );
+            };
+        }else{
+            // alert( `Логин должен быть действующим е-мейл адресом` );
+        };
 
     };
 

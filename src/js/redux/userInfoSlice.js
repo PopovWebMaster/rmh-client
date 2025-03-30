@@ -5,31 +5,43 @@ export const userInfoSlice = createSlice({
     name: 'userInfo',
 
     initialState: {
-        userName: 'PlayReport',
-        
 
-
-
-
+        user_id: '',
+        user_name: '',
+        user_email: '',
+        user_position: '',
 
     },
 
     reducers: {
 
-        setFileExtension: ( state, action ) => {
-            state.userName =  action.payload;
+        setUserData: ( state, action ) => {
+
+            if( action.payload !== null ){
+                let {
+                    email,
+                    id,
+                    name,
+                    position,
+                } = action.payload;
+
+                state.user_id =         id;
+                state.user_name =       name;
+                state.user_email =      email;
+                state.user_position =   position;
+        
+            };
+
         },
         
-        
-        
-        
-        
+
     },
 
 })
 
 export const {  
-    setFileExtension,
+    // setFileExtension,
+    setUserData,
    
 
 } = userInfoSlice.actions;
@@ -40,7 +52,10 @@ export const {
 
 export const selectorData = ( state ) => {
     return {
-        userName:    state.userInfo.userName,
+        user_id:        state.userInfo.user_id,
+        user_name:      state.userInfo.user_name,
+        user_email:     state.userInfo.user_email,
+        user_position:  state.userInfo.user_position,
 
 
     };

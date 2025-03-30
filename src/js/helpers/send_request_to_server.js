@@ -19,6 +19,7 @@ export const send_request_to_server = ( params ) => {
     let data_complete = { ...data };
     data_complete.page = currentPage;
     data_complete.companyAlias = currentCompanyAlias;
+    
 
     let href = '';
 

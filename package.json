@@ -12,8 +12,11 @@
         "applications": "webpack-dev-server --open --config ./build/webpack.dev.applications.conf.js",
         "login": "webpack-dev-server --open --config ./build/webpack.dev.login.conf.js",
         "main": "webpack-dev-server --open --config ./build/webpack.dev.mainPage.conf.js",
-        "schedule-plan": "webpack-dev-server --open --config ./build/webpack.dev.schedulePlan.conf.js",
-        "schedule-fact": "webpack-dev-server --open --config ./build/webpack.dev.scheduleFact.conf.js"
+        "schedule": "webpack-dev-server --open --config ./build/webpack.dev.schedule.conf.js",
+        "play-report": "webpack-dev-server --open --config ./build/webpack.dev.playReport.conf.js",
+        "access-is-closed": "webpack-dev-server --open --config ./build/webpack.dev.accessIsClosed.conf.js",
+        "page-not-found": "webpack-dev-server --open --config ./build/webpack.dev.pageNotFound.conf.js"
+
 
 
 
