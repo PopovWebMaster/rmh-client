@@ -1,0 +1,53 @@
+.accessIsClosed{
+    font-size: 1em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    div{
+        font-size: 1em;
+        background-color: #3737373d;
+        border-radius: 0.1em;
+        width: 25em;
+        p{
+            
+            font-size: 1.2em;
+            line-height: 1.6em;
+            color: #ffffff;
+            text-align: center;
+            padding: 2em 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: flex-start;
+
+
+            a{
+                font-size: 0.8em;
+                width: 5em;
+                display: block;
+                margin: 0.6em 0;
+                padding: 0.1em 1em;
+                background-color: #1f539fdb;
+                color: #f8f8f8;
+                text-decoration: none;
+                border-radius: 0.1em;
+                font-family: "Journal Cyrillic";
+            }
+            a:hover{
+                background-color: #316dc7db;
+            }
+            a:active{
+                background-color: #1d4684db;
+            }
+
+        }
+    }
+
+    
+}

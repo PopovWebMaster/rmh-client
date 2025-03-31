@@ -16,14 +16,10 @@ module.exports = merge(baseWebpackConfig, {
         applications: `${PATHS.src}/js/pages/applications/applications.js`,
         login: `${PATHS.src}/js/pages/login/login.js`, 
         mainPage: `${PATHS.src}/js/pages/mainPage/mainPage.js`, 
-        schedulePlan: `${PATHS.src}/js/pages/schedulePlan/schedulePlan.js`, 
-        scheduleFact: `${PATHS.src}/js/pages/scheduleFact/scheduleFact.js`, 
-
-
-
-
-        
-
+        schedule: `${PATHS.src}/js/pages/schedule/schedule.js`, 
+        playReport: `${PATHS.src}/js/pages/playReport/playReport.js`, 
+        accessIsClosed: `${PATHS.src}/js/pages/accessIsClosed/accessIsClosed.js`, 
+        pageNotFound: `${PATHS.src}/js/pages/pageNotFound/pageNotFound.js`, 
 
 
     },

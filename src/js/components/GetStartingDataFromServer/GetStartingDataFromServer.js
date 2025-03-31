@@ -1,12 +1,14 @@
 
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorData as navigationSlice, setCurrentPage } from './../../redux/navigationSlice.js';
-import { selectorData as spinnerSlice, setSpinnerIsActive } from './../../redux/spinnerSlice.js';
+import { selectorData as navigationSlice } from './../../redux/navigationSlice.js';
+import { setSpinnerIsActive } from './../../redux/spinnerSlice.js';
+import { set_response_data } from './vendors/set_response_data.js';
 
 // import './SetCurrentPage.scss';
 
 import { send_request_to_server } from './../../helpers/send_request_to_server.js';
+import { ROUTE } from './../../config/routes.js';
 
 const GetStartingDataFromServerComponent = ( props ) => {
 
@@ -14,31 +16,106 @@ const GetStartingDataFromServerComponent = ( props ) => {
         children,
         setSpinnerIsActive,
         currentPage,
+        // setCompanyList,
     } = props;
 
     let [ isReady, setIsReady ] = useState( false );
 
     useEffect( () => {
+        
+        console.dir( currentPage );
 
-        setIsReady( true );
-        setSpinnerIsActive( false );
+        let execute = true;
 
-        send_request_to_server({
-            route: `get-starting-data/${currentPage}`,
-            data: {
-                myParams: '100',
-            },
-            callback: ( resp ) => {
+        switch( currentPage ){
+            case ROUTE.PAGE.PAGE_NOT_FOUND:
+                execute = false;
+                break;
 
-                console.dir( 'resp' );
-                console.dir( resp );
+            case ROUTE.PAGE.ACCESS_IS_CLOSED:
+                execute = false;
+                break;
 
-                setIsReady( true );
-                // setSpinnerIsActive( false );
-            }
-        });
+        };
+
+        if( execute ){
+            send_request_to_server({
+                route: `get-starting-data/${currentPage}`,
+                data: {},
+                callback: ( response ) => {
+    
+                    console.dir( `get-starting-data/${currentPage}`);
+                    console.dir( response );
+    
+    
+                    if( response.ok ){
+                        set_response_data( currentPage, response );
+                    };
+    
+                    setIsReady( true );
+                    setSpinnerIsActive( false );
+                }
+            });
+        }else{
+            setIsReady( true );
+            setSpinnerIsActive( false );
+        };
+
+        // if( currentPage !== ROUTE.PAGE.PAGE_NOT_FOUND ){
+            
+
+            // send_request_to_server({
+            //     route: `get-starting-data/${currentPage}`,
+            //     data: {},
+            //     callback: ( response ) => {
+
+            //         console.dir( `get-starting-data/${currentPage}`);
+            //         console.dir( response );
+
+
+            //         if( response.ok ){
+            //             set_response_data( currentPage, response );
+            //         };
+
+            //         setIsReady( true );
+            //         setSpinnerIsActive( false );
+            //     }
+            // });
+
+
+        // }else{
+            // setIsReady( true );
+            // setSpinnerIsActive( false );
+        // };
+
+        
  
     }, [] );
+
+    // const sending = () => {
+    //     send_request_to_server({
+    //         route: `get-starting-data/${currentPage}`,
+    //         data: {},
+    //         callback: ( response ) => {
+
+    //             console.dir( `get-starting-data/${currentPage}`);
+    //             console.dir( response );
+
+
+    //             if( response.ok ){
+    //                 set_response_data( currentPage, response );
+    //             };
+
+    //             setIsReady( true );
+    //             setSpinnerIsActive( false );
+    //         }
+    //     });
+    // }
+
+    // const no_sending = () => {
+    //     setIsReady( true );
+    //         setSpinnerIsActive( false );
+    // };
 
     return (
         <>{ isReady? children: '' }</>
@@ -49,13 +126,19 @@ const GetStartingDataFromServerComponent = ( props ) => {
 export function GetStartingDataFromServer( props ){
 
     const navigation = useSelector( navigationSlice );
+
     const dispatch = useDispatch();
 
     return (
         <GetStartingDataFromServerComponent
             { ...props }
             currentPage =       { navigation.currentPage }
+
             setSpinnerIsActive =    { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
+            // setCompanyList =    { ( val ) => { dispatch( setCompanyList( val ) ) } }
+
+
+            
 
         />
     );

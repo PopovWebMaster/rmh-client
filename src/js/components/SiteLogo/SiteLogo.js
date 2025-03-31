@@ -9,14 +9,15 @@ import './SiteLogo.scss';
 const SiteLogoComponent = ( props ) => {
 
     let {
-        currentCompanyName
+        currentCompanyName,
+        currentCompanyType
     } = props;
     
 
 
     return (
         <div className = 'siteLogo'>
-            <span>{ currentCompanyName }</span>
+            <span>{ currentCompanyName }</span><span className = 'logoCompanyType'>{ currentCompanyType }</span>
         </div>
     )
 
@@ -31,6 +32,8 @@ export function SiteLogo( props ){
         <SiteLogoComponent
             { ...props }
             currentCompanyName = { company.currentCompanyName }
+            currentCompanyType = { company.currentCompanyType }
+
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 
         />

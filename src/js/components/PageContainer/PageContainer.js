@@ -21,7 +21,6 @@ const PageContainerComponent = ( props ) => {
     let {
         children,
         className = '',
-        page,
     } = props;
     
 

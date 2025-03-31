@@ -8,7 +8,7 @@ import './HomePageApp.scss';
 
 import { PageContainer } from './../PageContainer/PageContainer.js';
 
-import { ROUTE } from './../../config/routes.js';
+import { CompanyMenu } from './components/CompanyMenu/CompanyMenu.js';
 
 
 const HomePageAppComponent = ( props ) => {
@@ -21,12 +21,10 @@ const HomePageAppComponent = ( props ) => {
 
     return (
 
-        <PageContainer
-            className = 'homePageApp'
-            page =      { ROUTE.PAGE.HOME }
-        >
+        <PageContainer className = 'homePageApp'>
 
-            homePageApp
+            <CompanyMenu />
+            
         </PageContainer>
     )
 
