@@ -20,6 +20,9 @@ const GetStartingDataFromServerComponent = ( props ) => {
 
     useEffect( () => {
 
+        setIsReady( true );
+        setSpinnerIsActive( false );
+
         send_request_to_server({
             route: `get-starting-data/${currentPage}`,
             data: {
@@ -31,7 +34,7 @@ const GetStartingDataFromServerComponent = ( props ) => {
                 console.dir( resp );
 
                 setIsReady( true );
-                setSpinnerIsActive( false );
+                // setSpinnerIsActive( false );
             }
         });
  

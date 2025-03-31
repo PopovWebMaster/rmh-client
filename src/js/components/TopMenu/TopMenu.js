@@ -17,6 +17,10 @@ const TopMenuComponent = ( props ) => {
     let {
         currentPage
     } = props;
+
+    console.log( 'props' );
+    console.log( props );
+
     
     let [ isShow, setIsShow ] = useState( false );
 
