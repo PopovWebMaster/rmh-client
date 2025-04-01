@@ -10,6 +10,8 @@ export const userInfoSlice = createSlice({
         user_name: '',
         user_email: '',
         user_position: '',
+        user_company: '',
+        user_accessRights: [],
 
     },
 
@@ -23,13 +25,17 @@ export const userInfoSlice = createSlice({
                     id,
                     name,
                     position,
+                    company,
+                    accessRights,
                 } = action.payload;
 
-                state.user_id =         id;
-                state.user_name =       name;
-                state.user_email =      email;
-                state.user_position =   position;
-        
+                state.user_id =             id;
+                state.user_name =           name;
+                state.user_email =          email;
+                state.user_position =       position;
+                state.user_company =        company;
+                state.user_accessRights =   accessRights;
+
             };
 
         },
@@ -52,10 +58,12 @@ export const {
 
 export const selectorData = ( state ) => {
     return {
-        user_id:        state.userInfo.user_id,
-        user_name:      state.userInfo.user_name,
-        user_email:     state.userInfo.user_email,
-        user_position:  state.userInfo.user_position,
+        user_id:            state.userInfo.user_id,
+        user_name:          state.userInfo.user_name,
+        user_email:         state.userInfo.user_email,
+        user_position:      state.userInfo.user_position,
+        user_company:       state.userInfo.user_company,
+        user_accessRights:  state.userInfo.user_accessRights,
 
 
     };

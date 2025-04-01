@@ -1,7 +1,8 @@
 
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorData as companySlice } from './../../../../redux/companySlice.js';
+// import { selectorData as companySlice } from './../../../../redux/companySlice.js';
+import { selectorData as userInfoSlice } from './../../../../redux/userInfoSlice.js';
 
 import './AccessIsClosedApp.scss';
 
@@ -11,23 +12,17 @@ import { ROUTE } from './../../../../config/routes.js';
 const AccessIsClosedAppComponent = ( props ) => {
 
     let {
-        currentCompanyAlias,
+        user_company
     } = props;
-    
-
 
     return (
         <PageContainer className = 'accessIsClosed'>
             <div>
                 <p>                    
                     Доступ к этой странице закрыт
-                    <a href = { `${HOST_TO_API_SERVER}/${currentCompanyAlias}/${ROUTE.PAGE.MAIN}` }>Вам сюда</a>
+                    <a href = { `${HOST_TO_API_SERVER}/${user_company[0]}/${ROUTE.PAGE.MAIN}` }>Вам сюда</a>
                 </p>
-                
-
             </div>
-
-
         </PageContainer>
         
     )
@@ -35,16 +30,14 @@ const AccessIsClosedAppComponent = ( props ) => {
 };
 
 export function AccessIsClosedApp( props ){
-
-    const company = useSelector( companySlice );
+    const userInfo = useSelector( userInfoSlice );
     // const dispatch = useDispatch();
 
     return (
         <AccessIsClosedAppComponent
             { ...props }
-            currentCompanyAlias = { company.currentCompanyAlias }
+            user_company = { userInfo.user_company }
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
-
         />
     );
 

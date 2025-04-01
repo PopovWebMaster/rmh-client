@@ -1,7 +1,7 @@
 
 import React, { useRef, useState, useEffect }   from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { selectorData as userInfoSlice } from './../../redux/userInfoSlice.js';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { selectorData as userInfoSlice } from './../../redux/userInfoSlice.js';
 
 import './LoginPage.scss';
 
@@ -76,8 +76,6 @@ const LoginPageComponent = ( props ) => {
 
         if( validateEmail( email_trim ) ){
             if( validatePassword( password_trim ) ){
-                console.dir( email_trim );
-                console.dir( password_trim );
 
                 send_request_to_server({
                     route: 'login-by-post',

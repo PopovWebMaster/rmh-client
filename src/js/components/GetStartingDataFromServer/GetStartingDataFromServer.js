@@ -16,7 +16,6 @@ const GetStartingDataFromServerComponent = ( props ) => {
         children,
         setSpinnerIsActive,
         currentPage,
-        // setCompanyList,
     } = props;
 
     let [ isReady, setIsReady ] = useState( false );
@@ -32,9 +31,9 @@ const GetStartingDataFromServerComponent = ( props ) => {
                 execute = false;
                 break;
 
-            case ROUTE.PAGE.ACCESS_IS_CLOSED:
-                execute = false;
-                break;
+            // case ROUTE.PAGE.ACCESS_IS_CLOSED:
+            //     execute = false;
+            //     break;
 
         };
 
@@ -46,7 +45,6 @@ const GetStartingDataFromServerComponent = ( props ) => {
     
                     console.dir( `get-starting-data/${currentPage}`);
                     console.dir( response );
-    
     
                     if( response.ok ){
                         set_response_data( currentPage, response );
@@ -61,62 +59,9 @@ const GetStartingDataFromServerComponent = ( props ) => {
             setSpinnerIsActive( false );
         };
 
-        // if( currentPage !== ROUTE.PAGE.PAGE_NOT_FOUND ){
-            
-
-            // send_request_to_server({
-            //     route: `get-starting-data/${currentPage}`,
-            //     data: {},
-            //     callback: ( response ) => {
-
-            //         console.dir( `get-starting-data/${currentPage}`);
-            //         console.dir( response );
-
-
-            //         if( response.ok ){
-            //             set_response_data( currentPage, response );
-            //         };
-
-            //         setIsReady( true );
-            //         setSpinnerIsActive( false );
-            //     }
-            // });
-
-
-        // }else{
-            // setIsReady( true );
-            // setSpinnerIsActive( false );
-        // };
-
-        
- 
     }, [] );
 
-    // const sending = () => {
-    //     send_request_to_server({
-    //         route: `get-starting-data/${currentPage}`,
-    //         data: {},
-    //         callback: ( response ) => {
-
-    //             console.dir( `get-starting-data/${currentPage}`);
-    //             console.dir( response );
-
-
-    //             if( response.ok ){
-    //                 set_response_data( currentPage, response );
-    //             };
-
-    //             setIsReady( true );
-    //             setSpinnerIsActive( false );
-    //         }
-    //     });
-    // }
-
-    // const no_sending = () => {
-    //     setIsReady( true );
-    //         setSpinnerIsActive( false );
-    // };
-
+   
     return (
         <>{ isReady? children: '' }</>
     )
