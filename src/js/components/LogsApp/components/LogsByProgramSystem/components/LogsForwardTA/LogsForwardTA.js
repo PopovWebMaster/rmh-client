@@ -5,15 +5,23 @@ import { selectorData as companySlice } from './../../../../../../redux/companyS
 
 import './LogsForwardTA.scss';
 
+import { TopHeaderPanel } from './components/TopHeaderPanel/TopHeaderPanel.js';
+import { ListWindows } from './components/ListWindows/ListWindows.js';
+ 
 const LogsForwardTAComponent = ( props ) => {
 
     let {
-        companyProgramSystem,
     } = props;
     
     return (
         <div className = 'logsForwardTA'>
-            LogsForwardTA
+            <TopHeaderPanel />
+
+            <ListWindows />
+
+
+
+
         </div>
     )
 

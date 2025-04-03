@@ -9,8 +9,7 @@ import './LogsByProgramSystem.scss';
 import { COMPANY_PROGRAM_SYSTEM } from './../../../../config/company.js';
 
 import { LogsForwardTA } from './components/LogsForwardTA/LogsForwardTA.js';
-
-import { InfoBlock } from './../../../InfoBlock/InfoBlock.js';
+import { PageNoCreatedInfo } from './components/PageNoCreatedInfo/PageNoCreatedInfo.js';
 
 const LogsByProgramSystemComponent = ( props ) => {
 
@@ -25,12 +24,7 @@ const LogsByProgramSystemComponent = ( props ) => {
                 return <LogsForwardTA />
 
             default:
-                return (
-                    <InfoBlock margin = {'2em 0'}>
-                        <p>Возможность использовать логи от <span style = {{ fontWeight: 'bold'}}>"{ companyProgramSystem }"</span> ещё находится на стадии разработки.</p>
-                        <p>Приносим свои извинения.</p>
-                    </InfoBlock>
-                );
+                return <PageNoCreatedInfo />;
         };
 
     }
@@ -40,7 +34,6 @@ const LogsByProgramSystemComponent = ( props ) => {
             <ProgramSystemName />
 
             { selectComponent( companyProgramSystem ) }
-
 
         </div>
     )
