@@ -15,12 +15,10 @@ const LogsForwardTAComponent = ( props ) => {
     
     return (
         <div className = 'logsForwardTA'>
+            
             <TopHeaderPanel />
 
             <ListWindows />
-
-
-
 
         </div>
     )

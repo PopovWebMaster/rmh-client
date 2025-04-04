@@ -1,0 +1,18 @@
+.FTA_BorderMover{
+    font-size: 1em;
+    height: 100%;
+    // width: 1.6em;
+    // width: 26px;
+
+    // background-color: #ff00004d;
+
+    position: absolute;
+    top: 0;
+    left: calc( 50% - 0.8em );
+
+    cursor: col-resize;
+}
+
+.FTA_BorderMover:hover{
+    background-color: #ffffff0d;
+}

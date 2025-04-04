@@ -16,11 +16,6 @@
         "play-report": "webpack-dev-server --open --config ./build/webpack.dev.playReport.conf.js",
         "access-is-closed": "webpack-dev-server --open --config ./build/webpack.dev.accessIsClosed.conf.js",
         "page-not-found": "webpack-dev-server --open --config ./build/webpack.dev.pageNotFound.conf.js"
-
-
-
-
-
     },
     "keywords": [],
     "author": "",
@@ -64,6 +59,7 @@
         "react-dom": "^18.1.0",
         "react-redux": "^7.2.1",
         "react-router-dom": "^6.3.0",
-        "redux": "^4.2.0"
+        "redux": "^4.2.0",
+        "xml-js": "^1.6.11"
     }
 }

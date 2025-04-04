@@ -1,30 +1,72 @@
 
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorData as companySlice } from './../../../../../../../../redux/companySlice.js';
 
 import './DownloadButton.scss';
 
+import { read_log_file } from './vendors/read_log_file.js';
+import { LogListClass } from './classes/LogListClass.js';
+
 const DownloadButtonComponent = ( props ) => {
 
     let {
-        serverName,
+        serverName, // main backup
     } = props;
 
-    const click = () => {
-        if( serverName === 'main' ){
-            console.dir( 'main' );
-        }else if( serverName === 'backup' ){
-            console.dir( 'backup' );
+    const inputRef = useRef();
 
-        };
+    const click = () => {
+
+        let accept = [ '.PlayReport' ];
+        let input = inputRef.current;
+        input.setAttribute('accept', accept.join(',') );
+        input.click();
     };
+
+
+    const inputHandler = (e) => {
+
+        if( !e.target.files.length ){
+            return;
+        };
+
+        let files = e.target.files;
+        let file = files[0];
+
+        read_log_file( file, ( list ) => {
+
+            console.dir( 'list' );
+            console.dir( list );
+
+            let LogList = new LogListClass( list );
+
+            console.dir( LogList );
+
+
+            // let { date, media, title, } = get_data_from_log_file_list( list );
+
+        } );
+
+        inputRef.current.value = "";
+
+    }
+
+
     
     return (
         <div 
             className = 'FTA_DownloadButton'
             onClick = { click }
         >
+
+            <input 
+                type =          'file' 
+                ref =           { inputRef }
+                className =     'hiddenInput'
+                onChange =      { inputHandler }    
+            />
+
             <span className = 'icon fpd-icon-file-upload'></span>
             <span className = 'title'>Загрузить</span>
             <span className = 'extension'>.PlayReport</span>
