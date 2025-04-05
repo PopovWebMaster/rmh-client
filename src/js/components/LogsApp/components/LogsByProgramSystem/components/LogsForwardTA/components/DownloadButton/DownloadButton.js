@@ -36,12 +36,12 @@ const DownloadButtonComponent = ( props ) => {
 
         read_log_file( file, ( list ) => {
 
-            console.dir( 'list' );
-            console.dir( list );
+            // console.dir( 'list' );
+            // console.dir( list );
 
             let LogList = new LogListClass( list );
 
-            console.dir( LogList );
+            console.dir( LogList.GetResult() );
 
 
             // let { date, media, title, } = get_data_from_log_file_list( list );

@@ -13,11 +13,15 @@ export class LogListClass{
 
         this.log_list = log_list;
 
+        this.list = [];
+
         this.Movie =    new MovieClass();
         this.Title =    new TitleClass();
         this.FileDate = new FileDateClass();
 
         this.RunProcessing = this.RunProcessing.bind(this);
+        this.SetList = this.SetList.bind(this);
+        this.GetResult = this.GetResult.bind(this);
 
 
         this.RunProcessing();
@@ -39,9 +43,48 @@ export class LogListClass{
 
         };
 
-        this.Movie.CreateList();
-        this.Title.CreateList();
+        this.SetList( this.Movie.GetList(), this.Title.GetList() );
+
         this.FileDate.CreateLogFileDate();
 
     }
+
+    SetList( movie_arr, grafics_arr ){
+        let arr = [ ...movie_arr, ...grafics_arr ];
+        let sortArr = arr.sort((a, b) => {
+            if( a.TimePoint > b.TimePoint ){
+                return 1;
+            }else if( a.TimePoint < b.TimePoint ){
+                return -1;
+            }else{
+                if( a.Type === 'movie' ){
+                    return -1;
+                }else{
+                    return 1;
+                }
+            };
+        });
+
+        let arrMovies = [];
+
+        for( let i = 0; i < sortArr.length; i++ ){
+            if( sortArr[ i ].Type === 'movie' ){
+                arrMovies.push( sortArr[ i ] );
+            }else{
+                arrMovies[ arrMovies.length - 1 ].AddGraphics( sortArr[ i ] );
+            };
+        };
+
+        for( let i = 0; i < arrMovies.length; i++ ){
+            this.list.push( arrMovies[ i ].GetDataAsObject() );
+        };
+
+    }
+
+    GetResult(){
+        return this.list;
+    }
+
+
+
 }
