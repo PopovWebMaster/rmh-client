@@ -7,7 +7,8 @@ import React from "react";
 import './SSWHeader.scss';
 
 import { SelectedAllButton } from './../SelectedAllButton/SelectedAllButton.js';
-
+import { SelectServerForReport } from './../SelectServerForReport/SelectServerForReport.js';
+ 
 const SSWHeaderComponent = ( props ) => {
 
     let {
@@ -17,9 +18,10 @@ const SSWHeaderComponent = ( props ) => {
 
     return (
         <div className = 'FTA_SSWHeader'>
-            <SelectedAllButton 
+            {/* <SelectedAllButton 
                 server = { server }
-            />
+            /> */}
+            <SelectServerForReport server = { server } />
         </div>
     )
 

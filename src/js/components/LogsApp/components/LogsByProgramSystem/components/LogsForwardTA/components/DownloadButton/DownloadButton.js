@@ -3,6 +3,16 @@ import React, { useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorData as companySlice } from './../../../../../../../../redux/companySlice.js';
 
+import {
+    setProcessedListOfLogsMain,
+    setProcessedListOfLogsBackup,
+    setLogFileDateMain,
+    setLogFileDateBackup,
+    setLogFileDurationMain,
+    setLogFileDurationBackup,
+} from './../../../../../../../../redux/logsForwardTASlise.js';
+
+
 import './DownloadButton.scss';
 
 import { read_log_file } from './vendors/read_log_file.js';
@@ -12,6 +22,12 @@ const DownloadButtonComponent = ( props ) => {
 
     let {
         serverName, // main backup
+        setProcessedListOfLogsMain,
+        setProcessedListOfLogsBackup,
+        setLogFileDateMain,
+        setLogFileDateBackup,
+        setLogFileDurationMain,
+        setLogFileDurationBackup,
     } = props;
 
     const inputRef = useRef();
@@ -36,15 +52,19 @@ const DownloadButtonComponent = ( props ) => {
 
         read_log_file( file, ( list ) => {
 
-            // console.dir( 'list' );
-            // console.dir( list );
-
             let LogList = new LogListClass( list );
 
-            console.dir( LogList.GetResult() );
+            if( serverName === 'main' ){
+                setProcessedListOfLogsMain( LogList.GetResult() );
+                setLogFileDateMain( LogList.GetFileDate() );
+                setLogFileDurationMain( LogList.GetFileDurationTime() );
 
+            }else if( serverName === 'backup' ){
+                setProcessedListOfLogsBackup( LogList.GetResult() );
+                setLogFileDateBackup( LogList.GetFileDate() );
+                setLogFileDurationBackup( LogList.GetFileDurationTime() );
 
-            // let { date, media, title, } = get_data_from_log_file_list( list );
+            };
 
         } );
 
@@ -85,13 +105,25 @@ const DownloadButtonComponent = ( props ) => {
 export function DownloadButton( props ){
 
     const company = useSelector( companySlice );
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     return (
         <DownloadButtonComponent
             { ...props }
             companyProgramSystem = { company.companyProgramSystem }
-            // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
+
+            setProcessedListOfLogsMain = { ( callback ) => { dispatch( setProcessedListOfLogsMain( callback ) ) } }
+            setProcessedListOfLogsBackup = { ( callback ) => { dispatch( setProcessedListOfLogsBackup( callback ) ) } }
+
+            setLogFileDateMain = { ( callback ) => { dispatch( setLogFileDateMain( callback ) ) } }
+            setLogFileDateBackup = { ( callback ) => { dispatch( setLogFileDateBackup( callback ) ) } }
+
+            setLogFileDurationMain = { ( callback ) => { dispatch( setLogFileDurationMain( callback ) ) } }
+            setLogFileDurationBackup = { ( callback ) => { dispatch( setLogFileDurationBackup( callback ) ) } }
+
+
+
+
 
         />
     );

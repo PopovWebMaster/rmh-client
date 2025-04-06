@@ -15,6 +15,7 @@
 
     width: fit-content;
     height: 1.2em;
+    margin: 0 0.5em;
 
     .SSWHeaderBtn_title{
         font-size: 0.75em;
@@ -52,5 +53,14 @@
     .SSWHeaderBtn_serverName{
         
         color: #0daa00;
+    }
+}
+
+.SSWHeaderButton.isActive:hover{
+    .SSWHeaderBtn_title{
+        color: #111111d1;
+    }
+    .SSWHeaderBtn_serverName{
+        color: #0d7903;
     }
 }

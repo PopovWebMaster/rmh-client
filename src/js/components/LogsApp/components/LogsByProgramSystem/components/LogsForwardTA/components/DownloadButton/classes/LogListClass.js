@@ -3,6 +3,8 @@ import { MovieClass } from './MovieClass.js';
 import { TitleClass } from './TitleClass.js';
 import { FileDateClass } from './FileDateClass.js';
 
+import { TimeClass } from './../../../../../../../../../classes/TimeClass.js';
+
 const TYPE = {
     MOVIE: 'Movie',
     TITLE_OBJECT: 'TitleObject',
@@ -19,10 +21,18 @@ export class LogListClass{
         this.Title =    new TitleClass();
         this.FileDate = new FileDateClass();
 
+        this.total_time_ms = 0;
+
         this.RunProcessing = this.RunProcessing.bind(this);
         this.SetList = this.SetList.bind(this);
         this.GetResult = this.GetResult.bind(this);
+        this.GetFileDate = this.GetFileDate.bind(this);
 
+        this.GetFileDurationTime = this.GetFileDurationTime.bind(this);
+        this.AddToListItemTypeEmpty = this.AddToListItemTypeEmpty.bind(this);
+
+
+        
 
         this.RunProcessing();
     }
@@ -44,6 +54,8 @@ export class LogListClass{
         };
 
         this.SetList( this.Movie.GetList(), this.Title.GetList() );
+
+        this.AddToListItemTypeEmpty();
 
         this.FileDate.CreateLogFileDate();
 
@@ -76,13 +88,97 @@ export class LogListClass{
         };
 
         for( let i = 0; i < arrMovies.length; i++ ){
+            let { segmentRealDuration } = arrMovies[ i ].GetDataAsObject();
+            this.total_time_ms = this.total_time_ms + segmentRealDuration.ms;
             this.list.push( arrMovies[ i ].GetDataAsObject() );
         };
 
     }
 
+    AddToListItemTypeEmpty(){
+
+        let list_2 = [];
+
+        for( let i = 0; i < this.list.length; i++ ){
+            if( ( i + 1 ) < this.list.length ){
+                let start_time_ms = this.list[ i ].startTime.ms;
+                let duration_ms = this.list[ i ].segmentRealDuration.ms;
+                let next_start_time_ms = this.list[ i + 1 ].startTime.ms;
+
+                if( (start_time_ms + duration_ms) < next_start_time_ms ){
+
+
+                    // console.dir({
+                    //     start_time_ms, duration_ms
+                    // });
+
+                    let StartTime = new TimeClass( start_time_ms + duration_ms );
+                    let startTime = StartTime.GetDataAsObject()
+
+                    let Duration = new TimeClass( next_start_time_ms - startTime.ms );
+                    let duration = Duration.GetDataAsObject();
+                    
+                    list_2.push( this.list[ i ] );
+
+                    if( duration.ms > 999 ){
+                        list_2.push({
+                            type: 'empty',
+                            date: { ...this.list[ i ].date },
+                            startTime: startTime,
+                            timePoint: startTime.ms,
+                            duration,
+                        });
+                    };
+
+
+                    // console.dir( 'empty' );
+                    // console.dir( {
+                    //     type: 'empty',
+                    //     date: { ...this.list[ i ].date },
+                    //     startTime: startTime,
+                    //     timePoint: startTime.ms,
+                    //     duration,
+                    // } );
+                    // list_2.push( this.list[ i ] );
+
+                    
+                }else{
+                    list_2.push( this.list[ i ] );
+                    
+
+                };
+
+            }else{ // последний
+                list_2.push( this.list[ i ] );
+
+            };
+            
+
+        };
+
+        // console.dir( 'this.list' );
+        // console.dir( this.list );
+        
+        // console.dir( 'list_2' );
+        // console.dir( list_2 );
+
+        this.list = list_2;
+
+
+    }
+
     GetResult(){
         return this.list;
+    }
+
+    GetFileDate(){
+        return this.FileDate.GetDataAsObject();
+    }
+
+    GetFileDurationTime(){
+        let DurationTime = new TimeClass( this.total_time_ms );
+        return DurationTime.GetDataAsObject();
+
     }
 
 

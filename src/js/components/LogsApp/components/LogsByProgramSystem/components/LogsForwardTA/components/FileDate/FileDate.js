@@ -1,7 +1,6 @@
-// FileDate
 
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -14,32 +13,67 @@ const FileDateComponent = ( props ) => {
     let {
         serverName,
 
-        logDateMain,
-        logDateBackup,
+        logFileDateMain,
+        logFileDateBackup,
 
     } = props;
 
-    const click = () => {
+    let [ localeString, setLocaleString ] = useState( '' );
+
+    let [ isError, serIsError ] = useState( false );
+
+    useEffect( () => {
+
         if( serverName === 'main' ){
-            console.dir( 'main' );
+            if( logFileDateMain ){
+                setLocaleString( logFileDateMain.localeString? logFileDateMain.localeString: '' );
+            }else{
+                setLocaleString( '' );
+            };
         }else if( serverName === 'backup' ){
-            console.dir( 'backup' );
+
+            if( logFileDateBackup ){
+                setLocaleString( logFileDateBackup.localeString? logFileDateBackup.localeString: '' );
+            }else{
+                setLocaleString( '' );
+            };
+
+            if( logFileDateMain ){
+                if( logFileDateBackup ){
+
+                    // console.dir( logFileDateBackup.localeString );
+                    // console.dir( logFileDateBackup.localeString );
+
+                    if( logFileDateMain.localeString !== logFileDateBackup.localeString ){
+                        serIsError( true );
+                    }else{
+                        serIsError( false );
+                    };
+                }else{
+                    serIsError( false );
+                };
+            }else{
+                serIsError( false );
+            };
+
+
 
         };
-    };
 
-    const create = ( str ) => {
-        return <span className = 'dateStr'>{ str }</span>
 
-    }
 
-    
-    
+
+    }, [
+        logFileDateMain,
+        logFileDateBackup,
+
+    ] );
+
+
     return (
         <div className = 'FTA_FileDate' >
-            { serverName === 'main'? create( '25 марта 1917г.' ): '' }
-            { serverName === 'backup'? create( '' ): '' }
-            <span className = 'serverName'>{ serverName }</span>
+            <span className = 'dateStr'>{ localeString }</span>
+            <span className = { `serverName ${isError? 'errorSignal': ''}` }>{ serverName }</span>
         </div>
     )
 
@@ -53,8 +87,8 @@ export function FileDate( props ){
     return (
         <FileDateComponent
             { ...props }
-            logDateMain = { logsForwardTA.logDateMain }
-            logDateBackup = { logsForwardTA.logDateBackup }
+            logFileDateMain = { logsForwardTA.logFileDateMain }
+            logFileDateBackup = { logsForwardTA.logFileDateBackup }
 
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 

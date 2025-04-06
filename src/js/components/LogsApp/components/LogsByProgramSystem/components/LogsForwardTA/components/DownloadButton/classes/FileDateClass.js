@@ -1,14 +1,16 @@
 
-
+import { DateClass } from './../../../../.././../../../../classes/DateClass.js';
 
 export class FileDateClass {
     constructor(){
         this.date_list = {};
 
-        this.file_date = '';
+        this.Date = null;
 
         this.AddItem = this.AddItem.bind(this);
         this.CreateLogFileDate = this.CreateLogFileDate.bind(this);
+        this.GetDataAsObject = this.GetDataAsObject.bind(this);
+
 
 
         
@@ -46,8 +48,16 @@ export class FileDateClass {
 
         if( sort_arr[0] ){
             result = sort_arr[ 0 ].data;
+            this.Date = new DateClass( sort_arr[ 0 ].data );
+
         };
 
-        this.file_date = result;
+        // this.file_date = result;
     }
+
+    GetDataAsObject(){
+        return this.Date.GetDataAsObject();
+    }
+
+
 }

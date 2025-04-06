@@ -14,6 +14,7 @@ import { SSWHeader } from './components/SSWHeader/SSWHeader.js';
 import { ListHeader } from './components/ListHeader/ListHeader.js';
 import { TimeButtons } from './components/TimeButtons/TimeButtons.js';
 import { ListScrollContainer } from './components/ListScrollContainer/ListScrollContainer.js';
+import { SSW_List } from './components/SSW_List/SSW_List.js';
 
 const SingleServerWindowComponent = ( props ) => {
 
@@ -44,7 +45,7 @@ const SingleServerWindowComponent = ( props ) => {
                     <TimeButtons server = { server }/>
 
                     <ListScrollContainer server = { server }>
-                        
+                        <SSW_List server = { server } />
                     </ListScrollContainer>
 
                 </div>
@@ -63,8 +64,6 @@ export function SingleServerWindow( props ){
     return (
         <SingleServerWindowComponent
             { ...props }
-            logDateMain = { logsForwardTA.logDateMain }
-            logDateBackup = { logsForwardTA.logDateBackup }
             windowLeftWidth = { logsForwardTA.windowLeftWidth }
             windowRightWidth = { logsForwardTA.windowRightWidth }
 

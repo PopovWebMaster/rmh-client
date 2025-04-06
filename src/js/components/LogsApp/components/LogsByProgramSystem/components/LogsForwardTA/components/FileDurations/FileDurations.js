@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -12,17 +12,39 @@ const FileDurationsComponent = ( props ) => {
     let {
         serverName,
 
+        logFileDurationMain,
+        logFileDurationBackup,
+
     } = props;
 
-    const create = ( str ) => {
-        return <span className = 'durationStr'>{ str }</span>
+    let [ durationTime, setDurationTime ] = useState( '' );
 
-    }
+    useEffect( () => {
+    
+        if( serverName === 'main' ){
+            if( logFileDurationMain ){
+                setDurationTime( logFileDurationMain.time? logFileDurationMain.time: '' );
+            }else{
+                setDurationTime( '' );
+            };
+        }else if( serverName === 'backup' ){
 
+            if( logFileDurationBackup ){
+                setDurationTime( logFileDurationBackup.time? logFileDurationBackup.time: '' );
+            }else{
+                setDurationTime( '' );
+            };
+        };
+
+    }, [
+        logFileDurationMain,
+        logFileDurationBackup,
+
+    ] );
+    
     return (
         <div className = 'FTA_FileDuration' >
-            { serverName === 'main'? create( '' ): '' }
-            { serverName === 'backup'? create( '17:39:40' ): '' }
+            <span className = 'durationStr'>{ durationTime }</span>
             <span className = 'serverName'>{ serverName }</span>
         </div>
     )
@@ -37,8 +59,9 @@ export function FileDurations( props ){
     return (
         <FileDurationsComponent
             { ...props }
-            logDateMain = { logsForwardTA.logDateMain }
-            logDateBackup = { logsForwardTA.logDateBackup }
+            logFileDurationMain = { logsForwardTA.logFileDurationMain }
+            logFileDurationBackup = { logsForwardTA.logFileDurationBackup }
+
 
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 
