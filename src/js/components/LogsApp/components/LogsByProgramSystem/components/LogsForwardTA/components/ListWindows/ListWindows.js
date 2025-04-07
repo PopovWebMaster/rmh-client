@@ -8,8 +8,11 @@ import { selectorData as logsForwardTASlise } from './../../../../../../../../re
 import './ListWindows.scss';
 
 import { SingleServerWindow } from './components/SingleServerWindow/SingleServerWindow.js';
-import { BorderMover } from './components/BorderMover/BorderMover.js';
-  
+// import { BorderMover } from './components/BorderMover/BorderMover.js';
+
+import { TimeButtons } from './components/SingleServerWindow/components/TimeButtons/TimeButtons.js';
+import { SetAutoResize } from './components/SetAutoResize/SetAutoResize.js';
+   
 const ListWindowsComponent = ( props ) => {
 
     let {
@@ -20,18 +23,23 @@ const ListWindowsComponent = ( props ) => {
         <div 
             className = 'FTA_ListWindows'
         >
+            <TimeButtons />
 
-            <SingleServerWindow 
-                location = { 'left' }
-                server = { 'main' }
-            />
+            <SetAutoResize>
+                <SingleServerWindow 
+                    location = { 'left' }
+                    server = { 'main' }
+                />
 
-            <BorderMover />
+                {/* <BorderMover /> */}
 
-            <SingleServerWindow 
-                location = { 'right' }
-                server = { 'backup' }
-            />
+                <SingleServerWindow 
+                    location = { 'right' }
+                    server = { 'backup' }
+                />
+            </SetAutoResize>
+
+
 
         </div>
     )

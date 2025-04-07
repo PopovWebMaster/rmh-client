@@ -63,7 +63,6 @@ const DownloadButtonComponent = ( props ) => {
                 setProcessedListOfLogsBackup( LogList.GetResult() );
                 setLogFileDateBackup( LogList.GetFileDate() );
                 setLogFileDurationBackup( LogList.GetFileDurationTime() );
-
             };
 
         } );

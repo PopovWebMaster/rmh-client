@@ -8,6 +8,7 @@ import './TopHeaderPanel.scss';
 import { DownloadButton } from './../DownloadButton/DownloadButton.js';
 import { FileDate } from './../FileDate/FileDate.js';
 import { FileDurations } from './../FileDurations/FileDurations.js';
+import { MakePlayReport } from './../MakePlayReport/MakePlayReport.js';
  
 const TopHeaderPanelComponent = ( props ) => {
 
@@ -34,7 +35,7 @@ const TopHeaderPanelComponent = ( props ) => {
             </div>
 
             <div className = 'FTA_file_others'>
-                
+                <MakePlayReport />
             </div>
             
 

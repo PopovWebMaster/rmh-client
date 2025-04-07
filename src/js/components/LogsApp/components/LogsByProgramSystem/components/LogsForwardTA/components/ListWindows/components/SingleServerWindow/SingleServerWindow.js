@@ -16,6 +16,10 @@ import { TimeButtons } from './components/TimeButtons/TimeButtons.js';
 import { ListScrollContainer } from './components/ListScrollContainer/ListScrollContainer.js';
 import { SSW_List } from './components/SSW_List/SSW_List.js';
 
+// import { BorderMover } from './components/BorderMover/BorderMover.js';
+import { BorderMover } from './../BorderMover/BorderMover.js';
+
+
 const SingleServerWindowComponent = ( props ) => {
 
     let {
@@ -42,14 +46,20 @@ const SingleServerWindowComponent = ( props ) => {
                 <ListHeader />
                 <div className = 'FTA_List_body_wrap'>
 
-                    <TimeButtons server = { server }/>
+                    {/* <TimeButtons server = { server }/> */}
 
                     <ListScrollContainer server = { server }>
                         <SSW_List server = { server } />
                     </ListScrollContainer>
 
                 </div>
+
+                { server === 'main'? <BorderMover position = 'right'/>: <BorderMover position = 'left'/>}
             </div>
+
+            
+
+
         </div>
 
     )

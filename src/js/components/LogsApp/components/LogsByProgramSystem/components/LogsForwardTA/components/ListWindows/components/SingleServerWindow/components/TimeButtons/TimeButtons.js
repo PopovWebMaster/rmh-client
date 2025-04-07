@@ -10,7 +10,6 @@ import './TimeButtons.scss';
 const TimeButtonsComponent = ( props ) => {
 
     let {
-        server,
 
         borderMoverWidtnPx,
 
@@ -39,6 +38,83 @@ const TimeButtonsComponent = ( props ) => {
         '23:00',
     ];
 
+    const click = ( val ) => {
+
+        let arr = val.split( ':' );
+        let h = Number( arr[0] );
+        let m = Number( arr[1] );
+        let sec = ( m * 60 ) + ( h * 3600 );
+
+
+        let SSW_List = document.querySelectorAll( '.SSW_List' );
+
+        if( SSW_List[ 0 ] ){
+            let list = SSW_List[ 0 ].querySelectorAll( '.SSL_itemMovie_time' );
+            let is_start = false;
+
+            for( let i = 0; i < list.length; i++ ){
+                let input = list[ i ].querySelector( '.SSL_itemMovie_time input' );
+                let value = input.value;
+                
+                let arr_2 = value.split( ':' );
+                let t_h = Number( arr_2[0] );
+                let t_m = Number( arr_2[1] );
+                let sec_2 =  ( t_h * 3600 ) + ( t_m * 60 );
+
+                if( is_start === false ){
+                    if( sec_2 < 1800 ){
+                        is_start = true;
+                    };
+                };
+                if( is_start ){
+                    if( sec_2 >= sec ){
+
+                        input.scrollIntoView({ behavior: 'smooth' })
+
+                        break;
+                    };
+                };
+
+            };
+        };
+
+        if( SSW_List[ 1 ] ){
+            let list = SSW_List[ 1 ].querySelectorAll( '.SSL_itemMovie_time' );
+            let is_start = false;
+
+            for( let i = 0; i < list.length; i++ ){
+                let input = list[ i ].querySelector( '.SSL_itemMovie_time input' );
+                let value = input.value;
+                
+                let arr_2 = value.split( ':' );
+                let t_h = Number( arr_2[0] );
+                let t_m = Number( arr_2[1] );
+                let sec_2 =  ( t_h * 3600 ) + ( t_m * 60 );
+
+                if( is_start === false ){
+                    if( sec_2 < 1800 ){
+                        is_start = true;
+                    };
+                };
+                if( is_start ){
+                    if( sec_2 >= sec ){
+
+                        input.scrollIntoView({ behavior: 'smooth' })
+
+                        break;
+                    };
+                };
+
+            };
+        };
+
+
+
+
+
+
+    }
+
 
 
     const create = () => {
@@ -61,10 +137,7 @@ const TimeButtonsComponent = ( props ) => {
 
     return (
 
-        <div 
-            className = 'FTA_List_TimeButtons'
-            style = {{ paddingLeft: `${borderMoverWidtnPx/2}px` }}
-        >
+        <div className = 'FTA_List_TimeButtons'>
             <ul>
                 { create() }
             </ul>

@@ -1,7 +1,5 @@
-// SelectServerForReport
 
-
-import React from "react";
+import React, {useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -17,10 +15,31 @@ const SelectServerForReportComponent = ( props ) => {
 
         server,
 
+        processedListOfLogsMain,
+        processedListOfLogsBackup,
+
         selectedServerForReport,
         setSelectedServerForReport,
 
     } = props;
+
+    useEffect( () => {
+        let main_is_full = processedListOfLogsMain.length > 0? true: false;
+        let backup_is_full = processedListOfLogsBackup.length > 0? true: false;
+
+        if( server === 'main' ){
+            if( main_is_full === true && backup_is_full === false ){
+                setSelectedServerForReport( server )
+            };
+        }else if( server === 'backup' ){
+            if( main_is_full === false && backup_is_full === true ){
+                setSelectedServerForReport( server )
+            };
+        };
+    }, [
+        processedListOfLogsMain,
+        processedListOfLogsBackup,
+    ] );
 
 
     return (
@@ -28,7 +47,7 @@ const SelectServerForReportComponent = ( props ) => {
         <SSWHeaderButton
             isActive =      { selectedServerForReport === server }
             clickHandler =  { () => { setSelectedServerForReport( server ) } }
-            title =         { 'Основной для отчёта' }
+            title =         { 'Основной' }
             server =        { server }
             className =     'selectedServerForReport'
         >
@@ -47,6 +66,10 @@ export function SelectServerForReport( props ){
             { ...props }
 
             selectedServerForReport = { logsForwardTA.selectedServerForReport }
+            processedListOfLogsMain = { logsForwardTA.processedListOfLogsMain }
+            processedListOfLogsBackup = { logsForwardTA.processedListOfLogsBackup }
+
+
             setSelectedServerForReport = { ( val ) => { dispatch( setSelectedServerForReport( val ) ) } }
 
         />

@@ -13,6 +13,7 @@ import { mouse_down_handler } from './vendors/mouse_down_handler.js';
 const BorderMoverComponent = ( props ) => {
 
     let {
+        position, // 'right' 'left'
         windowLeftWidth,
         borderMoverWidtnPx,
 
@@ -21,7 +22,7 @@ const BorderMoverComponent = ( props ) => {
     return (
         <div 
             className = 'FTA_BorderMover'
-            style = { get_style_for_border_mover({ windowLeftWidth, borderMoverWidtnPx }) }
+            style = { get_style_for_border_mover({ windowLeftWidth, borderMoverWidtnPx, position }, position) }
             onMouseDown = { mouse_down_handler }
         ></div>
     )
@@ -36,8 +37,6 @@ export function BorderMover( props ){
     return (
         <BorderMoverComponent
             { ...props }
-            logDateMain = { logsForwardTA.logDateMain }
-            logDateBackup = { logsForwardTA.logDateBackup }
 
             windowLeftWidth = { logsForwardTA.windowLeftWidth }
             borderMoverWidtnPx = { logsForwardTA.borderMoverWidtnPx }

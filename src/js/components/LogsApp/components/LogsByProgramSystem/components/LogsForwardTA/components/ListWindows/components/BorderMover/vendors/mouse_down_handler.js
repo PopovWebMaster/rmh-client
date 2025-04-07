@@ -12,12 +12,22 @@ export const mouse_down_handler = ( e ) => {
     let parent_window_width = 0;
 
     var { x } = e.target.getBoundingClientRect();
-    click_error_rate =  ( e.screenX - x ) - ( borderMoverWidtnPx /2 );
+
+    click_error_rate =  ( e.screenX - x ) + borderMoverWidtnPx;
+
+
     let FTA_ListWindows = document.querySelector( '.FTA_ListWindows' );
     let windowRect = FTA_ListWindows.getBoundingClientRect();
     parent_window_left = windowRect.left;
     parent_window_width = windowRect.width;
 
+    let div = document.createElement('div');
+    div.id = 'curtainCurs';
+    let app = document.querySelector('#app');
+    app.append( div );
+
+
+    
     let move_handler = ( move_e ) => {
         let cursor_x = move_e.x;
         let left_width_px = cursor_x - parent_window_left - click_error_rate;
@@ -31,9 +41,12 @@ export const mouse_down_handler = ( e ) => {
         }
     };
 
-    function mouse_up_handler(){
+    const mouse_up_handler = () => {
         window.removeEventListener( 'mousemove', move_handler );
         window.removeEventListener( 'mouseup', mouse_up_handler );
+        let curtainCurs = document.querySelector('#curtainCurs');
+        curtainCurs.remove();
+
     }
 
     window.addEventListener( 'mousemove', move_handler );

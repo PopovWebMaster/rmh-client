@@ -107,11 +107,6 @@ export class LogListClass{
 
                 if( (start_time_ms + duration_ms) < next_start_time_ms ){
 
-
-                    // console.dir({
-                    //     start_time_ms, duration_ms
-                    // });
-
                     let StartTime = new TimeClass( start_time_ms + duration_ms );
                     let startTime = StartTime.GetDataAsObject()
 
@@ -131,17 +126,6 @@ export class LogListClass{
                     };
 
 
-                    // console.dir( 'empty' );
-                    // console.dir( {
-                    //     type: 'empty',
-                    //     date: { ...this.list[ i ].date },
-                    //     startTime: startTime,
-                    //     timePoint: startTime.ms,
-                    //     duration,
-                    // } );
-                    // list_2.push( this.list[ i ] );
-
-                    
                 }else{
                     list_2.push( this.list[ i ] );
                     
@@ -156,14 +140,7 @@ export class LogListClass{
 
         };
 
-        // console.dir( 'this.list' );
-        // console.dir( this.list );
-        
-        // console.dir( 'list_2' );
-        // console.dir( list_2 );
-
         this.list = list_2;
-
 
     }
 
