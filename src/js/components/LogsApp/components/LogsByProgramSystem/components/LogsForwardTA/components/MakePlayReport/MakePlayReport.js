@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import { selectorData as logsForwardTASlise } from './../../../../../../../../redux/logsForwardTASlise.js';
+import { setSpinnerIsActive } from './../../../../../../../../redux/spinnerSlice.js';
+
 
 import './MakePlayReport.scss';
 
@@ -19,6 +21,8 @@ const MakePlayReportComponent = ( props ) => {
         logFileDateBackup,
         processedListOfLogsMain,
         processedListOfLogsBackup,
+
+        setSpinnerIsActive,
 
     } = props;
 
@@ -83,14 +87,22 @@ const MakePlayReportComponent = ( props ) => {
             data.list = processedListOfLogsBackup;
         };
 
+        setSpinnerIsActive( true );
+
         send_request_to_server({
             route: `${ ROUTE.PAGE.LOGS }/add-play-report`,
             data,
             callback: ( response ) => {
-                console.dir( 'response' );
-                console.dir( response );
+                if( response.ok ){
 
+                }else{
+                    console.dir( 'response' );
+                    console.dir( response );
+                };
 
+                setSpinnerIsActive( false );
+
+                
             },
         });
     }
@@ -123,24 +135,19 @@ const MakePlayReportComponent = ( props ) => {
 export function MakePlayReport( props ){
 
     const logsForwardTA = useSelector( logsForwardTASlise );
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     return (
         <MakePlayReportComponent
             { ...props }
-            logFileDateMain = { logsForwardTA.logFileDateMain }
-            logFileDateBackup = { logsForwardTA.logFileDateBackup }
 
-            processedListOfLogsMain = { logsForwardTA.processedListOfLogsMain }
+            logFileDateMain =           { logsForwardTA.logFileDateMain }
+            logFileDateBackup =         { logsForwardTA.logFileDateBackup }
+            processedListOfLogsMain =   { logsForwardTA.processedListOfLogsMain }
             processedListOfLogsBackup = { logsForwardTA.processedListOfLogsBackup }
+            selectedServerForReport =   { logsForwardTA.selectedServerForReport }
 
-
-
-            selectedServerForReport = { logsForwardTA.selectedServerForReport }
-
-
-
-            // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
+            setSpinnerIsActive = { ( callback ) => { dispatch( setSpinnerIsActive( callback ) ) } }
 
         />
     );

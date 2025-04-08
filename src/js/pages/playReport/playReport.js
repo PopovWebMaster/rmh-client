@@ -8,7 +8,7 @@ import './playReport.scss';
 
 import store from './../../redux/store.js';
 
-import { ScheduleFactApp } from './../../components/ScheduleFactApp/ScheduleFactApp.js';
+import { PlayReportApp } from './../../components/PlayReportApp/PlayReportApp.js';
 
 console.dir('playReport');
 console.log( 'HOST_TO_API_SERVER', HOST_TO_API_SERVER );
@@ -19,7 +19,7 @@ const root = createRoot(container);
 root.render(
     <Provider store={store}>
         <BrowserRouter>
-            <ScheduleFactApp />
+            <PlayReportApp />
         </BrowserRouter>
     </Provider>
 );

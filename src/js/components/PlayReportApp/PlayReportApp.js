@@ -3,24 +3,29 @@ import React, { useRef, useState, useEffect }   from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorData as userInfoSlice } from './../../redux/userInfoSlice.js';
 
-import './ScheduleFactApp.scss';
+import './PlayReportApp.scss';
 
 import { PageContainer } from './../PageContainer/PageContainer.js';
+import { SearchPanel } from './components/SearchPanel/SearchPanel.js';
+import { SetCalendarData } from './components/SetCalendarData/SetCalendarData.js';
 
 import { ROUTE } from './../../config/routes.js';
 
-const ScheduleFactAppComponent = ( props ) => {
+const PlayReportAppComponent = ( props ) => {
 
     let {
     } = props;
     
     return (
         <PageContainer
-            className = 'scheduleFactApp'
-            page =      { ROUTE.PAGE.SCHEDULE_FACT }
+            className = 'playReportApp'
+            page =      { ROUTE.PAGE.PLAY_REPORT }
         >
+            <SetCalendarData>
 
+                <SearchPanel />
 
+            </SetCalendarData>
         </PageContainer>
     
 
@@ -28,13 +33,13 @@ const ScheduleFactAppComponent = ( props ) => {
 
 };
 
-export function ScheduleFactApp( props ){
+export function PlayReportApp( props ){
 
     // const userInfo = useSelector( userInfoSlice );
     // const dispatch = useDispatch();
 
     return (
-        <ScheduleFactAppComponent
+        <PlayReportAppComponent
             { ...props }
             // userInfo = { userInfo }
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }

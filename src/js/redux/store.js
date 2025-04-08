@@ -5,6 +5,7 @@ import spinnerSlice   from './spinnerSlice.js';
 import navigationSlice   from './navigationSlice.js';
 import companySlice   from './companySlice.js';
 import logsForwardTASlise from './logsForwardTASlise.js';
+import playReportSlice from './playReportSlice.js';
 
 
 
@@ -16,6 +17,8 @@ export default configureStore({
         navigation:  navigationSlice,
         company: companySlice,
         logsForwardTA: logsForwardTASlise,
+        playReport: playReportSlice,
+
 
 
 
