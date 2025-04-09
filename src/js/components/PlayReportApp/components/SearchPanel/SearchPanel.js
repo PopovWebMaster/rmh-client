@@ -11,6 +11,7 @@ import { ButtonSearch } from './../ButtonSearch/ButtonSearch.js';
 import { SearchByDate } from './../SearchByDate/SearchByDate.js';
 import { ClearSearchInputButton } from './../ClearSearchInputButton/ClearSearchInputButton.js';
 import { Calendar } from './../Calendar/Calendar.js';
+import { SearchPeriod } from './../SearchPeriod/SearchPeriod.js';
 
 
 
@@ -34,6 +35,7 @@ const SearchPanelComponent = ( props ) => {
                 <ButtonSearch searchHandler = { searchHandler }/>
                 <SearchByDate />
                 <Calendar />
+                <SearchPeriod />
 
             </div>
         </div>

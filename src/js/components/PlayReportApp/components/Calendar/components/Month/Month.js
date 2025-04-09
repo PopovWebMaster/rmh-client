@@ -5,7 +5,7 @@ import { selectorData as playReportSlice, setCalendarIsOpen } from './../../../.
 
 import './Month.scss';
 
-import { get_days_in_month } from './../../../../../../helpers/get_days_in_month.js';
+// import { get_days_in_month } from './../../../../../../helpers/get_days_in_month.js';
 import { set_calendar_data } from './../../../../vendors/set_calendar_data.js';
 
 
@@ -23,15 +23,15 @@ const MonthComponent = ( props ) => {
 
 
 
-    const click = () => { 
+    // const click = () => { 
 
 
-        let date = new Date( '2025-04-06' );
-        // let date = new Date();
+    //     let date = new Date( '2025-04-06' );
+    //     // let date = new Date();
 
-        console.dir( date.getDay() );
+    //     console.dir( date.getDay() );
 
-    }
+    // }
 
     const click_preview = () => {
 

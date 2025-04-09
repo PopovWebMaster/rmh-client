@@ -1,5 +1,5 @@
 
-import React, { useRef, useState, useEffect }   from "react";
+import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { 
     selectorData as playReportSlice,
@@ -31,7 +31,7 @@ const InputSearchComponent = ( props ) => {
     }
 
     const enter = ( e ) => {
-        if( e.which ){
+        if( e.which === 13 ){
             searchHandler();
         };
     }

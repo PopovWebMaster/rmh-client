@@ -1,21 +1,54 @@
 
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorData as playReportSlice } from './../../../../../../redux/playReportSlice.js';
+import { selectorData as playReportSlice, setEntireList, setCalendarIsOpen } from './../../../../../../redux/playReportSlice.js';
+import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
+
 
 import './CalendarTable.scss';
 
+import { get_one_day_entire_list_from_server } from './../../../../vendors/get_one_day_entire_list_from_server.js';
 
 const CalendarTableComponent = ( props ) => {
 
     let {
         monthCalendar,
+        year,
+        month,
+
+        setEntireList,
+        setSpinnerIsActive,
+        setCalendarIsOpen,
 
 
     } = props;
 
     const click = ( item ) => {
-        console.dir( item );
+
+        if( item.file === true ){
+            setSpinnerIsActive( true );
+            get_one_day_entire_list_from_server({
+                year,
+                date: String( item.date ).padStart( 2, '0' ),
+                month: String( month ).padStart( 2, '0' ),
+                callback: ( resp ) => {
+
+                    if( resp.ok ){
+                        setEntireList( resp.list );
+                        setCalendarIsOpen( false );
+                    };
+
+                    setSpinnerIsActive( false );
+
+                    // console.dir( 'resp' );
+                    // console.dir( resp );
+
+
+                }
+            });
+        };
+
+       
 
     }
 
@@ -77,26 +110,6 @@ const CalendarTableComponent = ( props ) => {
                     { create_tr( 4, monthCalendar ) }
                     { create_tr( 5, monthCalendar ) }
 
-
-                    {/* <*>
-                        { create_tr( 0,  ) }
-                        {/* <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td> */}
-                    {/* <tr>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                    </tr> */}
-                   
                 </tbody>
                 </table>
 
@@ -116,7 +129,18 @@ export function CalendarTable( props ){
             { ...props }
             monthCalendar = { playReport.monthCalendar }
 
-            // setCalendarIsOpen = { ( val ) => { dispatch( setCalendarIsOpen( val ) ) } }
+            year = { playReport.year }
+            month = { playReport.month }
+
+            setEntireList = { ( val ) => { dispatch( setEntireList( val ) ) } }
+            setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
+            setCalendarIsOpen = { ( val ) => { dispatch( setCalendarIsOpen( val ) ) } }
+
+
+            
+
+
+            
 
         />
     );

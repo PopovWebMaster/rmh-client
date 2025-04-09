@@ -6,8 +6,8 @@ import {
     selectorData as playReportSlice,
     setMaxYear,
     setMaxMonth,
-    setMinYear,
-    setMinMonth
+    // setMinYear,
+    // setMinMonth
 } from './../../../../redux/playReportSlice.js';
 
 import { set_calendar_data } from './../../vendors/set_calendar_data.js';
@@ -18,8 +18,6 @@ const SetCalendarDataComponent = ( props ) => {
         children,
         setMaxYear,
         setMaxMonth,
-        setMinYear,
-        setMinMonth
     } = props;
 
     let [ isReady, setIsReady ] = useState( false );
@@ -32,8 +30,6 @@ const SetCalendarDataComponent = ( props ) => {
         let year = date.getFullYear();
         setMaxYear( year );
         setMaxMonth( month );
-        setMinYear( 2023 );
-        setMinMonth( 5 );
 
         set_calendar_data( year, month );
 
@@ -60,8 +56,8 @@ export function SetCalendarData( props ){
             setMaxYear = { ( val ) => { dispatch( setMaxYear( val ) ) } }
             setMaxMonth = { ( val ) => { dispatch( setMaxMonth( val ) ) } }
 
-            setMinYear = { ( val ) => { dispatch( setMinYear( val ) ) } }
-            setMinMonth = { ( val ) => { dispatch( setMinMonth( val ) ) } }
+            // setMinYear = { ( val ) => { dispatch( setMinYear( val ) ) } }
+            // setMinMonth = { ( val ) => { dispatch( setMinMonth( val ) ) } }
 
 
            

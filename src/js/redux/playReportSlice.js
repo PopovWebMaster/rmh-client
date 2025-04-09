@@ -9,6 +9,7 @@ export const playReportSlice = createSlice({
         searchFocus: false,
         searchValue: '',
         searchDate: '',
+        searchPeriod: null, // current_month  preview_month all
 
         calendarIsOpen: false,
         playReportList: {},
@@ -23,6 +24,11 @@ export const playReportSlice = createSlice({
 
         max_year: 0,
         max_month: 0,
+
+        entireList: [],
+        filteredList: [],
+
+
 
 
     },
@@ -79,6 +85,23 @@ export const playReportSlice = createSlice({
             state.min_month =  action.payload;
         },
 
+
+        setSearchPeriod: ( state, action ) => {
+            state.searchPeriod =  action.payload;
+        },
+
+
+        setEntireList: ( state, action ) => {
+            state.entireList =  action.payload;
+        },
+
+        setFilteredList: ( state, action ) => {
+            state.filteredList =  action.payload;
+        },
+
+
+
+
         
         
     },
@@ -100,6 +123,10 @@ export const {
     setMaxYear,
     setMaxMonth,
     setMinMonth,
+    setSearchPeriod,
+
+    setEntireList,
+    setFilteredList,
 
 } = playReportSlice.actions;
 
@@ -108,6 +135,8 @@ export const selectorData = ( state ) => {
         searchFocus: state.playReport.searchFocus,
         searchValue: state.playReport.searchValue,
         searchDate: state.playReport.searchDate,
+        searchPeriod: state.playReport.searchPeriod,
+
 
         calendarIsOpen: state.playReport.calendarIsOpen,
         playReportList: state.playReport.playReportList,
@@ -121,6 +150,12 @@ export const selectorData = ( state ) => {
         max_year: state.playReport.max_year,
         max_month: state.playReport.max_month,
         min_month: state.playReport.min_month,
+
+        entireList: state.playReport.entireList,
+        filteredList: state.playReport.filteredList,
+
+        
+        
 
 
 

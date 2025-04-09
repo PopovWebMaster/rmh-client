@@ -9,22 +9,24 @@ import {
 } from './../../../redux/playReportSlice.js';
 
 import { get_month_calendar } from './get_month_calendar.js';
+
+import { MONTH_NANES } from './../../../config/playReport.js';
  
 
-let titles = {
-    '1': 'Январь',
-    '2': 'Февраль',
-    '3': 'Март',
-    '4': 'Апрель',
-    '5': 'Май',
-    '6': 'Июнь',
-    '7': 'Июль',
-    '8': 'Август',
-    '9': 'Сентябрь',
-    '10': 'Октябрь',
-    '11': 'Ноябрь',
-    '12': 'Декабрь',
-};
+// let titles = {
+//     '1': 'Январь',
+//     '2': 'Февраль',
+//     '3': 'Март',
+//     '4': 'Апрель',
+//     '5': 'Май',
+//     '6': 'Июнь',
+//     '7': 'Июль',
+//     '8': 'Август',
+//     '9': 'Сентябрь',
+//     '10': 'Октябрь',
+//     '11': 'Ноябрь',
+//     '12': 'Декабрь',
+// };
 
 
 export const set_calendar_data = ( year, month ) => {
@@ -44,7 +46,7 @@ export const set_calendar_data = ( year, month ) => {
 
         store.dispatch( setYear( year ) );
         store.dispatch( setMonth( month ) );
-        store.dispatch( setMonthTitle( titles[ month ] ) );
+        store.dispatch( setMonthTitle( MONTH_NANES[ month ] ) );
         store.dispatch( setMonthCalendar( get_month_calendar( year, month ) ) );
 
     }

@@ -9,6 +9,9 @@ import { PageContainer } from './../PageContainer/PageContainer.js';
 import { SearchPanel } from './components/SearchPanel/SearchPanel.js';
 import { SetCalendarData } from './components/SetCalendarData/SetCalendarData.js';
 
+import { ListControlPanel } from './components/ListControlPanel/ListControlPanel.js';
+import { PlayReportList } from './components/PlayReportList/PlayReportList.js';
+
 import { ROUTE } from './../../config/routes.js';
 
 const PlayReportAppComponent = ( props ) => {
@@ -24,6 +27,8 @@ const PlayReportAppComponent = ( props ) => {
             <SetCalendarData>
 
                 <SearchPanel />
+                <ListControlPanel />
+                <PlayReportList />
 
             </SetCalendarData>
         </PageContainer>
