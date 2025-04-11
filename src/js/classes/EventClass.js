@@ -37,7 +37,7 @@ export class EventClass{
             this.MarkIn = new TimeClass( markIn );
         };
 
-        this.File =                     new FileClass( file );
+        this.File = new FileClass( file );
 
         this.TimePoint = this.StartTime.ms;
         this.graphics = [];

@@ -50,6 +50,7 @@ export const set_response_data_play_report = ( response ) => {
     
     };
 
+
     store.dispatch( setUserData( userData ) );
     store.dispatch( setPlayReportList( list ) );
     store.dispatch( setMinYear( min_year ) );

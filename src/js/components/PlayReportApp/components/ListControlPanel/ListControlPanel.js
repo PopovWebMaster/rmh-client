@@ -19,8 +19,8 @@ const ListControlPanelComponent = ( props ) => {
         <div className = 'PR_ListControlPanel'>
 
             <FilterPrefix />
-            <Backligth />
-            <SpecialReportWindow />
+            {/* <Backligth />
+            <SpecialReportWindow /> */}
 
         </div>
 

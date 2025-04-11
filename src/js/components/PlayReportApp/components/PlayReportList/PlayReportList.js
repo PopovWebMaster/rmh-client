@@ -7,18 +7,48 @@ import './PlayReportList.scss';
 
 import { SetFilteredList } from './../SetFilteredList/SetFilteredList.js';
 
+import { ItemMovie } from './components/ItemMovie/ItemMovie.js';
+import { ItemEmpty } from './components/ItemEmpty/ItemEmpty.js';
+
 
 const PlayReportListComponent = ( props ) => {
 
     let {
-
+        filteredList,
     } = props;
+
+
+
+
+    const create = ( arr ) => {
+        let div = arr.map( ( item, index ) => {
+        let result = '';
+            switch( item.type ){
+                case 'movie':
+                    result = <ItemMovie item = { item } key = { index }/>
+                    break;
+                case 'empty':
+                    result = <ItemEmpty item = { item } key = { index }/>
+                    break;
+            };
+
+            return result;
+        } );
+        return div;
+    };
     
     return (
 
         <SetFilteredList>
+
+            
+            
             <div className = 'PR_PlayReportList'>
 
+                
+
+
+                { create( filteredList ) }
 
             </div> 
         </SetFilteredList>
@@ -30,14 +60,13 @@ const PlayReportListComponent = ( props ) => {
 export function PlayReportList( props ){
 
     const playReport = useSelector( playReportSlice );
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <PlayReportListComponent
             { ...props }
-            searchValue = { playReport.searchValue }
-            calendarIsOpen = { playReport.calendarIsOpen }
-            setCalendarIsOpen = { ( callback ) => { dispatch( setCalendarIsOpen( callback ) ) } }
+            filteredList = { playReport.filteredList }
+            // setCalendarIsOpen = { ( callback ) => { dispatch( setCalendarIsOpen( callback ) ) } }
 
         />
     );

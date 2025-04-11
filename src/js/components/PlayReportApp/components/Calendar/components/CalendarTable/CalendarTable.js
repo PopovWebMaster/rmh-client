@@ -40,8 +40,8 @@ const CalendarTableComponent = ( props ) => {
 
                     setSpinnerIsActive( false );
 
-                    // console.dir( 'resp' );
-                    // console.dir( resp );
+                    console.dir( 'get_one_day_entire_list_from_server' );
+                    console.dir( resp );
 
 
                 }

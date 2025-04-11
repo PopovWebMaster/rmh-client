@@ -11,7 +11,10 @@ import { SetCalendarData } from './components/SetCalendarData/SetCalendarData.js
 
 import { ListControlPanel } from './components/ListControlPanel/ListControlPanel.js';
 import { PlayReportList } from './components/PlayReportList/PlayReportList.js';
-
+import { ListButtonsLeft } from './components/ListButtonsLeft/ListButtonsLeft.js';
+import { PlayReportListContainer } from './components/PlayReportListContainer/PlayReportListContainer.js';
+import { GrabScrollingEvent } from './components/GrabScrollingEvent/GrabScrollingEvent.js';
+ 
 import { ROUTE } from './../../config/routes.js';
 
 const PlayReportAppComponent = ( props ) => {
@@ -24,11 +27,22 @@ const PlayReportAppComponent = ( props ) => {
             className = 'playReportApp'
             page =      { ROUTE.PAGE.PLAY_REPORT }
         >
+            
             <SetCalendarData>
 
                 <SearchPanel />
-                <ListControlPanel />
-                <PlayReportList />
+
+                {/* <ListControlPanel /> */}
+
+                <PlayReportListContainer>
+
+                    <GrabScrollingEvent />
+                
+                    <ListButtonsLeft />
+                    
+                    <PlayReportList />
+                
+                </PlayReportListContainer>
 
             </SetCalendarData>
         </PageContainer>

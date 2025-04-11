@@ -1,0 +1,19 @@
+.PRL_ListButtonsLeft{
+    font-size: 1em;
+    height: 100%;
+    width: 22em;
+    // background-color: red;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+
+    .PRL_ListButtonsLeft_wrap{
+        font-size: 1em;
+        max-width: 100%;
+        flex-grow: 1;
+        height: 100%;
+        background-color: #fff3;
+    }
+}

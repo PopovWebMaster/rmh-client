@@ -13,17 +13,20 @@ import { ClearSearchInputButton } from './../ClearSearchInputButton/ClearSearchI
 import { Calendar } from './../Calendar/Calendar.js';
 import { SearchPeriod } from './../SearchPeriod/SearchPeriod.js';
 
+import { get_entier_list_for_search_value } from './../../vendors/get_entier_list_for_search_value.js';
+
 
 
 const SearchPanelComponent = ( props ) => {
 
     let {
         searchFocus,
+        searchValue,
         calendarIsOpen,
     } = props;
 
     const searchHandler = () => {
-        console.dir( 'searchHandler' );
+        get_entier_list_for_search_value( () => {});
     }
     
     return (
@@ -53,6 +56,7 @@ export function SearchPanel( props ){
         <SearchPanelComponent
             { ...props }
             searchFocus = { playReport.searchFocus }
+            searchValue = { playReport.searchValue }
             calendarIsOpen = { playReport.calendarIsOpen }
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 

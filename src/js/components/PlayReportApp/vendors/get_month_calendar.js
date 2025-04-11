@@ -46,7 +46,10 @@ export const get_month_calendar = ( year, month ) => {
             if( i === first_day ){
                 start = true;
                 item.date = next_date;
-                if( playReportList[ `${year}-${month}-${next_date}`] ){
+                // console.dir( `${year}-${month_str}-${String( next_date ).padStart(2,'0')}` );
+
+                if( playReportList[ `${year}-${month_str}-${String( next_date ).padStart(2,'0')}`] ){
+                    // console.dir( `${year}-${month_str}-${String( next_date ).padStart(2,'0')}` );
                     item.file = true;
                 };
                 next_date = next_date + 1;

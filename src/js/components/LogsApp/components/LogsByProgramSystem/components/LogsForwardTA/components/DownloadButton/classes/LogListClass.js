@@ -45,8 +45,11 @@ export class LogListClass{
 
             if( type === TYPE.MOVIE ){
                 this.Movie.AddItem( this.log_list[i] );
-            }else{
+            }else if(  type === TYPE.TITLE_OBJECT  ){
                 this.Title.AddItem( this.log_list[i] );
+            }else{
+                console.dir( 'событие не видео, и не графика' );
+                console.dir( this.log_list[i] );
             };
 
             this.FileDate.AddItem( this.log_list[i] );
