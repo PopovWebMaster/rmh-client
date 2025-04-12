@@ -14,8 +14,10 @@ export const get_entier_list_for_search_value = ( callback ) => {
         searchPeriod,
         searchValue
     } = playReport;
-
+    
     store.dispatch( setSpinnerIsActive( true ) );
+    store.dispatch( setEntireList([]) );
+
 
     send_request_to_server({
         route: `${ ROUTE.PAGE.PLAY_REPORT }/get-entier-list-for-search-value`,

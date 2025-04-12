@@ -44,7 +44,9 @@ const TimeButtonsComponent = ( props ) => {
         let sec = ( m * 60 ) + ( h * 3600 );
 
 
-        let list = document.querySelectorAll( '.PRL_ItemMovie .PRL_ItemMovie_Time input' );
+        // let list = document.querySelectorAll( '.PRL_ItemMovie .PRL_ItemMovie_Time input' );
+        let list = document.querySelectorAll( '.PRL_ItemMovie2 .PRL_ItemMovie2_Time .PRL_forFocus' );
+
         let is_start = false;
 
         for( let i = 0; i < list.length; i++ ){

@@ -8,6 +8,8 @@ import './PlayReportList.scss';
 import { SetFilteredList } from './../SetFilteredList/SetFilteredList.js';
 
 import { ItemMovie } from './components/ItemMovie/ItemMovie.js';
+import { ItemMovie2 } from './components/ItemMovie2/ItemMovie2.js';
+
 import { ItemEmpty } from './components/ItemEmpty/ItemEmpty.js';
 
 
@@ -25,7 +27,7 @@ const PlayReportListComponent = ( props ) => {
         let result = '';
             switch( item.type ){
                 case 'movie':
-                    result = <ItemMovie item = { item } key = { index }/>
+                    result = <ItemMovie2 item = { item } key = { index }/>
                     break;
                 case 'empty':
                     result = <ItemEmpty item = { item } key = { index }/>

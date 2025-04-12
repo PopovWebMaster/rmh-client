@@ -15,7 +15,7 @@ const SearchByDateComponent = ( props ) => {
     } = props;
     
     return (
-        <>{ searchValue === ''? (
+        // <>{ searchValue === ''? (
             <div 
                 className = 'PR_SearchByDate'
                 onClick = { () => { setCalendarIsOpen( !calendarIsOpen ) } }
@@ -23,7 +23,7 @@ const SearchByDateComponent = ( props ) => {
                 <span className = 'fa-calendar'></span>
 
             </div>
-        ): '' }</>
+        // ): '' }</>
 
 
     )

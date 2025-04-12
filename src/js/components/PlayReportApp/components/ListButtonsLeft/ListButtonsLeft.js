@@ -6,6 +6,7 @@ import { selectorData as playReportSlice, setCalendarIsOpen } from './../../../.
 import './ListButtonsLeft.scss';
 
 import { TimeScrollButtons } from './components/TimeScrollButtons/TimeScrollButtons.js';
+import { DateListSelect } from './components/DateListSelect/DateListSelect.js';
  
  
 const ListButtonsLeftComponent = ( props ) => {
@@ -21,6 +22,8 @@ const ListButtonsLeftComponent = ( props ) => {
 
                 
             </div>
+
+            <DateListSelect />
 
             <TimeScrollButtons />
         </div>

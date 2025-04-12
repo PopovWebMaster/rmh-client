@@ -28,6 +28,8 @@ export const playReportSlice = createSlice({
         entireList: [],
         filteredList: [],
 
+        dateListSelected: null,
+
 
 
 
@@ -99,8 +101,11 @@ export const playReportSlice = createSlice({
             state.filteredList =  action.payload;
         },
 
+        setDateListSelected: ( state, action ) => {
+            state.dateListSelected =  action.payload;
+        },
 
-
+        
 
         
         
@@ -127,6 +132,7 @@ export const {
 
     setEntireList,
     setFilteredList,
+    setDateListSelected,
 
 } = playReportSlice.actions;
 
@@ -153,6 +159,9 @@ export const selectorData = ( state ) => {
 
         entireList: state.playReport.entireList,
         filteredList: state.playReport.filteredList,
+
+        dateListSelected: state.playReport.dateListSelected,
+
 
         
         

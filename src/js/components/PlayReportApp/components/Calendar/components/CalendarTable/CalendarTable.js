@@ -24,6 +24,7 @@ const CalendarTableComponent = ( props ) => {
     } = props;
 
     const click = ( item ) => {
+        setEntireList([]);
 
         if( item.file === true ){
             setSpinnerIsActive( true );

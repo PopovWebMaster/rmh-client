@@ -11,12 +11,31 @@ const SetFilteredListComponent = ( props ) => {
     let {
         entireList,
         setFilteredList,
+        dateListSelected,
         children,
     } = props;
 
     useEffect( ()  => {
-        setFilteredList( entireList );
-    }, [entireList] );
+        // setFilteredList( entireList );
+
+        let arr = [];
+
+        for( let i = 0; i < entireList.length; i++ ){
+            let YYYY_MM_DD = entireList[ i ].date.YYYY_MM_DD;
+            if( dateListSelected === YYYY_MM_DD ){
+                arr.push( entireList[ i ] );
+            };
+        };
+
+        setFilteredList( arr );
+
+
+
+
+    }, [ 
+        entireList,
+        dateListSelected
+    ] );
     
     return (
         <>{ children }</>
@@ -33,6 +52,7 @@ export function SetFilteredList( props ){
         <SetFilteredListComponent
             { ...props }
             entireList = { playReport.entireList }
+            dateListSelected = { playReport.dateListSelected }
             setFilteredList = { ( callback ) => { dispatch( setFilteredList( callback ) ) } }
 
         />
