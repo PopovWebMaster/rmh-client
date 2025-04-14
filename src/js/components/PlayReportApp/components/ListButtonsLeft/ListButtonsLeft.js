@@ -7,6 +7,10 @@ import './ListButtonsLeft.scss';
 
 import { TimeScrollButtons } from './components/TimeScrollButtons/TimeScrollButtons.js';
 import { DateListSelect } from './components/DateListSelect/DateListSelect.js';
+
+import { DownloadAsText } from './components/DownloadAsText/DownloadAsText.js';
+import { DownloadAsExel } from './components/DownloadAsExel/DownloadAsExel.js';
+import { DetailDataWindowButton } from './components/DetailDataWindowButton/DetailDataWindowButton.js';
  
  
 const ListButtonsLeftComponent = ( props ) => {
@@ -20,11 +24,20 @@ const ListButtonsLeftComponent = ( props ) => {
 
             <div className = 'PRL_ListButtonsLeft_wrap'>
 
+                <div className = 'PRL_ListButtonsLeft_wrap_row'>
+                    <DownloadAsText />
+                    <DownloadAsExel />
+                </div>
+
+                <div className = 'PRL_ListButtonsLeft_wrap_row'>
+                    <DetailDataWindowButton />
+                </div>
+
                 
+
             </div>
 
             <DateListSelect />
-
             <TimeScrollButtons />
         </div>
 

@@ -1,9 +1,7 @@
 
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorData as playReportSlice, setEntireList, setCalendarIsOpen } from './../../../../../../redux/playReportSlice.js';
-import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
-
+import { selectorData as playReportSlice, setCalendarIsOpen } from './../../../../../../redux/playReportSlice.js';
 
 import './CalendarTable.scss';
 
@@ -16,33 +14,34 @@ const CalendarTableComponent = ( props ) => {
         year,
         month,
 
-        setEntireList,
-        setSpinnerIsActive,
+        // setEntireList,
+        // setSpinnerIsActive,
         setCalendarIsOpen,
 
 
     } = props;
 
     const click = ( item ) => {
-        setEntireList([]);
+        // setEntireList([]);
 
         if( item.file === true ){
-            setSpinnerIsActive( true );
+            // setSpinnerIsActive( true );
             get_one_day_entire_list_from_server({
-                year,
-                date: String( item.date ).padStart( 2, '0' ),
-                month: String( month ).padStart( 2, '0' ),
+                // year,
+                // date: String( item.date ).padStart( 2, '0' ),
+                // month: String( month ).padStart( 2, '0' ),
+                date_string: `${year}-${String( month ).padStart( 2, '0' )}-${String( item.date ).padStart( 2, '0' )}`,
                 callback: ( resp ) => {
 
                     if( resp.ok ){
-                        setEntireList( resp.list );
+                        // setEntireList( resp.list );
                         setCalendarIsOpen( false );
                     };
 
-                    setSpinnerIsActive( false );
+                    // setSpinnerIsActive( false );
 
-                    console.dir( 'get_one_day_entire_list_from_server' );
-                    console.dir( resp );
+                    // console.dir( 'get_one_day_entire_list_from_server' );
+                    // console.dir( resp );
 
 
                 }
@@ -129,12 +128,11 @@ export function CalendarTable( props ){
         <CalendarTableComponent
             { ...props }
             monthCalendar = { playReport.monthCalendar }
-
             year = { playReport.year }
             month = { playReport.month }
 
-            setEntireList = { ( val ) => { dispatch( setEntireList( val ) ) } }
-            setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
+            // setEntireList = { ( val ) => { dispatch( setEntireList( val ) ) } }
+            // setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
             setCalendarIsOpen = { ( val ) => { dispatch( setCalendarIsOpen( val ) ) } }
 
 

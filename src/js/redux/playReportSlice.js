@@ -32,6 +32,16 @@ export const playReportSlice = createSlice({
 
 
 
+        backligthPrefixList: {},
+
+
+        detailDataWindow_isOpen: false,
+
+
+
+
+
+
 
     },
 
@@ -105,8 +115,24 @@ export const playReportSlice = createSlice({
             state.dateListSelected =  action.payload;
         },
 
-        
+        setBackligthPrefixList: ( state, action ) => {
+            state.backligthPrefixList =  action.payload;
+        },
 
+
+        addBackligthPrefix: ( state, action ) => {
+            let obj = { ...state.backligthPrefixList };
+            obj[ action.payload ] = false;
+            state.backligthPrefixList =  obj;
+        },
+
+        setDetailDataWindowIsOpen: ( state, action ) => {
+            state.detailDataWindow_isOpen =  action.payload;
+        },
+
+
+        
+        
         
         
     },
@@ -133,6 +159,10 @@ export const {
     setEntireList,
     setFilteredList,
     setDateListSelected,
+
+    addBackligthPrefix,
+    setBackligthPrefixList,
+    setDetailDataWindowIsOpen,
 
 } = playReportSlice.actions;
 
@@ -161,6 +191,14 @@ export const selectorData = ( state ) => {
         filteredList: state.playReport.filteredList,
 
         dateListSelected: state.playReport.dateListSelected,
+        backligthPrefixList: state.playReport.backligthPrefixList,
+
+        detailDataWindow_isOpen: state.playReport.detailDataWindow_isOpen,
+
+
+
+
+        
 
 
         

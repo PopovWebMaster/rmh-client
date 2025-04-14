@@ -1,11 +1,14 @@
-// Duration
 
-
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 // import { useSelector, useDispatch } from 'react-redux';
 // import { selectorData as playReportSlice, setCalendarIsOpen } from './../../../../../../../../redux/playReportSlice.js';
 
 import './Duration.scss';
+
+const comvert_min_to_ms = ( min ) => {
+    return min * 60 * 1000;
+
+}
 
 const DurationComponent = ( props ) => {
 
@@ -14,12 +17,64 @@ const DurationComponent = ( props ) => {
         segmentRealDuration,
         markIn,
     } = props;
-    
+
+    let max_time_ms = comvert_min_to_ms( 90 );
+    let min_time_ms = comvert_min_to_ms( 1 );
+
+
+    let hours_2_ms = comvert_min_to_ms( 90 );
+
     let [ isOpen, setIsOpen ] = useState( false );
+    let [ fileWidth, setFileWidth ] = useState( 0 );
+    let [ segmentWidth, setSegmentWidth ] = useState( 0 );
+    let [ segmentLeft, setSegmentLeft ] = useState( 0 );
+
+    useEffect( () => {
+
+        // let file_W_proc =       Math.round( fileDuration.ms *100/max_time_ms );
+        // let segment_W_proc =    Math.round( segmentRealDuration.ms *100/max_time_ms );
+        // let segment_left_proc = Math.round( markIn.ms *100/max_time_ms );
+
+        let file_W_proc =       0;
+        let segment_W_proc =    0;
+        let segment_left_proc = 0;
+
+        if( fileDuration.ms <= max_time_ms && fileDuration.ms >= min_time_ms ){
+            file_W_proc =       Math.round( fileDuration.ms *100/max_time_ms );
+            segment_W_proc =    Math.round( segmentRealDuration.ms *100/max_time_ms );
+            segment_left_proc = Math.round( markIn.ms *100/max_time_ms );
+
+        }else{
+            if( fileDuration.ms > max_time_ms ){
+                file_W_proc =       100;
+                segment_W_proc =    Math.round( segmentRealDuration.ms *100/fileDuration.ms );
+                segment_left_proc = Math.round( markIn.ms *100/fileDuration.ms );
+            }else{
+                // file_W_proc =       Math.round( fileDuration.ms *100/min_time_ms );
+                // segment_W_proc =    Math.round( segmentRealDuration.ms *100/min_time_ms );
+                // segment_left_proc = Math.round( markIn.ms *100/min_time_ms );
+
+                file_W_proc =       1;
+                segment_W_proc =    (Math.round( segmentRealDuration.ms *100/fileDuration.ms ) * file_W_proc)/100;
+                segment_left_proc = (Math.round( markIn.ms *100/fileDuration.ms) * file_W_proc)/100;
 
 
-    // let hours_2_ms = 7200000;
-    let hours_2_ms = 5400000;
+
+            };
+
+        };
+
+        setFileWidth( `${file_W_proc}%` );
+        setSegmentWidth( `${segment_W_proc}%` );
+        setSegmentLeft( `${segment_left_proc}%` );
+
+
+    }, [
+        fileDuration,
+        segmentRealDuration,
+        markIn,
+    ] );
+
 
 
     const trim_ms = ( str ) => {
@@ -27,29 +82,30 @@ const DurationComponent = ( props ) => {
         return arr[0];
     }
 
-    const getFileWidth = () => {
-        let result = Math.round( fileDuration.ms *100/hours_2_ms );
-        if( result > 100 ){
-            result = 100;
-        };
-        return `${result}%`;
-    }
+    // const getFileWidth = () => {
+    //     let result = Math.round( fileDuration.ms *100/hours_2_ms );
+    //     if( result > 100 ){
+    //         result = 100;
+    //     };
+    //     return `${result}%`;
+    // }
 
-    const getSegmentWidth = () => {
-        let result = Math.round( segmentRealDuration.ms *100/hours_2_ms );
-        if( result > 100 ){
-            result = 100;
-        };
-        return `${result}%`;
-    }
+    // const getSegmentWidth = () => {
+    //     let result = Math.round( segmentRealDuration.ms *100/hours_2_ms );
+    //     if( result > 100 ){
+    //         result = 100;
+    //     };
+    //     return `${result}%`;
+    // }
 
-    const getLeftWidth = () => {
-        let result = Math.round( markIn.ms *100/hours_2_ms );
-        if( result > 100 ){
-            result = 100;
-        };
-        return `${result}%`;
-    }
+    // const getLeftWidth = () => {
+    //     let result = Math.round( markIn.ms *100/hours_2_ms );
+    //     if( result > 100 ){
+    //         result = 100;
+    //     };
+    //     return `${result}%`;
+    // }
+
 
 
 
@@ -63,7 +119,7 @@ const DurationComponent = ( props ) => {
             <div className = 'PRL_Duration_scale'>
                 <div 
                     className = 'PRL_file_len'
-                    style = { { width: getFileWidth() } }
+                    style = { { width: fileWidth } }
                 >
 
                 </div>
@@ -71,8 +127,8 @@ const DurationComponent = ( props ) => {
                 <div 
                     className = 'PRL_segment_len'
                     style = { { 
-                        width: getSegmentWidth(),
-                        left: getLeftWidth(),
+                        width: segmentWidth,
+                        left: segmentLeft,
                      } }
                 >
 

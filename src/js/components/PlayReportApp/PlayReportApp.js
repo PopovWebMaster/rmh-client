@@ -14,6 +14,8 @@ import { PlayReportList } from './components/PlayReportList/PlayReportList.js';
 import { ListButtonsLeft } from './components/ListButtonsLeft/ListButtonsLeft.js';
 import { PlayReportListContainer } from './components/PlayReportListContainer/PlayReportListContainer.js';
 import { GrabScrollingEvent } from './components/GrabScrollingEvent/GrabScrollingEvent.js';
+
+import { DetailDataWindow } from './components/DetailDataWindow/DetailDataWindow.js';
  
 import { ROUTE } from './../../config/routes.js';
 
@@ -27,22 +29,21 @@ const PlayReportAppComponent = ( props ) => {
             className = 'playReportApp'
             page =      { ROUTE.PAGE.PLAY_REPORT }
         >
-            
             <SetCalendarData>
 
                 <SearchPanel />
-
-                {/* <ListControlPanel /> */}
+                
+                <ListControlPanel />
 
                 <PlayReportListContainer>
 
                     <GrabScrollingEvent />
-                
                     <ListButtonsLeft />
-                    
                     <PlayReportList />
                 
                 </PlayReportListContainer>
+
+                <DetailDataWindow />
 
             </SetCalendarData>
         </PageContainer>

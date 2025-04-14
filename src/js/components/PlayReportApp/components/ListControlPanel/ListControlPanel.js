@@ -5,9 +5,7 @@ import { selectorData as playReportSlice, setCalendarIsOpen } from './../../../.
 
 import './ListControlPanel.scss';
 
-import { FilterPrefix } from './components/FilterPrefix/FilterPrefix.js';
 import { Backligth } from './components/Backligth/Backligth.js';
-import { SpecialReportWindow } from './components/SpecialReportWindow/SpecialReportWindow.js';
   
 const ListControlPanelComponent = ( props ) => {
 
@@ -17,11 +15,7 @@ const ListControlPanelComponent = ( props ) => {
     
     return (
         <div className = 'PR_ListControlPanel'>
-
-            <FilterPrefix />
-            {/* <Backligth />
-            <SpecialReportWindow /> */}
-
+            <Backligth />
         </div>
 
 

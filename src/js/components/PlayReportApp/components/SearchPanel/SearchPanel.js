@@ -12,7 +12,8 @@ import { SearchByDate } from './../SearchByDate/SearchByDate.js';
 import { ClearSearchInputButton } from './../ClearSearchInputButton/ClearSearchInputButton.js';
 import { Calendar } from './../Calendar/Calendar.js';
 import { SearchPeriod } from './../SearchPeriod/SearchPeriod.js';
-
+import { SearchResultCount } from './../SearchResultCount/SearchResultCount.js';
+ 
 import { get_entier_list_for_search_value } from './../../vendors/get_entier_list_for_search_value.js';
 
 
@@ -39,6 +40,8 @@ const SearchPanelComponent = ( props ) => {
                 <SearchByDate />
                 <Calendar />
                 <SearchPeriod />
+                <SearchResultCount />
+
 
             </div>
         </div>

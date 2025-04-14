@@ -6,6 +6,8 @@ import { selectorData as playReportSlice, setDateListSelected } from './../../..
 
 import './DateListSelect.scss';
 
+import { OpenThisDayButton } from './../OpenThisDayButton/OpenThisDayButton.js';
+
 const DateListSelectComponent = ( props ) => {
 
     let {
@@ -17,6 +19,7 @@ const DateListSelectComponent = ( props ) => {
     } = props;
 
     let [ list, setList ] = useState( [] );
+
 
     useEffect( () => {
 
@@ -75,16 +78,18 @@ const DateListSelectComponent = ( props ) => {
 
     }
 
-
-
-
-
-    
     return (
         <div className = 'PRL_DateListSelect'>
+            
             <div className = 'PRL_DateListSelect_selected'>
-                <span>{ dateListSelected }</span>
+                <span>
+                    { dateListSelected }
+                </span>
+
+                <OpenThisDayButton />
+                
             </div>
+
             <div className = 'PRL_DateListSelect_list'>
                 { create( list ) }
             </div>
