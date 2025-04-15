@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectorData as playReportSlice, setDetailDataWindowIsOpen } from './../../../../../../redux/playReportSlice.js';
+import { selectorData as playReportSlice } from './../../../../../../redux/playReportSlice.js';
 
 import './ResultOnlyTimes.scss';
 
@@ -98,7 +98,7 @@ export function ResultOnlyTimes( props ){
             filteredList = { playReport.filteredList }
 
             // setAditionalSpecialWindowIsOpen = { ( val ) => { dispatch( setAditionalSpecialWindowIsOpen( val ) ) } }
-            setDetailDataWindowIsOpen = { ( val ) => { dispatch( setDetailDataWindowIsOpen( val ) ) } }
+            // setDetailDataWindowIsOpen = { ( val ) => { dispatch( setDetailDataWindowIsOpen( val ) ) } }
 
 
         />

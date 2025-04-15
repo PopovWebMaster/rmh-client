@@ -37,6 +37,8 @@ export const playReportSlice = createSlice({
 
         detailDataWindow_isOpen: false,
 
+        resultPointsSec: [],
+
 
 
 
@@ -130,6 +132,10 @@ export const playReportSlice = createSlice({
             state.detailDataWindow_isOpen =  action.payload;
         },
 
+        setResultPointsSec: ( state, action ) => {
+            state.resultPointsSec =  action.payload;
+        },
+
 
         
         
@@ -163,6 +169,7 @@ export const {
     addBackligthPrefix,
     setBackligthPrefixList,
     setDetailDataWindowIsOpen,
+    setResultPointsSec,
 
 } = playReportSlice.actions;
 
@@ -194,11 +201,8 @@ export const selectorData = ( state ) => {
         backligthPrefixList: state.playReport.backligthPrefixList,
 
         detailDataWindow_isOpen: state.playReport.detailDataWindow_isOpen,
+        resultPointsSec: state.playReport.resultPointsSec,
 
-
-
-
-        
 
 
         

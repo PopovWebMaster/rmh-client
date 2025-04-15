@@ -29,7 +29,7 @@ const DetailDataWindowComponent = ( props ) => {
             case 'cols_date_time':
                 return <ResultColsDateAndTime />
 
-            case 'titles':
+            case 'points':
                 return <ResultTitles />
 
                 
@@ -58,9 +58,9 @@ const DetailDataWindowComponent = ( props ) => {
                     >Col date-time</span>
 
                     <span
-                        className = { `${ variant === 'titles'? 'isActive': '' }` }
-                        onClick = { () => { setVariant( 'titles' ) } }
-                    >titles</span>
+                        className = { `${ variant === 'points'? 'isActive': '' }` }
+                        onClick = { () => { setVariant( 'points' ) } }
+                    >Points</span>
 
                 </div>
 
