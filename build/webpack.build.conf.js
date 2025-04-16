@@ -20,6 +20,11 @@ module.exports = merge(baseWebpackConfig, {
         playReport: `${PATHS.src}/js/pages/playReport/playReport.js`, 
         accessIsClosed: `${PATHS.src}/js/pages/accessIsClosed/accessIsClosed.js`, 
         pageNotFound: `${PATHS.src}/js/pages/pageNotFound/pageNotFound.js`, 
+        layout: `${PATHS.src}/js/pages/layout/layout.js`, 
+
+
+
+        
 
 
     },

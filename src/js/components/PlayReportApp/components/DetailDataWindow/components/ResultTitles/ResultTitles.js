@@ -41,7 +41,7 @@ let [ val, setVal ] = useState( '' );
 
         let date_str = YYYY_MM_DD.replaceAll( '-', '.' );
         
-        let result = date_str + ' - ' + points_str + '\n';
+        let result = date_str + '\t' + points_str + '\n';
         return result;
 
 

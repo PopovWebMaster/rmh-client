@@ -6,6 +6,8 @@ import { selectorData as playReportSlice } from './../../../../../../redux/playR
 
 import './ResultOnlyTimes.scss';
 
+import { CurrentDatePointsFormat } from './../CurrentDatePointsFormat/CurrentDatePointsFormat.js';
+
 
 const ResultOnlyTimesComponent = ( props ) => {
 
@@ -15,6 +17,8 @@ const ResultOnlyTimesComponent = ( props ) => {
     } = props;
 
     let [ val, setVal ] = useState( '' );
+
+    let [ valSec, setValSec ] = useState( 0 );
 
     const trim_sec_ms = ( str ) => {
         let arr = str.split( '.' );
@@ -26,7 +30,7 @@ const ResultOnlyTimesComponent = ( props ) => {
     useEffect( () => {
 
         let arr = [];
-
+        let arr_ms = [];
         let lastName = false;
 
         for( let i = 0; i < filteredList.length; i++ ){
@@ -34,6 +38,8 @@ const ResultOnlyTimesComponent = ( props ) => {
                 startTime,
                 type,
                 file,
+                segmentRealDuration,
+
             } = filteredList[ i ];
 
             if( type === 'movie' ){
@@ -41,9 +47,12 @@ const ResultOnlyTimesComponent = ( props ) => {
                 if( lastName === false ){
                     lastName = file.name;
                     arr.push( trim_sec_ms( startTime.time ) );
+                    arr_ms.push( segmentRealDuration.ms );
+
                 }else{
                     if( lastName === file.name ){
                         arr.push( trim_sec_ms( startTime.time ) );
+                        arr_ms.push( segmentRealDuration.ms );
                         lastName = file.name;
                     }else{
                         arr = [];
@@ -65,11 +74,20 @@ const ResultOnlyTimesComponent = ( props ) => {
 
         setVal( str );
 
+        let count_ms = 0;
+        for( let i = 0; i < arr_ms.length; i++ ){
+            count_ms = count_ms + arr_ms[ i ];
+        };
+
+        setValSec( Math.round( count_ms/1000 ) );
+
     }, [ filteredList ] );
 
     return (
 
         <div className = 'DDW_ResultOnlyTimes'>
+
+            <CurrentDatePointsFormat />
 
             <textarea   
                 className = ''
@@ -77,6 +95,13 @@ const ResultOnlyTimesComponent = ( props ) => {
                 rows = { 2 }
                 onChange = { () => {} }
             />
+
+            <input 
+                type = 'text'
+                value = { valSec }
+                onChange = { () => {} }
+            />
+
 
         </div>
         

@@ -50,13 +50,6 @@ const TopMenuComponent = ( props ) => {
 
         setIsShow( result );
 
-        // if( currentPage === ROUTE.PAGE.LOGIN || currentPage === ROUTE.PAGE.HOME ){
-        //     setIsShow( false );
-        //     // setIsShow( true );
-
-        // }else{
-        //     setIsShow( true );
-        // };
 
     }, [ currentPage ] );
 
@@ -87,6 +80,11 @@ const TopMenuComponent = ( props ) => {
                     />
 
                     <MenuItemLeft 
+                        title = { 'Макет' }
+                        page = { ROUTE.PAGE.LAYOUT }
+                    />
+
+                    <MenuItemLeft 
                         title = { 'Эф. отчёт' }
                         page = { ROUTE.PAGE.PLAY_REPORT }
                     />
@@ -97,10 +95,9 @@ const TopMenuComponent = ( props ) => {
                     />
 
                 </div>
+
                 <div className = 'TM_right'>
-
                     <BtnLogout />
-
                 </div>
                 
             </div>

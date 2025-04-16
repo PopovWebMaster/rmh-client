@@ -6,3 +6,10 @@
 
 // icon-download-alt
 // icon-tools
+// icon-edit
+// icon-buffer
+// icon-ellipsis-vert
+// icon-clipboard-1
+// fa-cube
+// fa-cubes
+// fa-navicon
