@@ -8,6 +8,7 @@ import './LayoutKeyPoints.scss';
 import { selectorData as companySlice } from './../../../../redux/companySlice.js';
 
 import { Week } from './components/Week/Week.js';
+import { AutoSaveChangesOnServer } from './components/AutoSaveChangesOnServer/AutoSaveChangesOnServer.js';
 
 const LayoutKeyPointsComponent = ( props ) => {
 
@@ -17,6 +18,8 @@ const LayoutKeyPointsComponent = ( props ) => {
     
     return (
         <div className = 'layoutKeyPoints'>
+
+            <AutoSaveChangesOnServer />
 
             <Week />
 
