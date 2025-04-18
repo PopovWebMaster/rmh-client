@@ -5,8 +5,6 @@ import React, { useState, useEffect }   from "react";
 
 import './DayPoint.scss';
 
-// import { selectorData as layoutSlice, setWeekKeyPointList } from './../../../../../../../../redux/layoutSlice.js';
-
 import { get_top_position_from_time } from './../../vendors/get_top_position_from_time.js';
 import { set_description_to_store } from './vendors/set_description_to_store.js';
 import { remove_point_in_store } from './vendors/remove_point_in_store.js';
@@ -99,7 +97,6 @@ export function DayPoint( props ){
         <DayPointComponent
             { ...props }
             // weekKeyPointList = { layout.weekKeyPointList }
-            // setWeekKeyPointList = { ( arr ) => { dispatch( setWeekKeyPointList( arr ) ) } }
 
         />
     );

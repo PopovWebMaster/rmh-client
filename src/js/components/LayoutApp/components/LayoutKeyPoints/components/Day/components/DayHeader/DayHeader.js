@@ -5,11 +5,12 @@ import { useDispatch } from 'react-redux';
 
 import './DayHeader.scss';
 
-import { selectorData as layoutSlice, setWeekKeyPointList } from './../../../../../../../../redux/layoutSlice.js';
+import { selectorData as layoutSlice, setWeekKeyPointListAsChanged } from './../../../../../../../../redux/layoutSlice.js';
 
 import { WEEK } from './../../../../../../../../config/week.js';
 
 import { convert_time_hh_mm_to_ms } from './../../../../../../../../helpers/convert_time_hh_mm_to_ms.js';
+import { InputTypeTimeAsWindow } from './../../../../../../../InputTypeTimeAsWindow/InputTypeTimeAsWindow.js'
 
 
 const DayHeaderComponent = ( props ) => {
@@ -18,15 +19,19 @@ const DayHeaderComponent = ( props ) => {
         dayNum,
 
         weekKeyPointList,
-        setWeekKeyPointList,
+        setWeekKeyPointListAsChanged,
 
     } = props;
+
+    let [ isOpen, setIsOpen ] = useState( true );
 
     
 
     let [ timeValue, setTimeValue ] = useState( '00:00' );
 
     const addClick = () => {
+        setIsOpen( !isOpen );
+        /*
         let item = {
             time: timeValue,
             description: '',
@@ -47,8 +52,10 @@ const DayHeaderComponent = ( props ) => {
         if( chack_uniq ){
             day_arr.push( item );
             week_arr[ dayNum ] = day_arr;
-            setWeekKeyPointList( week_arr );
+            setWeekKeyPointListAsChanged( week_arr );
         };
+
+        */
         
 
 
@@ -64,17 +71,26 @@ const DayHeaderComponent = ( props ) => {
     
     return (
         <h2 className = 'LP_DayHeader'>
+
+            { dayNum === 6? (<InputTypeTimeAsWindow 
+                isOpen = { isOpen }
+                setIsOpen = { setIsOpen }
+                value = { '' }
+                callback = { () => {} }
+            />): '' }
+            
+
             <span>{ WEEK[ dayNum ].SHORT_NAME }</span>
             <div 
                 className = 'addPoint'
             >
 
-                <input 
+                {/* <input 
                     className = 'addInput'
                     type =      'time'
                     value =     { timeValue }
                     onChange =  { changeTime }
-                />
+                /> */}
                 <span 
                     className = 'icon-plus addBtn'
                     onClick = { addClick }
@@ -97,7 +113,7 @@ export function DayHeader( props ){
         <DayHeaderComponent
             { ...props }
             weekKeyPointList = { layout.weekKeyPointList }
-            setWeekKeyPointList = { ( arr ) => { dispatch( setWeekKeyPointList( arr ) ) } }
+            setWeekKeyPointListAsChanged = { ( arr ) => { dispatch( setWeekKeyPointListAsChanged( arr ) ) } }
 
         />
     );

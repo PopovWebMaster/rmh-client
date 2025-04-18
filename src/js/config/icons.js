@@ -13,3 +13,4 @@
 // fa-cube
 // fa-cubes
 // fa-navicon
+// icon-floppy

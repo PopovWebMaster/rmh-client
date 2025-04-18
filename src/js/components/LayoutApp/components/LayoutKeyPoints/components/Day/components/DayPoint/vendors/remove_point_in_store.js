@@ -1,5 +1,5 @@
 import store from './../../../../../../../../../redux/store.js';
-import { setWeekKeyPointList } from './../../../../../../../../../redux/layoutSlice.js';
+import { setWeekKeyPointListAsChanged } from './../../../../../../../../../redux/layoutSlice.js';
 
 export const remove_point_in_store = ( params ) => {
     let {
@@ -24,6 +24,6 @@ export const remove_point_in_store = ( params ) => {
 
     weekArr[ dayNum ] = newDayArr;
 
-    store.dispatch( setWeekKeyPointList( weekArr ) );
+    store.dispatch( setWeekKeyPointListAsChanged( weekArr ) );
 
 }

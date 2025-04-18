@@ -1,16 +1,14 @@
 
 
-import React, { useRef, useState, useEffect }   from "react";
+import React from "react";
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import './Week.scss';
 
 import { selectorData as companySlice } from './../../../../../../redux/companySlice.js';
 
 import { Day } from './../Day/Day.js';
-
-
 
 const WeekComponent = ( props ) => {
 
@@ -20,6 +18,7 @@ const WeekComponent = ( props ) => {
     
     return (
         <div className = 'LP_Week'>
+            
             <Day 
                 dayName =   { 'Пн' }
                 dayNum =    { 0 }
@@ -54,8 +53,6 @@ const WeekComponent = ( props ) => {
                 dayName =   { 'Вс' }
                 dayNum =    { 6 }
             />
-            
-
             
         </div>
     )

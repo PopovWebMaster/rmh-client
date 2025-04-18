@@ -11,6 +11,8 @@ export const layoutSlice = createSlice({
             [], [], [], [], [], [], [] // time,description, ms
         ],
 
+        pointListIsChanged: false,
+
 
 
     },
@@ -21,6 +23,19 @@ export const layoutSlice = createSlice({
             state.weekKeyPointList =  action.payload;
         },
 
+        setWeekKeyPointListAsChanged: ( state, action ) => {
+            state.weekKeyPointList =  action.payload;
+            state.pointListIsChanged =  true;
+        },
+
+        setPointListIsChanged: ( state, action ) => {
+            state.pointListIsChanged =  action.payload;
+        },
+
+
+
+    
+
 
 
         
@@ -30,6 +45,8 @@ export const layoutSlice = createSlice({
 
 export const {  
     setWeekKeyPointList,
+    setPointListIsChanged,
+    setWeekKeyPointListAsChanged,
 
    
 
@@ -37,7 +54,8 @@ export const {
 
 export const selectorData = ( state ) => {
     return {
-        weekKeyPointList: state.layout.weekKeyPointList,
+        weekKeyPointList:   state.layout.weekKeyPointList,
+        pointListIsChanged: state.layout.pointListIsChanged,
 
     };
 };

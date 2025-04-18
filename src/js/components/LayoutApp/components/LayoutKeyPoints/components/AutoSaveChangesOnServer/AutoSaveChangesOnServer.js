@@ -9,9 +9,6 @@ import { selectorData as layoutSlice } from './../../../../../../redux/layoutSli
 import { selectorData as navigationSlice } from './../../../../../../redux/navigationSlice.js';
 import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
 
-
-
-
 import { get_point_list_for_server } from './../../../../vendors/get_point_list_for_server.js';
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 
