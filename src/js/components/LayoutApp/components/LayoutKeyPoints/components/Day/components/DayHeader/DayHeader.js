@@ -23,19 +23,22 @@ const DayHeaderComponent = ( props ) => {
 
     } = props;
 
-    let [ isOpen, setIsOpen ] = useState( true );
+    let [ isOpen, setIsOpen ] = useState( false );
 
     
 
-    let [ timeValue, setTimeValue ] = useState( '00:00' );
+    // let [ timeValue, setTimeValue ] = useState( '00:00' );
 
     const addClick = () => {
+
+        // console.dir( time );
         setIsOpen( !isOpen );
-        /*
-        let item = {
-            time: timeValue,
+
+
+        /*let item = {
+            time: time,
             description: '',
-            ms: convert_time_hh_mm_to_ms( timeValue ),
+            ms: convert_time_hh_mm_to_ms( time ),
         };
 
         let week_arr = [ ...weekKeyPointList ];
@@ -43,7 +46,7 @@ const DayHeaderComponent = ( props ) => {
 
         let chack_uniq = true;
         for( let i = 0; i < day_arr.length; i++ ){
-            if( day_arr[ i ].time === timeValue ){
+            if( day_arr[ i ].time === time ){
                 chack_uniq = false;
                 break;
             };
@@ -54,31 +57,58 @@ const DayHeaderComponent = ( props ) => {
             week_arr[ dayNum ] = day_arr;
             setWeekKeyPointListAsChanged( week_arr );
         };
-
         */
-        
-
-
-
-
     }
 
-    const changeTime = ( e ) => {
-        setTimeValue( e.target.value );
-    }
+
+    const add_pont = ( time ) => {
+        let item = {
+            time: time,
+            description: '',
+            ms: convert_time_hh_mm_to_ms( time ),
+        };
+
+        let week_arr = [ ...weekKeyPointList ];
+        let day_arr = [ ...week_arr[ dayNum ] ]
+
+        let chack_uniq = true;
+        for( let i = 0; i < day_arr.length; i++ ){
+            if( day_arr[ i ].time === time ){
+                chack_uniq = false;
+                break;
+            };
+        };
+
+        if( chack_uniq ){
+            day_arr.push( item );
+            week_arr[ dayNum ] = day_arr;
+            setWeekKeyPointListAsChanged( week_arr );
+        };
+    };
+
+    // const changeTime = ( e ) => {
+    //     setTimeValue( e.target.value );
+    // }
 
 
     
-    return (
-        <h2 className = 'LP_DayHeader'>
+    return (<>
 
-            { dayNum === 6? (<InputTypeTimeAsWindow 
-                isOpen = { isOpen }
-                setIsOpen = { setIsOpen }
-                value = { '' }
-                callback = { () => {} }
-            />): '' }
-            
+        {/* { dayNum === 6? (<InputTypeTimeAsWindow 
+            isOpen = { isOpen }
+            setIsOpen = { setIsOpen }
+            value = { '' }
+            callback = { () => {} }
+        />): '' } */}
+
+        <InputTypeTimeAsWindow 
+            isOpen =    { isOpen }
+            setIsOpen = { setIsOpen }
+            // value =     { dayNum }
+            callback =  { add_pont }
+        />
+
+        <h2 className = 'LP_DayHeader'>
 
             <span>{ WEEK[ dayNum ].SHORT_NAME }</span>
             <div 
@@ -100,7 +130,7 @@ const DayHeaderComponent = ( props ) => {
 
             
         </h2>
-    )
+        </>)
 
 };
 

@@ -6,4 +6,31 @@
     width: 0;
     height: 0;
     z-index: 2000;
+    // 
+
+
+    .inputTypeTimeAsWindow_wrap{
+        font-size: 1em;
+        padding: 1em;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        .addBtn{
+            font-size: 0.7em;
+            padding: 0.3em 1.2em;
+            background-color: #6f8e9f;
+            color: #ffffff;
+            border-radius: 0.1em;
+            cursor: pointer;
+            user-select: none;
+            margin-left: 2em;
+        }
+
+        .addBtn:hover{
+            background-color: #577a8d;
+        }
+    }
 }

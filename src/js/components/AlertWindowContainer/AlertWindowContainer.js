@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import { useSelector, useDispatch } from 'react-redux';
 // import { selectorData as companySlice } from './../../redux/companySlice.js';
 
@@ -13,19 +13,35 @@ const AlertWindowContainerComponent = ( props ) => {
         isOpen,
         setIsOpen,
         title = '',
+        width = '25vw',
+        height = '20vw',
 
         children,
 
     } = props;
+
+    let [ opacity, setOpacity ] = useState( 0 );
+    useEffect( () => {
+        let timerId = setTimeout(() => {
+            setOpacity( 1 );
+            clearTimeout( timerId );
+        }, 500 );
+        
+    }, [] );
     
     return (
         <div 
             className = { `AlertWindowContainer ${isOpen? 'isOpen': 'isClose'}` }
-            // className = { `AlertWindowContainer isOpen ` }
-
+            style = { { opacity } }
         >
 
-            <div className = { `AWC_window ${isOpen? 'isOpen': 'isClose'}` }>
+            <div 
+                className = { `AWC_window ${isOpen? 'isOpen': 'isClose'}` }
+                style = {{
+                    width,
+                    height,
+                }}
+            >
                 <div className = 'AWC_window_header'>
                     <div className = 'AWC_window_header_title'>
                         <h2>{ title }</h2>
@@ -38,8 +54,10 @@ const AlertWindowContainerComponent = ( props ) => {
                     </div>
                 </div>
 
-                { children }
-            
+                <div className = 'AWC_window_body'>
+                    { children } 
+                </div>
+
             </div>
 
         </div>
