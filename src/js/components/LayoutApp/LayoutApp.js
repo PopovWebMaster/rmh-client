@@ -16,6 +16,7 @@ import { ROUTE } from './../../config/routes.js';
 import { LayoutMain } from './components/LayoutMain/LayoutMain.js';
 import { LayoutKeyPoints } from './components/LayoutKeyPoints/LayoutKeyPoints.js';
 import { LayoutMenu } from './components/LayoutMenu/LayoutMenu.js';
+import { LayoutCategories } from './components/LayoutCategories/LayoutCategories.js';
 
 const LayoutAppComponent = ( props ) => {
 
@@ -28,7 +29,9 @@ const LayoutAppComponent = ( props ) => {
     useEffect( () => {
         if( IS_DEVELOPMENT ){
             // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
-            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
+            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
+            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` );
+
 
         }else{
             navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
@@ -48,9 +51,11 @@ const LayoutAppComponent = ( props ) => {
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` } element = { <LayoutKeyPoints /> } />
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` } element = { <div>EVENTS</div> } />
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.BLOCKS }` } element = { <div>BLOCKS</div> } />
+                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` } element = { <LayoutCategories /> } />
 
 
 
+                    
 
                 </Routes>
         </PageContainer>

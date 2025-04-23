@@ -1,0 +1,17 @@
+.layoutCategories{
+    .LC_CategoriesControlPanel{
+        .LC_AddCategoryButton.LC_Categories_btn_item.isActive{
+            background-color: #34343400;
+            border: 1px solid #b7b7b7;
+        }
+
+        .LC_AddCategoryButton.LC_Categories_btn_item.isActive:hover{
+            background-color: #34343442;
+            border: 1px solid #87878761;
+        }
+
+
+        
+    }
+}
+

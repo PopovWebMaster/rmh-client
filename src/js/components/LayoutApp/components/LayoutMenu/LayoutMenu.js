@@ -65,6 +65,17 @@ const LayoutMenuComponent = ( props ) => {
 
             </NavLink>
 
+            <NavLink
+                to = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` }
+                className={ ({ isActive }) => isActive ? "active" : "" }
+            >
+                <MenuItem 
+                    icon = { 'fa-list-ul' }
+                    title = { 'Категории' }
+                />
+
+            </NavLink>
+
         </div>
     )
 

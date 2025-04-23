@@ -1,0 +1,74 @@
+.layoutCategories{
+    font-size: 1em;
+
+    margin: 0.5em 1em;
+    border-radius: 0.1em;
+    background-color: #ffffff57;
+    min-height: 88vh;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+
+
+    .LC_CategoriesControlPanel{
+        font-size: 1em;
+        width: 100%;
+        height: 3em;
+        background-color: #ffffff00;
+        flex-grow: 0;
+    
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        align-content: center;
+    
+    
+        .LC_Categories_btn_item{
+            opacity: 0.2;
+            font-size: 0.8em;
+            padding: 0.4em 1em;
+            border-radius: 0.1em;
+            background-color: #a3a3a3bd;
+            color: #ffffff;
+    
+            cursor: pointer; 
+            user-select: none;
+    
+            margin-right: 1em;
+    
+            .LC_Categories_btn_icon{
+                margin-right: 0.2em;
+                
+            }
+    
+        }
+    
+        .LC_Categories_btn_item.isActive{
+            opacity: 1;
+            background-color: #eb7e7e;
+            cursor: pointer; 
+            user-select: none;
+        }
+    
+        .LC_Categories_btn_item.isActive:hover{
+            background-color: #ff0000;
+        }
+        .LC_Categories_btn_item.isActive:active{
+            span{
+                color: #cbcbcb;
+            }
+        }
+    
+    
+    
+    
+    }
+
+
+
+}

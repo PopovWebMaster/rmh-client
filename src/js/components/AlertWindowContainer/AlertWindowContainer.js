@@ -14,7 +14,7 @@ const AlertWindowContainerComponent = ( props ) => {
         setIsOpen,
         title = '',
         width = '25vw',
-        height = '20vw',
+        height = '20vh',
 
         children,
 

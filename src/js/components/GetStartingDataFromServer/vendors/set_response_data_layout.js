@@ -2,7 +2,7 @@
 import store from './../../../redux/store.js';
 
 import { setUserData } from './../../../redux/userInfoSlice.js';
-import { setWeekKeyPointList } from './../../../redux/layoutSlice.js';
+import { setWeekKeyPointList, setCategoryList } from './../../../redux/layoutSlice.js';
 // import { setPlayReportList, setMinYear, setMonth } from './../../../redux/playReportSlice.js';
 
 
@@ -11,6 +11,8 @@ export const set_response_data_layout = ( response ) => {
     let {
         userData,
         keyPountList,
+        categoryList,
+
     } = response;
 
     let weekKeyPointList = [
@@ -34,6 +36,8 @@ export const set_response_data_layout = ( response ) => {
     };
 
     store.dispatch( setUserData( userData ) );
+    store.dispatch( setCategoryList( categoryList ) );
+
     store.dispatch( setWeekKeyPointList( weekKeyPointList ) );
 
 };

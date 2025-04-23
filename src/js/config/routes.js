@@ -19,6 +19,8 @@ export const ROUTE = {
         DAY_EDITOR: 'day-editor',
         EVENTS: 'events',
         BLOCKS: 'blocks',
+        CATEGORIES: 'categories',
+
     },
 
 

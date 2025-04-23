@@ -10,9 +10,10 @@ export const layoutSlice = createSlice({
         weekKeyPointList: [
             [], [], [], [], [], [], [] // time,description, ms
         ],
-
         pointListIsChanged: false,
 
+        categoryList: [],
+        categoryesIsChanged: false,
 
 
     },
@@ -33,9 +34,19 @@ export const layoutSlice = createSlice({
         },
 
 
-
+        setCategoryesIsChanged: ( state, action ) => {
+            state.categoryesIsChanged =  action.payload;
+        },
     
+        setCategoryList: ( state, action ) => {
+            state.categoryList =  action.payload;
+        },
 
+        setCategoryListAsChanged: ( state, action ) => {
+            state.categoryList =  action.payload;
+            state.categoryesIsChanged =  true;
+        },
+        
 
 
         
@@ -48,6 +59,10 @@ export const {
     setPointListIsChanged,
     setWeekKeyPointListAsChanged,
 
+    setCategoryesIsChanged,
+    setCategoryList,
+    setCategoryListAsChanged,
+
    
 
 } = layoutSlice.actions;
@@ -56,6 +71,11 @@ export const selectorData = ( state ) => {
     return {
         weekKeyPointList:   state.layout.weekKeyPointList,
         pointListIsChanged: state.layout.pointListIsChanged,
+
+        categoryList: state.layout.categoryList,
+        categoryesIsChanged: state.layout.categoryesIsChanged,
+
+
 
     };
 };
