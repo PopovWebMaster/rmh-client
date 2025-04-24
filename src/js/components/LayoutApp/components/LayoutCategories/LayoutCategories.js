@@ -11,7 +11,9 @@ import './LayoutCategories.scss';
 
 // import { KeyPointsControlPanel } from './components/KeyPointsControlPanel/KeyPointsControlPanel.js';
 import { SaveCChangesButton } from './components/SaveCChangesButton/SaveCChangesButton.js';
-import { AddCategoryButton } from './components/AddCategoryButton/AddCategoryButton.js'
+import { AddCategoryButton } from './components/AddCategoryButton/AddCategoryButton.js';
+import { ScrollContainer } from './../../../ScrollContainer/ScrollContainer.js';
+import { CategoryList } from './components/CategoryList/CategoryList.js';
 
 const LayoutCategoriesComponent = ( props ) => {
 
@@ -25,8 +27,19 @@ const LayoutCategoriesComponent = ( props ) => {
                 <SaveCChangesButton />
             </div>
 
+            <div className = 'LC_scroll_container'>
+
+                <ScrollContainer >
 
 
+                    <CategoryList />
+
+
+                </ScrollContainer>
+
+
+
+            </div>
         </div>
     )
 

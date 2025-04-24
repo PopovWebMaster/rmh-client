@@ -17,6 +17,7 @@ import { LayoutMain } from './components/LayoutMain/LayoutMain.js';
 import { LayoutKeyPoints } from './components/LayoutKeyPoints/LayoutKeyPoints.js';
 import { LayoutMenu } from './components/LayoutMenu/LayoutMenu.js';
 import { LayoutCategories } from './components/LayoutCategories/LayoutCategories.js';
+import { LayoutEvents } from './components/LayoutEvents/LayoutEvents.js';
 
 const LayoutAppComponent = ( props ) => {
 
@@ -30,7 +31,9 @@ const LayoutAppComponent = ( props ) => {
         if( IS_DEVELOPMENT ){
             // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
             // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
-            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` );
+            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` );
+            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` );
+
 
 
         }else{
@@ -49,8 +52,8 @@ const LayoutAppComponent = ( props ) => {
                 <Routes>
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/` } element = { <LayoutMain /> } />
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` } element = { <LayoutKeyPoints /> } />
-                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` } element = { <div>EVENTS</div> } />
-                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.BLOCKS }` } element = { <div>BLOCKS</div> } />
+                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` } element = { <LayoutEvents /> } />
+                    {/* <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.BLOCKS }` } element = { <div>BLOCKS</div> } /> */}
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` } element = { <LayoutCategories /> } />
 
 

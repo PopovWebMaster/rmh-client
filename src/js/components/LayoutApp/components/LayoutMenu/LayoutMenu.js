@@ -54,7 +54,7 @@ const LayoutMenuComponent = ( props ) => {
 
             </NavLink>
 
-            <NavLink
+            {/* <NavLink
                 to = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.BLOCKS }` }
                 className={ ({ isActive }) => isActive ? "active" : "" }
             >
@@ -63,7 +63,7 @@ const LayoutMenuComponent = ( props ) => {
                     title = { 'Блоки' }
                 />
 
-            </NavLink>
+            </NavLink> */}
 
             <NavLink
                 to = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` }

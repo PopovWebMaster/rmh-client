@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import './SaveCChangesButton.scss';
 
 
-import { selectorData as layoutSlice, setCategoryesIsChanged, setWeekKeyPointList } from './../../../../../../redux/layoutSlice.js';
+import { selectorData as layoutSlice, setCategoryesIsChanged, setCategoryList } from './../../../../../../redux/layoutSlice.js';
 import { selectorData as navigationSlice } from './../../../../../../redux/navigationSlice.js';
 import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
 
@@ -29,7 +29,7 @@ const SaveCChangesButtonComponent = ( props ) => {
 
 
 
-
+        setCategoryList,
         setCategoryesIsChanged,
         setSpinnerIsActive,
         // setWeekKeyPointList,
@@ -48,14 +48,15 @@ const SaveCChangesButtonComponent = ( props ) => {
                 data: { 
                     list: categoryList,
                 },
-                callback: ( resp ) => {
-                    console.dir( 'resp' );
-                    console.dir( resp );
-    
-                    setSpinnerIsActive( false );
-                    setCategoryesIsChanged( false );
-    
-    
+                callback: ( response ) => {
+                    console.dir( 'response' );
+                    console.dir( response );
+                    if( response.ok ){
+                        setSpinnerIsActive( false );
+                        setCategoryesIsChanged( false );
+                        setCategoryList( response.list )
+                    };
+
                 },
             });
             
@@ -93,7 +94,7 @@ export function SaveCChangesButton( props ){
             categoryList = { layout.categoryList }
 
             setCategoryesIsChanged = { ( val ) => { dispatch( setCategoryesIsChanged( val ) ) } }
-            setWeekKeyPointList = { ( val ) => { dispatch( setWeekKeyPointList( val ) ) } }
+            setCategoryList = { ( val ) => { dispatch( setCategoryList( val ) ) } }
             setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
 
         />

@@ -16,9 +16,15 @@ export const layoutSlice = createSlice({
         categoryesIsChanged: false,
 
 
+        eventList: [],
+        eventsIsChanged: false,
+
+
     },
 
     reducers: {
+
+
 
         setWeekKeyPointList: ( state, action ) => {
             state.weekKeyPointList =  action.payload;
@@ -34,6 +40,9 @@ export const layoutSlice = createSlice({
         },
 
 
+
+
+
         setCategoryesIsChanged: ( state, action ) => {
             state.categoryesIsChanged =  action.payload;
         },
@@ -46,9 +55,24 @@ export const layoutSlice = createSlice({
             state.categoryList =  action.payload;
             state.categoryesIsChanged =  true;
         },
+
+
+
+
+
+        setEventsIsChanged: ( state, action ) => {
+            state.eventsIsChanged =  action.payload;
+        },
+    
+        setEventList: ( state, action ) => {
+            state.eventList =  action.payload;
+        },
+
+        setEventListAsChanged: ( state, action ) => {
+            state.eventList =  action.payload;
+            state.eventsIsChanged =  true;
+        },
         
-
-
         
     },
 
@@ -63,6 +87,11 @@ export const {
     setCategoryList,
     setCategoryListAsChanged,
 
+
+    setEventsIsChanged,
+    setEventList,
+    setEventListAsChanged,
+
    
 
 } = layoutSlice.actions;
@@ -75,6 +104,8 @@ export const selectorData = ( state ) => {
         categoryList: state.layout.categoryList,
         categoryesIsChanged: state.layout.categoryesIsChanged,
 
+        eventList: state.layout.eventList,
+        eventsIsChanged: state.layout.eventsIsChanged,
 
 
     };

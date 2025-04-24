@@ -1,9 +1,12 @@
+// AddEventComponent
+
+
 
 import React, { useRef, useState, useEffect }   from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import './AddCategoryComponent.scss';
+import './AddEventComponent.scss';
 
 import { selectorData as layoutSlice, setCategoryList } from './../../../../../../redux/layoutSlice.js';
 import { selectorData as navigationSlice }              from './../../../../../../redux/navigationSlice.js';
@@ -13,7 +16,7 @@ import { setSpinnerIsActive }                           from './../../../../../.
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 
 
-const AddCategoryComponentComponent = ( props ) => {
+const AddEventComponentComponent = ( props ) => {
 
     let {
         isOpen,
@@ -26,16 +29,16 @@ const AddCategoryComponentComponent = ( props ) => {
     } = props;
 
     let [ name, setName ] = useState( '' );
-    let [ prefix, setPrefix ] = useState( '' );
-    let [ colorText, setColorText ] = useState( '#000000' );
-    let [ colorBG, setColorBG ] = useState( '#ffffff' );
+    let [ notes, setNotes ] = useState( '' );
+    let [ eventType, setEventType ] = useState( 'file' ); // block
+
 
     useEffect( () => {
         if( isOpen === false ){
             setName( '' );
-            setPrefix( '' );
-            setColorText( '#000000' );
-            setColorBG( '#ffffff' );
+            setNotes( '' );
+            setEventType( 'file' );
+
 
         };
     }, [ isOpen ]);
@@ -48,54 +51,45 @@ const AddCategoryComponentComponent = ( props ) => {
 
     }
 
-    const changePrefix = ( e ) => {
+    const changeNotes = ( e ) => {
         let val = e.target.value;
-        setPrefix( val );
-    }
-
-    const changeColorText = ( e ) => {
-        let val = e.target.value;
-        setColorText( val );
+        setNotes( val );
 
     }
 
-    const changeColorGB = ( e ) => {
-        let val = e.target.value;
-        setColorBG( val );
 
-    }
 
 
     const create = () => {
-        if( name !== '' && prefix !== '' ){
+        // if( name !== '' && prefix !== '' ){
 
-            setSpinnerIsActive( true );
+        //     setSpinnerIsActive( true );
 
-            send_request_to_server({
-                route: `${currentPage}/add-new-category`,
-                data: { 
-                    categoryName:       name,
-                    categoryPrefix:     prefix,
-                    categoryColorText:  colorText,
-                    categoryColorBG:    colorBG,
-                },
+        //     send_request_to_server({
+        //         route: `${currentPage}/add-new-category`,
+        //         data: { 
+        //             categoryName:       name,
+        //             categoryPrefix:     prefix,
+        //             categoryColorText:  colorText,
+        //             categoryColorBG:    colorBG,
+        //         },
 
-                callback: ( response ) => {
-                    console.dir( 'response' );
-                    console.dir( response );
+        //         callback: ( response ) => {
+        //             console.dir( 'response' );
+        //             console.dir( response );
 
-                    if( response.ok ){
-                        setSpinnerIsActive( false );
-                        setCategoryList( response.list );
-                        setIsOpen( false );
-                    };
+        //             if( response.ok ){
+        //                 setSpinnerIsActive( false );
+        //                 setCategoryList( response.list );
+        //                 setIsOpen( false );
+        //             };
 
-                },
-            });
+        //         },
+        //     });
 
 
 
-        };
+        // };
     }
     
 
@@ -103,19 +97,52 @@ const AddCategoryComponentComponent = ( props ) => {
 
     return (
 
-        <div className = 'LC_addCategoryComponent' >
+        <div className = 'LE_AddEventComponent' >
 
-            <div className = 'LCACC_item'>
+
+
+            <div className = 'LEAEC_item'>
                 <h3>Название:</h3>
                 <input 
                     type =      'text'
-                    className = 'LCACC_input_text'
+                    className = 'LEAEC_input_text'
                     maxLength = '255'
                     value =     { name }
                     onChange =  { changeName }
                 />
             </div>
 
+            <div className = 'LEAEC_item'>
+                <h3>Тип:</h3>
+                <div className = 'LEAEC_item_type'>
+
+                    <span 
+                        className = { eventType === 'file'? 'isActive': 'noActive' }
+                        onClick = { () => { setEventType( 'file' ) } }
+                    >Файл</span>
+
+                    <span 
+                        className = { eventType === 'block'? 'isActive': 'noActive' }
+                        onClick = { () => { setEventType( 'block' ) } }
+                    >Блок</span>
+
+
+                </div>
+                
+            </div>
+
+
+            <div className = 'LEAEC_item'>
+                <h3>Дополнительная информация:</h3>
+                <input 
+                    type =      'text'
+                    className = 'LEAEC_input_text'
+                    maxLength = '255'
+                    value =     { notes }
+                    onChange =  { changeNotes }
+                />
+            </div>
+{/* 
             <div className = 'LCACC_item'>
                 <h3>Префикс:</h3>
                 <input 
@@ -175,7 +202,7 @@ const AddCategoryComponentComponent = ( props ) => {
                 </div>
 
 
-            </div>
+            </div> */}
 
             
             
@@ -186,22 +213,22 @@ const AddCategoryComponentComponent = ( props ) => {
 
 };
 
-export function AddCategoryComponent( props ){
+export function AddEventComponent( props ){
 
     const layout = useSelector( layoutSlice );
     const navigation = useSelector( navigationSlice );
     const dispatch = useDispatch();
 
     return (
-        <AddCategoryComponentComponent
+        <AddEventComponentComponent
             { ...props }
-            categoryesIsChanged = { layout.categoryesIsChanged }
+            // categoryesIsChanged = { layout.categoryesIsChanged }
 
-            currentPage = { navigation.currentPage }
-            // categoryList = { layout.categoryList }
+            // currentPage = { navigation.currentPage }
+            // // categoryList = { layout.categoryList }
 
-            setCategoryList = { ( val ) => { dispatch( setCategoryList( val ) ) } }
-            setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
+            // setCategoryList = { ( val ) => { dispatch( setCategoryList( val ) ) } }
+            // setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
 
 
         />
