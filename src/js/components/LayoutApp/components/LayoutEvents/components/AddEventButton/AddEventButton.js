@@ -33,7 +33,7 @@ const AddEventButtonComponent = ( props ) => {
             isOpen =    { isOpen }
             setIsOpen = { setIsOpen }
             width =     '27em'
-            height =    '24em'
+            height =    '34em'
             title = 'Новое событие'
         >
             <AddEventComponent 

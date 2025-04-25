@@ -6,9 +6,11 @@ import { useDispatch } from 'react-redux';
 import './EventList.scss';
 
 import { selectorData as layoutSlice } from './../../../../../../redux/layoutSlice.js';
-// import { OneCategory } from './../OneCategory/OneCategory.js';
-import { OneEvent } from './../OneEvent/OneEvent.js';
 
+import { OneEventTypeFile } from './../OneEventTypeFile/OneEventTypeFile.js';
+import { OneEventTypeBlock } from './../OneEventTypeBlock/OneEventTypeBlock.js';
+
+import { EVENT_TYPE } from './../../../../../../config/events.js';
 
 const EventListComponent = ( props ) => {
 
@@ -21,34 +23,42 @@ const EventListComponent = ( props ) => {
 
         let div = arr.map( ( item, index ) => {
             let {
-                // id,
-                // name,
-                // prefix,
-                // colorText,
-                // colorBG,
+                id,
+                name,
+                category_id,
+                notes,
+                type,
             } = item;
-            return (
-                <OneEvent 
-                    // id =        { id }
-                    // name =      { name }
-                    // prefix =    { prefix }
-                    // colorText = { colorText }
-                    // colorBG =   { colorBG }
-                    key =       { index }
-                />
-            );
+
+            if( type === EVENT_TYPE.FILE  ){
+                return (
+                    <OneEventTypeFile 
+                        id =            { id }
+                        name =          { name }
+                        category_id =   { category_id }
+                        notes =         { notes }
+                        key =           { index }
+                    />
+                );
+            }else{
+                return (
+                    <OneEventTypeBlock 
+                        id =            { id }
+                        name =          { name }
+                        category_id =   { category_id }
+                        notes =         { notes }
+                        key =           { index }
+                    />
+                );
+            };
+
+
 
         } );
 
         return div;
-        
-
-
-        
 
     };
-
-
 
     return (
 

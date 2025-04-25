@@ -1,6 +1,8 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+import { get_all_colors_from_category_list } from './vendors/get_all_colors_from_category_list.js';
+
 export const layoutSlice = createSlice({
 
     name: 'layout',
@@ -14,6 +16,8 @@ export const layoutSlice = createSlice({
 
         categoryList: [],
         categoryesIsChanged: false,
+
+        allUsedColors: [],
 
 
         eventList: [],
@@ -49,11 +53,13 @@ export const layoutSlice = createSlice({
     
         setCategoryList: ( state, action ) => {
             state.categoryList =  action.payload;
+            state.allUsedColors = get_all_colors_from_category_list( action.payload );
         },
 
         setCategoryListAsChanged: ( state, action ) => {
             state.categoryList =  action.payload;
             state.categoryesIsChanged =  true;
+            state.allUsedColors = get_all_colors_from_category_list( action.payload );
         },
 
 
@@ -106,6 +112,7 @@ export const selectorData = ( state ) => {
 
         eventList: state.layout.eventList,
         eventsIsChanged: state.layout.eventsIsChanged,
+        allUsedColors: state.layout.allUsedColors,
 
 
     };

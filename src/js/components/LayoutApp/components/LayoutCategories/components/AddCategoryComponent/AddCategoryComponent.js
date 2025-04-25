@@ -8,6 +8,7 @@ import './AddCategoryComponent.scss';
 import { selectorData as layoutSlice, setCategoryList } from './../../../../../../redux/layoutSlice.js';
 import { selectorData as navigationSlice }              from './../../../../../../redux/navigationSlice.js';
 import { setSpinnerIsActive }                           from './../../../../../../redux/spinnerSlice.js';
+import { AllColorsList } from './../AllColorsList/AllColorsList.js';
 
 // import { get_point_list_for_server } from './../../../../vendors/get_point_list_for_server.js';
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
@@ -67,7 +68,7 @@ const AddCategoryComponentComponent = ( props ) => {
 
 
     const create = () => {
-        if( name !== '' && prefix !== '' ){
+        if( name.trim() !== '' && prefix.trim() !== '' ){
 
             setSpinnerIsActive( true );
 
@@ -135,8 +136,12 @@ const AddCategoryComponentComponent = ( props ) => {
                         value =     { colorText }
                         onChange =  { changeColorText }
                     />
+                    <div className = 'allColors'>
+                        <AllColorsList 
+                            setValue = { ( val ) => { setColorText( val ) } }
+                        />
+                    </div>
                 </h3>
-                
 
                 <h3>
                     <span>Цвет фона: </span>
@@ -145,6 +150,11 @@ const AddCategoryComponentComponent = ( props ) => {
                         value =     { colorBG }
                         onChange =  { changeColorGB }
                     />
+                    <div className = 'allColors'>
+                        <AllColorsList 
+                        setValue = { ( val ) => { setColorBG( val ) } }
+                        />
+                    </div>
                 </h3>
                 
             </div>
@@ -168,7 +178,7 @@ const AddCategoryComponentComponent = ( props ) => {
                 <div className = 'LCACC_create'>
 
                     <span 
-                        className = { name !== '' && prefix !== ''? 'icon-plus LCACC_create_isActive': 'icon-plus ' }
+                        className = { name.trim()  !== '' && prefix.trim() !== ''? 'icon-plus LCACC_create_isActive': 'icon-plus ' }
                         onClick = { create }
                     ><span>Добавить</span></span>
 

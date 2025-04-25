@@ -13,12 +13,36 @@
             padding: 0.2em 0.4em;
             color: #636363;
 
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+            align-content: stretch;
+
             span{
                 display: inline-block;
                 width: 8em;
                 text-align: right;
-                padding: 0 0.3em;
+                padding: 0 0.6em 0 0;
+                flex-grow: 0;
+                line-height: 1.9em;
+            
             }
+
+            input{
+                flex-grow: 0;
+
+            }
+
+            .allColors{
+                flex-grow: 1;
+                max-width: 100%;
+                // background-color: red;
+                margin-left: 0.5em;
+
+            }
+
+
+
         }
 
         // label{
