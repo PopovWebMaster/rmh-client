@@ -15,32 +15,40 @@ import { AddCategoryButton } from './components/AddCategoryButton/AddCategoryBut
 import { ScrollContainer } from './../../../ScrollContainer/ScrollContainer.js';
 import { CategoryList } from './components/CategoryList/CategoryList.js';
 
+import { LayoutPageContainer } from './../LayoutPageContainer/LayoutPageContainer.js';
+
 const LayoutCategoriesComponent = ( props ) => {
 
     let {
     } = props;
     
     return (
-        <div className = 'layoutCategories'>
-            <div className = 'LC_CategoriesControlPanel'>
-                <AddCategoryButton />
-                <SaveCChangesButton />
-            </div>
+        // <div className = 'layoutCategories'>
+        //     <div className = 'LC_CategoriesControlPanel'>
+        //         <AddCategoryButton />
+        //         <SaveCChangesButton />
+        //     </div>
 
-            <div className = 'LC_scroll_container'>
+        //     <div className = 'LC_scroll_container'>
 
-                <ScrollContainer >
-
-
-                    <CategoryList />
+        //         <ScrollContainer >
 
 
-                </ScrollContainer>
+        //             <CategoryList />
+
+
+        //         </ScrollContainer>
 
 
 
-            </div>
-        </div>
+        //     </div>
+        // </div>
+
+        <LayoutPageContainer 
+            className =             'layoutCategories'
+            controlPanelContainer = { <> <AddCategoryButton /><SaveCChangesButton /> </> }
+            bodyContainer =         { <CategoryList /> }
+        />
     )
 
 };

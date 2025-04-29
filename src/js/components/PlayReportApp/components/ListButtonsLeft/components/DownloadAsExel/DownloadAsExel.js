@@ -57,7 +57,7 @@ const DownloadAsExelComponent = ( props ) => {
                 date,
             } = filteredList[ i ];
 
-            if( type = 'movie' ){
+            if( type === 'movie' ){
                 body.push([
                     date.YYYY_MM_DD,
                     trim_ms( startTime.time ),
@@ -68,6 +68,19 @@ const DownloadAsExelComponent = ( props ) => {
                     Math.round( segmentRealDuration.ms/1000 ),
                     trim_ms( markIn.time ),
                 ] );
+
+            }else if( type === 'empty' ){
+                body.push([
+                    date.YYYY_MM_DD,
+                    trim_ms( startTime.time ),
+                    'Ошибка! Прерывание эфира по неизвестной причине',
+                    trim_ms( filteredList[ i ].duration.time ),
+                    Math.round( filteredList[ i ].duration.ms/1000 ),
+                    trim_ms( filteredList[ i ].duration.time ),
+                    Math.round( filteredList[ i ].duration.ms/1000 ),
+                    trim_ms( '00:00:00.00' ),
+                ] );
+
             };
         };
 

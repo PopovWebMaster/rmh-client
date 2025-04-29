@@ -12,33 +12,15 @@ import { selectorData as companySlice } from './../../../../redux/companySlice.j
 import { PageContainer } from './../../../PageContainer/PageContainer.js';
 
 
-import { ROUTE } from './../../../../config/routes.js';
-
 const LayoutMainComponent = ( props ) => {
 
     let {
-        currentCompanyAlias,
     } = props;
     
     return (
-        <div className = ''>
+        <div className = 'layoutMain'>
 
-            {/* <NavLink
-                to = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/` }
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active" : ""
-                }
-            >
-                <span>Главная</span>
-            </NavLink>
-            <NavLink
-                to = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LOGOUT.KEY_POINTS }` }
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active" : ""
-                }
-            >
-                <span>не Главная</span>
-            </NavLink> */}
+
         </div>
     )
 

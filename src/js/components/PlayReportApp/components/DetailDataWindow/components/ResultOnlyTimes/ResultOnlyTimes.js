@@ -96,11 +96,13 @@ const ResultOnlyTimesComponent = ( props ) => {
                 onChange = { () => {} }
             />
 
+            <span className = 'countSec'>Всего секунд:</span>
             <input 
                 type = 'text'
                 value = { valSec }
                 onChange = { () => {} }
             />
+
 
 
         </div>

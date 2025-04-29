@@ -15,6 +15,8 @@ const ResultColsDateAndTimeComponent = ( props ) => {
     } = props;
 
     let [ val, setVal ] = useState( '' );
+    let [ val_2, setVal_2 ] = useState( '' );
+
 
     const trim_sec_ms = ( str ) => {
         let arr = str.split( '.' );
@@ -34,11 +36,23 @@ const ResultColsDateAndTimeComponent = ( props ) => {
         return result;
 
     }
+    const get_row_2 = ( date, startTime ) => {
+        let { YYYY_MM_DD } = date;
+        let { time } = startTime;
+
+        let date_str = YYYY_MM_DD.replaceAll( '-', '.' );
+        let time_trim = trim_sec_ms( time );
+        let result = date_str + '\t' + time_trim + '\n';
+        return result;
+
+    }
     
 
     useEffect( () => {
 
         let arr = [];
+        let arr_2 = [];
+
 
         let lastName = false;
 
@@ -55,9 +69,12 @@ const ResultColsDateAndTimeComponent = ( props ) => {
                 if( lastName === false ){
                     lastName = file.name;
                     arr.push( get_row( date, startTime ) );
+                    arr_2.push( get_row_2( date, startTime ) );
+
                 }else{
                     if( lastName === file.name ){
                         arr.push( get_row( date, startTime ) );
+                        arr_2.push( get_row_2( date, startTime ) );
                         lastName = file.name;
                     }else{
                         arr = [];
@@ -72,7 +89,13 @@ const ResultColsDateAndTimeComponent = ( props ) => {
             str = `${ str } ${arr[ i ]}`;
         };
 
+        let str_2 = '';
+        for( let i = 0; i < arr_2.length; i++ ){
+            str_2 = `${ str_2 } ${arr_2[ i ]}`;
+        };
+
         setVal( str );
+        setVal_2( str_2 )
 
     }, [ filteredList ] );
 
@@ -84,6 +107,13 @@ const ResultColsDateAndTimeComponent = ( props ) => {
             <textarea   
                 className = ''
                 value = { val }
+                rows = { 2 }
+                onChange = { () => {} }
+            />
+
+            <textarea   
+                className = ''
+                value = { val_2 }
                 rows = { 2 }
                 onChange = { () => {} }
             />

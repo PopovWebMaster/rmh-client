@@ -1,5 +1,12 @@
 
 
+/*
+
+    НЕ ИСПОЛЬЗОВАТЬ ЗДЕСЬ НИЧЕГО!!!!!!
+    всё брать из layout
+
+*/
+
 export const EVENT_TYPE = {
     BLOCK: 'block',
     FILE: 'file',

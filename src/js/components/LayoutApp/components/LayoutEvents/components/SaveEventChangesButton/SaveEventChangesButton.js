@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import './SaveEventChangesButton.scss';
 
 
-import { selectorData as layoutSlice, setCategoryesIsChanged, setCategoryList } from './../../../../../../redux/layoutSlice.js';
+import { selectorData as layoutSlice, setEventList, setEventsIsChanged } from './../../../../../../redux/layoutSlice.js';
 import { selectorData as navigationSlice } from './../../../../../../redux/navigationSlice.js';
 import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
 
@@ -16,10 +16,13 @@ import { send_request_to_server } from './../../../../../../helpers/send_request
 const SaveEventChangesButtonComponent = ( props ) => {
 
     let {
+
+        eventsIsChanged,
+        eventList,
         // pointListIsChanged,
 
         // categoryesIsChanged,
-        // currentPage,
+        currentPage,
         // categoryList,
 
 
@@ -27,42 +30,43 @@ const SaveEventChangesButtonComponent = ( props ) => {
 
         // setCategoryList,
         // setCategoryesIsChanged,
-        // setSpinnerIsActive,
+        setSpinnerIsActive,
         // setWeekKeyPointList,
+
+        setEventList,
+        setEventsIsChanged,
 
     } = props;
 
     const click = () => {
-        // if( categoryesIsChanged ){
+        if( eventsIsChanged ){
 
-            // setSpinnerIsActive( true );
-    
-            // // let list = get_point_list_for_server( weekKeyPointList );
-    
-            // send_request_to_server({
-            //     route: `${currentPage}/save-category-list`,
-            //     data: { 
-            //         list: categoryList,
-            //     },
-            //     callback: ( response ) => {
-            //         console.dir( 'response' );
-            //         console.dir( response );
-            //         if( response.ok ){
-            //             setSpinnerIsActive( false );
-            //             setCategoryesIsChanged( false );
-            //             setCategoryList( response.list )
-            //         };
+            setSpinnerIsActive( true );
 
-            //     },
-            // });
+            send_request_to_server({
+                route: `${currentPage}/save-event-list`,
+                data: { 
+                    list: eventList,
+                },
+                callback: ( response ) => {
+                    console.dir( 'response' );
+                    console.dir( response );
+                    if( response.ok ){
+                        setSpinnerIsActive( false );
+                        setEventList(response.list);
+                        setEventsIsChanged( false );
+                    };
+
+                },
+            });
             
-        // };
+        };
 
     }
     
     return (
         <div 
-            className = { `LE_SaveEventChangesButton ${ false? 'isActive': ''}` }
+            className = { `LE_SaveEventChangesButton ${ eventsIsChanged? 'isActive': ''}` }
             onClick = { click }
         >
             <span className = 'icon-floppy LE_btn_icon'></span>
@@ -81,14 +85,18 @@ export function SaveEventChangesButton( props ){
     return (
         <SaveEventChangesButtonComponent
             { ...props }
-            categoryesIsChanged = { layout.categoryesIsChanged }
+            eventsIsChanged = { layout.eventsIsChanged }
 
             currentPage = { navigation.currentPage }
-            categoryList = { layout.categoryList }
+            eventList = { layout.eventList }
 
-            setCategoryesIsChanged = { ( val ) => { dispatch( setCategoryesIsChanged( val ) ) } }
-            setCategoryList = { ( val ) => { dispatch( setCategoryList( val ) ) } }
-            setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
+            // setCategoryesIsChanged = { ( val ) => { dispatch( setCategoryesIsChanged( val ) ) } }
+            // setCategoryList = { ( val ) => { dispatch( setCategoryList( val ) ) } }
+            setSpinnerIsActive =    { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
+            setEventList =          { ( val ) => { dispatch( setEventList( val ) ) } }
+            setEventsIsChanged =    { ( val ) => { dispatch( setEventsIsChanged( val ) ) } }
+
+
 
         />
     );

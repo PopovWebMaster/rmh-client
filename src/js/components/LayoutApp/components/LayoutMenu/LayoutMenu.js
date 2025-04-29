@@ -26,8 +26,8 @@ const LayoutMenuComponent = ( props ) => {
                 end
             >
                 <MenuItem 
-                    icon = { 'fa-navicon' }
-                    title = { 'Главная' }
+                    icon = { 'icon-grid' }
+                    title = { 'Сетка' }
                 />
                 
             </NavLink>

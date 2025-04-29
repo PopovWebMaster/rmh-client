@@ -40,7 +40,7 @@ const DownloadAsTextComponent = ( props ) => {
 
     const click = () => {
 
-        let Date_ =              'Дата';
+        let Date_ =             'Дата';
         let Time =              'Время начала';
         let FileName =          'Имя файла';
         let FileDuration =      'Длительность файла';
@@ -71,7 +71,9 @@ const DownloadAsTextComponent = ( props ) => {
                 date,
             } = filteredList[ i ];
 
-            if( type = 'movie' ){
+            if( type === 'movie' ){
+
+                console.dir( filteredList[ i ] );
 
                 let row = get_row_str({
                     Date: date.YYYY_MM_DD,
@@ -85,6 +87,25 @@ const DownloadAsTextComponent = ( props ) => {
                 });
 
                 content = `${content}${row}`;
+
+            }else if( type === 'empty' ){
+
+                let row = get_row_str({
+                    Date: date.YYYY_MM_DD,
+                    Time: trim_ms( startTime.time ),
+                    // FileName: file.name,
+                    FileName: 'Ошибка! Прерывание эфира по неизвестной причине',
+                    FileDuration: trim_ms( filteredList[ i ].duration.time ),
+                    FileDurationSec: Math.round( filteredList[ i ].duration.ms/1000 ),
+                    SegmentDuration: trim_ms( filteredList[ i ].duration.time ),
+                    SegmentDurationSec: Math.round( filteredList[ i ].duration.ms/1000 ),
+                    SegmentStart: trim_ms( '00:00:00.00' ),
+                });
+
+                content = `${content}${row}`;
+
+
+
 
             };
 

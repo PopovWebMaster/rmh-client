@@ -5,9 +5,8 @@
     width: 100%;
     position: relative;
 
-    .LE_OneEventTypeFile_wrap{
+    .LE_OneEventTypeFile_wrap_{
         font-size: 1em;
-        max-width: 55em;
 
         margin: 0.2em 1em;
         padding: 0.2em 0.4em;
@@ -19,8 +18,95 @@
         justify-content: flex-start;
         align-items: center;
         align-content: center;
-        max-width: 55em;
+        max-width: 90vw;
         width: 100%;
+
+        .LE_OETF_type{
+            font-size: 1em;
+            // margin-right: 1em;
+            width: 3.4em;
+            text-align: center;
+            span{
+                font-size: 0.7em;
+                padding: 0.3em 1em;
+                // background-color: #636bb5;
+                // color: #ffffff;
+                border: 1px solid #00000000;
+                border-radius: 0.1em;
+            }
+
+            .LE_OETF_type_file{
+                background-color: #636bb5;
+                color: #ffffff;
+            }
+
+            .LE_OETF_type_block{
+                background-color: #636bb500;
+                border: 1px solid #636bb5;
+                color: #636bb5;
+            }
+        }
+
+
+        .LE_OETF_prefix{
+            font-size: 1em;
+            margin-right: 0.2em;
+
+            input{
+                font-size: 0.8em;
+                padding: 0.3em 1em;
+                text-align: left;
+                line-height: 1.4em;
+                border: 1px solid #34343400;
+                outline: none;
+                width: 8em;
+                background-color: #ff000000;
+                color: #ffffff;
+            }
+        }
+
+        .LE_OETF_name{
+            font-size: 1em;
+            margin-right: 1em;
+            flex-grow: 1;
+            max-width: 20em;
+
+            input{
+                font-size: 0.8em;
+                padding: 0.3em 1em;
+                // width: 20em;
+                width: calc( 100% - 2em );
+                text-align: left;
+                line-height: 1.4em;
+                border: 1px solid #34343400;
+                outline: none;
+                
+            }
+
+        }
+
+        // .LE_OETF_notes{
+        //     font-size: 1em;
+        //     margin-right: 1em;
+        //     input{
+        //         font-size: 0.8em;
+        //         padding: 0.3em 1em;
+        //         width: 20em;
+        //         text-align: left;
+        //         line-height: 1.4em;
+        //         border: 1px solid #34343400;
+        //         outline: none;
+        //         color: #ffffff;
+        //         background-color: #ffffff17;
+        //     }
+
+        //     input:focus{
+        //         background-color: #ffffffec;
+        //         color: #4e4e4e;
+        //     }
+        // }
+
+
 
         
     }

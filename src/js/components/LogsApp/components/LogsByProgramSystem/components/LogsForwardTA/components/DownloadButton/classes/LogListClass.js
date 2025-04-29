@@ -48,8 +48,16 @@ export class LogListClass{
             }else if(  type === TYPE.TITLE_OBJECT  ){
                 this.Title.AddItem( this.log_list[i] );
             }else{
-                console.dir( 'событие не видео, и не графика' );
-                console.dir( this.log_list[i] );
+                if( type.indexOf( 'Video' ) !== -1 ){
+                    this.Movie.AddItemTypeVideo( this.log_list[i] );
+                }else{
+                    console.dir( 'отловленная дичь!!!!!!!!!!' );
+                    console.dir( 'объект - говно' );
+                    console.dir( this.log_list[i] );
+                    console.dir( 'объект - норм (предыдущий)' );
+                    console.dir( this.log_list[i - 1] );
+                };
+
             };
 
             this.FileDate.AddItem( this.log_list[i] );

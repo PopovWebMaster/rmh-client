@@ -51,10 +51,10 @@ const LayoutAppComponent = ( props ) => {
 
                 <Routes>
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/` } element = { <LayoutMain /> } />
-                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` } element = { <LayoutKeyPoints /> } />
-                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` } element = { <LayoutEvents /> } />
-                    {/* <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.BLOCKS }` } element = { <div>BLOCKS</div> } /> */}
-                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` } element = { <LayoutCategories /> } />
+
+                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` }    element = { <LayoutKeyPoints /> } />
+                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` }        element = { <LayoutEvents /> } />
+                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` }    element = { <LayoutCategories /> } />
 
 
 
