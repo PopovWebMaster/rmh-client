@@ -17,6 +17,8 @@ const ResultOnlyTimesComponent = ( props ) => {
     } = props;
 
     let [ val, setVal ] = useState( '' );
+    let [ valCol, setValCol ] = useState( '' );
+
 
     let [ valSec, setValSec ] = useState( 0 );
 
@@ -63,8 +65,8 @@ const ResultOnlyTimesComponent = ( props ) => {
         };
 
         let str = '';
+        // let strCol = '';
         for( let i = 0; i < arr.length; i++ ){
-
             if( i === 0 ){
                 str = arr[ i ];
             }else{
@@ -72,7 +74,10 @@ const ResultOnlyTimesComponent = ( props ) => {
             }; 
         };
 
+        let strCol = arr.join('\n');
+
         setVal( str );
+        setValCol( strCol );
 
         let count_ms = 0;
         for( let i = 0; i < arr_ms.length; i++ ){
@@ -83,11 +88,14 @@ const ResultOnlyTimesComponent = ( props ) => {
 
     }, [ filteredList ] );
 
+
     return (
 
         <div className = 'DDW_ResultOnlyTimes'>
 
             <CurrentDatePointsFormat />
+
+            <p> <span>Найдено:</span> <span>{ filteredList.length }</span> </p>
 
             <textarea   
                 className = ''
@@ -96,6 +104,12 @@ const ResultOnlyTimesComponent = ( props ) => {
                 onChange = { () => {} }
             />
 
+            <textarea   
+                className = ''
+                value = { valCol }
+                rows = { 2 }
+                onChange = { () => {} }
+            />
             <span className = 'countSec'>Всего секунд:</span>
             <input 
                 type = 'text'

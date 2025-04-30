@@ -22,16 +22,38 @@ const CurrentDatePointsFormatComponent = ( props ) => {
         }else{
             return '';
         };
-        
+    }
 
+    const get_str_revers = ( str ) => {
+        if( str !== null ){
+            let arr = str.split('-');
+            return `${arr[2]}.${arr[1]}.${arr[0]}`
+        }else{
+            return '';
+        };
+        
+        // if( str !== null ){
+        //     return str.replaceAll( '-', '.' );
+        // }else{
+        //     return '';
+        // };
     }
 
     return (
 
         <div className = 'DDW_CurrentDatePointsFormat'>
+
+            
+
             <input 
                 type = 'text'
                 value = { get_str( dateListSelected ) }
+                onChange = { () => {} }
+            />
+
+            <input 
+                type = 'text'
+                value = { get_str_revers( dateListSelected ) }
                 onChange = { () => {} }
             />
 

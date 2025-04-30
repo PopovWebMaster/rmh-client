@@ -18,7 +18,9 @@ const ResultTitlesComponent = ( props ) => {
 
     } = props;
 
-let [ val, setVal ] = useState( '' );
+    let [ val, setVal ] = useState( '' );
+    let [ valRev, setValRev ] = useState( '' );
+
 
     const trim_sec_ms = ( str ) => {
         let arr = str.split( '.' );
@@ -29,28 +31,41 @@ let [ val, setVal ] = useState( '' );
     const get_row = ( date, startTime ) => {
         let { YYYY_MM_DD } = date;
         let { ms } = startTime;
-
         let arr = [];
-
         for( let i = 0; i < resultPointsSec.length; i++ ){
             let ms_point = ( resultPointsSec[ i ] * 1000 ) + ms;
             arr.push( trim_sec_ms( convert_ms_to_time( ms_point ) ) )
         };
-
         let points_str = arr.join( ', ' );
-
         let date_str = YYYY_MM_DD.replaceAll( '-', '.' );
-        
         let result = date_str + '\t' + points_str + '\n';
         return result;
+    }
+
+    const get_row_rew = ( date, startTime ) => {
+        let { YYYY_MM_DD } = date;
+        let { ms } = startTime;
+        let arr = [];
+        for( let i = 0; i < resultPointsSec.length; i++ ){
+            let ms_point = ( resultPointsSec[ i ] * 1000 ) + ms;
+            arr.push( trim_sec_ms( convert_ms_to_time( ms_point ) ) )
+        };
+        let points_str = arr.join( ', ' );
+        // let date_str = YYYY_MM_DD.replaceAll( '-', '.' );
+        let arr_22 = YYYY_MM_DD.split('-');
+        let date_str =  `${arr_22[2]}.${arr_22[1]}.${arr_22[0]}`
 
 
+        let result = date_str + '\t' + points_str + '\n';
+        return result;
     }
     
 
     useEffect( () => {
 
         let arr = [];
+        let arrRev = [];
+
 
         let lastName = false;
 
@@ -64,6 +79,8 @@ let [ val, setVal ] = useState( '' );
             if( type === 'movie' ){
 
                 arr.push( get_row( date, startTime ) );
+                arrRev.push( get_row_rew( date, startTime ) );
+
                 
             };
         };
@@ -73,9 +90,15 @@ let [ val, setVal ] = useState( '' );
             str = `${ str } ${arr[ i ]}`;
         };
 
-        setVal( str );
+        let str_rev = '';
+        for( let i = 0; i < arrRev.length; i++ ){
+            str_rev = `${ str_rev } ${arrRev[ i ]}`;
+        };
 
-    }, [ filteredList ] );
+        setVal( str );
+        setValRev( str_rev );
+
+    }, [ filteredList, resultPointsSec ] );
 
 
 
@@ -86,13 +109,20 @@ let [ val, setVal ] = useState( '' );
 
         <div className = 'DDW_ResultTitles'>
 
+            <p> <span>Найдено:</span> <span>{ filteredList.length }</span> </p>
+
             <Points />
-
-
 
             <textarea   
                 className = ''
                 value = { val }
+                rows = { 2 }
+                onChange = { () => {} }
+            />
+
+            <textarea   
+                className = ''
+                value = { valRev }
                 rows = { 2 }
                 onChange = { () => {} }
             />
