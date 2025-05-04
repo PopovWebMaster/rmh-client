@@ -3,7 +3,7 @@
 export const get_top_position_from_time = ( time ) => {
 
     let offset = 0.5;
-    let max_procent = 96;
+    let max_procent = 95;
     let max_minutes = 1439; // 23:59
 
     let arr = time.split(':');

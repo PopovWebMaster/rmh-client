@@ -8,7 +8,9 @@ import './LayoutKeyPoints.scss';
 // import { selectorData as companySlice } from './../../../../redux/companySlice.js';
 
 import { Week } from './components/Week/Week.js';
-import { KeyPointsControlPanel } from './components/KeyPointsControlPanel/KeyPointsControlPanel.js';
+
+import { LayoutPageContainer } from './../LayoutPageContainer/LayoutPageContainer.js';
+import { SaveKPChangesButton } from './components/SaveKPChangesButton/SaveKPChangesButton.js';
 
 const LayoutKeyPointsComponent = ( props ) => {
 
@@ -16,13 +18,14 @@ const LayoutKeyPointsComponent = ( props ) => {
     } = props;
     
     return (
-        <div className = 'layoutKeyPoints'>
 
-            <KeyPointsControlPanel />
-            <Week />
+        <LayoutPageContainer 
+            className = 'layoutKeyPoints'
+            controlPanelContainer = { <SaveKPChangesButton />}
+            bodyContainer = { <Week /> }
+        />
 
 
-        </div>
     )
 
 };

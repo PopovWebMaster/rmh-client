@@ -36,20 +36,15 @@
             .allColors{
                 flex-grow: 1;
                 max-width: 100%;
-                // background-color: red;
                 margin-left: 0.5em;
 
             }
-
-
-
         }
 
-        // label{
-        //     font-size: .8em;
-        //     padding: 0.2em 0.4em;
-        //     color: #636363;
-        // }
+        .LCACC_h3_error{
+            color: #a50000;
+            font-weight: bold;
+        }
 
         .LCACC_input_text{
             font-size: 0.75em;
@@ -61,6 +56,11 @@
             background-color: #ffffff;
             width: calc(100% - 2em);
             color: #575757;
+        }
+
+        .LCACC_input_text_error{
+            background-color: #ffe0e0;
+            color: #ff0000;
         }
 
         .LCACC_item_example{

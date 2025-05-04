@@ -11,11 +11,11 @@ import { selectorData as navigationSlice } from './../../../../../../redux/navig
 import { AlertWindowContainer } from './../../../../../AlertWindowContainer/AlertWindowContainer.js';
 import { AddEventComponent } from './../AddEventComponent/AddEventComponent.js';
 
+import { CP_ButtonComponent } from './../../../CP_ButtonComponent/CP_ButtonComponent.js';
+
 const AddEventButtonComponent = ( props ) => {
 
     let {
-
-        // setWeekKeyPointList,
 
     } = props;
 
@@ -24,8 +24,6 @@ const AddEventButtonComponent = ( props ) => {
     const click = () => {
         setIsOpen( true );
     }
-
-
     
     return (<>
 
@@ -43,13 +41,11 @@ const AddEventButtonComponent = ( props ) => {
 
         </AlertWindowContainer>
 
-        <div 
-            className = 'LE_AddEventButton' 
-            onClick = { click }
-        >
-            <span className = 'icon-plus LE_AddEventButton_icon'></span>
-            <span className = ''>Добавить</span>
-        </div>
+        <CP_ButtonComponent 
+            title =         { 'Добавить' }
+            icon =          { 'icon-plus' }
+            clickHandler =  { click }
+        />
 
     </>)
 

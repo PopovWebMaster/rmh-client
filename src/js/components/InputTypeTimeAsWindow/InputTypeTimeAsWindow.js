@@ -32,7 +32,7 @@ const InputTypeTimeAsWindowComponent = ( props ) => {
             <AlertWindowContainer 
                 isOpen =    { isOpen }
                 setIsOpen = { setIsOpen }
-                width =     { '25vw' }
+                width =     { '20em' }
                 height =    { '14.4em' }
             >
 

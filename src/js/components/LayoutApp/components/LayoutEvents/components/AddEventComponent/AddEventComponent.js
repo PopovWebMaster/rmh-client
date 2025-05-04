@@ -16,6 +16,7 @@ import { setSpinnerIsActive }                           from './../../../../../.
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 
 import { EVENT_TYPE, EVENT_NAME_NOT_SELECTED } from './../../../../../../config/events.js';
+import { InputDuration } from './../../../../../InputDuration/InputDuration.js';
 
 
 const AddEventComponentComponent = ( props ) => {
@@ -39,6 +40,12 @@ const AddEventComponentComponent = ( props ) => {
     let [ categoryNameValue, setCategoryNameValue ] = useState( EVENT_NAME_NOT_SELECTED );
     let [ categoryIdValue, setCategoryIdValue ] = useState( null );
 
+    
+    let [ hh, set_hh ] = useState( '' );
+    let [ mm, set_mm ] = useState( '' );
+    let [ ss, set_ss ] = useState( '' );
+
+
     useEffect( () => {
         if( isOpen === false ){
             setName( '' );
@@ -47,6 +54,10 @@ const AddEventComponentComponent = ( props ) => {
             setCategoryNameValue( EVENT_NAME_NOT_SELECTED );
             setCategoryIdValue( null );
             setCategoryIsOpen( false );
+            set_hh('');
+            set_mm('');
+            set_ss('');
+
         };
     }, [ isOpen ]);
 
@@ -60,6 +71,13 @@ const AddEventComponentComponent = ( props ) => {
         setNotes( val );
     }
 
+    const getDurationTime = () => {
+        let val_hh = hh === ''? '00': hh;
+        let val_mm = mm === ''? '00': mm;
+        let val_ss = ss === ''? '00': ss;
+        return `${val_hh}:${val_mm}:${val_ss}`
+    };
+
     const create = () => {
         if( name.trim() !== '' ){
 
@@ -72,6 +90,7 @@ const AddEventComponentComponent = ( props ) => {
                     eventNotes: notes,
                     eventType:  eventType, // file block
                     categoryId: categoryIdValue,
+                    eventDurationTime: getDurationTime(),
                 },
 
                 callback: ( response ) => {
@@ -147,6 +166,22 @@ const AddEventComponentComponent = ( props ) => {
                     value =     { name }
                     onChange =  { changeName }
                 />
+            </div>
+
+            <div className = 'LEAEC_item'>
+                <h3>Длительность:</h3>
+
+                <InputDuration 
+                    HH = { hh }
+                    MM = { mm }
+                    SS = { ss }
+                    setHH = { set_hh }
+                    setMM = { set_mm }
+                    setSS = { set_ss }
+                
+                />
+
+
             </div>
 
             <div className = 'LEAEC_item'>

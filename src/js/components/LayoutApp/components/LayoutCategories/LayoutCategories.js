@@ -12,7 +12,7 @@ import './LayoutCategories.scss';
 // import { KeyPointsControlPanel } from './components/KeyPointsControlPanel/KeyPointsControlPanel.js';
 import { SaveCChangesButton } from './components/SaveCChangesButton/SaveCChangesButton.js';
 import { AddCategoryButton } from './components/AddCategoryButton/AddCategoryButton.js';
-import { ScrollContainer } from './../../../ScrollContainer/ScrollContainer.js';
+// import { ScrollContainer } from './../../../ScrollContainer/ScrollContainer.js';
 import { CategoryList } from './components/CategoryList/CategoryList.js';
 
 import { LayoutPageContainer } from './../LayoutPageContainer/LayoutPageContainer.js';
@@ -23,31 +23,13 @@ const LayoutCategoriesComponent = ( props ) => {
     } = props;
     
     return (
-        // <div className = 'layoutCategories'>
-        //     <div className = 'LC_CategoriesControlPanel'>
-        //         <AddCategoryButton />
-        //         <SaveCChangesButton />
-        //     </div>
-
-        //     <div className = 'LC_scroll_container'>
-
-        //         <ScrollContainer >
-
-
-        //             <CategoryList />
-
-
-        //         </ScrollContainer>
-
-
-
-        //     </div>
-        // </div>
-
         <LayoutPageContainer 
             className =             'layoutCategories'
-            controlPanelContainer = { <> <AddCategoryButton /><SaveCChangesButton /> </> }
-            bodyContainer =         { <CategoryList /> }
+            controlPanelContainer = { <> 
+                <AddCategoryButton />
+                <SaveCChangesButton />
+            </> }
+            bodyContainer = { <CategoryList /> }
         />
     )
 

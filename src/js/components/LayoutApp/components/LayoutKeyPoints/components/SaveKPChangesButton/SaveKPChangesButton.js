@@ -1,10 +1,9 @@
 
-import React, { useRef, useState, useEffect }   from "react";
+import React from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import './SaveKPChangesButton.scss';
-
 
 import { selectorData as layoutSlice, setPointListIsChanged, setWeekKeyPointList } from './../../../../../../redux/layoutSlice.js';
 import { selectorData as navigationSlice } from './../../../../../../redux/navigationSlice.js';
@@ -13,7 +12,7 @@ import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
 import { get_point_list_for_server } from './../../../../vendors/get_point_list_for_server.js';
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 
-
+import { CP_SaveButtonComponent } from './../../../CP_SaveButtonComponent/CP_SaveButtonComponent.js';
 
 const SaveKPChangesButtonComponent = ( props ) => {
 
@@ -23,7 +22,6 @@ const SaveKPChangesButtonComponent = ( props ) => {
         weekKeyPointList,
         setPointListIsChanged,
         setSpinnerIsActive,
-        // setWeekKeyPointList,
 
     } = props;
 
@@ -45,26 +43,17 @@ const SaveKPChangesButtonComponent = ( props ) => {
     
                     setSpinnerIsActive( false );
                     setPointListIsChanged( false );
-    
-    
                 },
             });
-            
         };
-
     }
     
     return (
-        <div 
-            className = { `LP_SaveKPChangesButton LP_KeyPoints_btn_item ${ pointListIsChanged? 'isActive': ''}` }
-            onClick = { click }
-        >
 
-            <span className = 'icon-floppy LP_KeyPoints_btn_icon'></span>
-            <span className = 'LP_KeyPoints_btn_title'>Сохранить изменения</span>
-
-
-        </div>
+        <CP_SaveButtonComponent 
+            isChanged = { pointListIsChanged }
+            clickHandler = { click }
+        />
     )
 
 };

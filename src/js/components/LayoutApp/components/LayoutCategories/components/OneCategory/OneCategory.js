@@ -128,6 +128,7 @@ const OneCategoryComponent = ( props ) => {
                 if( response.ok ){
                     setSpinnerIsActive( false );
                     setCategoryList( response.list );
+                    setCategoryesIsChanged( false );
                     setIsOpen( false );
                 };
 

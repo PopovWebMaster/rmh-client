@@ -12,6 +12,8 @@ import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
 
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 
+import { CP_SaveButtonComponent } from './../../../CP_SaveButtonComponent/CP_SaveButtonComponent.js';
+
 
 const SaveEventChangesButtonComponent = ( props ) => {
 
@@ -65,13 +67,10 @@ const SaveEventChangesButtonComponent = ( props ) => {
     }
     
     return (
-        <div 
-            className = { `LE_SaveEventChangesButton ${ eventsIsChanged? 'isActive': ''}` }
-            onClick = { click }
-        >
-            <span className = 'icon-floppy LE_btn_icon'></span>
-            <span className = ''>Сохранить изменения</span>
-        </div>
+        <CP_SaveButtonComponent 
+            isChanged = { eventsIsChanged }
+            clickHandler = { click }
+        />
     )
 
 };

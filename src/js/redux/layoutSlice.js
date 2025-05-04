@@ -1,7 +1,8 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-import { get_all_colors_from_category_list } from './vendors/get_all_colors_from_category_list.js';
+// import { get_all_colors_from_category_list } from './vendors/get_all_colors_from_category_list.js';
+import { get_all_lists_of_values_from_category_list } from './vendors/get_all_lists_of_values_from_category_list.js';
 
 export const layoutSlice = createSlice({
 
@@ -18,6 +19,8 @@ export const layoutSlice = createSlice({
         categoryesIsChanged: false,
 
         allUsedColors: [],
+        allUsedNames: [],
+        allUsedPrefixes: [],
 
 
         eventList: [],
@@ -53,13 +56,22 @@ export const layoutSlice = createSlice({
     
         setCategoryList: ( state, action ) => {
             state.categoryList =  action.payload;
-            state.allUsedColors = get_all_colors_from_category_list( action.payload );
+            // state.allUsedColors = get_all_colors_from_category_list( action.payload );
+            let { allUsedColors, allUsedNames, allUsedPrefixes } = get_all_lists_of_values_from_category_list( action.payload );
+            state.allUsedColors = allUsedColors;
+            state.allUsedNames = allUsedNames;
+            state.allUsedPrefixes = allUsedPrefixes;
         },
 
         setCategoryListAsChanged: ( state, action ) => {
             state.categoryList =  action.payload;
             state.categoryesIsChanged =  true;
-            state.allUsedColors = get_all_colors_from_category_list( action.payload );
+            // state.allUsedColors = get_all_colors_from_category_list( action.payload );
+            let { allUsedColors, allUsedNames, allUsedPrefixes } = get_all_lists_of_values_from_category_list( action.payload );
+            state.allUsedColors = allUsedColors;
+            state.allUsedNames = allUsedNames;
+            state.allUsedPrefixes = allUsedPrefixes;
+
         },
 
 
@@ -113,6 +125,9 @@ export const selectorData = ( state ) => {
         eventList: state.layout.eventList,
         eventsIsChanged: state.layout.eventsIsChanged,
         allUsedColors: state.layout.allUsedColors,
+        allUsedNames: state.layout.allUsedNames,
+        allUsedPrefixes: state.layout.allUsedPrefixes,
+
 
 
     };

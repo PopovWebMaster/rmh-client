@@ -1,5 +1,5 @@
 
-import React, { useRef, useState, useEffect }   from "react";
+import React from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -7,10 +7,7 @@ import './EventList.scss';
 
 import { selectorData as layoutSlice } from './../../../../../../redux/layoutSlice.js';
 
-import { OneEventTypeFile } from './../OneEventTypeFile/OneEventTypeFile.js';
-import { OneEventTypeBlock } from './../OneEventTypeBlock/OneEventTypeBlock.js';
-
-import { EVENT_TYPE } from './../../../../../../config/events.js';
+import { OneEvent } from './../OneEvent/OneEvent.js';
 
 import { DEFAULT_CATEGORY } from './../../../../../../config/layout.js';
 
@@ -61,32 +58,20 @@ const EventListComponent = ( props ) => {
                 category_id,
                 notes,
                 type,
+                durationTime,
             } = item;
 
-            // if( type === EVENT_TYPE.FILE  ){
-                return (
-                    <OneEventTypeFile 
-                        id =            { id }
-                        name =          { name }
-                        category =      { category_obj[ category_id ]? category_obj[ category_id ]: { ...DEFAULT_CATEGORY } }
-                        notes =         { notes }
-                        type =          { type }
-                        key =           { index }
-                    />
-                );
-            // }else{
-            //     return (
-            //         <OneEventTypeBlock 
-            //             id =            { id }
-            //             name =          { name }
-            //             category =      { category_obj[ category_id ]? category_obj[ category_id ]: { ...DEFAULT_CATEGORY } }
-            //             notes =         { notes }
-            //             key =           { index }
-            //         />
-            //     );
-            // };
-
-
+            return (
+                <OneEvent 
+                    id =            { id }
+                    name =          { name }
+                    category =      { category_obj[ category_id ]? category_obj[ category_id ]: { ...DEFAULT_CATEGORY } }
+                    notes =         { notes }
+                    type =          { type }
+                    durationTime =  { durationTime }
+                    key =           { index }
+                />
+            );
 
         } );
 
