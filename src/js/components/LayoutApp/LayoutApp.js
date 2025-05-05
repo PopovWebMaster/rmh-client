@@ -29,10 +29,10 @@ const LayoutAppComponent = ( props ) => {
 
     useEffect( () => {
         if( IS_DEVELOPMENT ){
-            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
+            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
             // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
             // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` );
-            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` );
+            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` );
 
 
 

@@ -5,3 +5,5 @@
 
 
 // font-family: "Futuris Cyrillic";
+// font-family: AvantGardeCTT;
+// font-family: "Open Sans Semibold";

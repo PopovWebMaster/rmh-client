@@ -7,34 +7,48 @@ import { useDispatch } from 'react-redux';
 
 import './LayoutMain.scss';
 
-import { selectorData as companySlice } from './../../../../redux/companySlice.js';
+import { selectorData as layoutSlice } from './../../../../redux/layoutSlice.js';
 
-import { PageContainer } from './../../../PageContainer/PageContainer.js';
+import { GridDayMenu } from './../GridDayMenu/GridDayMenu.js';
 
+import { LayoutPageContainer } from './../LayoutPageContainer/LayoutPageContainer.js';
+import { AddGridEventButton } from './components/AddGridEventButton/AddGridEventButton.js';
+import { SaveGridChangesButton } from './components/SaveGridChangesButton/SaveGridChangesButton.js';
 
 const LayoutMainComponent = ( props ) => {
 
     let {
+        gridCurrentDay,
     } = props;
     
     return (
-        <div className = 'layoutMain'>
 
-
-        </div>
+        <LayoutPageContainer 
+            className = 'layoutMain'
+            controlPanelContainer = {<>
+                <GridDayMenu />
+                <AddGridEventButton />
+                <SaveGridChangesButton />
+            </>}
+            bodyContainer = { (
+                <div className = ''>
+                    
+                </div>
+            ) }
+        />
     )
 
 };
 
 export function LayoutMain( props ){
 
-    const company = useSelector( companySlice );
+    const layout = useSelector( layoutSlice );
     // const dispatch = useDispatch();
 
     return (
         <LayoutMainComponent
             { ...props }
-            currentCompanyAlias = { company.currentCompanyAlias }
+            gridCurrentDay = { layout.gridCurrentDay }
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 
         />
