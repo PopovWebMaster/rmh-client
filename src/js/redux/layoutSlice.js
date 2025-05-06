@@ -17,6 +17,7 @@ export const layoutSlice = createSlice({
         ],
         pointListIsChanged: false,
         categoryList: [],
+        categoryListById: {},
         categoryesIsChanged: false,
         allUsedColors: [],
         allUsedNames: [],
@@ -28,6 +29,10 @@ export const layoutSlice = createSlice({
         gridCurrentDayName: WEEK_NAME[ 0 ],
         gridDayEventsList: [ [1], [], [], [], [], [], [] ],
         gridDayEventsIsChanges: true,
+
+        gridEmptySegmentMaxHeightEm: 0,
+        gridEmptySegmentMinHeightEm: 1.6, // взято из минимальной высоты элемента по стилям
+
 
 
     },
@@ -55,19 +60,22 @@ export const layoutSlice = createSlice({
     
         setCategoryList: ( state, action ) => {
             state.categoryList =  action.payload;
-            let { allUsedColors, allUsedNames, allUsedPrefixes } = get_all_lists_of_values_from_category_list( action.payload );
+            let { allUsedColors, allUsedNames, allUsedPrefixes, categoryListById } = get_all_lists_of_values_from_category_list( action.payload );
             state.allUsedColors = allUsedColors;
             state.allUsedNames = allUsedNames;
             state.allUsedPrefixes = allUsedPrefixes;
+            state.categoryListById = categoryListById;
         },
 
         setCategoryListAsChanged: ( state, action ) => {
             state.categoryList =  action.payload;
             state.categoryesIsChanged =  true;
-            let { allUsedColors, allUsedNames, allUsedPrefixes } = get_all_lists_of_values_from_category_list( action.payload );
+            let { allUsedColors, allUsedNames, allUsedPrefixes, categoryListById } = get_all_lists_of_values_from_category_list( action.payload );
             state.allUsedColors = allUsedColors;
             state.allUsedNames = allUsedNames;
             state.allUsedPrefixes = allUsedPrefixes;
+            state.categoryListById = categoryListById;
+
 
         },
 
@@ -107,6 +115,18 @@ export const layoutSlice = createSlice({
         },
 
 
+        setGridEmptySegmentMaxHeightEm: ( state, action ) => {
+            state.gridEmptySegmentMaxHeightEm =  action.payload;
+        },
+
+        setGridEmptySegmentMinHeightEm: ( state, action ) => {
+            state.gridEmptySegmentMinHeightEm =  action.payload;
+        },
+
+
+
+
+
 
 
         
@@ -131,6 +151,9 @@ export const {
     setGridDayEventsIsChanges,
     setGridDayEventsList,
     setGridDayEventsListAsChanged,
+
+    setGridEmptySegmentMaxHeightEm,
+    setGridEmptySegmentMinHeightEm,
    
 
 } = layoutSlice.actions;
@@ -141,6 +164,7 @@ export const selectorData = ( state ) => {
         pointListIsChanged: state.layout.pointListIsChanged,
 
         categoryList: state.layout.categoryList,
+        categoryListById: state.layout.categoryListById,
         categoryesIsChanged: state.layout.categoryesIsChanged,
 
         eventList: state.layout.eventList,
@@ -155,8 +179,11 @@ export const selectorData = ( state ) => {
         gridDayEventsList: state.layout.gridDayEventsList,
         gridDayEventsIsChanges: state.layout.gridDayEventsIsChanges,
 
+        gridEmptySegmentMaxHeightEm: state.layout.gridEmptySegmentMaxHeightEm,
+        gridEmptySegmentMinHeightEm: state.layout.gridEmptySegmentMinHeightEm,
 
 
+        
 
 
     };

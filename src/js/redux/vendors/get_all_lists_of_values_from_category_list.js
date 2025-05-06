@@ -6,6 +6,8 @@ export const get_all_lists_of_values_from_category_list = ( arr ) => {
     let allUsedNames = [];
     let allUsedPrefixes = [];
 
+    let categoryListById = {};
+
     let color_ignore = [
         '#000000',
         '#000',
@@ -15,11 +17,16 @@ export const get_all_lists_of_values_from_category_list = ( arr ) => {
 
     for( let i = 0; i < arr.length; i++ ){
         let { 
+            id,
             colorText,
             colorBG,
             name,
             prefix,
         } = arr[ i ];
+
+        categoryListById[ id ] = { ...arr[ i ] };
+        // categoryListById[ id ] = arr[ i ];
+
 
         if( allUsedColors.indexOf( colorText ) === -1 ){
             if( color_ignore.indexOf( colorText ) !== -1 ){
@@ -38,9 +45,14 @@ export const get_all_lists_of_values_from_category_list = ( arr ) => {
 
     };
 
+    console.dir( 'categoryListById' );
+    console.dir( categoryListById );
+
+
     return {
         allUsedColors,
         allUsedNames,
         allUsedPrefixes,
+        categoryListById,
     };
 };

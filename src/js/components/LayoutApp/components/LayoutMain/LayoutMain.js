@@ -14,6 +14,7 @@ import { GridDayMenu } from './../GridDayMenu/GridDayMenu.js';
 import { LayoutPageContainer } from './../LayoutPageContainer/LayoutPageContainer.js';
 import { AddGridEventButton } from './components/AddGridEventButton/AddGridEventButton.js';
 import { SaveGridChangesButton } from './components/SaveGridChangesButton/SaveGridChangesButton.js';
+import { GridDayEditor } from './components/GridDayEditor/GridDayEditor.js';
 
 const LayoutMainComponent = ( props ) => {
 
@@ -27,13 +28,11 @@ const LayoutMainComponent = ( props ) => {
             className = 'layoutMain'
             controlPanelContainer = {<>
                 <GridDayMenu />
-                <AddGridEventButton />
+                {/* <AddGridEventButton /> */}
                 <SaveGridChangesButton />
             </>}
             bodyContainer = { (
-                <div className = ''>
-                    
-                </div>
+                <GridDayEditor />
             ) }
         />
     )
