@@ -1,0 +1,77 @@
+.CTS_KeyPointToggle{
+    font-size: 0.85em;
+    flex-grow: 0;
+    margin-right: 0.5em;
+
+    .CTS_KeyPointToggle_wrap{
+        font-size: 1em;
+        padding: 0.3em 0.6em;
+
+        cursor: pointer;
+        user-select: none;
+
+        border-radius: 0.1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        .CTS_KeyPointToggle_rect{
+            font-size: 1em;
+            height: 0.9em;
+            width: 0.9em;
+            border: 1px solid #ffffff0f;
+            border-radius: 0.1em;
+            // margin-top: 0.2em;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin-right: 0.5em;
+            
+            span{
+                font-size: 0.6em;
+                color: #88ff70;
+                line-height: 1em;
+            }
+        }
+
+        .CTS_KeyPointToggle_text{
+            font-size: 1em;
+            padding-top: 0.1em;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+
+            span{
+                opacity: 0.2;
+                font-size: 0.74em;
+                color: #ffffff;
+            }
+
+            .isSelected{
+                opacity: 1;
+            }
+        }
+
+
+
+    }
+
+    .CTS_KeyPointToggle_wrap:hover{
+        background-color: #f3f3f329;
+        
+        .CTS_KeyPointToggle_rect{
+            border: 1px solid #ffffff7d;
+        }
+
+        .CTS_KeyPointToggle_text{
+            span{
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // import { get_all_colors_from_category_list } from './vendors/get_all_colors_from_category_list.js';
 import { get_all_lists_of_values_from_category_list } from './vendors/get_all_lists_of_values_from_category_list.js';
+import { get_all_lists_of_values_from_events_list } from './vendors/get_all_lists_of_values_from_events_list.js';
 
 import { WEEK_NAME } from './../config/week.js';
 
@@ -23,11 +24,33 @@ export const layoutSlice = createSlice({
         allUsedNames: [],
         allUsedPrefixes: [],
         eventList: [],
+        eventListById: {},
         eventsIsChanged: false,
 
         gridCurrentDay: 0, // 0 1 2 3 4 5 6
         gridCurrentDayName: WEEK_NAME[ 0 ],
-        gridDayEventsList: [ [1], [], [], [], [], [], [] ],
+        gridDayEventsList: [ [], [], [], [], [], [], [] ],
+        gridOneDayList: [],
+
+        /*
+        gridDayEventsList[0][0] = {
+            id: 1,
+            firstSegmentId,
+            eventId: 1,
+            notes: '',
+            isKeyPoint: true,
+            startTime: 100, // время в секундах
+            durationTime: 1000, // время в секундах
+
+
+
+
+
+        }
+        
+        */
+
+
         gridDayEventsIsChanges: true,
 
         gridEmptySegmentMaxHeightEm: 0,
@@ -85,10 +108,15 @@ export const layoutSlice = createSlice({
     
         setEventList: ( state, action ) => {
             state.eventList =  action.payload;
+            let { eventListById } = get_all_lists_of_values_from_events_list( action.payload );
+            state.eventListById = eventListById;
+            
         },
 
         setEventListAsChanged: ( state, action ) => {
             state.eventList =  action.payload;
+            let { eventListById } = get_all_lists_of_values_from_events_list( action.payload );
+            state.eventListById = eventListById;
             state.eventsIsChanged =  true;
         },
 
@@ -124,9 +152,11 @@ export const layoutSlice = createSlice({
         },
 
 
+        setGridOneDayList: ( state, action ) => {
+            state.gridOneDayList =  action.payload;
+        },
 
-
-
+        
 
 
         
@@ -152,6 +182,8 @@ export const {
     setGridDayEventsList,
     setGridDayEventsListAsChanged,
 
+    setGridOneDayList,
+
     setGridEmptySegmentMaxHeightEm,
     setGridEmptySegmentMinHeightEm,
    
@@ -168,6 +200,7 @@ export const selectorData = ( state ) => {
         categoryesIsChanged: state.layout.categoryesIsChanged,
 
         eventList: state.layout.eventList,
+        eventListById: state.layout.eventListById,
         eventsIsChanged: state.layout.eventsIsChanged,
         allUsedColors: state.layout.allUsedColors,
         allUsedNames: state.layout.allUsedNames,
@@ -178,6 +211,7 @@ export const selectorData = ( state ) => {
         gridCurrentDayName: state.layout.gridCurrentDayName,
         gridDayEventsList: state.layout.gridDayEventsList,
         gridDayEventsIsChanges: state.layout.gridDayEventsIsChanges,
+        gridOneDayList: state.layout.gridOneDayList,
 
         gridEmptySegmentMaxHeightEm: state.layout.gridEmptySegmentMaxHeightEm,
         gridEmptySegmentMinHeightEm: state.layout.gridEmptySegmentMinHeightEm,

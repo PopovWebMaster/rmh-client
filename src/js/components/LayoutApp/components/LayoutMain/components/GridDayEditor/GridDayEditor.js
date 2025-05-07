@@ -9,6 +9,7 @@ import { selectorData as layoutSlice } from './../../../../../../redux/layoutSli
 
 import { EmptyTimeSegment } from './../EmptyTimeSegment/EmptyTimeSegment.js';
 import { CompletedTimeSegment } from './../CompletedTimeSegment/CompletedTimeSegment.js';
+import { UpdateOneDayGridList } from './../UpdateOneDayGridList/UpdateOneDayGridList.js';
 
 import { set_max_height_em_for_empty_time_segment } from './../../../../vendors/set_max_height_em_for_empty_time_segment.js';
 
@@ -27,52 +28,37 @@ const GridDayEditorComponent = ( props ) => {
         setIsReady( true );
     }, [] );
 
-    
 
-    let category_id = 9;
-    let durationTime = "00:01:00";
-    let id = 7;
-    let name = "Погода";
-    let notes = "0+";
-    let type = "file";
-
-
-
-
-
-
-
-
-    
     return (
        <div 
             className = 'gridDayEditor'
             ref = { refEd }
         >
-            { isReady? (<>
+            { isReady? (
+                <UpdateOneDayGridList>
+                    <EmptyTimeSegment 
+                        startTime =     { 0 }
+                        durationTime =  { 60 }
+                    />
 
-                <EmptyTimeSegment 
-                    startTime =      { '00:00:00' }
-                    durationTime =  { '00:01:00' }
-                />
+                    <CompletedTimeSegment 
+                        id =            { 111 }
+                        firstSegmentId = { 111 }
+                        eventId =       { 6 }
+                        notes =         { 'строки снять' }
+                        isKeyPoint =    { true }
+                        startTime =     { 300 }
+                        durationTime =  { 1000 }
+                    />
 
-                <CompletedTimeSegment 
-                    startTime =     { '00:00:00' }
-                    durationTime =  { durationTime }
-                    category_id =   { category_id }
-                    eventId =       { id }
-                    eventName =     { name }
-                    eventNotes =    { notes }
-                    eventType =     { type }
-                />
+                    <EmptyTimeSegment 
+                        startTime =     { 1300 }
+                        durationTime =  { 85100 }
+                    />
 
-                <EmptyTimeSegment 
-                    startTime =      { '00:00:00' }
-                    durationTime =  { '06:00:00' }
-                />
+                </UpdateOneDayGridList>
 
-
-            </>): '' }
+            ): '' }
        </div>
     )
 

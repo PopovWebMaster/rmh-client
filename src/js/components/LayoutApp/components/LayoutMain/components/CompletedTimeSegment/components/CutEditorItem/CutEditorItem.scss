@@ -1,0 +1,50 @@
+.CTS_CutEditorItem{
+    font-size: 1em;
+    margin-right: 0.5em;
+    position: relative;
+
+    flex-grow: 0;
+
+    .CTS_CutEditorItem_wrap{
+        font-size: 0.84em;
+        padding: 0.3em 0.6em;
+        background-color: #6486f3;
+        border-radius: 0.1em;
+
+        width: 4.6em;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        cursor: pointer;
+        user-select: none;
+
+        span{
+            font-size: 0.75em;
+            color: #fdfdfd;
+        }
+
+        .CTS_CutEditorItem_icon{
+            
+            margin-right: 0.3em;
+        }
+
+        .CTS_CutEditorItem_text{
+            // font-size: 0.74em;
+            // color: #fdfdfd;
+            font-family: Open Sans Semibold;
+        }
+
+
+    }
+
+    .CTS_CutEditorItem_wrap:hover{
+        background-color: #5672d1;
+    }
+    .CTS_CutEditorItem_wrap:active{
+        span{
+            color: #f19191;
+        }
+    }
+}

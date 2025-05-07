@@ -6,6 +6,7 @@ import React from "react";
 import './GrigItemWrap.scss';
 
 // import { selectorData as layoutSlice } from './../../../../../../redux/layoutSlice.js';
+import { convert_sec_to_time } from './../../../../../../helpers/convert_sec_to_time.js';
 
 const GrigItemWrapComponent = ( props ) => {
 
@@ -14,13 +15,15 @@ const GrigItemWrapComponent = ( props ) => {
         durationTime,
         children,
     } = props;
+
+
     
     return (
         <div className = 'grigItem'>
             <div className = 'grigItemWrap'>
                 <div className = 'grigItemTime'>
-                    <span className = 'ETS_time'>{ startTime }</span>
-                    <span className = 'ETS_duration'>{ durationTime }</span>
+                    <span className = 'ETS_time'>{ convert_sec_to_time( startTime ) }</span>
+                    <span className = 'ETS_duration'>{ convert_sec_to_time( durationTime ) }</span>
                 </div>
                 <div className = 'grigItemBody'>
                     { children }

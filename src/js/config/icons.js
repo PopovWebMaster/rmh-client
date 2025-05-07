@@ -20,3 +20,4 @@
 // icon-up-open-1
 // icon-grid
 // icon-ok-3
+// icon-scissors

@@ -11,17 +11,25 @@ import { selectorData as layoutSlice } from './../../../../../../../../redux/lay
 const PrefixItemComponent = ( props ) => {
 
     let {
-        category_id,
+        eventId,
+        eventListById,
         categoryListById,
     } = props;
 
     let [ prefix, setPrefix ] = useState( '' );
 
     useEffect( () => {
-        if( categoryListById[ category_id ] ){
-            setPrefix( categoryListById[ category_id ].prefix );
+        if( eventListById[ eventId ] ){
+            let { category_id } = eventListById[ eventId ];
+            if( categoryListById[ category_id ] ){
+                setPrefix( categoryListById[ category_id ].prefix );
+            };
         };
-    }, [ category_id ]);
+    }, [ 
+        eventId,
+        eventListById,
+        categoryListById,
+    ]);
 
     return (
         <div className = 'CTS_PrefixItem'>
@@ -43,7 +51,9 @@ export function PrefixItem( props ){
     return (
         <PrefixItemComponent
             { ...props }
+            eventListById = { layout.eventListById }
             categoryListById = { layout.categoryListById }
+
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 
         />
