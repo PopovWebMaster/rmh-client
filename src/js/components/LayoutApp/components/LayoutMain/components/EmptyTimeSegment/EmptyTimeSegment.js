@@ -36,20 +36,24 @@ const EmptyTimeSegmentComponent = ( props ) => {
 
     return (
         <GrigItemWrap
-            startTime = { startTime }
-            durationTime = { durationTime }
+            startTime =     { startTime }
+            durationTime =  { durationTime }
         >
 
             <AlertWindowContainer
                 isOpen =    { isOpen }
                 setIsOpen = { setIsOpen }
-                width =     '35em'
+                width =     '90vw'
                 height =    '80vh'
                 title = 'Новое событие сетки'
             >
                 <AddNewGridEventComponent 
                     isOpen =    { isOpen }
                     setIsOpen = { setIsOpen }
+
+                    timeSpaceFrom = { startTime }
+                    timeSpaceTo =   { startTime + durationTime }
+
                 />
 
             </AlertWindowContainer>

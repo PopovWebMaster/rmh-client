@@ -22,6 +22,9 @@ const AddNewGridEventComponentComponent = ( props ) => {
         isOpen,
         setIsOpen,
 
+        timeSpaceFrom,
+        timeSpaceTo,
+
         gridCurrentDayName,
         
 
@@ -29,15 +32,6 @@ const AddNewGridEventComponentComponent = ( props ) => {
 
     let [ isAKeyOneEvent, setIsAKeyOneEvent ] = useState( false );
     let [ eventId, setEventId ] = useState( null );
-    let [ eventCategoryId, setEventCategoryId ] = useState( null );
-    let [ eventDurationTime, setEventDurationTime ] = useState( null );
-    let [ eventName, setEventName ] = useState( null );
-    let [ eventNotes, setEventNotes ] = useState( null );
-    let [ eventType, setEventType ] = useState( null );
-
-
-
-
 
     
     // let [ hh, set_hh ] = useState( '' );
@@ -48,13 +42,7 @@ const AddNewGridEventComponentComponent = ( props ) => {
     useEffect( () => {
         if( isOpen === false ){
             setIsAKeyOneEvent( false );
-
             setEventId( null );
-            setEventCategoryId( null );
-            setEventDurationTime( null );
-            setEventName( null );
-            setEventNotes( null );
-            setEventType( null );
 
             // set_hh('');
             // set_mm('');
@@ -104,19 +92,16 @@ const AddNewGridEventComponentComponent = ( props ) => {
 
         <div className = 'G_AddNewGridEventComponent' >
             <DayName />
+            
             <GridEventType 
                 isAKeyOneEvent =    { isAKeyOneEvent }
                 setIsAKeyOneEvent = { setIsAKeyOneEvent }
             />
-            <SelectedEvent 
-                eventId =               { eventId }
-                setEventId =            { setEventId }
-                setEventCategoryId =    { setEventCategoryId }
-                setEventDurationTime =  { setEventDurationTime }
-                setEventName =          { setEventName }
-                setEventNotes =         { setEventNotes }
-                setEventType =          { setEventType }
 
+            <SelectedEvent 
+                eventId =       { eventId }
+                setEventId =    { setEventId }
+                durationLimit = { timeSpaceTo - timeSpaceFrom }
             />
 
 

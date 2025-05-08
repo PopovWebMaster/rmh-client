@@ -6,87 +6,68 @@ import { useSelector } from 'react-redux';
 import './SelectedEvent.scss';
 
 import { selectorData as layoutSlice }    from './../../../../../../../../redux/layoutSlice.js';
+import { convert_time_str_to_sec } from './../../../../../../../../helpers/convert_time_str_to_sec.js'
 
 const SelectedEventComponent = ( props ) => {
 
     let {
         eventId,
         setEventId,
-        setEventCategoryId,
-        setEventDurationTime,
-        setEventName,
-        setEventNotes,
-        setEventType,
+        durationLimit,
 
         eventList,
+        eventListById,
+
     } = props;
 
     let [ listIsOpen, setListIsOpen ] = useState( false );
 
-    const itemClick = ( event ) => {
-        let {
-            category_id,
-            durationTime,
-            id,
-            name,
-            notes,
-            type,
-        } = event;
-
+    const itemClick = ( id ) => {
         setEventId( id );
-        setEventCategoryId( category_id );
-        setEventDurationTime( durationTime );
-        setEventName( name );
-        setEventNotes( notes );
-        setEventType( type );
-
         setListIsOpen( false );
-
     };
 
     const createList = ( arr ) => {
 
         let li = arr.map( ( item, index ) => {
-            let typeText = item.type === 'file'? 'файл': 'блок' ;
+            let { id, type, durationTime, name } = item;
+
+            let typeText = type === 'file'? 'файл': 'блок' ;
+            let duration_sec = convert_time_str_to_sec( durationTime );
+            let isActive = duration_sec <= durationLimit? true: false;
+
             return (
                 <li
                     key = { index }
-                    onClick = { () => {
-                        itemClick( item );
+                    className = { isActive? 'isActive': '' }
+                    onClick = { () => { 
+                        if( isActive ){
+                            itemClick( id )
+                        };
                     } }
                 >
-                    <span className = { item.type === 'file'? 'G_ANG_list_file': 'G_ANG_list_block' } >{ typeText }</span>
-                    <span className = 'G_ANG_list_name'>{ item.name }</span>
+                    <span className = { type === 'file'? 'G_ANG_list_file': 'G_ANG_list_block' } >{ typeText }</span>
+                    <span className = 'G_ANG_list_duration'>{ durationTime }</span>
+                    <span className = 'G_ANG_list_name'>{ name }</span>
                 </li>
             );
         } );
-
         return li;
-
     }
 
-
-    const getEventName = ( arr, id ) => {
+    const getEventName = ( obj, id ) => {
         let result = <span className = 'G_ANG_list_name'>-- Не выбрано --</span>
-        if( id !== null ){
-            for( let i = 0; i < arr.length; i++ ){
-                if( arr[ i ].id === id ){
-                    let typeText = arr[ i ].type === 'file'? 'файл': 'блок' ;
-                    result = (
-                        <>
-                            <span className = { arr[ i ].type === 'file'? 'G_ANG_list_file': 'G_ANG_list_block' } >{ typeText }</span>
-                            <span className = 'G_ANG_list_name'>{ arr[ i ].name }</span>
-                        </>
-                    );
-
-                    break;
-                };
-            };
-
+        if( obj[ id ] ){
+            let { type, name } = obj[ id ];
+            let typeText = type === 'file'? 'файл': 'блок' ;
+            result = (<>
+                <span className = { type === 'file'? 'G_ANG_list_file': 'G_ANG_list_block' } >{ typeText }</span>
+                <span className = 'G_ANG_list_name'>{ name }</span>
+            </>);
         };
+
         return result;
     }
-
 
     return (
 
@@ -96,7 +77,7 @@ const SelectedEventComponent = ( props ) => {
                 className = 'G_ANG_eventList_body'
                 onMouseLeave = { () => { setListIsOpen( false ) } }
             >
-                <h4>{ getEventName( eventList, eventId ) }</h4>
+                <h4>{ getEventName( eventListById, eventId ) }</h4>
                 <div 
                     className = 'G_ANG_btn'
                     onClick = { () => { setListIsOpen( !listIsOpen ) }}
@@ -126,6 +107,8 @@ export function SelectedEvent( props ){
         <SelectedEventComponent
             { ...props }
             eventList = { layout.eventList }
+            eventListById = { layout.eventListById }
+
 
             // setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
 

@@ -15,3 +15,8 @@ export const EVENT_TYPE = {
 };
 
 export const EVENT_NAME_NOT_SELECTED = 'Не выбрано';
+
+export const GRID_SEGMENT_TYPE = {
+    EMPTY: 'empty',
+    COMPLETED: 'completed',
+};

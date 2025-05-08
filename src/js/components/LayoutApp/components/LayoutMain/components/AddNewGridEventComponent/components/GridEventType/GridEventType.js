@@ -26,7 +26,7 @@ const GridEventTypeComponent = ( props ) => {
                 </div>
 
                 <div className = 'G_ANG_GridEventType_text'>
-                    <span className = { `${ isAKeyOneEvent? 'isSelected': '' }` }>сделать ключевым</span>
+                    <span className = { `${ isAKeyOneEvent? 'isSelected': '' }` }>ключевая точка</span>
                 </div>
 
             </div>

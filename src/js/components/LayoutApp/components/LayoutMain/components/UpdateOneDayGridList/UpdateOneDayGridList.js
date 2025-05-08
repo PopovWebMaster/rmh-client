@@ -21,6 +21,7 @@ const UpdateOneDayGridListComponent = ( props ) => {
 
     useEffect( () => {
         setGridOneDayList( get_grid_one_day_list( gridDayEventsList[ gridCurrentDay ] ) );
+
     }, [
         gridCurrentDay,
         gridDayEventsList
