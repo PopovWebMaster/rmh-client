@@ -40,11 +40,9 @@ export const layoutSlice = createSlice({
             notes: '',
             isKeyPoint: true,
             startTime: 100, // время в секундах
+            finishTime: 100, // время в секундах
+            targetTime: 100, // время в секундах
             durationTime: 1000, // время в секундах
-
-
-
-
 
         }
         

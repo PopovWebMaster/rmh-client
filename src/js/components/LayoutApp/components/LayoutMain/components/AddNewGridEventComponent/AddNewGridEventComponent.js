@@ -14,6 +14,7 @@ import { send_request_to_server } from './../../../../../../helpers/send_request
 import { DayName } from './components/DayName/DayName.js';
 import { GridEventType } from './components/GridEventType/GridEventType.js';
 import { SelectedEvent } from './components/SelectedEvent/SelectedEvent.js';
+import { TimeSelected } from './components/TimeSelected/TimeSelected.js';
 
 
 const AddNewGridEventComponentComponent = ( props ) => {
@@ -32,6 +33,8 @@ const AddNewGridEventComponentComponent = ( props ) => {
 
     let [ isAKeyOneEvent, setIsAKeyOneEvent ] = useState( false );
     let [ eventId, setEventId ] = useState( null );
+    let [ startTime, setStartTime ] = useState( null );
+
 
     
     // let [ hh, set_hh ] = useState( '' );
@@ -43,6 +46,7 @@ const AddNewGridEventComponentComponent = ( props ) => {
         if( isOpen === false ){
             setIsAKeyOneEvent( false );
             setEventId( null );
+            setStartTime( null );
 
             // set_hh('');
             // set_mm('');
@@ -102,6 +106,15 @@ const AddNewGridEventComponentComponent = ( props ) => {
                 eventId =       { eventId }
                 setEventId =    { setEventId }
                 durationLimit = { timeSpaceTo - timeSpaceFrom }
+            />
+
+            <p>{startTime}</p>
+
+            <TimeSelected
+                eventId =       { eventId }
+                timeSpaceTo =   { timeSpaceTo }
+                timeSpaceFrom = { timeSpaceFrom }
+                setStartTime =  { setStartTime }
             />
 
 

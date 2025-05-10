@@ -8,7 +8,7 @@ export const get_grid_one_day_list = ( day_array ) => {
 
     let result = [];
     let next_point = 0;
-    let last_point = 24 * 60 * 60;
+    let last_point = 24 * 60 * 60 - 1;
 
 
 
