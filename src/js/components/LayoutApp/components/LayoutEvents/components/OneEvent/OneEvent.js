@@ -1,12 +1,12 @@
 
 import React from "react";
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import './OneEvent.scss';
 
-import { selectorData as layoutSlice }      from './../../../../../../redux/layoutSlice.js';
-import { selectorData as navigationSlice }  from './../../../../../../redux/navigationSlice.js';
+// import { selectorData as layoutSlice }      from './../../../../../../redux/layoutSlice.js';
+// import { selectorData as navigationSlice }  from './../../../../../../redux/navigationSlice.js';
 
 import { EventNonesInput } from './../EventNonesInput/EventNonesInput.js';
 import { EventCategoryItem } from './../EventCategoryItem/EventCategoryItem.js';

@@ -45,10 +45,6 @@ export const get_all_lists_of_values_from_category_list = ( arr ) => {
 
     };
 
-    console.dir( 'categoryListById' );
-    console.dir( categoryListById );
-
-
     return {
         allUsedColors,
         allUsedNames,

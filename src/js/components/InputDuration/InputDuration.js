@@ -47,6 +47,7 @@ const InputDurationComponent = ( props ) => {
     }
 
 
+
     const isNumber = ( val ) => {
         return /^\d+$/.test( val ) 
     }

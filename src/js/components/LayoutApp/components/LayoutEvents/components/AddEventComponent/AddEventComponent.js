@@ -1,6 +1,3 @@
-// AddEventComponent
-
-
 
 import React, { useRef, useState, useEffect }   from "react";
 import { useSelector } from 'react-redux';
@@ -15,7 +12,7 @@ import { setSpinnerIsActive }                           from './../../../../../.
 // import { get_point_list_for_server } from './../../../../vendors/get_point_list_for_server.js';
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 
-import { EVENT_TYPE, EVENT_NAME_NOT_SELECTED } from './../../../../../../config/events.js';
+import { EVENT_TYPE, EVENT_NAME_NOT_SELECTED, MIN_EVENT_DURATION_SEC } from './../../../../../../config/events.js';
 import { InputDuration } from './../../../../../InputDuration/InputDuration.js';
 
 
@@ -41,9 +38,10 @@ const AddEventComponentComponent = ( props ) => {
     let [ categoryIdValue, setCategoryIdValue ] = useState( null );
 
     
-    let [ hh, set_hh ] = useState( '' );
-    let [ mm, set_mm ] = useState( '' );
-    let [ ss, set_ss ] = useState( '' );
+    let [ hh, set_hh ] = useState( '00' );
+    let [ mm, set_mm ] = useState( '00' );
+    let [ ss, set_ss ] = useState( '05' );
+    // let [ timeInSeconds, setTimeInSeconds ] = useState( 0 )
 
 
     useEffect( () => {
@@ -54,9 +52,10 @@ const AddEventComponentComponent = ( props ) => {
             setCategoryNameValue( EVENT_NAME_NOT_SELECTED );
             setCategoryIdValue( null );
             setCategoryIsOpen( false );
-            set_hh('');
-            set_mm('');
-            set_ss('');
+            set_hh('00');
+            set_mm('00');
+            set_ss('05');
+            // setTimeInSeconds( 0 );
 
         };
     }, [ isOpen ]);
@@ -78,9 +77,17 @@ const AddEventComponentComponent = ( props ) => {
         return `${val_hh}:${val_mm}:${val_ss}`
     };
 
-    const create = () => {
-        if( name.trim() !== '' ){
+    const getTimeInSeconds = ( HH, MM, SS ) => {
+        let sec_hh = Number( HH ) * 60 * 60;
+        let sec_mm = Number( MM ) * 60;
+        let sec_ss = Number( SS );
+        return sec_hh + sec_mm + sec_ss;
+    }
 
+
+    const create = () => {
+
+        if( eventIsReady( name, hh, mm, ss ) ){
             setSpinnerIsActive( true );
 
             send_request_to_server({
@@ -96,18 +103,13 @@ const AddEventComponentComponent = ( props ) => {
                 callback: ( response ) => {
                     console.dir( 'response' );
                     console.dir( response );
-
                     if( response.ok ){
                         setSpinnerIsActive( false );
                         setEventList( response.list );
                         setIsOpen( false );
                     };
-
                 },
             });
-
-
-
         };
     }
 
@@ -152,6 +154,18 @@ const AddEventComponentComponent = ( props ) => {
         return li;
 
     }
+
+    const eventIsReady = ( name, HH, MM, SS ) => {
+        let result = false;
+        if( name.trim() !== '' ){
+            let duration_sec = getTimeInSeconds( HH, MM, SS );
+            if( duration_sec >= MIN_EVENT_DURATION_SEC ){
+                result = true;
+            };
+        };
+        return result;
+
+    };
     
     return (
 
@@ -243,7 +257,7 @@ const AddEventComponentComponent = ( props ) => {
                 <div className = 'LEAEC_item_create'>
 
                     <span 
-                        className = { name.trim()  !== ''? 'icon-plus LEAEC_create_isActive': 'icon-plus ' }
+                        className = { eventIsReady( name, hh, mm, ss )? 'icon-plus LEAEC_create_isActive': 'icon-plus ' }
                         onClick = { create }
                     ><span>Добавить</span></span>
                 </div>

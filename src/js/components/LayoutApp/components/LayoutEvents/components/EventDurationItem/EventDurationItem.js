@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import './EventDurationItem.scss';
 
 import { selectorData as layoutSlice, setEventListAsChanged } from './../../../../../../redux/layoutSlice.js';
+import { MIN_EVENT_DURATION_SEC } from './../../../../../../config/events.js';
 import { InputDuration } from './../../../../../InputDuration/InputDuration.js';
 
 const EventDurationItemComponent = ( props ) => {
@@ -31,13 +32,30 @@ const EventDurationItemComponent = ( props ) => {
 
     }, [ durationTime ] );
 
+    const getTimeInSeconds = ( hh, mm, ss ) => {
+        let sec_hh = Number( hh ) * 60 * 60;
+        let sec_mm = Number( mm ) * 60;
+        let sec_ss = Number( ss );
+        return sec_hh + sec_mm + sec_ss;
+    }
+
     const set_changes_to_store = () => {
+
+        let duration_sec = getTimeInSeconds( HH, MM, SS );
 
         let new_durationTime = `${HH}:${MM}:${SS}`;
 
+        if( duration_sec >= MIN_EVENT_DURATION_SEC ){
+
+        }else{
+            setHH( '00' );
+            setMM( '00' );
+            setSS( '05' );
+            new_durationTime = `00:00:05`;
+        };
+
         if( new_durationTime !== durationTime ){
             let newArr = [];
-
             for( let i = 0; i < eventList.length; i++ ){
                 if( eventList[ i ].id === id ){
                     let item = { ...eventList[ i ] };
@@ -47,7 +65,6 @@ const EventDurationItemComponent = ( props ) => {
                     newArr.push({ ...eventList[ i ] });
                 };
             };
-
             setEventListAsChanged( newArr );
         };
 

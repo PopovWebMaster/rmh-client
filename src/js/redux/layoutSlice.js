@@ -49,6 +49,22 @@ export const layoutSlice = createSlice({
         */
 
 
+                /*
+        gridDayEventsList[0][0] = {
+            id: 1,
+            firstSegmentId: 1,
+            eventId: 1,
+            notes: '',
+            isKeyPoint: true,
+            startTime: 100, // время в секундах
+            durationTime: 1000, // время в секундах
+            pushIt: null, // null 'up' 'down'
+
+        }
+        
+        */
+
+
         gridDayEventsIsChanges: true,
 
         gridEmptySegmentMaxHeightEm: 0,

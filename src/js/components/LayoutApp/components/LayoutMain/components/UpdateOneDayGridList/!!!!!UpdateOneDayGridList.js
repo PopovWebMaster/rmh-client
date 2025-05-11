@@ -7,8 +7,7 @@ import { useDispatch } from 'react-redux';
 
 import { selectorData as layoutSlice, setGridOneDayList } from './../../../../../../redux/layoutSlice.js';
 
-// import { get_grid_one_day_list } from './vendors/get_grid_one_day_list.js';
-import { get_grid_one_day_list_by_sector } from './vendors/get_grid_one_day_list_by_sector.js'
+import { get_grid_one_day_list } from './vendors/get_grid_one_day_list.js';
 
 const UpdateOneDayGridListComponent = ( props ) => {
 
@@ -21,8 +20,7 @@ const UpdateOneDayGridListComponent = ( props ) => {
     } = props;
 
     useEffect( () => {
-        // setGridOneDayList( get_grid_one_day_list( gridDayEventsList[ gridCurrentDay ] ) );
-        setGridOneDayList( get_grid_one_day_list_by_sector( gridDayEventsList[ gridCurrentDay ] ) );
+        setGridOneDayList( get_grid_one_day_list( gridDayEventsList[ gridCurrentDay ] ) );
 
     }, [
         gridCurrentDay,

@@ -9,7 +9,7 @@ import './GridDayEditor.scss';
 
 import { UpdateOneDayGridList } from './../UpdateOneDayGridList/UpdateOneDayGridList.js';
 import { ListOfSegments } from './../ListOfSegments/ListOfSegments.js';
-
+import { ListBySectors } from './../ListBySectors/ListBySectors.js';
 import { set_max_height_em_for_empty_time_segment } from './../../../../vendors/set_max_height_em_for_empty_time_segment.js';
 
 const GridDayEditorComponent = ( props ) => {
@@ -34,7 +34,8 @@ const GridDayEditorComponent = ( props ) => {
         >
             { isReady? (
                 <UpdateOneDayGridList>
-                    <ListOfSegments />
+                    {/* <ListOfSegments /> */}
+                    <ListBySectors />
                 </UpdateOneDayGridList>
             ): '' }
        </div>
