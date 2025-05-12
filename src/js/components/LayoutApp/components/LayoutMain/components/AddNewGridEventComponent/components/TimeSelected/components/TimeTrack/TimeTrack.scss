@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    padding-top: 1.6em;
 
     .G_ANG_TS_track_time_point{
         font-size: 1em;
@@ -44,7 +45,8 @@
             height: 100%;
             background-color: #27ac00;
             border-radius: 1px;
-            cursor: grab;
+            // cursor: grab;
+            cursor: pointer;
             user-select: none;
 
             .G_ANG_TS_slider_time{
@@ -99,8 +101,10 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(2, 4, 3, 0.596);
-    cursor: grabbing;
+    background-color: rgba(255, 255, 255, 0);
+    // cursor: grabbing;
+    cursor: w-resize;
+
     z-index: 3000;
 }
 

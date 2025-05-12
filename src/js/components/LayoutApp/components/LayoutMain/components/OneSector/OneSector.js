@@ -98,10 +98,7 @@ const OneSectorComponent = ( props ) => {
                     { create( sector_list ) }
                 </div>
 
-
             </div>
-
-  
 
         </div>
     )

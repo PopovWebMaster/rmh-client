@@ -6,12 +6,14 @@ import { useSelector } from 'react-redux';
 import './TimeTrack.scss';
 
 import { selectorData as layoutSlice }    from './../../../../../../../../../../redux/layoutSlice.js';
-import { convert_time_str_to_sec } from './../../../../../../../../../../helpers/convert_time_str_to_sec.js';
+// import { convert_time_str_to_sec } from './../../../../../../../../../../helpers/convert_time_str_to_sec.js';
 import { convert_sec_to_time } from './../../../../../../../../../../helpers/convert_sec_to_time.js';
 import { round_to_number } from './../../../../../../../../../../helpers/round_to_number.js';
 
 import { add_curtain_to_body } from './vendors/add_curtain_to_body.js';
 import { add_event_mouse_move } from './vendors/add_event_mouse_move.js';
+
+let flag = true;
 
 const TimeTrackComponent = ( props ) => {
 
@@ -19,6 +21,8 @@ const TimeTrackComponent = ( props ) => {
         timeSpaceTo,
         timeSpaceFrom,
         target,
+        startTime,
+        setTimeTarget,
         duration,
         setStartTime,
 
@@ -27,7 +31,6 @@ const TimeTrackComponent = ( props ) => {
 
     let [ sliderWidth, setSliderWidth ] = useState( 0 );
     let [ sliderLeft, setSliderLeft ] = useState( 0 );
-
     let [ currentTimeSec, setCurrentTimeSec] = useState( 0 );
 
 
@@ -36,35 +39,70 @@ const TimeTrackComponent = ( props ) => {
             setSliderWidth( 0 );
             setSliderLeft( 0 );
         }else{
-            let proc = round_to_number( ( duration * 100 )/(timeSpaceTo - timeSpaceFrom ), 2 )  ;
-            if( proc <= 1){
-                proc = 1;
+            let slider_width_proc = round_to_number( ( duration * 100 )/(timeSpaceTo - timeSpaceFrom ), 5 )  ;
+            if( slider_width_proc <= 1){
+                slider_width_proc = 1;
             };
-            setSliderWidth( proc );
-            if( target === 'start' ){
-                setSliderLeft( 0 );
-            }else{
-                setSliderLeft( 100 - proc );
-            };
+            setSliderWidth( slider_width_proc );
+
+            setSliderLeft( getSliderLeft() );
+
 
         };
 
-    }, [ duration, target ] );
+    }, [ duration ] );
 
+    useEffect( () => {
 
-    useEffect(() => {
-        let timePos = 0;
-        if( target === 'start' ){
-            let proc = ( sliderLeft * 100 ) / ( 100 - sliderWidth );
-            timePos = Math.round( (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 );
+        if( flag ){
+            setSliderLeft( getSliderLeft() );
         }else{
-            let proc = ( sliderLeft * 100 ) / ( 100 - sliderWidth );
-            timePos = Math.round( duration + (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 ) ;
+            flag = true;
         };
-        setCurrentTimeSec( timePos );
-        setStartTime( timePos );
 
-    }, [ sliderLeft, target ] );
+    }, [ startTime ] );
+
+    const getSliderLeft = () => {
+        let slider_left_proc = ( startTime * 100 )/(timeSpaceTo - timeSpaceFrom + duration );
+        let width_proc = ( duration * 100 )/(timeSpaceTo - timeSpaceFrom );
+        if( width_proc <= 1){
+            width_proc = 1;
+            let durNum = ( timeSpaceTo - timeSpaceFrom  ) * 1/100;
+            slider_left_proc = (( startTime * 99 )/( timeSpaceTo - timeSpaceFrom + durNum));
+        };
+        let leftProc = slider_left_proc * ( 100 + width_proc ) / 100 ;
+        return leftProc;
+    }
+
+
+    // useEffect(() => {
+    //     let proc = ( sliderLeft * 100 ) / ( 100 - sliderWidth );
+    //     let currentTimeSec = 0;
+    //     let startTime = Math.round( (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 );
+    //     if( target === 'start' ){
+    //         // currentTimeSec = Math.round( (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 );
+    //         currentTimeSec = (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 ;
+
+    //         // currentTimeSec = round_to_number( (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100, 3 );
+
+    //     }else{
+    //         // currentTimeSec = Math.round( duration + (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 ) ;
+    //         currentTimeSec =  duration + (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 ;
+
+    //         // currentTimeSec = round_to_number( duration + (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100, 3 ) ;
+
+    //     };
+    //     // setCurrentTimeSec( currentTimeSec );
+
+    //     // if( flag === false ){
+    //     //     setStartTime( startTime );
+    //     // };
+        
+    //     // flag = false;
+
+
+
+    // }, [ sliderLeft, target ] );
 
 
 
@@ -86,18 +124,38 @@ const TimeTrackComponent = ( props ) => {
 
         add_curtain_to_body();
         add_event_mouse_move( ( cursor ) => {
+
+            flag = false;
             if( cursor - ratio >= track_left && cursor + slider_width - ratio <= track_right ){
+
                 let track_x = cursor - ratio - track_left;
                 let left_proc = ( track_x * 100 / track_width );
+                // let next_startTime = ( ( timeSpaceTo - timeSpaceFrom ) * left_proc ) / 100;
                 setSliderLeft( left_proc );
+                // setStartTime( Math.round( next_startTime ) );
+
+
+                let startTime = Math.round( (( timeSpaceTo - timeSpaceFrom - duration ) * (( left_proc * 100 ) / ( 100 - sliderWidth )) ) / 100 );
+                setStartTime( startTime );
+
             }else{
                 if( cursor - ratio < track_left ){
                     setSliderLeft( 0 );
+                    setStartTime( timeSpaceFrom );
                 }else if( cursor + slider_width - ratio > track_right ){
                     setSliderLeft( 100 - sliderWidth );
+                    setStartTime( timeSpaceTo - duration );
                 };
             };
-        } );
+        }, slider_click );
+    }
+
+    const slider_click = () => {
+        if( target === 'start' ){
+            setTimeTarget( 'finish' );
+        }else{
+            setTimeTarget( 'start' );
+        };
     }
 
 
@@ -123,14 +181,29 @@ const TimeTrackComponent = ( props ) => {
                         ref = { sliderRef }
                         onMouseDown = { mouse_down }
                     >
-                        <div className = { `G_ANG_TS_slider_time ${ target === 'start'? 'left': 'right' }` }>
+
+                        { target === 'start'? (
+                            <div className = 'G_ANG_TS_slider_time left'>
+                                <span>{ convert_sec_to_time( startTime ) }</span>
+
+                            </div>
+                        ): (
+                            <div className = 'G_ANG_TS_slider_time right'>
+                                <span>{ convert_sec_to_time( startTime + duration ) }</span>
+
+                            </div>
+                        ) }
+                        {/* <div className = { `G_ANG_TS_slider_time ${ target === 'start'? 'left': 'right' }` }>
                             <span>{ convert_sec_to_time( currentTimeSec ) }</span>
-                        </div>
+
+                        </div> */}
                     </div>
                 </div>
 
                 <div className = 'G_ANG_TS_track_time_point'>
                     <span>{ convert_sec_to_time( timeSpaceTo ) }</span>
+                    {/* <span>{ convert_sec_to_time( startTime - duration ) }</span> */}
+
                 </div>
             </div>
         )

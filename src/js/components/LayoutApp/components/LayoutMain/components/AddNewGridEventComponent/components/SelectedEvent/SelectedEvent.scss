@@ -38,11 +38,13 @@
             align-items: center;
             align-content: center;
 
+            cursor: pointer;
+
             .G_ANG_list_file{
                 font-size: .65em;
                 color: #e7e7e7;
                 background-color: #636bb5;
-                margin-right: 0.5em;
+                margin-right: 1em;
                 border-radius: 0.1em;
 
                 padding: .2em 0;
@@ -57,7 +59,7 @@
                 font-size: .65em;
                 color: #636bb5;
                 background-color: #e7e7e700;
-                margin-right: 0.5em;
+                margin-right: 1em;
                 padding: .2em 0;
                 display: inline-block;
                 width: 3.8em;
@@ -228,6 +230,13 @@
 
 
     }
+
+
+    .G_ANG_eventList_body:hover{
+        background-color: #f1eeee;
+    }
+
+
 
 
 

@@ -10,11 +10,15 @@ import { selectorData as navigationSlice }              from './../../../../../.
 import { setSpinnerIsActive }                           from './../../../../../../redux/spinnerSlice.js';
 
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
+import { convert_time_str_to_sec } from './../../../../../../helpers/convert_time_str_to_sec.js';
 
 import { DayName } from './components/DayName/DayName.js';
 import { GridEventType } from './components/GridEventType/GridEventType.js';
 import { SelectedEvent } from './components/SelectedEvent/SelectedEvent.js';
 import { TimeSelected } from './components/TimeSelected/TimeSelected.js';
+import { AppearanceOfEvent } from './components/AppearanceOfEvent/AppearanceOfEvent.js';
+import { CreateButton } from './components/CreateButton/CreateButton.js';
+
 
 
 const AddNewGridEventComponentComponent = ( props ) => {
@@ -26,69 +30,74 @@ const AddNewGridEventComponentComponent = ( props ) => {
         timeSpaceFrom,
         timeSpaceTo,
 
-        gridCurrentDayName,
+        eventListById,
+        currentPage,
+        gridCurrentDay,
+        setSpinnerIsActive,
         
 
     } = props;
 
     let [ isAKeyOneEvent, setIsAKeyOneEvent ] = useState( false );
     let [ eventId, setEventId ] = useState( null );
-    let [ startTime, setStartTime ] = useState( null );
+    let [ startTime, setStartTime ] = useState( timeSpaceFrom );
+    let [ timeTarget, setTimeTarget ] = useState( 'start' ); // 'finish' 
 
-
-    
-    // let [ hh, set_hh ] = useState( '' );
-    // let [ mm, set_mm ] = useState( '' );
-    // let [ ss, set_ss ] = useState( '' );
-
+    let [ durationTime, setDurationTime ] = useState( 0 ); 
 
     useEffect( () => {
         if( isOpen === false ){
             setIsAKeyOneEvent( false );
             setEventId( null );
-            setStartTime( null );
-
-            // set_hh('');
-            // set_mm('');
-            // set_ss('');
+            setStartTime( timeSpaceFrom );
+            setTimeTarget( 'start' );
+        }else{
 
         };
     }, [ isOpen ]);
 
+    useEffect( () => {
+        if( isAKeyOneEvent ){
+            setTimeTarget( 'start' );
+        };
+    }, [ isAKeyOneEvent ] );
+
+    useEffect( () => {
+        if( eventId !== null ){
+            setDurationTime( convert_time_str_to_sec( eventListById[ eventId ].durationTime ) );
+        }else{
+            setDurationTime( 0 );
+        }
+    }, [ eventId ] );
 
 
-    // const create = () => {
-    //     if( name.trim() !== '' ){
+    const create = () => {
+        if( eventId !== null ){
+            setSpinnerIsActive( true );
+                send_request_to_server({
+                    route: `${currentPage}/add-new-grid-event`,
+                    data: { 
+                        dayNum: gridCurrentDay,
+                        isAKeyPoint: isAKeyOneEvent,
+                        startTime,
+                        eventId,
+                        durationTime,
+                    },
 
-    //         setSpinnerIsActive( true );
+                    callback: ( response ) => {
+                        console.dir( 'response' );
+                        console.dir( response );
 
-    //         send_request_to_server({
-    //             route: `${currentPage}/add-new-event`,
-    //             data: { 
-    //                 eventName:  name,
-    //                 eventNotes: notes,
-    //                 eventType:  eventType, // file block
-    //                 categoryId: categoryIdValue,
-    //                 eventDurationTime: getDurationTime(),
-    //             },
+                        if( response.ok ){
+                            setSpinnerIsActive( false );
+                            // setEventList( response.list );
+                            setIsOpen( false );
+                        };
 
-    //             callback: ( response ) => {
-    //                 console.dir( 'response' );
-    //                 console.dir( response );
-
-    //                 if( response.ok ){
-    //                     setSpinnerIsActive( false );
-    //                     setEventList( response.list );
-    //                     setIsOpen( false );
-    //                 };
-
-    //             },
-    //         });
-
-
-
-    //     };
-    // }
+                    },
+                });
+        };
+    };
 
 
     
@@ -108,13 +117,24 @@ const AddNewGridEventComponentComponent = ( props ) => {
                 durationLimit = { timeSpaceTo - timeSpaceFrom }
             />
 
-            <p>{startTime}</p>
+            <AppearanceOfEvent 
+                eventId =       { eventId }
+                startTime =     { startTime }
+            />
 
             <TimeSelected
                 eventId =       { eventId }
                 timeSpaceTo =   { timeSpaceTo }
                 timeSpaceFrom = { timeSpaceFrom }
+                startTime =     { startTime }
                 setStartTime =  { setStartTime }
+                timeTarget =    { timeTarget }
+                setTimeTarget = { setTimeTarget }
+            />
+
+            <CreateButton 
+                eventId =       { eventId }
+                createHandler = { create }
             />
 
 
@@ -134,7 +154,8 @@ export function AddNewGridEventComponent( props ){
     return (
         <AddNewGridEventComponentComponent
             { ...props }
-            gridCurrentDayName = { layout.gridCurrentDayName }
+            gridCurrentDay = { layout.gridCurrentDay }
+            eventListById = { layout.eventListById }
 
 
 

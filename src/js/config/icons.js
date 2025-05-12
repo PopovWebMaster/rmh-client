@@ -21,3 +21,5 @@
 // icon-grid
 // icon-ok-3
 // icon-scissors
+// icon-right
+// icon-left

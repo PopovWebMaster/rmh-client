@@ -2,15 +2,16 @@
     font-size: 1em;
     text-align: center;
 
-    margin: 0.6em 0;
+    padding: 2em .1em 0 0.1em;
 
     span{
-        font-size: 0.75em;
-        color: #413e3e;
+        font-size: 1em;
+        color: #ac5100;
         border-radius: 0.1em;
-        border: 1px solid #d7d7d7;
-        background-color: #f1f1f1;
-        padding: 0.2em 0.8em;
-        font-family: "Open Sans Semibold";
+        border: 1px solid #ac5100;
+        background-color: #ececec26;
+        padding: 0.4em 1em;
+        font-family: Open Sans Semibold;
+        margin: 1em;
     }
 }

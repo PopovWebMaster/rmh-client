@@ -23,6 +23,7 @@ const EventNameItemComponent = ( props ) => {
     let [ eventType, setEventType ] = useState('');
     let [ categoryColorBG, setCategoryColorBG ] = useState('');
     let [ categoryColorText, setCategoryColorText ] = useState('');
+    
 
     useEffect( () => {
         if( eventListById[ eventId ] ){

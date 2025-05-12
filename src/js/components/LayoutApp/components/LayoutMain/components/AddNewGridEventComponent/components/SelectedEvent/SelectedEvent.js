@@ -77,7 +77,9 @@ const SelectedEventComponent = ( props ) => {
                 className = 'G_ANG_eventList_body'
                 onMouseLeave = { () => { setListIsOpen( false ) } }
             >
-                <h4>{ getEventName( eventListById, eventId ) }</h4>
+                <h4
+                    onClick = { () => { setListIsOpen( !listIsOpen ) } }
+                >{ getEventName( eventListById, eventId ) }</h4>
                 <div 
                     className = 'G_ANG_btn'
                     onClick = { () => { setListIsOpen( !listIsOpen ) }}

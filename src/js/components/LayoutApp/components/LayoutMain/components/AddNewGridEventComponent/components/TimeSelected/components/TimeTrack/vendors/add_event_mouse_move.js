@@ -1,13 +1,16 @@
 
 
 
-export const add_event_mouse_move = ( setDataHandler ) => {
+export const add_event_mouse_move = ( setDataHandler, onlyCkickHandler ) => {
 
     let curtain = document.getElementById( 'curtain_time' );
+
+    let was_movement = false;
 
     
     curtain.onmousemove = ( e ) => {
         setDataHandler( e.x );
+        was_movement = true;
 
     }
 
@@ -16,6 +19,13 @@ export const add_event_mouse_move = ( setDataHandler ) => {
         curtain.onmouseup = null;
         curtain.remove();
 
+        if( was_movement ){
+
+        }else{
+            onlyCkickHandler();
+        };
+        
+        was_movement = false;
     }
 
 
