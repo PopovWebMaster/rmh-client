@@ -6,14 +6,14 @@ import { useSelector } from 'react-redux';
 import './TimeSelected.scss';
 
 import { selectorData as layoutSlice }    from './../../../../../../../../redux/layoutSlice.js';
-import { convert_time_str_to_sec } from './../../../../../../../../helpers/convert_time_str_to_sec.js';
+// import { convert_time_str_to_sec } from './../../../../../../../../helpers/convert_time_str_to_sec.js';
 import { TimeTrack } from './components/TimeTrack/TimeTrack.js';
 import { TimeButtons } from './components/TimeButtons/TimeButtons.js';
 
 const TimeSelectedComponent = ( props ) => {
 
     let {
-        eventId,
+        // eventId,
 
         timeSpaceTo,
         timeSpaceFrom,
@@ -23,20 +23,21 @@ const TimeSelectedComponent = ( props ) => {
         setTimeTarget,
         // eventList,
         eventListById,
+        durationTime,
 
     } = props;
 
     let [ duration, setDuration ] = useState( null );
 
-    useEffect( () => {
-        if( eventId === null ){
-            setDuration( null );
-        }else{
-            let { durationTime } = eventListById[ eventId ];
-            setDuration( convert_time_str_to_sec( durationTime ) );
-        };
+    // useEffect( () => {
+    //     if( eventId === null ){
+    //         setDuration( null );
+    //     }else{
+    //         let { durationTime } = eventListById[ eventId ];
+    //         setDuration( convert_time_str_to_sec( durationTime ) );
+    //     };
 
-    }, [ eventId ] );
+    // }, [ eventId ] );
 
     return (
 
@@ -45,7 +46,7 @@ const TimeSelectedComponent = ( props ) => {
             <TimeButtons 
                 timeSpaceTo =   { timeSpaceTo }
                 timeSpaceFrom = { timeSpaceFrom }
-                duration =      { duration }
+                duration =      { durationTime }
                 startTime =     { startTime }
                 setStartTime =  { setStartTime }
             />
@@ -54,7 +55,7 @@ const TimeSelectedComponent = ( props ) => {
             <TimeTrack 
                 timeSpaceTo =   { timeSpaceTo }
                 timeSpaceFrom = { timeSpaceFrom }
-                duration =      { duration }
+                duration =      { durationTime }
                 target =        { timeTarget }
                 setTimeTarget = { setTimeTarget }
                 startTime =     { startTime }

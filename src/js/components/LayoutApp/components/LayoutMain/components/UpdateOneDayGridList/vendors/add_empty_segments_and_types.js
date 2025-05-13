@@ -6,7 +6,6 @@ export const add_empty_segments_and_types = ( sectors_arr ) => {
 
     let result = [];
 
-
     for( let sectorIndex = 0; sectorIndex < sectors_arr.length; sectorIndex++ ){
 
         let {

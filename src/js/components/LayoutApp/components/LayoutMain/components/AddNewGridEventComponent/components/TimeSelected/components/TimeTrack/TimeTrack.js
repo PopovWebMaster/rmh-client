@@ -29,6 +29,7 @@ const TimeTrackComponent = ( props ) => {
 
     } = props;
 
+
     let [ sliderWidth, setSliderWidth ] = useState( 0 );
     let [ sliderLeft, setSliderLeft ] = useState( 0 );
     let [ currentTimeSec, setCurrentTimeSec] = useState( 0 );
@@ -38,6 +39,7 @@ const TimeTrackComponent = ( props ) => {
         if( duration === null ){
             setSliderWidth( 0 );
             setSliderLeft( 0 );
+            // flag = true;
         }else{
             let slider_width_proc = round_to_number( ( duration * 100 )/(timeSpaceTo - timeSpaceFrom ), 5 )  ;
             if( slider_width_proc <= 1){
@@ -47,8 +49,14 @@ const TimeTrackComponent = ( props ) => {
 
             setSliderLeft( getSliderLeft() );
 
+            // console.dir( 'sliderLeft' )
+            // console.dir( sliderLeft )
+
+
 
         };
+
+        flag = true;
 
     }, [ duration ] );
 
@@ -63,6 +71,21 @@ const TimeTrackComponent = ( props ) => {
     }, [ startTime ] );
 
     const getSliderLeft = () => {
+
+        let intervel = timeSpaceTo - timeSpaceFrom;
+        let scaleTime = startTime - timeSpaceFrom;
+
+        let slider_left_proc = ( scaleTime * 100 )/(intervel + duration );
+        let width_proc = ( duration * 100 )/intervel;
+        if( width_proc <= 1){
+            width_proc = 1;
+            let durNum = intervel * 1/100;
+            slider_left_proc = (( scaleTime * 99 )/( intervel + durNum));
+        };
+        let leftProc = slider_left_proc * ( 100 + width_proc ) / 100 ;
+        return leftProc;
+
+/*
         let slider_left_proc = ( startTime * 100 )/(timeSpaceTo - timeSpaceFrom + duration );
         let width_proc = ( duration * 100 )/(timeSpaceTo - timeSpaceFrom );
         if( width_proc <= 1){
@@ -72,6 +95,8 @@ const TimeTrackComponent = ( props ) => {
         };
         let leftProc = slider_left_proc * ( 100 + width_proc ) / 100 ;
         return leftProc;
+*/
+
     }
 
 
@@ -136,7 +161,7 @@ const TimeTrackComponent = ( props ) => {
 
 
                 let startTime = Math.round( (( timeSpaceTo - timeSpaceFrom - duration ) * (( left_proc * 100 ) / ( 100 - sliderWidth )) ) / 100 );
-                setStartTime( startTime );
+                setStartTime( timeSpaceFrom + startTime );
 
             }else{
                 if( cursor - ratio < track_left ){

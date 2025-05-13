@@ -12,7 +12,7 @@ import { EventNameItem } from './components/EventNameItem/EventNameItem.js';
 import { PrefixItem } from './components/PrefixItem/PrefixItem.js';
 import { EventNotesItem } from './components/EventNotesItem/EventNotesItem.js';
 import { RemoveItem } from './components/RemoveItem/RemoveItem.js';
-import { KeyPointToggle } from './components/KeyPointToggle/KeyPointToggle.js';
+// import { KeyPointToggle } from './components/KeyPointToggle/KeyPointToggle.js';
 import { CutEditorItem } from './components/CutEditorItem/CutEditorItem.js';
 
 
@@ -31,9 +31,11 @@ const CompletedTimeSegmentComponent = ( props ) => {
 
     return (
         <GrigItemWrap
-            startTime = { startTime }
-            durationTime = { durationTime }
-        
+            startTime =     { startTime }
+            durationTime =  { durationTime }
+            isCompletd =    { true }
+            isKeyPoint =    { isKeyPoint }
+            id =            { id }
         >
             <div className = 'completedTimeSegment'>
 
@@ -43,11 +45,6 @@ const CompletedTimeSegmentComponent = ( props ) => {
                     eventId =   { eventId }
                     id =        { id }
                     notes =     { notes }
-                />
-
-                <KeyPointToggle 
-                    id = { id }
-                    isKeyPoint = { isKeyPoint }
                 />
 
                 <CutEditorItem 

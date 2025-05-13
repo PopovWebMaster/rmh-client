@@ -34,7 +34,6 @@ const GridDayEditorComponent = ( props ) => {
         >
             { isReady? (
                 <UpdateOneDayGridList>
-                    {/* <ListOfSegments /> */}
                     <ListBySectors />
                 </UpdateOneDayGridList>
             ): '' }

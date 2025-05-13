@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import './AddNewGridEventComponent.scss';
 
-import { selectorData as layoutSlice, setEventList }    from './../../../../../../redux/layoutSlice.js';
+import { selectorData as layoutSlice, setGridDayEventsList, setGridDayEventsIsChanges }    from './../../../../../../redux/layoutSlice.js';
 import { selectorData as navigationSlice }              from './../../../../../../redux/navigationSlice.js';
 import { setSpinnerIsActive }                           from './../../../../../../redux/spinnerSlice.js';
 
@@ -34,9 +34,13 @@ const AddNewGridEventComponentComponent = ( props ) => {
         currentPage,
         gridCurrentDay,
         setSpinnerIsActive,
+
+        setGridDayEventsList,
+        setGridDayEventsIsChanges,
         
 
     } = props;
+
 
     let [ isAKeyOneEvent, setIsAKeyOneEvent ] = useState( false );
     let [ eventId, setEventId ] = useState( null );
@@ -90,7 +94,8 @@ const AddNewGridEventComponentComponent = ( props ) => {
 
                         if( response.ok ){
                             setSpinnerIsActive( false );
-                            // setEventList( response.list );
+                            setGridDayEventsList( response.list );
+                            setGridDayEventsIsChanges( false );
                             setIsOpen( false );
                         };
 
@@ -122,15 +127,19 @@ const AddNewGridEventComponentComponent = ( props ) => {
                 startTime =     { startTime }
             />
 
-            <TimeSelected
-                eventId =       { eventId }
-                timeSpaceTo =   { timeSpaceTo }
-                timeSpaceFrom = { timeSpaceFrom }
-                startTime =     { startTime }
-                setStartTime =  { setStartTime }
-                timeTarget =    { timeTarget }
-                setTimeTarget = { setTimeTarget }
-            />
+            { eventId === null? '': (
+                <TimeSelected
+                    // eventId =       { eventId }
+                    timeSpaceTo =   { timeSpaceTo }
+                    timeSpaceFrom = { timeSpaceFrom }
+                    startTime =     { startTime }
+                    setStartTime =  { setStartTime }
+                    timeTarget =    { timeTarget }
+                    setTimeTarget = { setTimeTarget }
+                    durationTime =  { durationTime }
+                />
+            ) }
+
 
             <CreateButton 
                 eventId =       { eventId }
@@ -157,14 +166,15 @@ export function AddNewGridEventComponent( props ){
             gridCurrentDay = { layout.gridCurrentDay }
             eventListById = { layout.eventListById }
 
-
-
-
             currentPage = { navigation.currentPage }
             // // categoryList = { layout.categoryList }
 
             setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
-            setEventList = { ( val ) => { dispatch( setEventList( val ) ) } }
+            setGridDayEventsList = { ( val ) => { dispatch( setGridDayEventsList( val ) ) } }
+            setGridDayEventsIsChanges = { ( val ) => { dispatch( setGridDayEventsIsChanges( val ) ) } }
+
+
+            
 
 
         />
