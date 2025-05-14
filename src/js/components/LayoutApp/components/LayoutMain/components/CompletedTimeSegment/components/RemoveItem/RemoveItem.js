@@ -12,6 +12,8 @@ import { AlertWindowContainer } from './../../../../../../../AlertWindowContaine
 
 import { send_request_to_server } from './../../../../../../../../helpers/send_request_to_server.js';
 
+import { RemoveSegmentButton } from './../../../RemoveSegmentButton/RemoveSegmentButton.js';
+
 const RemoveItemComponent = ( props ) => {
 
     let {
@@ -72,12 +74,16 @@ const RemoveItemComponent = ( props ) => {
             </AlertWindowContainer>
 
 
-            <div 
+            {/* <div 
                 className = 'CTS_EventRemoveItem'
                 onClick = { () => { setIsOpen( true ) } }
             >
                 <span className = 'icon-cancel-2'></span>
-            </div>
+            </div> */}
+
+            <RemoveSegmentButton 
+                clickHandler = { () => { setIsOpen( true ) } }
+            />
             
         </div>
     )

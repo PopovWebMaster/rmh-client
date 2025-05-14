@@ -6,4 +6,18 @@
     align-items: center;
     align-content: center;
 
+    .CTS_right_buttons_wrap{
+        font-size: 1em;
+        flex-grow: 1;
+        max-width: 100%;
+        height: 100%;
+        
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        align-content: center;
+
+        position: relative;
+    }
+
 }

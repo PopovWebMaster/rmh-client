@@ -18,6 +18,14 @@ export const add_empty_segments_and_types = ( sectors_arr ) => {
         let list = [];
         let next_point = sector_start_time;
 
+        if( sectorIndex === 0 ){
+            if( sector_start_time > 0 ){
+                let empty_segment = get_data_for_empty_segment( 0, sector_start_time - 1 );
+                list.push( empty_segment );
+            };
+        };
+
+
         for( let i = 0; i < sector_list.length; i++ ){
             let {
                 startTime,
@@ -28,23 +36,32 @@ export const add_empty_segments_and_types = ( sectors_arr ) => {
                 list.push( get_data_for_completed_segment( sector_list[ i ] ) );
                 next_point = next_point + durationTime;
 
-            }else{
-                if( startTime > next_point ){
 
-                    list.push( get_data_for_empty_segment( next_point, startTime ) );
+
+            }else{
+                // if( startTime > next_point ){
+                    let empty_segment = get_data_for_empty_segment( next_point, startTime );
+
+                    list.push( empty_segment );
                     list.push( get_data_for_completed_segment( sector_list[ i ] ) );
 
-                    next_point = next_point + durationTime;
+                    next_point = next_point + durationTime + empty_segment.durationTime;
 
-                }else{
-                    console.error( 'Внимание, ошибка в get_grid_one_day_list !!!!!!!!' );
-                    console.error( 'startTime меньше чем next_point' );
-                };
+
+
+                // }else{
+                //     console.error( 'Внимание, ошибка в get_grid_one_day_list !!!!!!!!' );
+                //     console.error( 'startTime меньше чем next_point' );
+                // };
 
             };
         };
 
-        list.push( get_data_for_empty_segment( next_point, sector_start_time + sector_duration ) );
+        let last_empty_segment = get_data_for_empty_segment( next_point, sector_start_time + sector_duration );
+
+        if( last_empty_segment.durationTime > 0 ){
+            list.push( last_empty_segment );
+        };
 
         result.push({
             sector_start_time,

@@ -27,7 +27,8 @@ const OneSectorComponent = ( props ) => {
 
     } = props;
 
- const create = ( arr ) => {
+
+    const create = ( arr ) => {
 
         let div = arr.map( ( item, index ) => {
             let { type } = item;
@@ -61,6 +62,7 @@ const OneSectorComponent = ( props ) => {
                 } = item;
                 return (
                     <EmptyTimeSegment 
+                        segmentIndex =  { index }
                         key =           { index }
                         startTime =     { startTime }
                         durationTime =  { durationTime }
@@ -74,34 +76,44 @@ const OneSectorComponent = ( props ) => {
 
     };
 
-    return (
-        <div className = 'GDE_OneSector'>
-            <div className = 'GDE_OS_header'>
-                <div className = 'GDE_OS_header_time'>
-                    <span>{ convert_sec_to_time( sector_start_time ) }</span>
+    return (<>
+
+        { sector_list.length === 1? (
+            <EmptyTimeSegment 
+                segmentIndex =  { 0 }
+                startTime =     { sector_list[ 0 ].startTime }
+                durationTime =  { sector_list[ 0 ].durationTime }
+            />
+        ): (
+            <div className = 'GDE_OneSector'>
+                <div className = 'GDE_OS_header'>
+                    <div className = 'GDE_OS_header_time'>
+                        <span>{ convert_sec_to_time( sector_start_time ) }</span>
+                    </div>
+
+                    <div className = 'GDE_OS_header_time_empty'>
+                        <span className = 'name'>Свободно: </span>
+                        <span className = 'value'>{ convert_sec_to_time( sector_duration - sector_completed_duration ) }</span>
+                    </div>
                 </div>
 
-                <div className = 'GDE_OS_header_time_empty'>
-                    <span className = 'name'>Свободно: </span>
-                    <span className = 'value'>{ convert_sec_to_time( sector_duration - sector_completed_duration ) }</span>
+                <div className = 'GDE_OS_body'>
+
+                    <div className = 'GDE_OS_body_left'>
+
+                        <span className = 'GDE_OS_body_left_timeEnd'>{ convert_sec_to_time( sector_start_time + sector_duration ) }</span>
+                    </div>
+
+                    <div className = 'GDE_OS_body_right'>
+                        { create( sector_list ) }
+                    </div>
                 </div>
             </div>
+        ) }
+    
+    
 
-            <div className = 'GDE_OS_body'>
-
-                <div className = 'GDE_OS_body_left'>
-
-                    <span className = 'GDE_OS_body_left_timeEnd'>{ convert_sec_to_time( sector_start_time + sector_duration ) }</span>
-                </div>
-
-                <div className = 'GDE_OS_body_right'>
-                    { create( sector_list ) }
-                </div>
-
-            </div>
-
-        </div>
-    )
+    </>)
 
 };
 

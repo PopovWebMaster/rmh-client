@@ -49,11 +49,6 @@ const TimeTrackComponent = ( props ) => {
 
             setSliderLeft( getSliderLeft() );
 
-            // console.dir( 'sliderLeft' )
-            // console.dir( sliderLeft )
-
-
-
         };
 
         flag = true;
@@ -77,59 +72,19 @@ const TimeTrackComponent = ( props ) => {
 
         let slider_left_proc = ( scaleTime * 100 )/(intervel + duration );
         let width_proc = ( duration * 100 )/intervel;
+        let slider_width_sec = duration;
+        let slider_width_proc = ( duration * 100 )/intervel;
+
         if( width_proc <= 1){
             width_proc = 1;
-            let durNum = intervel * 1/100;
-            slider_left_proc = (( scaleTime * 99 )/( intervel + durNum));
+            // let durNum = intervel * 1 / 100;
+            slider_width_proc = intervel * 1/100;
+            slider_left_proc = (( scaleTime * 100 )/( intervel + slider_width_proc ));
         };
         let leftProc = slider_left_proc * ( 100 + width_proc ) / 100 ;
-        return leftProc;
 
-/*
-        let slider_left_proc = ( startTime * 100 )/(timeSpaceTo - timeSpaceFrom + duration );
-        let width_proc = ( duration * 100 )/(timeSpaceTo - timeSpaceFrom );
-        if( width_proc <= 1){
-            width_proc = 1;
-            let durNum = ( timeSpaceTo - timeSpaceFrom  ) * 1/100;
-            slider_left_proc = (( startTime * 99 )/( timeSpaceTo - timeSpaceFrom + durNum));
-        };
-        let leftProc = slider_left_proc * ( 100 + width_proc ) / 100 ;
         return leftProc;
-*/
-
     }
-
-
-    // useEffect(() => {
-    //     let proc = ( sliderLeft * 100 ) / ( 100 - sliderWidth );
-    //     let currentTimeSec = 0;
-    //     let startTime = Math.round( (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 );
-    //     if( target === 'start' ){
-    //         // currentTimeSec = Math.round( (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 );
-    //         currentTimeSec = (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 ;
-
-    //         // currentTimeSec = round_to_number( (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100, 3 );
-
-    //     }else{
-    //         // currentTimeSec = Math.round( duration + (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 ) ;
-    //         currentTimeSec =  duration + (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100 ;
-
-    //         // currentTimeSec = round_to_number( duration + (( timeSpaceTo - timeSpaceFrom - duration ) * proc ) / 100, 3 ) ;
-
-    //     };
-    //     // setCurrentTimeSec( currentTimeSec );
-
-    //     // if( flag === false ){
-    //     //     setStartTime( startTime );
-    //     // };
-        
-    //     // flag = false;
-
-
-
-    // }, [ sliderLeft, target ] );
-
-
 
     let trackRef = useRef();
     let sliderRef = useRef();

@@ -12,6 +12,7 @@ import { TimeSelected } from './../../../AddNewGridEventComponent/components/Tim
 import { AppearanceOfEvent } from './../../../AddNewGridEventComponent/components/AppearanceOfEvent/AppearanceOfEvent.js';
 import { DayName } from './../../../AddNewGridEventComponent/components/DayName/DayName.js';
 
+import { set_grid_event_changes_to_store } from './../../../../../../vendors/set_grid_event_changes_to_store.js';
 
 const StartTimeEditComponentComponent = ( props ) => {
 
@@ -81,7 +82,8 @@ const StartTimeEditComponentComponent = ( props ) => {
         };
     }
     const click = () => {
-        alert(11);
+        set_grid_event_changes_to_store( id, { startTime } );
+        setIsOpen( false );
     };
 
 

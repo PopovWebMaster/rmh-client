@@ -19,6 +19,7 @@ import { AddNewGridEventComponent } from './../AddNewGridEventComponent/AddNewGr
 const EmptyTimeSegmentComponent = ( props ) => {
 
     let {
+        segmentIndex,
         startTime,
         durationTime,
 

@@ -14,7 +14,8 @@ export const add_event_mouse_move = ( setDataHandler, onlyCkickHandler ) => {
 
     }
 
-    curtain.onmouseup = () => {
+    curtain.onmouseleave = () => {
+        curtain.onmouseleave = null;
         curtain.onmousemove = null;
         curtain.onmouseup = null;
         curtain.remove();
@@ -27,6 +28,23 @@ export const add_event_mouse_move = ( setDataHandler, onlyCkickHandler ) => {
         
         was_movement = false;
     }
+
+    curtain.onmouseup = () => {
+        curtain.onmouseleave = null;
+        curtain.onmousemove = null;
+        curtain.onmouseup = null;
+        curtain.remove();
+
+        if( was_movement ){
+
+        }else{
+            onlyCkickHandler();
+        };
+        
+        was_movement = false;
+    }
+
+
 
 
 

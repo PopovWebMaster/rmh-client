@@ -19,20 +19,33 @@ const ListBySectorsComponent = ( props ) => {
 
     const create = ( arr ) => {
 
-        let sectors = arr.map( ( item, index ) => {
+        if( arr.length > 0 ){
+            let sectors = arr.map( ( item, index ) => {
+                return (
+                    <OneSector 
+                        key = { index }
+                        sector_start_time =         { item.sector_start_time }
+                        sector_completed_duration = { item.sector_completed_duration  }
+                        sector_duration =           { item.sector_duration  }
+                        sector_list =               { item.sector_list  }
+
+                    />
+                );
+            } );
+
+            return sectors;
+        }else{
             return (
                 <OneSector 
-                    key = { index }
-                    sector_start_time =         { item.sector_start_time }
-                    sector_completed_duration = { item.sector_completed_duration  }
-                    sector_duration =           { item.sector_duration  }
-                    sector_list =               { item.sector_list  }
+                    sector_start_time =         { 0 }
+                    sector_completed_duration = { 0 }
+                    sector_duration =           { 24*60*60-1  }
+                    sector_list =               { []  }
 
                 />
             );
-        } );
+        }
 
-        return sectors;
 
     };
 
