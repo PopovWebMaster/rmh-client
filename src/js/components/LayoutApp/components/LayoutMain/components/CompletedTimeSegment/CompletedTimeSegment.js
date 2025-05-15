@@ -13,7 +13,7 @@ import { PrefixItem } from './components/PrefixItem/PrefixItem.js';
 import { EventNotesItem } from './components/EventNotesItem/EventNotesItem.js';
 import { RemoveItem } from './components/RemoveItem/RemoveItem.js';
 // import { KeyPointToggle } from './components/KeyPointToggle/KeyPointToggle.js';
-import { CutEditorItem } from './components/CutEditorItem/CutEditorItem.js';
+// import { CutEditorItem } from './components/CutEditorItem/CutEditorItem.js';
 import { AddItem } from './components/AddItem/AddItem.js';
 import { CutItem } from './components/CutItem/CutItem.js';
 
@@ -48,17 +48,10 @@ const CompletedTimeSegmentComponent = ( props ) => {
                     id =        { id }
                     notes =     { notes }
                 />
-
-                {/* <CutEditorItem 
-                    id = { id }
-                    firstSegmentId = { firstSegmentId }
-                /> */}
-
                 <div className = 'CTS_right_buttons_wrap'>
 
                     <CutItem 
                         id = { id }
-                        firstSegmentId = { firstSegmentId }
                     />
 
                     <AddItem 

@@ -10,9 +10,6 @@ export const divide_day_into_sectors = ( day_array ) => {
     let sector_duration = 0;
     let sector_completed_duration = 0;
 
-    console.dir( 'day_array' );
-    console.dir( day_array );
-
     if( day_array.length > 0 ){
 
         for( let i = 0; i < day_array.length; i++ ){
@@ -111,10 +108,6 @@ export const divide_day_into_sectors = ( day_array ) => {
             sector_list: [ ],
         });
     };
-
-    console.dir( 'result' );
-    console.dir( result );
-
 
     return result;
 };

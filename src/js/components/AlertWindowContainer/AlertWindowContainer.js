@@ -1,7 +1,9 @@
 
 import React, { useEffect, useState } from "react";
-// import { useSelector, useDispatch } from 'react-redux';
-// import { selectorData as companySlice } from './../../redux/companySlice.js';
+import { useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+
+import { selectorData as layoutSlice } from './../../redux/layoutSlice.js';
 
 import './AlertWindowContainer.scss';
 
@@ -16,7 +18,11 @@ const AlertWindowContainerComponent = ( props ) => {
         width = '25vw',
         height = '20vh',
 
+        showCurrentDayName = false,
+
         children,
+
+        gridCurrentDayName,
 
     } = props;
 
@@ -54,7 +60,16 @@ const AlertWindowContainerComponent = ( props ) => {
                     </div>
                 </div>
 
+                { showCurrentDayName? (
+                    <div className = 'AWC_window_body_carrentDay'>
+                        <span>{ gridCurrentDayName }</span>
+                    </div>
+                ): '' }
+
+                
+
                 <div className = 'AWC_window_body'>
+                    
                     { children } 
                 </div>
 
@@ -67,13 +82,13 @@ const AlertWindowContainerComponent = ( props ) => {
 
 export function AlertWindowContainer( props ){
 
-    // const company = useSelector( companySlice );
+    const layout = useSelector( layoutSlice );
     // const dispatch = useDispatch();
 
     return (
         <AlertWindowContainerComponent
             { ...props }
-            // companyProgramSystem = { company.companyProgramSystem }
+            gridCurrentDayName = { layout.gridCurrentDayName }
             // aaaa = { ( callback ) => { dispatch( aaa( callback ) ) } }
 
         />

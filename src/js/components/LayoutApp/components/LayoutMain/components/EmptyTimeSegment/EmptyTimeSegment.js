@@ -47,6 +47,7 @@ const EmptyTimeSegmentComponent = ( props ) => {
                 width =     '90vw'
                 height =    '80vh'
                 title = 'Новое событие сетки'
+                showCurrentDayName = { true }
             >
                 <AddNewGridEventComponent 
                     isOpen =    { isOpen }

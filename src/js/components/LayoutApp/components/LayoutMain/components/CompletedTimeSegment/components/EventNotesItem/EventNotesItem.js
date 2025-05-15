@@ -23,6 +23,8 @@ const EventNotesItemComponent = ( props ) => {
 
     let [ eventNotes, setEventNotes ] = useState('');
     let [ notesValue, setNotesValue ] = useState( notes );
+    let [ inputValue, setInputValue ] = useState( '' );
+
 
     useEffect( () => {
         setNotesValue( notes );
@@ -33,6 +35,15 @@ const EventNotesItemComponent = ( props ) => {
             setEventNotes( eventListById[ eventId ].notes );
         };
     }, [ eventId, eventListById ]);
+
+    useEffect(() => {
+        if( eventNotes.trim() === '' ){
+            setInputValue( notesValue );
+        }else{
+            setInputValue( `${eventNotes} ${notesValue}` );
+        };
+        
+    }, [ eventNotes, notesValue ]);
 
     const set_changes_to_store = () => {
         if( notesValue !== notes ){
@@ -69,7 +80,9 @@ const EventNotesItemComponent = ( props ) => {
         <div className = 'CTS_EventNotesItem'>
             <input 
                 type =      'text'
-                value =     { `${eventNotes} ${notesValue}` }
+                // value =     { `${eventNotes} ${notesValue}` }
+                value =     { inputValue }
+
                 maxLength = { 255 }
                 onChange =  { change }
                 onKeyDown = { enter }

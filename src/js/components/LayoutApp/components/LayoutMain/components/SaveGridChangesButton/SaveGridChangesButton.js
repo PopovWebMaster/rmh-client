@@ -12,6 +12,8 @@ import { setSpinnerIsActive } from './../../../../../../redux/spinnerSlice.js';
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 import { CP_SaveButtonComponent } from './../../../CP_SaveButtonComponent/CP_SaveButtonComponent.js';
 
+// import { fake_gridEventsList } from './fake_gridEventsList.js';
+
 
 const SaveGridChangesButtonComponent = ( props ) => {
 
@@ -44,7 +46,7 @@ const SaveGridChangesButtonComponent = ( props ) => {
                     console.dir( response );
                     if( response.ok ){
                         setSpinnerIsActive( false );
-                        setGridDayEventsList(response.list);
+                        setGridDayEventsList( response.list );
                         setGridDayEventsIsChanges( false );
                     };
 

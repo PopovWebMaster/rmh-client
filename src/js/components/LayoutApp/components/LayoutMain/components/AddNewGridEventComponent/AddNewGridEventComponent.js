@@ -12,14 +12,11 @@ import { setSpinnerIsActive }                           from './../../../../../.
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 import { convert_time_str_to_sec } from './../../../../../../helpers/convert_time_str_to_sec.js';
 
-import { DayName } from './components/DayName/DayName.js';
 import { GridEventType } from './components/GridEventType/GridEventType.js';
 import { SelectedEvent } from './components/SelectedEvent/SelectedEvent.js';
 import { TimeSelected } from './components/TimeSelected/TimeSelected.js';
 import { AppearanceOfEvent } from './components/AppearanceOfEvent/AppearanceOfEvent.js';
 import { CreateButton } from './components/CreateButton/CreateButton.js';
-
-
 
 const AddNewGridEventComponentComponent = ( props ) => {
 
@@ -109,7 +106,6 @@ const AddNewGridEventComponentComponent = ( props ) => {
     return (
 
         <div className = 'G_AddNewGridEventComponent' >
-            <DayName />
             
             <GridEventType 
                 isAKeyOneEvent =    { isAKeyOneEvent }

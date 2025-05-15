@@ -1,5 +1,5 @@
 .removeSegmentButton{
-    font-size: 0.94em;
+    font-size: 1em;
     flex-grow: 0;
     // width: 3em;
     height: 100%;
@@ -13,7 +13,7 @@
 
 
     .RIB_btn{
-        font-size: 1em;
+        font-size: 0.86em;
         width: 1.4em;
         height: 1.4em;
         background-color: #ffffff1a;
@@ -26,15 +26,17 @@
         span{
             font-size: 1em;
             line-height: 1.4em;
-            color: #817f7f;
+            color: #9f9e9e;
         }
     
     }
     
     .RIB_btn:hover{
-        background-color: #ffffff5e;
+        // background-color: #ffffff5e;
+        background-color: #e93b3b;
+
         span{
-            color: #616161;
+            color: #ffffff;
         }
     }
     .RIB_btn:active{
