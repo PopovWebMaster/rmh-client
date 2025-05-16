@@ -57,6 +57,8 @@ const CutSegmentButtonComponent = ( props ) => {
         let result = false;
         if( first_segment_id === null ){
             result = true;
+        }else if( first_segment_id === id ){
+            result = true;
         };
         return result;
     }

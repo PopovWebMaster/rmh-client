@@ -6,7 +6,8 @@ import React from "react";
 import './AppearanceOfGridEventParts.scss';
 
 // import { selectorData as layoutSlice } from './../../../../../../../../redux/layoutSlice.js';
-import { AppearanceOfASingleGridEvent } from './../AppearanceOfASingleGridEvent/AppearanceOfASingleGridEvent.js';
+// import { AppearanceOfASingleGridEvent } from './../AppearanceOfASingleGridEvent/AppearanceOfASingleGridEvent.js';
+import { AppearanceOfASingleGridEvent } from './../../../AppearanceOfASingleGridEvent/AppearanceOfASingleGridEvent.js';
 
 const AppearanceOfGridEventPartsComponent = ( props ) => {
 

@@ -31,6 +31,7 @@ const StartTimeWithEditComponent = ( props ) => {
             width =     '90vw'
             height =    '60vh'
             title = 'Редактр времени выхода'
+            showCurrentDayName = { true }
         >
             <StartTimeEditComponent 
                 isOpen =    { isOpen }

@@ -121,6 +121,7 @@ const AddNewGridEventComponentComponent = ( props ) => {
             <AppearanceOfEvent 
                 eventId =       { eventId }
                 startTime =     { startTime }
+                isAKeyOneEvent = { isAKeyOneEvent }
             />
 
             { eventId === null? '': (

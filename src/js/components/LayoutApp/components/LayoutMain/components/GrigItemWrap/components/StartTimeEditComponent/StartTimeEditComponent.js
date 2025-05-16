@@ -10,7 +10,7 @@ import { selectorData as layoutSlice } from './../../../../../../../../redux/lay
 // import { TimeSelected } from './components/TimeSelected/TimeSelected.js';
 import { TimeSelected } from './../../../AddNewGridEventComponent/components/TimeSelected/TimeSelected.js';
 import { AppearanceOfEvent } from './../../../AddNewGridEventComponent/components/AppearanceOfEvent/AppearanceOfEvent.js';
-import { DayName } from './../../../AddNewGridEventComponent/components/DayName/DayName.js';
+// import { DayName } from './../../../AddNewGridEventComponent/components/DayName/DayName.js';
 
 import { set_grid_event_changes_to_store } from './../../../../../../vendors/set_grid_event_changes_to_store.js';
 
@@ -93,7 +93,7 @@ const StartTimeEditComponentComponent = ( props ) => {
 
             { isReady? (<>
 
-                <DayName />
+                {/* <DayName /> */}
 
                 <AppearanceOfEvent 
                     eventId =       { eventId }

@@ -12,16 +12,27 @@ import { TimeTrackButtons } from './components/TimeTrackButtons/TimeTrackButtons
 import { TimeTrack } from './components/TimeTrack/TimeTrack.js';
 import { AddNewPoint } from './components/AddNewPoint/AddNewPoint.js';
 import { RemovePoint } from './components/RemovePoint/RemovePoint.js';
+import { get_cut_point_list } from './vendors/get_cut_point_list.js';
 
 const CutGridEventTimeTrackComponent = ( props ) => {
 
     let {
         gridEventsParts,
+        maxDurationTime,
+        startTime,
 
 
     } = props;
 
-// cutPart: null,
+    let [ pointList, setPointList ] = useState( [] );
+
+    useEffect( () => {
+
+        setPointList( get_cut_point_list( gridEventsParts ) );
+
+    }, [ gridEventsParts ] );
+
+//             cutPart: null,
 //             dayNum: 0,
 //             durationTime: 180,
 //             eventId: 1,
@@ -39,13 +50,19 @@ const CutGridEventTimeTrackComponent = ( props ) => {
                 gridEventsParts = { gridEventsParts }
             />
 
+            <TimeTrack 
+                pointList = { pointList }
+                setPointList = { setPointList }
+                maxDurationTime = { maxDurationTime }
+            />
+            {/* <AddNewPoint /> */}
             {/*         
     
                 Не удалять !!!!!
 
             <TimeTrackButtons />
-            <TimeTrack />
-            <AddNewPoint />
+            
+            
             <RemovePoint /> */}
 
         </div>
