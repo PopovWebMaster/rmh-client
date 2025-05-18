@@ -20,6 +20,7 @@ const CutGridEventTimeTrackComponent = ( props ) => {
         gridEventsParts,
         maxDurationTime,
         startTime,
+        setGridEventsParts,
 
 
     } = props;
@@ -54,6 +55,8 @@ const CutGridEventTimeTrackComponent = ( props ) => {
                 pointList = { pointList }
                 setPointList = { setPointList }
                 maxDurationTime = { maxDurationTime }
+                gridEventsParts = { gridEventsParts }
+                setGridEventsParts = { setGridEventsParts }
             />
             {/* <AddNewPoint /> */}
             {/*         

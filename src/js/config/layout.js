@@ -20,3 +20,5 @@ export const GRID_SEGMENT_TYPE = {
     EMPTY: 'empty',
     COMPLETED: 'completed',
 };
+
+export const MIN_EVENT_DURATION_SEC = 5;
