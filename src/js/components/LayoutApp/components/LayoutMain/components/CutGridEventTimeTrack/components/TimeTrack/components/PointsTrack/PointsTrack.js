@@ -9,6 +9,8 @@ import './PointsTrack.scss';
 
 import { get_points } from './vendors/get_points.js';
 
+import { PointControlSlider } from './../PointControlSlider/PointControlSlider.js';
+
 
 const PointsTrackComponent = ( props ) => {
 
@@ -23,15 +25,37 @@ const PointsTrackComponent = ( props ) => {
 
         let res = get_points( gridEventsParts, maxDurationTime );
 
-        console.dir( 'points' );
-        console.dir( res );
+        setPoints( res );
+
+        // console.dir( 'points' );
+        // console.dir( res );
 
 
     }, [ gridEventsParts ] );
 
+    const create = ( arr ) => {
+        let div = arr.map( ( item, index ) => {
+            return (
+                <PointControlSlider 
+                    key =               { index }
+                    point =             { item.point }
+                    spaceFrom =         { item.spaceFrom }
+                    spaceTo =           { item.spaceTo }
+                    pointIndex =        { index }
+                    maxDurationTime =   { maxDurationTime }
+                />
+            );
+        } );
+
+        return div;
+
+    }
+
 
     return (
         <div className = 'CGETT_points_track'>
+
+           { create( points ) }
 
 
         </div>

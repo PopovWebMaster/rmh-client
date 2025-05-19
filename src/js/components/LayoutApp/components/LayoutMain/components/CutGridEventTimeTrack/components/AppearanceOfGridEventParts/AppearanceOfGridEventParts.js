@@ -8,11 +8,14 @@ import './AppearanceOfGridEventParts.scss';
 // import { selectorData as layoutSlice } from './../../../../../../../../redux/layoutSlice.js';
 // import { AppearanceOfASingleGridEvent } from './../AppearanceOfASingleGridEvent/AppearanceOfASingleGridEvent.js';
 import { AppearanceOfASingleGridEvent } from './../../../AppearanceOfASingleGridEvent/AppearanceOfASingleGridEvent.js';
+import { SettingOfCutPart } from './../SettingOfCutPart/SettingOfCutPart.js';
 
 const AppearanceOfGridEventPartsComponent = ( props ) => {
 
     let {
         gridEventsParts,
+        setGridEventsParts,
+        maxDurationTime,
 
     } = props;
 
@@ -30,18 +33,34 @@ const AppearanceOfGridEventPartsComponent = ( props ) => {
             } = gridEvent;
 
             return (
-                <AppearanceOfASingleGridEvent 
-                    key =               { index }
-                    cutPart =           { cutPart }
-                    durationTime =      { durationTime }
-                    firstSegmentId =    { firstSegmentId }
-                    id =                { id }
-                    isKeyPoint =        { isKeyPoint }
-                    notes =             { notes }
-                    startTime =         { startTime }
-                    eventId =           { eventId }
 
-                />
+                <div 
+                    className = 'AOASGE_item'
+                    key = { index }
+                >
+                   <AppearanceOfASingleGridEvent 
+                        key =               { index }
+                        cutPart =           { cutPart }
+                        durationTime =      { durationTime }
+                        firstSegmentId =    { firstSegmentId }
+                        id =                { id }
+                        isKeyPoint =        { isKeyPoint }
+                        notes =             { notes }
+                        startTime =         { startTime }
+                        eventId =           { eventId }
+
+                    /> 
+
+                    <SettingOfCutPart 
+                        gridEventsParts =       { gridEventsParts }
+                        index =                 { index }
+                        gridEvent =             { gridEvent }
+                        setGridEventsParts =    { setGridEventsParts }
+                        maxDurationTime =       { maxDurationTime }
+                    />
+
+                </div>
+                
             );
         } );
 

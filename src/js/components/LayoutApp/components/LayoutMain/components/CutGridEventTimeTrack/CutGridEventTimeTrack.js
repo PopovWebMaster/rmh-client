@@ -28,9 +28,7 @@ const CutGridEventTimeTrackComponent = ( props ) => {
     let [ pointList, setPointList ] = useState( [] );
 
     useEffect( () => {
-
         setPointList( get_cut_point_list( gridEventsParts ) );
-
     }, [ gridEventsParts ] );
 
 //             cutPart: null,
@@ -49,6 +47,8 @@ const CutGridEventTimeTrackComponent = ( props ) => {
 
             <AppearanceOfGridEventParts 
                 gridEventsParts = { gridEventsParts }
+                setGridEventsParts = { setGridEventsParts }
+                maxDurationTime = { maxDurationTime }
             />
 
             <TimeTrack 
