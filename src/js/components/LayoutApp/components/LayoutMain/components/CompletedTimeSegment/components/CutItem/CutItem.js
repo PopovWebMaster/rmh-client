@@ -14,6 +14,7 @@ const CutItemComponent = ( props ) => {
 
     let {
         id,
+        // firstSegmentId,
     } = props;
 
 

@@ -38,6 +38,8 @@ const OneSectorComponent = ( props ) => {
                     isKeyPoint,
                     startTime,
                     durationTime,
+                    cutPart,
+
                 } = item;
 
                 return (
@@ -50,6 +52,8 @@ const OneSectorComponent = ( props ) => {
                         isKeyPoint =        { isKeyPoint }
                         startTime =         { startTime }
                         durationTime =      { durationTime }
+                        cutPart =           { cutPart }
+
                     />
                 );
             }else if( type === GRID_SEGMENT_TYPE.EMPTY ){

@@ -73,31 +73,33 @@ const AddNewGridEventComponentComponent = ( props ) => {
 
 
     const create = () => {
+
+
         if( eventId !== null ){
             setSpinnerIsActive( true );
-                send_request_to_server({
-                    route: `${currentPage}/add-new-grid-event`,
-                    data: { 
-                        dayNum: gridCurrentDay,
-                        isAKeyPoint: isAKeyOneEvent,
-                        startTime,
-                        eventId,
-                        durationTime,
-                    },
+            send_request_to_server({
+                route: `${currentPage}/add-new-grid-event`,
+                data: { 
+                    dayNum: gridCurrentDay,
+                    isAKeyPoint: isAKeyOneEvent,
+                    startTime,
+                    eventId,
+                    durationTime,
+                },
 
-                    callback: ( response ) => {
-                        console.dir( 'response' );
-                        console.dir( response );
+                callback: ( response ) => {
+                    console.dir( 'response' );
+                    console.dir( response );
 
-                        if( response.ok ){
-                            setSpinnerIsActive( false );
-                            setGridDayEventsList( response.list );
-                            setGridDayEventsIsChanges( false );
-                            setIsOpen( false );
-                        };
+                    if( response.ok ){
+                        setSpinnerIsActive( false );
+                        setGridDayEventsList( response.list );
+                        setGridDayEventsIsChanges( false );
+                        setIsOpen( false );
+                    };
 
-                    },
-                });
+                },
+            });
         };
     };
 

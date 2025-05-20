@@ -53,6 +53,7 @@ const CutEditorComponentComponent = ( props ) => {
                 maxDurationTime =   { maxDurationTime }
                 startTime =         { startTime }
                 setGridEventsParts = { setGridEventsParts }
+                setIsOpen = { setIsOpen }
             />
             
         </div>

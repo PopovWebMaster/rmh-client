@@ -30,6 +30,28 @@ const RemoveBtnComponent = ( props ) => {
 
     const click = () => {
 
+        let arr = [];
+
+        let next_cut_part = 1;
+
+        for( let i = 0; i < gridEventsParts.length; i++ ){
+            if( index === i ){
+                let { durationTime } = gridEventsParts[ i ];
+                arr[ i - 1 ].durationTime = arr[ i - 1 ].durationTime + durationTime + 1;
+            }else{
+                let item = { ...gridEventsParts[ i ] }
+                item.cutPart = next_cut_part;
+                next_cut_part++;
+                arr.push( item );
+            };
+        };
+        if( arr.length === 1 ){
+            arr[ 0 ].cutPart = null;
+            arr[ 0 ].firstSegmentId = null;
+        };
+
+        setGridEventsParts( arr );
+
     };
 
 

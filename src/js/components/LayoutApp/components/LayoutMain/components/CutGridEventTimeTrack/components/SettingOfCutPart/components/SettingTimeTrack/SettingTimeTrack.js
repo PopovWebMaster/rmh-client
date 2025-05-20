@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import './SettingTimeTrack.scss';
 
 // import { selectorData as layoutSlice }    from './../../../../../../../../../../redux/layoutSlice.js';
+import { get_cut_part_left_proc } from './vendors/get_cut_part_left_proc.js';
 
 const SettingTimeTrackComponent = ( props ) => {
 
@@ -18,14 +19,22 @@ const SettingTimeTrackComponent = ( props ) => {
     } = props;
 
     let [ widthProc, setWidthProc ] = useState( 0 );
+    let [ leftProc, setLeftProc ] = useState( 0 );
+
 
     useEffect( () => {
 
         let { durationTime } = gridEventsParts[ index ];
         
-        setWidthProc( durationTime * 100 / maxDurationTime ) 
+        setWidthProc( durationTime * 100 / maxDurationTime );
+        let left_proc = get_cut_part_left_proc({
+            gridEventsParts,
+            index,
+            maxDurationTime,
+        }) 
+        setLeftProc( left_proc );
 
-    }, [ gridEventsParts ] );
+    }, [ gridEventsParts, index ] );
 
     
     return (
@@ -35,6 +44,7 @@ const SettingTimeTrackComponent = ( props ) => {
                 <div 
                     className = 'AOASGE_filled_track'
                     style = {{
+                        left: `${ leftProc }%`,
                         width: `${ widthProc }%`,
                     }}
                 ></div>

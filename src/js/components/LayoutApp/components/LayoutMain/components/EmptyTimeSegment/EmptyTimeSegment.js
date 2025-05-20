@@ -72,6 +72,10 @@ const EmptyTimeSegmentComponent = ( props ) => {
                     ></span>
                 </div>
 
+                {/* <div className = 'ETS_remove'>
+                    
+                </div> */}
+
             </div>
         </GrigItemWrap>
 

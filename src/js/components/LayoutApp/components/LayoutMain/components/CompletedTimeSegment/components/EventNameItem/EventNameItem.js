@@ -14,6 +14,7 @@ const EventNameItemComponent = ( props ) => {
 
     let {
         eventId,
+        cutPart,
 
         eventListById,
         categoryListById,
@@ -86,6 +87,14 @@ const EventNameItemComponent = ( props ) => {
                 onChange =  { () => {} }
                 style =     { get_style( eventType ) }
             />
+            { cutPart !== null? (
+                <div className = 'curPartName'>
+                    <span>
+                        <span className = 'icon icon-scissors'></span>
+                        <span className = 'num'>{ cutPart }</span>
+                    </span>
+                </div>
+            ): '' }
         </div>
     )
 

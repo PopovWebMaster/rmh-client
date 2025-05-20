@@ -30,6 +30,7 @@ const CompletedTimeSegmentComponent = ( props ) => {
         isKeyPoint,
         startTime,
         durationTime,
+        cutPart,
 
         eventListById,
 
@@ -65,7 +66,10 @@ const CompletedTimeSegmentComponent = ( props ) => {
             <div className = 'completedTimeSegment'>
 
                 <PrefixItem eventId = { eventId }/>
-                <EventNameItem eventId = { eventId }/>
+                <EventNameItem 
+                    eventId = { eventId }
+                    cutPart = { cutPart }
+                />
                 <EventNotesItem 
                     eventId =   { eventId }
                     id =        { id }
@@ -75,6 +79,7 @@ const CompletedTimeSegmentComponent = ( props ) => {
 
                     <CutItem 
                         id = { id }
+                        // firstSegmentId = { firstSegmentId }
                     />
 
                     <AddItem 
@@ -85,10 +90,6 @@ const CompletedTimeSegmentComponent = ( props ) => {
                         id = { id }
                     />
                 </div>
-
-                {/* <RemoveItem 
-                    id = { id }
-                /> */}
 
             </div>
         </GrigItemWrap>

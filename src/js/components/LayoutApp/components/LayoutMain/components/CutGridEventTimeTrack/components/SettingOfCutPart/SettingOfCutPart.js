@@ -22,26 +22,22 @@ const SettingOfCutPartComponent = ( props ) => {
 
     } = props;
 
-    let [ isFirstPart, setIsFirstPart ] = useState( false );
-    let [ isLastPart, setIsLastPart ] = useState( false );
+    // useEffect( () => {
+    //     // console.dir( props );
 
+    //     if( gridEventsParts[ index + 1 ] ){
+    //         setIsLastPart( false );
+    //     }else{
+    //         setIsLastPart( true );
+    //     };
 
-    useEffect( () => {
-        console.dir( props );
+    //     if( gridEventsParts[ index - 1 ] ){
+    //         setIsFirstPart( false );
+    //     }else{
+    //         setIsFirstPart( true );
+    //     };
 
-        if( gridEventsParts[ index + 1 ] ){
-            setIsLastPart( false );
-        }else{
-            setIsLastPart( true );
-        };
-
-        if( gridEventsParts[ index - 1 ] ){
-            setIsFirstPart( false );
-        }else{
-            setIsFirstPart( true );
-        };
-
-    }, [ gridEventsParts ] );
+    // }, [ gridEventsParts ] );
 
     // let {
     //     cutPart,
@@ -53,8 +49,6 @@ const SettingOfCutPartComponent = ( props ) => {
     //     startTime,
     //     eventId,
     // } = gridEvent;
-
-    
 
 
     return (

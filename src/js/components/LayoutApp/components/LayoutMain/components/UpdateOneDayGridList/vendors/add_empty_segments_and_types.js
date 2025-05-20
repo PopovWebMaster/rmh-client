@@ -34,7 +34,7 @@ export const add_empty_segments_and_types = ( sectors_arr ) => {
 
             if( next_point === startTime ){
                 list.push( get_data_for_completed_segment( sector_list[ i ] ) );
-                next_point = next_point + durationTime;
+                next_point = next_point + durationTime + 1;
 
 
 

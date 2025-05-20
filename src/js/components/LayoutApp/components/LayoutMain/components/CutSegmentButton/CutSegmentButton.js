@@ -70,13 +70,13 @@ const CutSegmentButtonComponent = ( props ) => {
                 isOpen = { isOpen }
                 setIsOpen = { setIsOpen }
                 width = '90vw'
-                height = '75vh'
+                height = '90vh'
                 showCurrentDayName = { true }
             >
                 <CutEditorComponent 
-                    isOpen = { isOpen }
-                    setIsOpen = { setIsOpen }
-                    id = { id }
+                    isOpen =            { isOpen }
+                    setIsOpen =         { setIsOpen }
+                    id =                { id }
                     firstSegmentId =    { firstSegmentId }
                     durationTime =      { durationTime }
                     startTime =         { startTime }

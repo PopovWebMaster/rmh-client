@@ -10,6 +10,8 @@ import './AppearanceOfGridEventParts.scss';
 import { AppearanceOfASingleGridEvent } from './../../../AppearanceOfASingleGridEvent/AppearanceOfASingleGridEvent.js';
 import { SettingOfCutPart } from './../SettingOfCutPart/SettingOfCutPart.js';
 
+
+
 const AppearanceOfGridEventPartsComponent = ( props ) => {
 
     let {
