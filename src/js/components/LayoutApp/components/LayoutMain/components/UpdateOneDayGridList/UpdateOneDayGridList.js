@@ -21,8 +21,12 @@ const UpdateOneDayGridListComponent = ( props ) => {
     } = props;
 
     useEffect( () => {
-        // setGridOneDayList( get_grid_one_day_list( gridDayEventsList[ gridCurrentDay ] ) );
-        setGridOneDayList( get_grid_one_day_list_by_sector( gridDayEventsList[ gridCurrentDay ] ) );
+        let result = get_grid_one_day_list_by_sector( gridDayEventsList[ gridCurrentDay ] )
+
+        console.dir( 'result' );
+        console.dir( result );
+
+        setGridOneDayList( result );
 
     }, [
         gridCurrentDay,

@@ -82,10 +82,10 @@ const CompletedTimeSegmentComponent = ( props ) => {
                         // firstSegmentId = { firstSegmentId }
                     />
 
-                    <AddItem 
+                    {/* <AddItem 
                         id = { id }
                         firstSegmentId = { firstSegmentId }
-                    />
+                    /> */}
                     <RemoveItem 
                         id = { id }
                     />

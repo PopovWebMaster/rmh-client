@@ -18,6 +18,9 @@ const ListBySectorsComponent = ( props ) => {
     } = props;
 
     const create = ( arr ) => {
+        console.dir( 'gridOneDayList' );
+        console.dir( gridOneDayList );
+
 
         if( arr.length > 0 ){
             let sectors = arr.map( ( item, index ) => {

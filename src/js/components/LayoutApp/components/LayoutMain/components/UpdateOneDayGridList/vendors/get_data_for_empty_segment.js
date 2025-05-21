@@ -1,14 +1,12 @@
 
 import { GRID_SEGMENT_TYPE } from './../../../../../../../config/layout.js';
 
-export const get_data_for_empty_segment = ( pointFrom, pointTo ) => {
+export const get_data_for_empty_segment = ( next_startTime, pointTo ) => {
 
-    let startTime = pointFrom;
-    // if( pointFrom === 0 ){
-    //     startTime = pointFrom + 1;
-    // };
+    let startTime = next_startTime;
 
-    let durationTime = pointTo - pointFrom;
+
+    let durationTime = pointTo - next_startTime - 1;
 
     let result = { 
         type: GRID_SEGMENT_TYPE.EMPTY,

@@ -79,13 +79,13 @@ const OneSectorComponent = ( props ) => {
 
     return (<>
 
-        { sector_list.length === 1? (
+        {/* { sector_list.length === 1? (
             <EmptyTimeSegment 
                 segmentIndex =  { 0 }
                 startTime =     { sector_list[ 0 ].startTime }
                 durationTime =  { sector_list[ 0 ].durationTime }
             />
-        ): (
+        ): ( */}
             <div className = 'GDE_OneSector'>
                 <div className = 'GDE_OS_header'>
                     <div className = 'GDE_OS_header_time'>
@@ -110,7 +110,7 @@ const OneSectorComponent = ( props ) => {
                     </div>
                 </div>
             </div>
-        ) }
+        {/* ) } */}
     
     
 

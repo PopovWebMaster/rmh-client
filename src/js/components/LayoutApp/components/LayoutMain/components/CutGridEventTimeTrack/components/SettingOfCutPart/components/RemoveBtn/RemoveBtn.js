@@ -37,7 +37,7 @@ const RemoveBtnComponent = ( props ) => {
         for( let i = 0; i < gridEventsParts.length; i++ ){
             if( index === i ){
                 let { durationTime } = gridEventsParts[ i ];
-                arr[ i - 1 ].durationTime = arr[ i - 1 ].durationTime + durationTime + 1;
+                arr[ i - 1 ].durationTime = arr[ i - 1 ].durationTime + durationTime;
             }else{
                 let item = { ...gridEventsParts[ i ] }
                 item.cutPart = next_cut_part;

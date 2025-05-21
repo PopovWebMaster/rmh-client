@@ -12,6 +12,7 @@ import { convert_sec_to_time } from './../../../../../../../../../../helpers/con
 import { round_to_number } from './../../../../../../../../../../helpers/round_to_number.js';
 
 import { add_cut_path_to_grid_events_groupe } from './../../../../vendors/add_cut_path_to_grid_events_groupe.js';
+import { create_new_cut_putrs } from './../../../../vendors/create_new_cut_putrs.js';
 
 const CutTimeTrackComponent = ( props ) => {
 
@@ -64,16 +65,17 @@ const CutTimeTrackComponent = ( props ) => {
 
     const click = (   ) => {
 
-        let new_group = add_cut_path_to_grid_events_groupe({
-            cut_point: Math.round( maxDurationTime * cutCursorLeftProc / 100 ),
+        // let new_group = add_cut_path_to_grid_events_groupe({
+        //     cut_point: Math.round( maxDurationTime * cutCursorLeftProc / 100 ),
+        //     gridEventsParts,
+        // });
+
+        let new_group = create_new_cut_putrs({
+            cut_point: nextTimePoint,
             gridEventsParts,
         });
 
         setGridEventsParts( new_group );
-
-
-        // console.dir( 'new_group' );
-        // console.dir( new_group );
 
 
     }

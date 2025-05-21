@@ -24,6 +24,10 @@ export const add_cut_path_to_grid_events_groupe = ( params ) => {
     let next_cut_part = 1;
     let cut_point_into_day = 0;
 
+    console.dir( 'gridEventsParts' );
+    console.dir( gridEventsParts );
+
+
     for( let i = 0; i < gridEventsParts.length; i++ ){
         let { 
             firstSegmentId,
@@ -55,7 +59,7 @@ export const add_cut_path_to_grid_events_groupe = ( params ) => {
             cuted_item.cutPart =        cutPart;
             cuted_item.firstSegmentId = firstSegmentId;
             if( i === 0 ){
-                cuted_item.isKeyPoint = true;
+                // cuted_item.isKeyPoint = true;
             }else{
                 cuted_item.isKeyPoint = false;
             };
@@ -74,7 +78,7 @@ export const add_cut_path_to_grid_events_groupe = ( params ) => {
         }else{
             let item = { ...gridEventsParts[ i ] }
             if( i === 0 ){
-                item.isKeyPoint = true;
+                // item.isKeyPoint = true;
             }else{
                 item.isKeyPoint = false;
             };
