@@ -131,5 +131,14 @@
     .grigItemWrap:hover{
         // background-color: #ffffff30;
     }
+
+    .errorTime{
+        background-color: #d30000f7;
+        .grigItemTimeRemains{
+            .text{
+                color: #ffffff;
+            }
+        }
+    }
 }
 

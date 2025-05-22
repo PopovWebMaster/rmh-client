@@ -46,13 +46,7 @@ const CompletedTimeSegmentComponent = ( props ) => {
             setDuration( durationTime );
         };
 
-
     }, [ eventListById, durationTime ]);
-
-
-
-
-
 
 
     return (

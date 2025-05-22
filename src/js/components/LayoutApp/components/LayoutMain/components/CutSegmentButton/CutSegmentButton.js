@@ -10,12 +10,15 @@ import { selectorData as layoutSlice } from './../../../../../../redux/layoutSli
 import { AlertWindowContainer } from './../../../../../AlertWindowContainer/AlertWindowContainer.js';
 import { CutEditorComponent } from './components/CutEditorComponent/CutEditorComponent.js';
 
+import { EVENT_TYPE } from './../../../../../../config/layout.js';
+
 const CutSegmentButtonComponent = ( props ) => {
 
     let {
         id,
 
         gridDayEventsListById,
+        eventListById,
 
     } = props;
 
@@ -25,23 +28,33 @@ const CutSegmentButtonComponent = ( props ) => {
     let [ durationTime, setDurationTime ] = useState( 0 );
     let [ startTime, setStartTime ] = useState( 0 );
 
-
     useEffect( () => {
         if( gridDayEventsListById[ id ] ){
             let { 
                 firstSegmentId,
                 durationTime,
                 startTime,
+                eventId,
+
             } = gridDayEventsListById[ id ];
 
-            setShowStatus( getShowStatus( firstSegmentId ) );
+            let { type } = eventListById[ eventId ];
+            if( type === EVENT_TYPE.FILE ){
+                // setShowStatus( true );
+                setShowStatus( getShowStatus( firstSegmentId ) );
+            }else{
+                setShowStatus( false );
+            };
+
+            // setShowStatus( getShowStatus( firstSegmentId ) );
             setFirstSegmentId( firstSegmentId );
             setDurationTime( durationTime );
             setStartTime( startTime );
 
 
         }else{
-            setShowStatus( null );
+            setShowStatus( false );
+            // setIsEctive( false );
         };
 
     }, [ gridDayEventsListById ] );
@@ -107,6 +120,7 @@ export function CutSegmentButton( props ){
         <CutSegmentButtonComponent
             { ...props }
             gridDayEventsListById = { layout.gridDayEventsListById }
+            eventListById = { layout.eventListById  }
             // setGridDayEventsList = { ( val ) => { dispatch( setGridDayEventsList( val ) ) } }
             // setSpinnerIsActive = { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
 

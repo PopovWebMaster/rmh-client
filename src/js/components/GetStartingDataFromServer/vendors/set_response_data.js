@@ -8,6 +8,7 @@ import { set_response_data_schedule } from './set_response_data_schedule.js';
 import { set_response_data_logs } from './set_response_data_logs.js';
 import { set_response_data_play_report } from './set_response_data_play_report.js'
 import { set_response_data_layout } from './set_response_data_layout.js';
+import { set_response_data_applications } from './set_response_data_applications.js';
 
 export const set_response_data = ( currentPage, response ) => {
 
@@ -39,6 +40,13 @@ export const set_response_data = ( currentPage, response ) => {
         case ROUTE.PAGE.LAYOUT:
             set_response_data_layout( response );
             break;
+
+        case ROUTE.PAGE.APPLICATIONS:
+            set_response_data_applications( response );
+            break;
+
+
+            
 
 
     };

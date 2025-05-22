@@ -68,7 +68,7 @@ const EventNameItemComponent = ( props ) => {
 
         }else if( type === EVENT_TYPE.BLOCK ){
             result.backgroundColor = '#ffffff';
-            result.color = '#ffffff';
+            result.color = '#716969';
             result.borderColor = categoryColorBG;
         };
 

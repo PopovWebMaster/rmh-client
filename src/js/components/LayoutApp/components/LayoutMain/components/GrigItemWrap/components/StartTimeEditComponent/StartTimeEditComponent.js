@@ -60,7 +60,7 @@ const StartTimeEditComponentComponent = ( props ) => {
                 let pointTo = 0;
 
                 if( gridDayEventsList[ gridCurrentDay ][ i - 1 ]){
-                    pointFrom = gridDayEventsList[ gridCurrentDay ][ i - 1 ].startTime + gridDayEventsList[ gridCurrentDay ][ i - 1 ].durationTime;
+                    pointFrom = gridDayEventsList[ gridCurrentDay ][ i - 1 ].startTime + gridDayEventsList[ gridCurrentDay ][ i - 1 ].durationTime + 1;
                 };
 
                 if( gridDayEventsList[ gridCurrentDay ][ i + 1 ] ){

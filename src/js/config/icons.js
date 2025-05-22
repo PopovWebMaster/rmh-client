@@ -23,3 +23,5 @@
 // icon-scissors
 // icon-right
 // icon-left
+// icon-feather
+// fa-reorder

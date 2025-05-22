@@ -14,6 +14,8 @@ import { get_height_em } from './vendors/get_height_em.js';
 
 import { AlertWindowContainer } from './../../../../../AlertWindowContainer/AlertWindowContainer.js';
 import { AddNewGridEventComponent } from './../AddNewGridEventComponent/AddNewGridEventComponent.js';
+import { ConfirmationOfSaving } from './../ConfirmationOfSaving/ConfirmationOfSaving.js';
+import { save_grid_events_changes_on_server } from './../../vendors/save_grid_events_changes_on_server.js';
 
 
 const EmptyTimeSegmentComponent = ( props ) => {
@@ -23,6 +25,8 @@ const EmptyTimeSegmentComponent = ( props ) => {
         startTime,
         durationTime,
 
+        gridDayEventsIsChanges,
+
         gridEmptySegmentMaxHeightEm,
         gridEmptySegmentMinHeightEm,
 
@@ -30,10 +34,26 @@ const EmptyTimeSegmentComponent = ( props ) => {
     } = props;
 
     let [ isOpen, setIsOpen ] = useState( false );
+    let [ isConfirm, setIsConfirm ] = useState( false );
+
+
+
 
     const clickAdd = () => {
-        setIsOpen( true );
+
+        if( gridDayEventsIsChanges ){
+            setIsConfirm( true );
+        }else{
+            setIsOpen( true );
+        };
+
     };
+
+    const saveFirst = () => {
+        save_grid_events_changes_on_server( () => {
+            setIsOpen( true );
+        } );
+    }
 
     return (
         <GrigItemWrap
@@ -60,23 +80,26 @@ const EmptyTimeSegmentComponent = ( props ) => {
 
             </AlertWindowContainer>
 
+            <ConfirmationOfSaving 
+                isOpen = { isConfirm }
+                setIsOpen = { setIsConfirm }
+                comfirmHandler = { saveFirst }
+            />
+
+
+
             <div 
                 className = 'emptyTimeSegment'
                 style = { { height: get_height_em( durationTime, gridEmptySegmentMinHeightEm, gridEmptySegmentMaxHeightEm ) } }
             >
-
                 <div className = 'ETS_add'>
                     <span 
                         className = 'icon-plus'
                         onClick = { clickAdd }
                     ></span>
                 </div>
-
-                {/* <div className = 'ETS_remove'>
-                    
-                </div> */}
-
             </div>
+
         </GrigItemWrap>
 
     )
@@ -91,6 +114,7 @@ export function EmptyTimeSegment( props ){
     return (
         <EmptyTimeSegmentComponent
             { ...props }
+            gridDayEventsIsChanges = { layout.gridDayEventsIsChanges }
             gridEmptySegmentMaxHeightEm = { layout.gridEmptySegmentMaxHeightEm }
             gridEmptySegmentMinHeightEm = { layout.gridEmptySegmentMinHeightEm }
 

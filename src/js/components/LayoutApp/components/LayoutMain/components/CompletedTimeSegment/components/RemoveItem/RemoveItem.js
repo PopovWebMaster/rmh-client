@@ -73,15 +73,8 @@ const RemoveItemComponent = ( props ) => {
     
             </AlertWindowContainer>
 
-
-            {/* <div 
-                className = 'CTS_EventRemoveItem'
-                onClick = { () => { setIsOpen( true ) } }
-            >
-                <span className = 'icon-cancel-2'></span>
-            </div> */}
-
             <RemoveSegmentButton 
+                id = { id }
                 clickHandler = { () => { setIsOpen( true ) } }
             />
             

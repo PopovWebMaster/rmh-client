@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
 
@@ -21,11 +21,42 @@ const GrigItemWrapComponent = ( props ) => {
         children,
     } = props;
 
+        
+
+
+
+    let [ isError, setIsError ] = useState( false );
+
+    useEffect( () => {
+        if( durationTime >= 0 ){
+            setIsError( false );
+        }else{
+
+            console.dir( 'props' );
+    console.dir( props );
+            setIsError( true );
+        };
+    }, [ durationTime ] );
+
+
+    let text_seccess = 'Свободно:';
+    let text_error = 'Ошибка, нарушение хронометража! Превышен на ';
+
+    const getDuration = ( val ) => {
+        if( val >= 0 ){
+            return convert_sec_to_time( durationTime )
+        }else{
+            return convert_sec_to_time( durationTime * -1 );
+        };
+
+    };
+
+
 
     
     return (
         <div className = 'grigItem'>
-            <div className = { `grigItemWrap ${ isCompletd? 'isCompletd': '' }` }>
+            <div className = { `grigItemWrap ${ isCompletd? 'isCompletd': '' } ${ isError? 'errorTime': '' }` }>
                 { isCompletd? (
                     <div className = 'grigItemTime'>
                         <StartTimeWithEdit 
@@ -36,9 +67,10 @@ const GrigItemWrapComponent = ( props ) => {
                         <span className = 'ETS_duration'>{ convert_sec_to_time( durationTime ) }</span>
                     </div>
                 ): (
+
                     <div className = 'grigItemTimeRemains'>
-                        <span className = 'text'>Свободно:</span>
-                        <span className = 'time'>{ convert_sec_to_time( durationTime ) }</span>
+                        <span className = 'text'>{ isError? text_error: text_seccess }</span>
+                        <span className = 'time'>{ getDuration( durationTime ) }</span>
                     </div>
                 ) }
                 

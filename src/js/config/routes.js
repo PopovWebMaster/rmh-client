@@ -12,6 +12,11 @@ export const ROUTE = {
         ACCESS_IS_CLOSED: 'access-is-closed',
         PAGE_NOT_FOUND: 'page-not-found',
 
+        PAGE_NOT_FOUND: 'page-not-found',
+
+        APPLICATIONS: 'applications',
+
+
     },
 
     LAYOUT: {
@@ -21,6 +26,10 @@ export const ROUTE = {
         BLOCKS: 'blocks',
         CATEGORIES: 'categories',
 
+    },
+
+    APPLICATIONS: {
+        CREATE: 'create-application',
     },
 
 

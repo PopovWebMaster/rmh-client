@@ -78,6 +78,10 @@ const TopMenuComponent = ( props ) => {
                         title = { 'Расписание' }
                         page = { ROUTE.PAGE.SCHEDULE }
                     />
+                    <MenuItemLeft 
+                        title = { 'Заявки' }
+                        page = { ROUTE.PAGE.APPLICATIONS }
+                    />
 
                     <MenuItemLeft 
                         title = { 'Макет' }
