@@ -30,7 +30,7 @@ const AddNewApplicationButtonComponent = ( props ) => {
             setIsOpen = { setIsOpen }
             width =     '27em'
             height =    '34em'
-            title = 'Новое событие'
+            title = 'Создать новую заявку'
         >
             {/* <AddEventComponent 
                 isOpen =    { isOpen }
