@@ -9,6 +9,7 @@ import { selectorData as layoutSlice } from './../../../../redux/layoutSlice.js'
 
 import { AlertWindowContainer } from './../../../AlertWindowContainer/AlertWindowContainer.js';
 import { AP_ControlButton } from './../AP_ControlButton/AP_ControlButton.js';
+import { ANApplContainer } from './components/ANApplContainer/ANApplContainer.js';
 
 
 const AddNewApplicationButtonComponent = ( props ) => {
@@ -29,15 +30,13 @@ const AddNewApplicationButtonComponent = ( props ) => {
             isOpen =    { isOpen }
             setIsOpen = { setIsOpen }
             width =     '27em'
-            height =    '34em'
+            height =    '23em'
             title = 'Создать новую заявку'
         >
-            {/* <AddEventComponent 
+            <ANApplContainer 
                 isOpen =    { isOpen }
                 setIsOpen = { setIsOpen }
-            /> */}
-
-            <div>AlertWindowContainer</div>
+            />
 
         </AlertWindowContainer>
 
