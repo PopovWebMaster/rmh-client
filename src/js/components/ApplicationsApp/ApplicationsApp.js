@@ -16,6 +16,7 @@ import { ROUTE } from './../../config/routes.js';
 import { ApplicationsMain } from './components/ApplicationsMain/ApplicationsMain.js';
 import { CreateApplication } from './components/CreateApplication/CreateApplication.js';
 import { ApplicationsMenu } from './components/ApplicationsMenu/ApplicationsMenu.js';
+import { ApplicationEditor } from './components/ApplicationEditor/ApplicationEditor.js';
 
 const ApplicationsAppComponent = ( props ) => {
 
@@ -45,7 +46,9 @@ const ApplicationsAppComponent = ( props ) => {
 
                 <Routes>
                     <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}/` } element = { <ApplicationsMain /> } />
-                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}/${ ROUTE.APPLICATIONS.CREATE }` } element = { <CreateApplication /> } />
+                    <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}/:id` } element = { <ApplicationEditor /> } />
+
+                    {/* <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}/${ ROUTE.APPLICATIONS.CREATE }` } element = { <CreateApplication /> } /> */}
 
 
                     {/* <Route path = { `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` }    element = { <LayoutKeyPoints /> } />

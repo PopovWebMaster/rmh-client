@@ -9,6 +9,7 @@ import './ApplicationsMain.scss';
 
 import { ApplicationsPageContainer } from './../ApplicationsPageContainer/ApplicationsPageContainer.js';
 import { AddNewApplicationButton } from './../AddNewApplicationButton/AddNewApplicationButton.js';
+import { ApplicationList } from './../ApplicationList/ApplicationList.js';
 
 const ApplicationsMainComponent = ( props ) => {
 
@@ -25,7 +26,7 @@ const ApplicationsMainComponent = ( props ) => {
             controlPanelContainer = { <>
                 <AddNewApplicationButton />
             </>}
-            bodyContainer = { <>applicationsMain</> }
+            bodyContainer = { <ApplicationList /> }
         />
 
     )

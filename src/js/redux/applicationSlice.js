@@ -12,6 +12,14 @@ export const applicationSlice = createSlice({
 
         applicationList: [],
         applicationById: {},
+        currentApplicationId: null,
+
+        currentAppName: '',
+        currentAppCategoryId: null,
+        currentAppNum: null,
+        currentAppType: null,
+        currentAppNotes: null,
+        currentAppOrders: [],
 
     },
 
@@ -21,8 +29,39 @@ export const applicationSlice = createSlice({
             state.applicationList =  action.payload;
             let { applicationById } = get_all_lists_of_values_from_application_list( action.payload );
             state.applicationById = applicationById;
-
         },
+
+        setCurrentApplicationId: ( state, action ) => {
+            state.currentApplicationId =  action.payload;
+        },
+
+
+
+
+        setCurrentAppName: ( state, action ) => {
+            state.currentAppName =  action.payload;
+        },
+
+        setCurrentAppCategoryId: ( state, action ) => {
+            state.currentAppCategoryId =  action.payload;
+        },
+
+        setCurrentAppNum: ( state, action ) => {
+            state.currentAppNum =  action.payload;
+        },
+
+        setCurrentAppType: ( state, action ) => {
+            state.currentAppType =  action.payload;
+        },
+
+        setCurrentAppNotes: ( state, action ) => {
+            state.currentAppNotes =  action.payload;
+        },
+
+        setCurrentAppOrders: ( state, action ) => {
+            state.currentAppOrders =  action.payload;
+        },
+
 
         
     },
@@ -31,19 +70,35 @@ export const applicationSlice = createSlice({
 
 export const {  
     setApplicationList,
+    setCurrentApplicationId,
 
-   
+    setCurrentAppName,
+    setCurrentAppCategoryId,
+    setCurrentAppNum,
+    setCurrentAppType,
+    setCurrentAppNotes,
+    setCurrentAppOrders,
+
+
 
 } = applicationSlice.actions;
 
 export const selectorData = ( state ) => {
     return {
-        applicationList:   state.application.applicationList,
-        applicationById: state.application.applicationById,
-        
+        applicationList:        state.application.applicationList,
+        applicationById:        state.application.applicationById,
+        currentApplicationId:   state.application.currentApplicationId,
+
+        currentAppName:         state.application.currentAppName,
+        currentAppCategoryId:   state.application.currentAppCategoryId,
+        currentAppNum:          state.application.currentAppNum,
+        currentAppType:         state.application.currentAppType,
+        currentAppNotes:        state.application.currentAppNotes,
+        currentAppOrders:       state.application.currentAppOrders,
 
 
-        
+
+
 
 
     };

@@ -1,7 +1,7 @@
 
-import React, { useRef, useState, useEffect }   from "react";
+import React   from "react";
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import { NavLink } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import { selectorData as companySlice } from './../../../../redux/companySlice.j
 
 import { ROUTE } from './../../../../config/routes.js';
 import { MenuItem } from './MenuItem/MenuItem.js';
+import { MenuEditorTitle } from './MenuEditorTitle/MenuEditorTitle.js'
 
 const ApplicationsMenuComponent = ( props ) => {
 
@@ -32,7 +33,9 @@ const ApplicationsMenuComponent = ( props ) => {
                 
             </NavLink>
 
-            <NavLink
+            <MenuEditorTitle />
+
+            {/* <NavLink
                 to = { `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}/${ ROUTE.APPLICATIONS.CREATE }` }
                 className={ ({ isActive }) => isActive ? "active" : "" }
             >
@@ -41,7 +44,7 @@ const ApplicationsMenuComponent = ( props ) => {
                     title = { 'Создать' }
                 />
 
-            </NavLink>
+            </NavLink> */}
 
         </div>
     )

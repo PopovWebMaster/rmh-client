@@ -80,8 +80,8 @@ const ANApplContainerComponent = ( props ) => {
                     },
     
                     callback: ( response ) => {
-                        console.dir( 'response' );
-                        console.dir( response );
+                        // console.dir( 'response' );
+                        // console.dir( response );
     
                         if( response.ok ){
                             setSpinnerIsActive( false );
