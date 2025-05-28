@@ -13,6 +13,8 @@ import { SetCurrentApplicationId } from './components/SetCurrentApplicationId/Se
 import { GetCurrentApplicationDataFromServer } from './components/GetCurrentApplicationDataFromServer/GetCurrentApplicationDataFromServer.js';
 
 import { ApplicationsPageContainer } from './../ApplicationsPageContainer/ApplicationsPageContainer.js';
+import { A_SaveButton } from './components/A_SaveButton/A_SaveButton.js';
+import { AppEditorComponent } from './components/AppEditorComponent/AppEditorComponent.js';
 
 const ApplicationEditorComponent = ( props ) => {
 
@@ -27,18 +29,14 @@ const ApplicationEditorComponent = ( props ) => {
          <ApplicationsPageContainer 
             className = 'applicationEditor'
             controlPanelContainer = { <>
-                {/* <AddNewApplicationButton /> */}
+                <A_SaveButton />
             </>}
             bodyContainer = { (
 
                 <SetCurrentApplicationId>
                     <GetCurrentApplicationDataFromServer>
                             
-
-                            applicationEditor
-
-
-
+                        <AppEditorComponent />
 
                     </GetCurrentApplicationDataFromServer>
                 </SetCurrentApplicationId> 

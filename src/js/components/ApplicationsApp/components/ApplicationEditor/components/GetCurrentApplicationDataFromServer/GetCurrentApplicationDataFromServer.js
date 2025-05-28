@@ -14,6 +14,7 @@ import {
     setCurrentAppType,
     setCurrentAppNotes,
     setCurrentAppOrders,
+    setCurrentAppIsChanged,
 
 } from './../../../../../../redux/applicationSlice.js';
 
@@ -38,6 +39,7 @@ const GetCurrentApplicationDataFromServerComponent = ( props ) => {
         setCurrentAppType,
         setCurrentAppNotes,
         setCurrentAppOrders,
+        setCurrentAppIsChanged,
 
     } = props;
 
@@ -76,6 +78,8 @@ const GetCurrentApplicationDataFromServerComponent = ( props ) => {
                     setCurrentAppNotes( notes );
                     setCurrentAppOrders( orders );
 
+                    setCurrentAppIsChanged( false );
+
                     setSpinnerIsActive( false );
                     setIsReady( true );
 
@@ -110,6 +114,11 @@ export function GetCurrentApplicationDataFromServer( props ){
             setCurrentAppType =         { ( val ) => { dispatch( setCurrentAppType( val ) ) } }
             setCurrentAppNotes =        { ( val ) => { dispatch( setCurrentAppNotes( val ) ) } }
             setCurrentAppOrders =       { ( val ) => { dispatch( setCurrentAppOrders( val ) ) } }
+
+            setCurrentAppIsChanged =    { ( val ) => { dispatch( setCurrentAppIsChanged( val ) ) } }
+
+
+            
 
         />
     );

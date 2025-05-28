@@ -1,0 +1,36 @@
+.applicationSaveButton{
+    font-size: 1em;
+    opacity: 0.2;
+    font-size: 0.8em;
+    padding: 0.4em 1em;
+    border-radius: 0.1em;
+    background-color: #a3a3a3bd;
+    color: #ffffff;
+
+    cursor: pointer; 
+    user-select: none;
+
+    margin-right: 1em;
+
+    .applicationSaveButton_icon{
+        margin-right: 0.2em;
+        
+    }
+
+}
+
+.applicationSaveButton.isActive{
+    opacity: 1;
+    background-color: #eb7e7e;
+    cursor: pointer; 
+    user-select: none;
+}
+
+.applicationSaveButton.isActive:hover{
+    background-color: #ff0000;
+}
+.applicationSaveButton.isActive:active{
+    span{
+        color: #cbcbcb;
+    }
+}

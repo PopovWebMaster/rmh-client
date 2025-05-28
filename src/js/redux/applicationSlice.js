@@ -20,6 +20,7 @@ export const applicationSlice = createSlice({
         currentAppType: null,
         currentAppNotes: null,
         currentAppOrders: [],
+        currentAppIsChanged: false,
 
     },
 
@@ -62,6 +63,14 @@ export const applicationSlice = createSlice({
             state.currentAppOrders =  action.payload;
         },
 
+        setCurrentAppIsChanged: ( state, action ) => {
+            state.currentAppIsChanged =  action.payload;
+        },
+
+
+
+        
+
 
         
     },
@@ -78,6 +87,7 @@ export const {
     setCurrentAppType,
     setCurrentAppNotes,
     setCurrentAppOrders,
+    setCurrentAppIsChanged,
 
 
 
@@ -96,6 +106,7 @@ export const selectorData = ( state ) => {
         currentAppNotes:        state.application.currentAppNotes,
         currentAppOrders:       state.application.currentAppOrders,
 
+        currentAppIsChanged:    state.application.currentAppIsChanged,
 
 
 
