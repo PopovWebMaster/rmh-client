@@ -5,6 +5,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 import './InputDuration.scss';
 
+import { get_wheel_value } from './vendors/get_wheel_value.js';
+
 const InputDurationComponent = ( props ) => {
 
     let {
@@ -153,6 +155,80 @@ const InputDurationComponent = ( props ) => {
 
     };
 
+
+    const wheel_hh = ( e ) => {
+
+        let { deltaY } = e;
+        let change_sec = 0;
+
+        if( deltaY > 0 ){ // 'низ'
+            change_sec = 60 * 60 * -1;
+        }else{// 'верх'
+            change_sec = 60 * 60;
+        };
+
+        let { hh, mm, ss } = get_wheel_value({
+            HH,
+            MM,
+            SS,
+            change_sec,
+        });
+
+        setHH( hh );
+        setMM( mm );
+        setSS( ss );
+
+    }
+
+    const wheel_mm = ( e ) => {
+
+        let { deltaY } = e;
+        let change_sec = 0;
+
+        if( deltaY > 0 ){ // 'низ'
+            change_sec = -60;
+        }else{// 'верх'
+            change_sec = 60;
+        };
+
+        let { hh, mm, ss } = get_wheel_value({
+            HH,
+            MM,
+            SS,
+            change_sec,
+        });
+
+        setHH( hh );
+        setMM( mm );
+        setSS( ss );
+
+    }
+
+
+    const wheel_ss = ( e ) => {
+
+        let { deltaY } = e;
+        let change_sec = 0;
+
+        if( deltaY > 0 ){ // 'низ'
+            change_sec = -1;
+        }else{// 'верх'
+            change_sec = 1;
+        };
+
+        let { hh, mm, ss } = get_wheel_value({
+            HH,
+            MM,
+            SS,
+            change_sec,
+        });
+
+        setHH( hh );
+        setMM( mm );
+        setSS( ss );
+
+    }
+
     return (
         <div className = 'InputDuration'>
 
@@ -166,6 +242,7 @@ const InputDurationComponent = ( props ) => {
                 onKeyDown =     { key_down_hh }
                 onChange =      { change_hh }
                 onBlur =        { blur }    
+                onWheel =       { wheel_hh }
             />
             <span>:</span>
             <input 
@@ -178,6 +255,7 @@ const InputDurationComponent = ( props ) => {
                 onKeyDown =     { key_down_mm }
                 onChange =      { change_mm }
                 onBlur =        { blur }   
+                onWheel =       { wheel_mm }  
             />
             <span>:</span>
             <input 
@@ -189,7 +267,8 @@ const InputDurationComponent = ( props ) => {
                 maxLength =     '2'
                 onKeyDown =     { key_down_ss }
                 onChange =      { change_ss }
-                onBlur =        { blur }   
+                onBlur =        { blur }  
+                onWheel =       { wheel_ss }   
             />
 
 

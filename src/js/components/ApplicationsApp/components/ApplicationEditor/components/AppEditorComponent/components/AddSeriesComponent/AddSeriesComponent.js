@@ -8,6 +8,13 @@ import './AddSeriesComponent.scss';
 import { selectorData as applicationSlice } from './../../../../../../../../redux/applicationSlice.js';
 
 
+import { SerialNumItem } from './component/SerialNumItem/SerialNumItem.js';
+import { PeriodItem } from './component/PeriodItem/PeriodItem.js';
+import { SerialDurationItem } from './component/SerialDurationItem/SerialDurationItem.js';
+
+import { MIN_EVENT_DURATION_SEC } from './../../../../../../../../config/layout.js';
+
+
 const AddSeriesComponentComponent = ( props ) => {
 
     let {
@@ -19,39 +26,38 @@ const AddSeriesComponentComponent = ( props ) => {
     let [ numFromValue, setNumFromValue ] = useState( 1 );
     let [ numToValue, setNumToValue ] = useState( 1 );
 
-    const change_num_from = ( e ) => {
-        setNumFromValue( e.target.value )
-    }
+    let [ dataFrom, setDataFrom ] = useState( '' );
+    let [ dataTo, setDataTo ] = useState( '' );
 
-    const change_num_to = ( e ) => {
-        setNumToValue( e.target.value )
-    }
+    let [ durationSec, setDurationSec ] = useState( MIN_EVENT_DURATION_SEC );
+
+
 
     return (
         <div className = 'addSeriesComponent'>
 
-            <div className = 'ASC_item'>
-                <h3>Номер серии:</h3>
+            <SerialNumItem 
+                isOpen =        { isOpen }
+                numFrom =       { numFromValue }
+                numTo =         { numToValue }
+                setNumFrom =    { setNumFromValue }
+                setNumTo =      { setNumToValue }
+            />
 
-                <div className = 'ASC_series_num_wrap'>
-                    <span>от:</span>
-                    <input 
-                        type = 'number'
-                        value = { numFromValue }
-                        onChange = { change_num_from }
-                    />
+            <PeriodItem 
+                isOpen =        { isOpen }
+                dataFrom =      { dataFrom }
+                dataTo =        { dataTo }
+                setDataFrom =   { setDataFrom }
+                setDataTo =     { setDataTo }
+            />
 
-                    <span>до:</span>
-                    <input 
-                        type = 'number'
-                        value = { numToValue }
-                        onChange = { change_num_to }
-                    />
+            <SerialDurationItem 
+                isOpen =            { isOpen }
+                durationSec =       { durationSec }
+                setDurationSec =    { setDurationSec }
 
-                </div>
-
-            </div>
-
+            />
 
 
 
