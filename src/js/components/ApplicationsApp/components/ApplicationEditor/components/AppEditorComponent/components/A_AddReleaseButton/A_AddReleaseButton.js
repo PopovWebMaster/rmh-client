@@ -36,8 +36,8 @@ const A_AddReleaseButtonComponent = ( props ) => {
             <AlertWindowContainer
                 isOpen =    { isOpen }
                 setIsOpen = { setIsOpen }
-                width =     '27em'
-                height =    '34em'
+                width =     '40em'
+                height =    '40em'
                 title = 'Добавить выпуск'
             >
                 <AddReleaseComponent 

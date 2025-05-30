@@ -1,9 +1,10 @@
+// SelectedDurationItem
 
 import React, { useState, useEffect }   from "react";
 import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
 
-import './SerialDurationItem.scss';
+import './SelectedDurationItem.scss';
 
 import { selectorData as applicationSlice } from './../../../../../../../../../../redux/applicationSlice.js';
 import { selectorData as layoutSlice }      from './../../../../../../../../../../redux/layoutSlice.js';
@@ -15,7 +16,7 @@ import { InputDuration } from './../../../../../../../../../InputDuration/InputD
 import { convert_sec_to_time } from './../../../../../../../../../../helpers/convert_sec_to_time.js';
 import { convert_time_str_to_sec } from './../../../../../../../../../../helpers/convert_time_str_to_sec.js';
 
-const SerialDurationItemComponent = ( props ) => {
+const SelectedDurationItemComponent = ( props ) => {
 
     let {
         isOpen,
@@ -52,9 +53,9 @@ const SerialDurationItemComponent = ( props ) => {
     };
 
     return (
-        <div className = 'ASC_item_serial_duration'>
-            <h3>Длительность одной серии:</h3>
-            <div className = 'ASC_time_wrap'>
+        <div className = 'ARC_item_serial_duration'>
+            <h3>Длительность ролика:</h3>
+            <div className = 'ARC_time_wrap'>
                 <InputDuration 
                     HH = { HH }
                     MM = { MM }
@@ -72,14 +73,14 @@ const SerialDurationItemComponent = ( props ) => {
 
 };
 
-export function SerialDurationItem( props ){
+export function SelectedDurationItem( props ){
 
     // const application = useSelector( applicationSlice );
     // const layout = useSelector( layoutSlice );
     // const dispatch = useDispatch();
 
     return (
-        <SerialDurationItemComponent
+        <SelectedDurationItemComponent
             { ...props }
             // currentAppCategoryId =  { application.currentAppCategoryId }
             // categoryListById =    { layout.categoryListById }

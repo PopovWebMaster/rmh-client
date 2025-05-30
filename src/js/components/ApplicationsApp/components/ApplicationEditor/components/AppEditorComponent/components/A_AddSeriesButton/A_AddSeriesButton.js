@@ -18,12 +18,12 @@ import { AddSeriesComponent } from './../AddSeriesComponent/AddSeriesComponent.j
 const A_AddSeriesButtonComponent = ( props ) => {
 
     let {
-        currentAppType,
-        currentAppName,
+        // currentAppType,
+        // currentAppName,
     } = props;
 
     let [ isOpen, setIsOpen ] = useState( false );
-    
+
     const click = () => {
         setIsOpen( true );
     }
@@ -37,7 +37,7 @@ const A_AddSeriesButtonComponent = ( props ) => {
                 isOpen =    { isOpen }
                 setIsOpen = { setIsOpen }
                 width =     '40em'
-                height =    '40em'
+                height =    '20em'
                 title = 'Добавить серии'
             >
                 <AddSeriesComponent
@@ -65,9 +65,11 @@ export function A_AddSeriesButton( props ){
     return (
         <A_AddSeriesButtonComponent
             { ...props }
-            currentAppNum = { application.currentAppNum }
-            currentAppName = { application.currentAppName }
-            currentAppType = { application.currentAppType }
+            // currentAppNum = { application.currentAppNum }
+            // currentAppName = { application.currentAppName }
+            // currentAppType = { application.currentAppType }
+            // currentAppCategoryId = { application.currentAppCategoryId }
+
 
 
 

@@ -2,8 +2,8 @@
     font-size: 1em;
     position: relative;
 
-    margin: 0.5em;
-    padding: 0.5em 1em 1em;
+    margin: 0 0.5em;
+    padding: 0.5em 1em;
     border-radius: 0.1em;
     // background-color: #f3efef;
 
@@ -12,7 +12,7 @@
     align-items: center;
     align-content: center;
 
-    border-bottom: 1px solid #d8d4d4;
+    // border-bottom: 1px solid #d8d4d4;
 
     .A_removeAppBtn{
         font-size: 0.6em;

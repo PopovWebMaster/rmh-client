@@ -1,44 +1,49 @@
-.A_AddButton{
+.ASC_item_add_num{
     font-size: 1em;
-    margin: 0 0.5em;
-    padding: 0.5em 1em;
-    border-radius: 0.1em;
+
+    padding: 1.5em 0 0 0;
 
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     align-content: center;
-
-    // border-bottom: 1px solid #d8d4d466;
-
-    .A_AddButton_wrap{
+    
+    .ASC__btn_wrap{
         font-size: 0.7em;
         padding: 0.3em 1em;
         border-radius: 0.1em;
         border: 1px solid #ffffff00;
         color: #ffffff;
-        cursor: pointer; 
-        user-select: none;
+        // cursor: pointer; 
+        // user-select: none;
         margin-right: 1em;
 
         background-color: #8d7c7c;
+        opacity: 0.2;
 
-        .A_AddButton_icon{
+        .icon{
             margin-right: 0.2em;
         }
     }
 
-    .A_AddButton_wrap:hover{
+    .isActive{
+        opacity: 1;
+        cursor: pointer; 
+        user-select: none;
+    }
+
+    .ASC__btn_wrap.isActive:hover{
         background-color: #775959;
         border: 1px solid #ffffff00;
     }
 
-    .A_AddButton_wrap:active{
+    .ASC__btn_wrap.isActive:active{
         span{
             color: #cbcbcb;
         }
     }
 
 
-}
 
+
+}

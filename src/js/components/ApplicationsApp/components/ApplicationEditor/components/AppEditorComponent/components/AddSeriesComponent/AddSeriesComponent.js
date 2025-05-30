@@ -11,6 +11,8 @@ import { selectorData as applicationSlice } from './../../../../../../../../redu
 import { SerialNumItem } from './component/SerialNumItem/SerialNumItem.js';
 import { PeriodItem } from './component/PeriodItem/PeriodItem.js';
 import { SerialDurationItem } from './component/SerialDurationItem/SerialDurationItem.js';
+import { SelectCategoryItem } from './component/SelectCategoryItem/SelectCategoryItem.js';
+import { ButtonAddSeries } from './component/ButtonAddSeries/ButtonAddSeries.js';
 
 import { MIN_EVENT_DURATION_SEC } from './../../../../../../../../config/layout.js';
 
@@ -36,6 +38,10 @@ const AddSeriesComponentComponent = ( props ) => {
     return (
         <div className = 'addSeriesComponent'>
 
+            <SelectCategoryItem 
+                isOpen = { isOpen }
+            />
+
             <SerialNumItem 
                 isOpen =        { isOpen }
                 numFrom =       { numFromValue }
@@ -56,6 +62,17 @@ const AddSeriesComponentComponent = ( props ) => {
                 isOpen =            { isOpen }
                 durationSec =       { durationSec }
                 setDurationSec =    { setDurationSec }
+
+            />
+
+            <ButtonAddSeries 
+                setIsOpen =     { setIsOpen }
+
+                numFromValue =  { numFromValue }
+                numToValue =    { numToValue }
+                dataFrom =      { dataFrom }
+                dataTo =        { dataTo }
+                durationSec =   { durationSec }
 
             />
 

@@ -26,7 +26,7 @@ const A_HeaderComponent = ( props ) => {
 
             <InputAppNum />
 
-            <h4 className = 'A_Header_name'>{ currentAppName }</h4>
+            {/* <h4 className = 'A_Header_name'>{ currentAppName }</h4> */}
 
             <div className = 'A_Header_type'>
                 <span

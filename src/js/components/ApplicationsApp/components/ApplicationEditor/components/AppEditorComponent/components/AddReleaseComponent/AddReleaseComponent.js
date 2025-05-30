@@ -7,6 +7,14 @@ import './AddReleaseComponent.scss';
 
 import { selectorData as applicationSlice } from './../../../../../../../../redux/applicationSlice.js';
 
+import { SelectedCategoryItem } from './components/SelectedCategoryItem/SelectedCategoryItem.js';
+import { SelectedPeriodItem } from './components/SelectedPeriodItem/SelectedPeriodItem.js';
+import { SelectedDurationItem } from './components/SelectedDurationItem/SelectedDurationItem.js';
+import { SelectedNameItem } from './components/SelectedNameItem/SelectedNameItem.js';
+import { ButtonAddRelease } from './components/ButtonAddRelease/ButtonAddRelease.js';
+
+import { MIN_EVENT_DURATION_SEC } from './../../../../../../../../config/layout.js';
+
 
 const AddReleaseComponentComponent = ( props ) => {
 
@@ -16,12 +24,50 @@ const AddReleaseComponentComponent = ( props ) => {
 
     } = props;
 
+    let [ dataFrom, setDataFrom ] = useState( '' );
+    let [ dataTo, setDataTo ] = useState( '' );
+    let [ releaseName, setReleaseName ] = useState( '' );
+
+
+    let [ durationSec, setDurationSec ] = useState( MIN_EVENT_DURATION_SEC );
 
 
     return (
         <div className = 'addReleaseComponent'>
 
-AddReleaseComponent
+            <SelectedCategoryItem 
+                isOpen = { isOpen }
+            />
+            <SelectedNameItem 
+                isOpen = { isOpen }
+                releaseName = { releaseName }
+                setReleaseName = { setReleaseName }
+
+            />
+
+            <SelectedPeriodItem 
+                isOpen =        { isOpen }
+                dataFrom =      { dataFrom }
+                dataTo =        { dataTo }
+                setDataFrom =   { setDataFrom }
+                setDataTo =     { setDataTo }
+            />
+
+            <SelectedDurationItem 
+                isOpen =            { isOpen }
+                durationSec =       { durationSec }
+                setDurationSec =    { setDurationSec }
+            />
+
+            <ButtonAddRelease 
+                setIsOpen =     { setIsOpen }
+
+                dataFrom =      { dataFrom }
+                dataTo =        { dataTo }
+                durationSec =   { durationSec }
+            />
+
+
         </div>
         
     )
