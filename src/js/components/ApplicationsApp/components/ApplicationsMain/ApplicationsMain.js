@@ -8,8 +8,9 @@ import './ApplicationsMain.scss';
 // import { selectorData as companySlice } from './../../../../redux/companySlice.js';
 
 import { ApplicationsPageContainer } from './../ApplicationsPageContainer/ApplicationsPageContainer.js';
-import { AddNewApplicationButton } from './../AddNewApplicationButton/AddNewApplicationButton.js';
-import { ApplicationList } from './../ApplicationList/ApplicationList.js';
+// import { AddNewApplicationButton } from './../AddNewApplicationButton/AddNewApplicationButton.js';
+import { AddAppButton } from './components/AddAppButton/AddAppButton.js';
+// import { ApplicationList } from './../ApplicationList/ApplicationList.js';
 
 const ApplicationsMainComponent = ( props ) => {
 
@@ -24,9 +25,11 @@ const ApplicationsMainComponent = ( props ) => {
         <ApplicationsPageContainer 
             className = 'applicationsMain'
             controlPanelContainer = { <>
-                <AddNewApplicationButton />
+                <AddAppButton />
             </>}
-            bodyContainer = { <ApplicationList /> }
+            // bodyContainer = { <ApplicationList /> }
+            bodyContainer = { <></> }
+
         />
 
     )
