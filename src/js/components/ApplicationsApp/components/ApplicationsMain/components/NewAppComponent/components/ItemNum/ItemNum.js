@@ -1,7 +1,5 @@
-// ItemNum
 
-
-import React, { useState, useEffect }   from "react";
+import React, { useRef, useState, useEffect }   from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -27,6 +25,9 @@ const ItemNumComponent = ( props ) => {
     let [ numValue,    setNumValue ] = useState( appNum );
     let [ errorText,    setErrorText ] = useState( '' );
 
+    let inputRef = useRef();
+    
+
     useEffect( () => {
         setNumValue( appNum );
     }, [ appNum ] );
@@ -35,13 +36,14 @@ const ItemNumComponent = ( props ) => {
         let val = e.target.value;
         if( val === '' ){
             setNumValue( val );
-            appNumIsError( false );
-            setAppNumIsError( '' );
+            // appNumIsError( false );
+            setAppNumIsError( false );
         }else{
-            if( Number( val ) >= 1 ){
+            let num = Number( val );
+            if( num >= 1 && num < 1000000 ){
                 setNumValue( val );
-                appNumIsError( false );
-                setAppNumIsError( '' );
+                // appNumIsError( false );
+                setAppNumIsError( false );
             };
         }
 
@@ -51,32 +53,38 @@ const ItemNumComponent = ( props ) => {
 
     const acceptNum = () => {
         
-        if( numValue.trim() === '' ){
-            setAppNum( '' );
-        }else{
-            let num = Number( numValue );
-            let isRepeat = false;
+        if( typeof numValue === 'string' ){
+            if( numValue.trim() === '' ){
+                setAppNum( '' );
+            }else{
 
-            for( let i = 0; i < applicationList.length; i++ ){
-                if( applicationList[ i ].num === num ){
-                    isRepeat = true;
-                    break;
+                let num = Number( numValue );
+                let isRepeat = false;
+
+                for( let i = 0; i < applicationList.length; i++ ){
+                    if( applicationList[ i ].num === num ){
+                        isRepeat = true;
+                        break;
+                    };
+                };
+
+                if( isRepeat ){
+                    setAppNumIsError( true );
+                    setErrorText( 'Заявка с таким номером уже существует. Повторений в номерах быть не должно' );
+                }else{
+                    setAppNum( num );
                 };
             };
-
-            if( isRepeat ){
-                appNumIsError( true );
-                setErrorText( 'Заявка с таким номером уже существует. Повторений в номерах быть не должно' );
-            }else{
-                setAppNum( num );
-            };
+        }else{
+            
 
         };
     };
 
     const enter = ( e ) => {
         if( e.which === 13 ){
-            acceptNum()
+            acceptNum();
+            inputRef.current.blur();
         };
     };
 
@@ -85,14 +93,15 @@ const ItemNumComponent = ( props ) => {
     }
     
     return (
-        <div className = 'ANAppl_num'>
+        <div className = { appNumIsError? 'ANAppl_num isError': 'ANAppl_num' }>
             <h4>Номер заявки: </h4>
             <input 
-                type = 'number'
-                value = { numValue }
-                onChange = { change_num }
+                type =      'number'
+                value =     { numValue }
+                onChange =  { change_num }
                 onKeyDown = { enter }
-                onBlur = { blur }
+                onBlur =    { blur }
+                ref =       { inputRef }
             />
 
             { appNumIsError? (

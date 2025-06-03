@@ -19,6 +19,10 @@ import { send_request_to_server } from './../../../../../../helpers/send_request
 
 import { ItemName } from './components/ItemName/ItemName.js';
 import { ItemNum } from './components/ItemNum/ItemNum.js';
+import { ItemCategory } from './components/ItemCategory/ItemCategory.js';
+import { ItemManagerNotes } from './components/ItemManagerNotes/ItemManagerNotes.js';
+
+import { AlertWindowContainerButtonAdd } from './../../../../../AlertWindowContainerButtonAdd/AlertWindowContainerButtonAdd.js';
 
 
 const NewAppComponentComponent = ( props ) => {
@@ -34,101 +38,65 @@ const NewAppComponentComponent = ( props ) => {
 
     // let errorText = 'Заявка с таким названием уже существует. Пожалуйста, придумайте уникальнои имя для заявки.';
 
+    let [ isReady, setIsReady ] = useState( false );
 
     let [ appName,          setAppName ] = useState( '' );
     let [ appNameIsError,   setAppNameIsError ] = useState( false );
-
-    let [ appNum,          setAppNum ] = useState( '' );
-    let [ appNumIsError,   setAppNumIsError ] = useState( false );
+    let [ appNum,           setAppNum ] = useState( '' );
+    let [ appNumIsError,    setAppNumIsError ] = useState( false );
+    let [ categoryId,       setCategoryId ] = useState( null );
+    let [ managerNotes,     setManagerNotes ] = useState( '' );
 
     useEffect( () => {
         if( isOpen ){
             setAppName( '' );
             setAppNameIsError( false );
-
             setAppNum( '' );
             setAppNumIsError( false );
+            setCategoryId( null );
+            setManagerNotes( '' );
         };
 
     }, [ isOpen ]);
 
+    useEffect( () => {
+        if( appNameIsError || appNumIsError || appName === '' ){
+            setIsReady( false );
+        }else{
+            setIsReady( true );
+        };
+
+    }, [ appNameIsError, appNumIsError, appName ] );
 
 
+    const clickAdd = () => {
+        if( isReady ){
 
+            setSpinnerIsActive( true );
+            send_request_to_server({
+                route: `${currentPage}/add-new-application`,
+                data: {
+                    applicationName: appName,
+                    applicationNum: appNum,
+                    applicationCategoryId: categoryId,
+                    applicationManagerNotes: managerNotes,
 
-    // let [ appNameError,     setAppNameError ] = useState( false );
-    // let [ appNameErrorText, setAppNameErrorText ] = useState( '' );
+                },
 
+                callback: ( response ) => {
+                    console.dir( 'response' );
+                    console.dir( response );
 
+                    if( response.ok ){
+                        setSpinnerIsActive( false );
+                        setApplicationList( response.list );
+                        setIsOpen( false );
+                    };
 
-
-    // let [ type, setType ] = useState( APPLICATION_TYPE.RELEASE );
-    // let [ isReady, setIsReady ] = useState( false );
-    // let [ isError, setIsError ] = useState( false );
-    // let [ isErrorText, setIsErrorText ] = useState( '' );
-
-
-
-    // useEffect( () => {
-    //     if( isOpen ){
-    //     }else{
-    //         setName( '' );
-    //         setType( APPLICATION_TYPE.RELEASE );
-    //         setIsError( false );
-    //         setIsErrorText( '' );
-    //     };
-    // }, [ isOpen ] );
-
-    // useEffect( () => {
-    //     if( name.trim() === '' ){
-    //         setIsReady( false );
-    //     }else{
-    //         setIsReady( true );
-    //     };
-    // }, [ name ] );
-
-
-
-    // const change_name = ( e ) => {
-    //     let val = e.target.value;
-    //     setName( val );
-    //     setIsError( false );
-    //     setIsErrorText( '' );
-
-    // }
-
-    // const clickAdd = () => {
-    //     if( isReady ){
-    //         let name_trim = name.trim();
-    //         // if( chack_new_name_for_repeat( name_trim ) ){
-    //         //     setIsError( true );
-    //         //     setIsErrorText( errorText );
-    //         // }else{
-    //             setSpinnerIsActive( true );
-    //             send_request_to_server({
-    //                 route: `${currentPage}/add-new-application`,
-    //                 data: { 
-    //                     name,
-    //                     type,
-    //                 },
-    
-    //                 callback: ( response ) => {
-    //                     // console.dir( 'response' );
-    //                     // console.dir( response );
-    
-    //                     if( response.ok ){
-    //                         setSpinnerIsActive( false );
-    //                         // setApplicationList( response.list );
-    //                         setIsOpen( false );
-    //                     };
-    
-    //                 },
-    //             });
-    //         // };
-    //     };
-    // }
-
-
+                },
+            });
+        };
+    };
 
     
     return (
@@ -149,51 +117,20 @@ const NewAppComponentComponent = ( props ) => {
                 setAppNumIsError =  { setAppNumIsError }
             />
 
+            <ItemCategory 
+                categoryId =        { categoryId }
+                setCategoryId =     { setCategoryId }
+            />
 
-            {/* <div className = 'ANAppl_name'>
-                <h4>Название заявки:</h4>
-                <input 
-                    type = 'text'
-                    value = { name }
-                    onChange = { change_name }
-                />
+            <ItemManagerNotes 
+                managerNotes =      { managerNotes }
+                setManagerNotes =   { setManagerNotes }
+            />
 
-                { isError? (
-                    <p className = 'error'>{ isErrorText }</p>
-                ): '' }
-                
-            </div> */}
-
-            {/* <div className = 'ANAppl_type'>
-                <h4>Тип заявки:</h4>
-
-                <div className = 'ANAppl_type_btn_wrap'>
-
-                    <span 
-                        className = { type === APPLICATION_TYPE.RELEASE? 'isActive': '' }
-                        onClick = { () => { setType( APPLICATION_TYPE.RELEASE ) } }
-                    >Выпуск</span>
-
-                    <span 
-                        className = { type === APPLICATION_TYPE.SERIES? 'isActive': '' }
-                        onClick = { () => { setType( APPLICATION_TYPE.SERIES ) } }
-                    >Сериал</span>
-
-                </div>
-                
-            </div>
-
-            <div className = 'ANAppl_CreateButton_wrap'>
-                <div 
-                    className = { `ANAppl_CreateButton ${isReady? 'isActive': ''}` }
-                    onClick = { clickAdd }
-                >
-                    <span className = 'icon-plus'></span>
-                    <span className = 'value'>Добавить</span>
-                </div>
-
-            </div> */}
-
+            <AlertWindowContainerButtonAdd 
+                isActive =      { isReady }
+                clickHandler =  { clickAdd }
+            />
 
         </div>
     )

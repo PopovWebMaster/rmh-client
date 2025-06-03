@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect }   from "react";
+import React, { useRef, useState, useEffect }   from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -23,6 +23,8 @@ const ItemNameComponent = ( props ) => {
 
     let [ nameValue,    setNameValue ] = useState( appName );
     let [ errorText,    setErrorText ] = useState( '' );
+
+    let inputRef = useRef();
 
     useEffect( () => {
         setNameValue( appName );
@@ -64,7 +66,8 @@ const ItemNameComponent = ( props ) => {
 
     const enter = ( e ) => {
         if( e.which === 13 ){
-            acceptName()
+            acceptName();
+            inputRef.current.blur();
         };
     };
 
@@ -76,11 +79,12 @@ const ItemNameComponent = ( props ) => {
         <div className = { appNameIsError? 'ANAppl_name isError': 'ANAppl_name' }>
             <h4>Название заявки: <span>(обязатеьно)</span> </h4>
             <input 
-                type = 'text'
-                value = { nameValue }
-                onChange = { change_name }
+                type =      'text'
+                ref =       { inputRef }
+                value =     { nameValue }
+                onChange =  { change_name }
                 onKeyDown = { enter }
-                onBlur = { blur }
+                onBlur =    { blur }
             />
 
             { appNameIsError? (

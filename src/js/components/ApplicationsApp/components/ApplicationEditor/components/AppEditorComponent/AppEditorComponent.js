@@ -7,17 +7,17 @@ import './AppEditorComponent.scss';
 
 import { selectorData as applicationSlice } from './../../../../../../redux/applicationSlice.js';
 
-import { A_Header } from './components/A_Header/A_Header.js';
-import { A_Name } from './components/A_Name/A_Name.js';
-import { A_Category } from './components/A_Category/A_Category.js';
-import { A_ManagerNotes } from './components/A_ManagerNotes/A_ManagerNotes.js';
+// import { A_Header } from './components/A_Header/A_Header.js';
+// import { A_Name } from './components/A_Name/A_Name.js';
+// import { A_Category } from './components/A_Category/A_Category.js';
+// import { A_ManagerNotes } from './components/A_ManagerNotes/A_ManagerNotes.js';
 
-import { APPLICATION_TYPE } from './../../../../../../config/application.js';
+// import { APPLICATION_TYPE } from './../../../../../../config/application.js';
 
-import { A_AddSeriesButton } from './components/A_AddSeriesButton/A_AddSeriesButton.js';
-import { A_AddReleaseButton } from './components/A_AddReleaseButton/A_AddReleaseButton.js';
+// import { A_AddSeriesButton } from './components/A_AddSeriesButton/A_AddSeriesButton.js';
+// import { A_AddReleaseButton } from './components/A_AddReleaseButton/A_AddReleaseButton.js';
 
-import { RemoveApplication } from './components/RemoveApplication/RemoveApplication.js';
+// import { RemoveApplication } from './components/RemoveApplication/RemoveApplication.js';
 
 
 const AppEditorComponentComponent = ( props ) => {
@@ -31,7 +31,7 @@ const AppEditorComponentComponent = ( props ) => {
     
     return (
         <div className = 'appEditorComponent'>
-            <div className = 'AEC_wrap'>
+            {/* <div className = 'AEC_wrap'>
 
                 <A_Header />
                 <A_Name />
@@ -58,7 +58,7 @@ const AppEditorComponentComponent = ( props ) => {
 
 
                 </div>
-            </div>
+            </div> */}
 
         </div>
     )

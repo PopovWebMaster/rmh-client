@@ -11,9 +11,9 @@ import {
     setCurrentAppName,
     setCurrentAppCategoryId,
     setCurrentAppNum,
-    setCurrentAppType,
-    setCurrentAppNotes,
-    setCurrentAppOrders,
+    // setCurrentAppType,
+    // setCurrentAppNotes,
+    // setCurrentAppOrders,
     setCurrentAppIsChanged,
 
 } from './../../../../../../redux/applicationSlice.js';
@@ -36,9 +36,9 @@ const GetCurrentApplicationDataFromServerComponent = ( props ) => {
         setCurrentAppName,
         setCurrentAppCategoryId,
         setCurrentAppNum,
-        setCurrentAppType,
-        setCurrentAppNotes,
-        setCurrentAppOrders,
+        // setCurrentAppType,
+        // setCurrentAppNotes,
+        // setCurrentAppOrders,
         setCurrentAppIsChanged,
 
     } = props;
@@ -61,29 +61,53 @@ const GetCurrentApplicationDataFromServerComponent = ( props ) => {
                 console.dir( response );
 
                 if( response.ok ){
-                    
+
                     let {
-                        name,
+                        application_id,
                         category_id,
+                        manager_id,
+                        name,
                         num,
-                        type,
-                        notes,
-                        orders,
-                    } = response.application;
+                        manager_notes,
+
+                    } = response;
 
                     setCurrentAppName( name );
                     setCurrentAppCategoryId( category_id );
                     setCurrentAppNum( num );
-                    setCurrentAppType( type );
-                    setCurrentAppNotes( notes );
-                    setCurrentAppOrders( orders );
 
                     setCurrentAppIsChanged( false );
 
                     setSpinnerIsActive( false );
                     setIsReady( true );
 
+
                 };
+
+                // if( response.ok ){
+                    
+                //     let {
+                //         name,
+                //         category_id,
+                //         num,
+                //         type,
+                //         notes,
+                //         orders,
+                //     } = response.application;
+
+                //     setCurrentAppName( name );
+                //     setCurrentAppCategoryId( category_id );
+                //     setCurrentAppNum( num );
+                //     setCurrentAppType( type );
+                //     setCurrentAppNotes( notes );
+                //     setCurrentAppOrders( orders );
+
+                //     setCurrentAppIsChanged( false );
+
+                //     setSpinnerIsActive( false );
+                //     setIsReady( true );
+
+                // };
 
             },
         });
@@ -111,9 +135,9 @@ export function GetCurrentApplicationDataFromServer( props ){
             setCurrentAppName =         { ( val ) => { dispatch( setCurrentAppName( val ) ) } }
             setCurrentAppCategoryId =   { ( val ) => { dispatch( setCurrentAppCategoryId( val ) ) } }
             setCurrentAppNum =          { ( val ) => { dispatch( setCurrentAppNum( val ) ) } }
-            setCurrentAppType =         { ( val ) => { dispatch( setCurrentAppType( val ) ) } }
-            setCurrentAppNotes =        { ( val ) => { dispatch( setCurrentAppNotes( val ) ) } }
-            setCurrentAppOrders =       { ( val ) => { dispatch( setCurrentAppOrders( val ) ) } }
+            // setCurrentAppType =         { ( val ) => { dispatch( setCurrentAppType( val ) ) } }
+            // setCurrentAppNotes =        { ( val ) => { dispatch( setCurrentAppNotes( val ) ) } }
+            // setCurrentAppOrders =       { ( val ) => { dispatch( setCurrentAppOrders( val ) ) } }
 
             setCurrentAppIsChanged =    { ( val ) => { dispatch( setCurrentAppIsChanged( val ) ) } }
 

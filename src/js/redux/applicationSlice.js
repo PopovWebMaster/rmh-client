@@ -14,12 +14,21 @@ export const applicationSlice = createSlice({
         applicationById: {},
         currentApplicationId: null,
 
+        currentCategoryIdOfListFilter: null,
+
+
+
+
+
+
         currentAppName: '',
         currentAppCategoryId: null,
         currentAppNum: null,
-        currentAppType: null,
-        currentAppNotes: null,
-        currentAppOrders: [],
+
+
+        // currentAppType: null,
+        // currentAppNotes: null,
+        // currentAppOrders: [],
         currentAppIsChanged: false,
 
     },
@@ -36,6 +45,11 @@ export const applicationSlice = createSlice({
             state.currentApplicationId =  action.payload;
         },
 
+        setCurrentCategoryIdOfListFilter: ( state, action ) => {
+            state.currentCategoryIdOfListFilter =  action.payload;
+        },
+
+
 
 
 
@@ -51,17 +65,17 @@ export const applicationSlice = createSlice({
             state.currentAppNum =  action.payload;
         },
 
-        setCurrentAppType: ( state, action ) => {
-            state.currentAppType =  action.payload;
-        },
+        // setCurrentAppType: ( state, action ) => {
+        //     state.currentAppType =  action.payload;
+        // },
 
-        setCurrentAppNotes: ( state, action ) => {
-            state.currentAppNotes =  action.payload;
-        },
+        // setCurrentAppNotes: ( state, action ) => {
+        //     state.currentAppNotes =  action.payload;
+        // },
 
-        setCurrentAppOrders: ( state, action ) => {
-            state.currentAppOrders =  action.payload;
-        },
+        // setCurrentAppOrders: ( state, action ) => {
+        //     state.currentAppOrders =  action.payload;
+        // },
 
         setCurrentAppIsChanged: ( state, action ) => {
             state.currentAppIsChanged =  action.payload;
@@ -80,13 +94,17 @@ export const applicationSlice = createSlice({
 export const {  
     setApplicationList,
     setCurrentApplicationId,
+    setCurrentCategoryIdOfListFilter,
+
+
+
 
     setCurrentAppName,
     setCurrentAppCategoryId,
     setCurrentAppNum,
-    setCurrentAppType,
-    setCurrentAppNotes,
-    setCurrentAppOrders,
+    // setCurrentAppType,
+    // setCurrentAppNotes,
+    // setCurrentAppOrders,
     setCurrentAppIsChanged,
 
 
@@ -95,18 +113,23 @@ export const {
 
 export const selectorData = ( state ) => {
     return {
-        applicationList:        state.application.applicationList,
-        applicationById:        state.application.applicationById,
-        currentApplicationId:   state.application.currentApplicationId,
+        applicationList:                state.application.applicationList,
+        applicationById:                state.application.applicationById,
+        currentApplicationId:           state.application.currentApplicationId,
+        currentCategoryIdOfListFilter:  state.application.currentCategoryIdOfListFilter,
+
+
 
         currentAppName:         state.application.currentAppName,
         currentAppCategoryId:   state.application.currentAppCategoryId,
         currentAppNum:          state.application.currentAppNum,
-        currentAppType:         state.application.currentAppType,
-        currentAppNotes:        state.application.currentAppNotes,
-        currentAppOrders:       state.application.currentAppOrders,
+        // currentAppType:         state.application.currentAppType,
+        // currentAppNotes:        state.application.currentAppNotes,
+        // currentAppOrders:       state.application.currentAppOrders,
 
         currentAppIsChanged:    state.application.currentAppIsChanged,
+
+        
 
 
 

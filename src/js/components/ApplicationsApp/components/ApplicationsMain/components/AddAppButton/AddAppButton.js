@@ -33,8 +33,8 @@ const AddAppButtonComponent = ( props ) => {
         <AlertWindowContainer
             isOpen =    { isOpen }
             setIsOpen = { setIsOpen }
-            width =     '27em'
-            height =    '23em'
+            width =     '30em'
+            height =    '40em'
             title = 'Создать новую заявку'
         >
             <NewAppComponent 
