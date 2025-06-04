@@ -28,13 +28,13 @@ const A_HeaderComponent = ( props ) => {
 
             {/* <h4 className = 'A_Header_name'>{ currentAppName }</h4> */}
 
-            <div className = 'A_Header_type'>
+            {/* <div className = 'A_Header_type'>
                 <span
                     style = {{
                         backgroundColor: get_app_type_color( currentAppType )
                     }}
                 >{ get_app_type_title( currentAppType ) }</span>
-            </div>
+            </div> */}
 
         </div>
     )

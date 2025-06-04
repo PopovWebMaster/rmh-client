@@ -12,8 +12,13 @@ export const chack_app_num_value = ( str ) => {
     }else{
         let expression = /^[+-]?\d+$/;
         if( expression.test( str ) ){
-            result.isValid = true;
-            result.value = Number( str );
+
+            let num = Number( str );
+            if( num < 1000000 ){
+                result.isValid = true;
+                result.value = Number( str );
+            };
+
         };
     };
 

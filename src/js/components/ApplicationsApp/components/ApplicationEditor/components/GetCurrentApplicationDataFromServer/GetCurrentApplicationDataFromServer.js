@@ -11,8 +11,8 @@ import {
     setCurrentAppName,
     setCurrentAppCategoryId,
     setCurrentAppNum,
+    setCurrentAppManagerNotes,
     // setCurrentAppType,
-    // setCurrentAppNotes,
     // setCurrentAppOrders,
     setCurrentAppIsChanged,
 
@@ -75,6 +75,7 @@ const GetCurrentApplicationDataFromServerComponent = ( props ) => {
                     setCurrentAppName( name );
                     setCurrentAppCategoryId( category_id );
                     setCurrentAppNum( num );
+                    setCurrentAppManagerNotes( manager_notes );
 
                     setCurrentAppIsChanged( false );
 
@@ -136,7 +137,7 @@ export function GetCurrentApplicationDataFromServer( props ){
             setCurrentAppCategoryId =   { ( val ) => { dispatch( setCurrentAppCategoryId( val ) ) } }
             setCurrentAppNum =          { ( val ) => { dispatch( setCurrentAppNum( val ) ) } }
             // setCurrentAppType =         { ( val ) => { dispatch( setCurrentAppType( val ) ) } }
-            // setCurrentAppNotes =        { ( val ) => { dispatch( setCurrentAppNotes( val ) ) } }
+            setCurrentAppManagerNotes =        { ( val ) => { dispatch( setCurrentAppManagerNotes( val ) ) } }
             // setCurrentAppOrders =       { ( val ) => { dispatch( setCurrentAppOrders( val ) ) } }
 
             setCurrentAppIsChanged =    { ( val ) => { dispatch( setCurrentAppIsChanged( val ) ) } }

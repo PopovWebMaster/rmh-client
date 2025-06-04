@@ -5,23 +5,23 @@ import { useDispatch } from 'react-redux';
 
 import './A_ManagerNotes.scss';
 
-import { selectorData as applicationSlice, setCurrentAppNotes, setCurrentAppIsChanged } from './../../../../../../../../redux/applicationSlice.js';
+import { selectorData as applicationSlice, setCurrentAppIsChanged, setCurrentAppManagerNotes } from './../../../../../../../../redux/applicationSlice.js';
 
 
 const A_ManagerNotesComponent = ( props ) => {
 
     let {
-        currentAppNotes,
+        currentAppManagerNotes,
         setCurrentAppIsChanged,
-        setCurrentAppNotes,
+        setCurrentAppManagerNotes,
     } = props;
 
-    let [ notesValue, setNotesValue ] = useState( currentAppNotes );
+    let [ notesValue, setNotesValue ] = useState( currentAppManagerNotes );
     let inputRef = useRef();
 
     useEffect( () => {
-        setNotesValue( currentAppNotes );
-    }, [ currentAppNotes ] );
+        setNotesValue( currentAppManagerNotes );
+    }, [ currentAppManagerNotes ] );
 
     const change = ( e ) => {
         let val = e.target.value;
@@ -29,8 +29,8 @@ const A_ManagerNotesComponent = ( props ) => {
     }
 
     const accept = () => {
-        if( Number( currentAppNotes ) !== Number( notesValue ) ){
-            setCurrentAppNotes( notesValue );
+        if( Number( currentAppManagerNotes ) !== Number( notesValue ) ){
+            setCurrentAppManagerNotes( notesValue );
             setCurrentAppIsChanged( true );
         };
     };
@@ -82,9 +82,9 @@ export function A_ManagerNotes( props ){
         <A_ManagerNotesComponent
             { ...props }
 
-            currentAppNotes = { application.currentAppNotes }
+            currentAppManagerNotes = { application.currentAppManagerNotes }
 
-            setCurrentAppNotes = { ( val ) => { dispatch( setCurrentAppNotes( val ) ) } }
+            setCurrentAppManagerNotes = { ( val ) => { dispatch( setCurrentAppManagerNotes( val ) ) } }
             setCurrentAppIsChanged = { ( val ) => { dispatch( setCurrentAppIsChanged( val ) ) } }
 
 

@@ -1,4 +1,4 @@
-.A_ManagerNotes{
+.A_CategoryNoEdit{
     font-size: 0.8em;
     margin: 0 0.5em;
     padding: 0.4em 1em;
@@ -18,25 +18,29 @@
         width: 12em;
     }
 
-    input{
-        font-size: 0.85em;
-        line-height: 1.4em;
-        padding: 0.4em 1em;
+    .A_CategoryNoEdit_name{
+        font-size: .8em;
+        padding: 0.3em 1.4em;
+        margin-right: 2em;
+        border-radius: 0.1em;
+    }
+
+    .A_CategoryNoEdit_prefix{
+        font-size: 0.8em;
+        line-height: 1.6em;
+        padding: 0.1em 0.6em;
         border: 1px solid #c9c9c966;
         border-radius: 0.1em;
-        // width: calc( 100% - 2em );
+        max-width: 20em;
+        width: 100%;
         outline: none;
-        background-color: #ffffff;
-        color: #b54646;
+        background-color: #ffffff00;
+        color: #454545;
 
-        flex-grow: 1;
-        // max-width: 100%;
-        width: 50%;
     }
-    input:focus{
+    .A_CategoryNoEdit_prefix:focus{
+        // background-color: red;
         border: 1px solid #a8a8a8;
         background-color: #ffffff;
     }
-
 }
-
