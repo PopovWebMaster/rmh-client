@@ -18,6 +18,8 @@ import { ItemButtonAdd } from './../ItemButtonAdd/ItemButtonAdd.js';
 
 import { MIN_EVENT_DURATION_SEC } from './../../../../../../../../../../config/layout.js';
 
+import { set_application_data_to_store } from './../../../../../../vendors/set_application_data_to_store.js';
+
 const NewSubSeriesComponentComponent = ( props ) => {
 
     let {
@@ -28,7 +30,7 @@ const NewSubSeriesComponentComponent = ( props ) => {
 
         currentPage,
         setSpinnerIsActive,
-        setApplicationList,
+        // setApplicationList,
 
     } = props;
 
@@ -45,6 +47,7 @@ const NewSubSeriesComponentComponent = ( props ) => {
 
 
     const click = () => {
+
         if( isReady ){
 
             setSpinnerIsActive( true );
@@ -68,7 +71,7 @@ const NewSubSeriesComponentComponent = ( props ) => {
                     if( response.ok ){
 
                         setSpinnerIsActive( false );
-                        setApplicationList( response.list );
+                        set_application_data_to_store( response.application );
                         setIsOpen( false );
 
                     };
@@ -143,7 +146,7 @@ export function NewSubSeriesComponent( props ){
             currentPage =               { navigation.currentPage }
 
             setSpinnerIsActive =    { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
-            setApplicationList =    { ( val ) => { dispatch( setApplicationList( val ) ) } }
+            // setApplicationList =    { ( val ) => { dispatch( setApplicationList( val ) ) } }
 
 
             

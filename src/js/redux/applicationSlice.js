@@ -25,6 +25,7 @@ export const applicationSlice = createSlice({
         currentAppCategoryId: null,
         currentAppNum: null,
         currentAppManagerNotes: '',
+        currentSubAppList: [],
 
 
         // currentAppType: null,
@@ -66,9 +67,9 @@ export const applicationSlice = createSlice({
             state.currentAppNum =  action.payload;
         },
 
-        // setCurrentAppType: ( state, action ) => {
-        //     state.currentAppType =  action.payload;
-        // },
+        setCurrentSubAppList: ( state, action ) => {
+            state.currentSubAppList =  action.payload;
+        },
 
         setCurrentAppManagerNotes: ( state, action ) => {
             state.currentAppManagerNotes =  action.payload;
@@ -103,7 +104,7 @@ export const {
     setCurrentAppName,
     setCurrentAppCategoryId,
     setCurrentAppNum,
-    // setCurrentAppType,
+    setCurrentSubAppList,
     setCurrentAppManagerNotes,
     // setCurrentAppOrders,
     setCurrentAppIsChanged,
@@ -119,20 +120,13 @@ export const selectorData = ( state ) => {
         currentApplicationId:           state.application.currentApplicationId,
         currentCategoryIdOfListFilter:  state.application.currentCategoryIdOfListFilter,
 
-
-
         currentAppName:         state.application.currentAppName,
         currentAppCategoryId:   state.application.currentAppCategoryId,
         currentAppNum:          state.application.currentAppNum,
-        // currentAppType:         state.application.currentAppType,
-        currentAppManagerNotes:        state.application.currentAppManagerNotes,
-        // currentAppOrders:       state.application.currentAppOrders,
+        currentAppManagerNotes: state.application.currentAppManagerNotes,
+        currentSubAppList:      state.application.currentSubAppList,
 
         currentAppIsChanged:    state.application.currentAppIsChanged,
-
-        
-
-
 
 
 

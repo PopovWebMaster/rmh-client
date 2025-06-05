@@ -21,6 +21,7 @@ import { A_ManagerNotes } from './components/A_ManagerNotes/A_ManagerNotes.js';
 import { AddSubApplication } from './components/AddSubApplication/AddSubApplication.js';
 
 import { RemoveApplication } from './components/RemoveApplication/RemoveApplication.js';
+import { SubAppList } from './components/SubAppList/SubAppList.js';
 
 
 const AppEditorComponentComponent = ( props ) => {
@@ -51,26 +52,12 @@ const AppEditorComponentComponent = ( props ) => {
                     </div>
                 </div>
 
-                {/* <div className = 'AEC_button_panel'>
-
-                    <div className = 'AEC_left'>
-                        { currentAppType === APPLICATION_TYPE.SERIES? (<>
-                            <A_AddSeriesButton />
-                        </>): currentAppType === APPLICATION_TYPE.RELEASE? (<>
-                            <A_AddReleaseButton />
-                        </>): ''}
-                    </div>
-
-                    <div className = 'AEC_right'>
-                        <RemoveApplication />
-                    </div>
+                <div className = 'AEC_orders_wrap'>
+                    
+                    <SubAppList />
 
                 </div>
 
-                <div className = 'AEC_orders_wrap'>
-
-
-                </div> */}
             </div>
 
         </div>

@@ -29,6 +29,15 @@ const ItemDurationComponent = ( props ) => {
     let [ MM, setMM ] = useState( '00' );
     let [ SS, setSS ] = useState( `${MIN_EVENT_DURATION_SEC}`.padStart( 2, "0" ) );
 
+
+    useEffect( () => {
+        enter();
+    }, [
+        HH,
+        MM,
+        SS
+    ] );
+
     useEffect( () => {
 
         if( isOpen ){

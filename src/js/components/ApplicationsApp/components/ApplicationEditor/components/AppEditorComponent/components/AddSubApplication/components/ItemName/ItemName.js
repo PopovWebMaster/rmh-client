@@ -1,11 +1,11 @@
 
 import React, { useRef, useState, useEffect }   from "react";
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
 
 import './ItemName.scss';
 
-// import { selectorData as applicationSlice } from './../../../../../../../../../../redux/applicationSlice.js';
+import { selectorData as applicationSlice } from './../../../../../../../../../../redux/applicationSlice.js';
 // import { selectorData as layoutSlice }      from './../../../../../../../../../../redux/layoutSlice.js';
 
 const ItemNameComponent = ( props ) => {
@@ -29,12 +29,16 @@ const ItemNameComponent = ( props ) => {
         if( isOpen ){
             
         }else{
-            setName( '' )
+            setName( '' );
             setNameIsError( false );
             setErrorText('');
         };
 
     }, [ isOpen ] );
+
+    useEffect(() => {
+        setNameValue( name );
+    }, [ name ]);
 
     const acceptName = () => {
         let nameTrim = nameValue.trim();
@@ -109,14 +113,14 @@ const ItemNameComponent = ( props ) => {
 
 export function ItemName( props ){
 
-    // const application = useSelector( applicationSlice );
+    const application = useSelector( applicationSlice );
     // const layout = useSelector( layoutSlice );
     // const dispatch = useDispatch();
 
     return (
         <ItemNameComponent
             { ...props }
-            // currentAppCategoryId =  { application.currentAppCategoryId }
+            currentAppCategoryId =  { application.currentAppCategoryId }
             // categoryListById =    { layout.categoryListById }
 
             // setCategoryesIsChanged = { ( val ) => { dispatch( setCategoryesIsChanged( val ) ) } }

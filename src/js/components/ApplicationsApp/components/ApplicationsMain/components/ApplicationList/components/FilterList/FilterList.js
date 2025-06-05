@@ -54,6 +54,8 @@ const FilterListComponent = ( props ) => {
                 name,
                 num,
                 category_id,
+                sub_application_list
+
             } = item;
 
             let category = DEFAULT_CATEGORY;
@@ -81,6 +83,8 @@ const FilterListComponent = ( props ) => {
                         >{ category.name }</span>
                         <span className = 'AL_name'>{ name }</span>
                         <span className = 'AL_num'>№ { num }</span>
+                        <span className = 'AL_release'>выпуски: { sub_application_list.length }</span>
+
 
                     </div>
                 </div>

@@ -18,6 +18,8 @@ import { ItemName } from './../ItemName/ItemName.js';
 
 import { MIN_EVENT_DURATION_SEC } from './../../../../../../../../../../config/layout.js';
 
+import { set_application_data_to_store } from './../../../../../../vendors/set_application_data_to_store.js';
+
 
 const NewSubReleaseComponentComponent = ( props ) => {
 
@@ -25,6 +27,7 @@ const NewSubReleaseComponentComponent = ( props ) => {
         isOpen,
         setIsOpen,
 
+        currentApplicationId,
         currentPage,
         setSpinnerIsActive,
 
@@ -57,8 +60,8 @@ const NewSubReleaseComponentComponent = ( props ) => {
     }, [ nameIsError, name ] );
 
 
-    
     const click = () => {
+
         if( isReady ){
 
             setSpinnerIsActive( true );
@@ -66,12 +69,12 @@ const NewSubReleaseComponentComponent = ( props ) => {
             send_request_to_server({
                 route: `${currentPage}/add-new-subapplication-release`,
                 data: { 
-                    // serialNumFrom: numFromValue,
-                    // serialNumTo: numToValue,
-                    // dataFrom,
-                    // dataTo,
-                    // durationSec,
-                    // airNotes: notes,
+                    applicationId: currentApplicationId,
+                    periodFrom: dataFrom,
+                    periodTo: dataTo,
+                    name,
+                    durationSec,
+                    airNotes: notes,
                 },
 
                 callback: ( response ) => {
@@ -80,6 +83,8 @@ const NewSubReleaseComponentComponent = ( props ) => {
 
                     if( response.ok ){
 
+                        set_application_data_to_store( response.application );
+
                         setSpinnerIsActive( false );
                         setIsOpen( false );
 
@@ -87,7 +92,6 @@ const NewSubReleaseComponentComponent = ( props ) => {
 
                 },
             });
-
 
         };
     }
@@ -148,6 +152,7 @@ export function NewSubReleaseComponent( props ){
         <NewSubReleaseComponentComponent
             { ...props }
             currentAppCategoryId =      { application.currentAppCategoryId }
+            currentApplicationId =      { application.currentApplicationId }
             currentPage =               { navigation.currentPage }
 
             setSpinnerIsActive =    { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }
