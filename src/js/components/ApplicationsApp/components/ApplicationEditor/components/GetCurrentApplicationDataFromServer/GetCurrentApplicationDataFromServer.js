@@ -22,7 +22,8 @@ import { selectorData as navigationSlice }  from './../../../../../../redux/navi
 
 import { send_request_to_server } from './../../../../../../helpers/send_request_to_server.js';
 
-import { set_application_data_to_store } from './../../vendors/set_application_data_to_store.js';
+// import { set_sub_application_data_to_store } from './../../vendors/set_sub_application_data_to_store.js';
+import { set_application_data_to_store } from './../../vendors/set_application_data_to_store.js'
 
 const GetCurrentApplicationDataFromServerComponent = ( props ) => {
 

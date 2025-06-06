@@ -7,13 +7,17 @@ import {
     setCurrentSubAppList,
     setCurrentAppIsChanged,
 
-    setApplicationList,
-
 } from './../../../../../redux/applicationSlice.js';
 
 import store from './../../../../../redux/store.js';
 
-export const set_application_data_to_store = ( application, applicationList = false ) => {
+/*
+
+не использовать, протупил в нём нет смысла
+
+*/
+
+export const set_sub_application_data_to_store = ( application ) => {
     let {
         application_id,
         category_id,
@@ -31,9 +35,5 @@ export const set_application_data_to_store = ( application, applicationList = fa
     store.dispatch( setCurrentAppManagerNotes( manager_notes ) );
     store.dispatch( setCurrentSubAppList( sub_application_list ) );
     store.dispatch( setCurrentAppIsChanged( false ) );
-
-    if( applicationList ){
-        store.dispatch( setApplicationList( applicationList ) );
-    };
 
 }

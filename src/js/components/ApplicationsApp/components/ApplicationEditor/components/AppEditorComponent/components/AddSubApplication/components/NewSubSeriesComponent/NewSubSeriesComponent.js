@@ -18,6 +18,7 @@ import { ItemButtonAdd } from './../ItemButtonAdd/ItemButtonAdd.js';
 
 import { MIN_EVENT_DURATION_SEC } from './../../../../../../../../../../config/layout.js';
 
+// import { set_sub_application_data_to_store } from './../../../../../../vendors/set_sub_application_data_to_store.js';
 import { set_application_data_to_store } from './../../../../../../vendors/set_application_data_to_store.js';
 
 const NewSubSeriesComponentComponent = ( props ) => {
@@ -27,6 +28,10 @@ const NewSubSeriesComponentComponent = ( props ) => {
         setIsOpen,
 
         currentApplicationId,
+        currentAppName,
+        currentAppCategoryId,
+        currentAppNum,
+        currentAppManagerNotes,
 
         currentPage,
         setSpinnerIsActive,
@@ -56,6 +61,12 @@ const NewSubSeriesComponentComponent = ( props ) => {
                 route: `${currentPage}/add-new-subapplication-series`,
                 data: { 
                     applicationId: currentApplicationId,
+                    
+                    applicationName:            currentAppName,
+                    applicationCategoryId:      currentAppCategoryId,
+                    applicationNum:             currentAppNum,
+                    applicationManagerNotes:    currentAppManagerNotes,
+
                     serialNumFrom: numFromValue,
                     serialNumTo: numToValue,
                     periodFrom: dataFrom,
@@ -71,7 +82,7 @@ const NewSubSeriesComponentComponent = ( props ) => {
                     if( response.ok ){
 
                         setSpinnerIsActive( false );
-                        set_application_data_to_store( response.application );
+                        set_application_data_to_store( response.application, response.applicationList );
                         setIsOpen( false );
 
                     };
@@ -140,8 +151,13 @@ export function NewSubSeriesComponent( props ){
     return (
         <NewSubSeriesComponentComponent
             { ...props }
-            currentAppCategoryId =      { application.currentAppCategoryId }
+            // currentAppCategoryId =      { application.currentAppCategoryId }
             currentApplicationId =      { application.currentApplicationId }
+
+            currentAppName =            { application.currentAppName }
+            currentAppCategoryId =      { application.currentAppCategoryId }
+            currentAppNum =             { application.currentAppNum }
+            currentAppManagerNotes =    { application.currentAppManagerNotes }
 
             currentPage =               { navigation.currentPage }
 

@@ -8,10 +8,9 @@ import './ItemSubName.scss';
 // import { selectorData as applicationSlice } from './../../../../../../../../../../redux/applicationSlice.js';
 
 import { ItemEditComponent } from './../ItemEditComponent/ItemEditComponent.js';
-
 import { AlertWindowContainerSaveAdd } from './../../../../../../../../../AlertWindowContainerSaveAdd/AlertWindowContainerSaveAdd.js';
+import { save_sub_app_changes_on_server } from './../../../../../../vendors/save_sub_app_changes_on_server.js';
 
-import { save_sub_app_changes_on_server } from './../../vendors/save_sub_app_changes_on_server.js';
 import { name_is_unic } from './vendors/name_is_unic.js';
 
 
@@ -107,7 +106,7 @@ const ItemSubNameComponent = ( props ) => {
                 name: nameValue
             },
             callback: ( response ) => {
-
+                setIsReady( false );
             },
         });
     }

@@ -18,6 +18,7 @@ import { ItemName } from './../ItemName/ItemName.js';
 
 import { MIN_EVENT_DURATION_SEC } from './../../../../../../../../../../config/layout.js';
 
+// import { set_sub_application_data_to_store } from './../../../../../../vendors/set_sub_application_data_to_store.js';
 import { set_application_data_to_store } from './../../../../../../vendors/set_application_data_to_store.js';
 
 
@@ -28,6 +29,13 @@ const NewSubReleaseComponentComponent = ( props ) => {
         setIsOpen,
 
         currentApplicationId,
+
+        currentAppName,
+        currentAppCategoryId,
+        currentAppNum,
+        currentAppManagerNotes,
+
+
         currentPage,
         setSpinnerIsActive,
 
@@ -70,6 +78,12 @@ const NewSubReleaseComponentComponent = ( props ) => {
                 route: `${currentPage}/add-new-subapplication-release`,
                 data: { 
                     applicationId: currentApplicationId,
+
+                    applicationName:            currentAppName,
+                    applicationCategoryId:      currentAppCategoryId,
+                    applicationNum:             currentAppNum,
+                    applicationManagerNotes:    currentAppManagerNotes,
+
                     periodFrom: dataFrom,
                     periodTo: dataTo,
                     name,
@@ -83,7 +97,7 @@ const NewSubReleaseComponentComponent = ( props ) => {
 
                     if( response.ok ){
 
-                        set_application_data_to_store( response.application );
+                        set_application_data_to_store( response.application, response.applicationList );
 
                         setSpinnerIsActive( false );
                         setIsOpen( false );
@@ -151,8 +165,16 @@ export function NewSubReleaseComponent( props ){
     return (
         <NewSubReleaseComponentComponent
             { ...props }
-            currentAppCategoryId =      { application.currentAppCategoryId }
+            // currentAppCategoryId =      { application.currentAppCategoryId }
             currentApplicationId =      { application.currentApplicationId }
+
+
+            currentAppName =            { application.currentAppName }
+            currentAppCategoryId =      { application.currentAppCategoryId }
+            currentAppNum =             { application.currentAppNum }
+            currentAppManagerNotes =    { application.currentAppManagerNotes }
+
+
             currentPage =               { navigation.currentPage }
 
             setSpinnerIsActive =    { ( val ) => { dispatch( setSpinnerIsActive( val ) ) } }

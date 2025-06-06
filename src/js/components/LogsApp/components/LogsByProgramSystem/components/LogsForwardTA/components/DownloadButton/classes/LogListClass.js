@@ -5,6 +5,8 @@ import { FileDateClass } from './FileDateClass.js';
 
 import { TimeClass } from './../../../../../../../../../classes/TimeClass.js';
 
+import { EMPTY_TIME_MS_IGNORE } from './../../../../../../../../../config/logs.js';
+
 const TYPE = {
     MOVIE: 'Movie',
     TITLE_OBJECT: 'TitleObject',
@@ -126,7 +128,9 @@ export class LogListClass{
                     
                     list_2.push( this.list[ i ] );
 
-                    if( duration.ms > 999 ){
+                    console.log( 'duration.ms', duration.ms );
+
+                    if( duration.ms > EMPTY_TIME_MS_IGNORE ){
                         list_2.push({
                             type: 'empty',
                             date: { ...this.list[ i ].date },

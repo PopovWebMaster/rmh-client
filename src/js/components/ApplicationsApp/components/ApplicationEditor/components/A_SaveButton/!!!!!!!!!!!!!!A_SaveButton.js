@@ -19,22 +19,16 @@ import { send_request_to_server } from './../../../../../../helpers/send_request
 import { ApplicationSaveButton } from './../../../ApplicationSaveButton/ApplicationSaveButton.js';
 
 // import { set_application_data_to_store } from './set_application_data_to_store.js';
-import { set_application_data_to_store } from './../../vendors/set_application_data_to_store.js';
-
 
 
 const A_SaveButtonComponent = ( props ) => {
 
     let {
         currentApplicationId,
-        currentAppName,
-        currentAppCategoryId,
-        currentAppNum,
         currentPage,
         currentAppIsChanged,
-        currentAppManagerNotes,
         setSpinnerIsActive,
-        // setCurrentAppIsChanged,
+        setCurrentAppIsChanged,
 
     } = props;
 
@@ -62,11 +56,9 @@ const A_SaveButtonComponent = ( props ) => {
                     console.dir( response );
 
                     if( response.ok ){
-
-                        set_application_data_to_store( response.application, response.applicationList );
                         
                         setSpinnerIsActive( false );
-                        // setCurrentAppIsChanged( false );
+                        setCurrentAppIsChanged( false );
 
                     };
                 },

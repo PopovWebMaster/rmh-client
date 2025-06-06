@@ -17,7 +17,9 @@ export const convert_duration_to_ms = ( duration ) => {
     let arr_colon = arr_point[ 0 ].split( ':' );
 
      
-    time_ms.ms =        Number( arr_point[ 1 ] ) * 10;  
+    // time_ms.ms =        Number( arr_point[ 1 ] ) * 10;  
+    time_ms.ms =        0;  
+
     time_ms.hours =     Number( arr_colon[ 0 ] ) * 3600000;
     time_ms.minutes =   Number( arr_colon[ 1 ] ) * 60000;
     time_ms.seconds =   Number( arr_colon[ 2 ] ) * 1000;

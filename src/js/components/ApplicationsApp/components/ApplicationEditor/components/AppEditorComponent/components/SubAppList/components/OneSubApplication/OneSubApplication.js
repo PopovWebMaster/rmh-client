@@ -28,6 +28,10 @@ const OneSubApplicationComponent = ( props ) => {
         serial_num,
         type,
 
+        file_names,
+        description,
+        release_list,
+
     } = props;
     
     
@@ -39,9 +43,19 @@ const OneSubApplicationComponent = ( props ) => {
                 application_id =    { application_id }
                 name =              { name }
             />
-            {/* <ItemSubPeriod />
-            <ItemSubFiles />
-            <ItemSubDescription />
+            <ItemSubPeriod 
+                id =                { id }
+                application_id =    { application_id }
+                period_from =       { period_from }
+                period_to =         { period_to }
+
+            />
+            <ItemSubFiles 
+                id =                { id }
+                application_id =    { application_id }
+                file_names = { file_names }
+            />
+            {/* <ItemSubDescription />
             <ItemSubShedule />
             <ItemSubReportInDetail />
             <ItemSubRemove /> */}

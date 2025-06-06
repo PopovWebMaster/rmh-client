@@ -31,6 +31,9 @@ const SubAppListComponent = ( props ) => {
                 period_to,
                 serial_num,
                 type,
+                file_names,
+                description,
+                release_list,
             } = item;
 
             return (
@@ -45,6 +48,11 @@ const SubAppListComponent = ( props ) => {
                     period_to =         { period_to }
                     serial_num =        { serial_num }
                     type =              { type }
+
+                    file_names =        { file_names }
+                    description =       { description }
+                    release_list =      { release_list }
+
                 />
             );
 

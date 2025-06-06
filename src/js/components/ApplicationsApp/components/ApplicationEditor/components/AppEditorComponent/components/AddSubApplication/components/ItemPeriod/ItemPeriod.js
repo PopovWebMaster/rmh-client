@@ -9,6 +9,8 @@ import './ItemPeriod.scss';
 
 import { get_date_now_value } from './vendors/get_date_now_value.js';
 
+
+
 const ItemPeriodComponent = ( props ) => {
 
     let {
@@ -66,6 +68,7 @@ const ItemPeriodComponent = ( props ) => {
         };
 
     };
+
 
 
 
