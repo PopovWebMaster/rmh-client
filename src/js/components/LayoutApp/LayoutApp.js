@@ -28,18 +28,18 @@ const LayoutAppComponent = ( props ) => {
     let navigate = useNavigate();
 
     useEffect( () => {
-        if( IS_DEVELOPMENT ){
-            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
-            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
-            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` );
-            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.EVENTS }` );
+        if( currentCompanyAlias !== null ){
+            if( IS_DEVELOPMENT ){
+                navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
+                // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
+                // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.CATEGORIES }` );
 
-
-
-        }else{
-            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
+            }else{
+                navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}` );
+            };
         };
-    }, [] );
+
+    }, [ currentCompanyAlias ] );
     
     return (
         <PageContainer

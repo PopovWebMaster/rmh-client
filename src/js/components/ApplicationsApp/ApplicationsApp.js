@@ -27,14 +27,17 @@ const ApplicationsAppComponent = ( props ) => {
     let navigate = useNavigate();
 
     useEffect( () => {
-        if( IS_DEVELOPMENT ){
-            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}` );
-            // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
+        if( currentCompanyAlias !== null ){
+            if( IS_DEVELOPMENT ){
+                navigate( `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}` );
+                // navigate( `${currentCompanyAlias}/${ROUTE.PAGE.LAYOUT}/${ ROUTE.LAYOUT.KEY_POINTS }` );
 
-        }else{
-            navigate( `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}` );
+            }else{
+                navigate( `${currentCompanyAlias}/${ROUTE.PAGE.APPLICATIONS}` );
+            };
         };
-    }, [] );
+
+    }, [ currentCompanyAlias ] );
     
     return (
         <PageContainer

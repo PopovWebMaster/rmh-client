@@ -24,10 +24,9 @@ const SetCurrentCompanyComponent = ( props ) => {
     useEffect( () => {
 
         
-        const companyAlias = document.querySelector('meta[name="company-alias"]').content;
-        const companyName = document.querySelector('meta[name="company-name"]').content;
-        const companyType = document.querySelector('meta[name="company-type"]').content;
-
+        let companyAlias = document.querySelector('meta[name="company-alias"]').content;
+        let companyName = document.querySelector('meta[name="company-name"]').content;
+        let companyType = document.querySelector('meta[name="company-type"]').content;
 
         setCurrentCompanyAlias( companyAlias );
         setCurrentCompanyName( companyName );

@@ -6,9 +6,13 @@ export const companySlice = createSlice({
     name: 'company',
 
     initialState: {
-        currentCompanyAlias: '1-resp',
-        currentCompanyName: 'Первый республиканский',
-        currentCompanyType: 'tv',
+        // currentCompanyAlias: '1-resp',
+        // currentCompanyName: 'Первый республиканский',
+        // currentCompanyType: 'tv',
+
+        currentCompanyAlias: null,
+        currentCompanyName: null,
+        currentCompanyType: null,
 
         companyProgramSystem: null,
 
