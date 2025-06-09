@@ -68,8 +68,7 @@ const AlertWindowContainerComponent = ( props ) => {
 
                 
 
-                <div className = 'AWC_window_body'>
-                    
+                <div className = { showCurrentDayName? 'AWC_window_body heightShort': 'AWC_window_body heightFull' }>
                     { children } 
                 </div>
 

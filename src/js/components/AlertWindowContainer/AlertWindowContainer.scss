@@ -92,10 +92,18 @@ $max_blur: 0.4em;
 
         .AWC_window_body{
             font-size: 1em;
-            height: calc(100% - 4.7em );
+            // height: calc(100% - 4.7em );
             width: 100%;
             overflow: auto;
 
+        }
+
+        .heightShort{
+            height: calc(100% - 4.7em );
+        }
+        
+        .heightFull{
+            height: calc(100% - 1.4em );
         }
 
         .AWC_window_body::-webkit-scrollbar {

@@ -10,6 +10,7 @@ import { selectorData as applicationSlice } from './../../../../../../../../../.
 import { ItemSubName }              from './../ItemSubName/ItemSubName.js';
 import { ItemSubPeriod }            from './../ItemSubPeriod/ItemSubPeriod.js';
 import { ItemSubFiles }             from './../ItemSubFiles/ItemSubFiles.js';
+import { ItemSubDuration }          from './../ItemSubDuration/ItemSubDuration.js';
 import { ItemSubDescription }       from './../ItemSubDescription/ItemSubDescription.js';
 import { ItemSubShedule }           from './../ItemSubShedule/ItemSubShedule.js';
 import { ItemSubReportInDetail }    from './../ItemSubReportInDetail/ItemSubReportInDetail.js';
@@ -55,10 +56,35 @@ const OneSubApplicationComponent = ( props ) => {
                 application_id =    { application_id }
                 file_names = { file_names }
             />
-            {/* <ItemSubDescription />
-            <ItemSubShedule />
-            <ItemSubReportInDetail />
-            <ItemSubRemove /> */}
+
+            <ItemSubDuration 
+                id =                { id }
+                application_id =    { application_id }
+                duration_sec =      { duration_sec }
+            />
+
+            <ItemSubDescription 
+                id =                { id }
+                application_id =    { application_id }
+                description =       { description }
+            />
+
+
+            <ItemSubShedule 
+                id =                { id }
+                application_id =    { application_id }
+                release_list =      { release_list }
+            />
+
+
+            <ItemSubReportInDetail 
+                id =                { id }
+                application_id =    { application_id }
+            />
+            <ItemSubRemove
+                id =                { id }
+                application_id =    { application_id }
+            />
            
 
         </div>

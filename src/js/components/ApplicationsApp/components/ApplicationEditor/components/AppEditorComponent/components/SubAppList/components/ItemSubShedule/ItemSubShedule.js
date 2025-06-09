@@ -7,21 +7,40 @@ import './ItemSubShedule.scss';
 
 import { selectorData as applicationSlice } from './../../../../../../../../../../redux/applicationSlice.js';
 
+import { AlertWindowContainer } from './../../../../../../../../../AlertWindowContainer/AlertWindowContainer.js'
+// import { AlertWindowContainerSaveAdd } from './../../../../../../../../../AlertWindowContainerSaveAdd/AlertWindowContainerSaveAdd.js';
 
 const ItemSubSheduleComponent = ( props ) => {
 
     let {
-        currentSubAppList
+        id,
+        application_id,
+        release_list,
         
     } = props;
 
+    let [ isOpen, setIsOpen ] = useState( false );
 
-    
+
     
     return (
         <div className = 'SA_ItemSubShedule'>
-           
-ItemSubShedule
+            <AlertWindowContainer
+                isOpen =    { isOpen }
+                setIsOpen = { setIsOpen }
+                width =     { '98vw' }
+                height =    { '95vh' }
+            >
+                <>werwe</>
+            </AlertWindowContainer>
+
+            <span 
+                className = 'SA_ItemSubShedule_btn'
+                onClick = { () => { setIsOpen( true ) } }
+            >Расписание</span>
+
+            <span className = 'SA_ItemSubShedule_count'>{ release_list.length }</span>
+
         </div>
     )
 

@@ -13,17 +13,27 @@ import { selectorData as applicationSlice } from './../../../../../../../../../.
 const ItemSubReportInDetailComponent = ( props ) => {
 
     let {
-        currentSubAppList
+        id,
+        application_id,
         
     } = props;
+
+    const click = () => {
+        alert('click');
+    }
 
 
     
     
     return (
         <div className = 'SA_ItemSubReportInDetail'>
+
+            <span 
+                className = 'SA_ItemSubReportInDetail_btn'
+                onClick = { click }
+            >Отчёт</span>
            
-ItemSubReportInDetail
+
         </div>
     )
 
